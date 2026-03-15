@@ -3,3 +3,6 @@ AutoModelRasp_ws/build/
 AutoModelRasp_ws/install/
 AutoModelRasp_ws/log/
 
+#Archivos de compilación del stm32
+Debug/
+Release/
