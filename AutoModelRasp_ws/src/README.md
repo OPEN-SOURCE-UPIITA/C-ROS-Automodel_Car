@@ -7,12 +7,13 @@ Estos paquetes son la base del vehículo. Se comunican directamente con los sens
 * `comSTM`: Comunicación serial y control de motores.
 * `camera`: Driver y publicación de imágenes RGB.
 * `lidar`: Driver y publicación de la nube de puntos.
+* `motor_msg`: Estructura de los mensajes para los motores.
 
 ## 🧠 Paquetes de Comportamiento (Desarrollo Activo)
 Aquí es donde el equipo implementará la autonomía del auto, dividida por funcionalidades:
 * `manual/`: Control por teclado, control y rutinas de prueba básicas.
-* `conduccion/`: Seguimiento de líneas, detección de señales, evasión de obstáculos estáticos y móviles.
-* `estacionamiento/`: Mapeo espacial y rutinas de estacionamiento.
+* `driving/`: Seguimiento de carriles, detección de señales, evasión de obstáculos estáticos y móviles.
+* `parking/`: Mapeo espacial y rutinas de estacionamiento.
 
 
 ## 💬 Mensajes y Comunicaciones (Interfaces) - En proceso
@@ -21,3 +22,4 @@ Para mantener el workspace limpio, aplicamos estas dos reglas estrictas sobre lo
 2. **Mensajes Personalizados:** Cualquier mensaje (`.msg`), servicio (`.srv`) o acción (`.action`) específico del equipo debe crearse EXCLUSIVAMENTE dentro del paquete aglutinador **`automodel_interfaces`**. (Evita crear paquetes como `motor_msgs` o `camara_msgs`).
 
 > **💡 Regla de Nomenclatura:** Como estándar del equipo, el código (variables, nombres de nodos, tópicos y mensajes) debe escribirse en **inglés** para mantener compatibilidad universal, mientras que la documentación y comentarios pueden ir en **español**.
+
