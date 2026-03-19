@@ -4,7 +4,7 @@ Este directorio contiene todos los paquetes de ROS 2 para el **AutoModelCar**. P
 
 ## 🛡️ Nodos Core (Hardware - INTOCABLES)
 Estos paquetes son la base del vehículo. Se comunican directamente con los sensores y el STM32. **No deben ser modificados sin autorización:**
-* `comSTM`: Comunicación serial y control de motores.
+* `com_stm`: Comunicación serial y control de motores.
 * `camera`: Driver y publicación de imágenes RGB.
 * `lidar`: Driver y publicación de la nube de puntos.
 * `motor_msg`: Estructura de los mensajes para los motores.
