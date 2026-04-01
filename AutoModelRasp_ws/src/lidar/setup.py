@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'lidar'
+package_name = 'ms200_driver'
 
 setup(
     name=package_name,
@@ -13,9 +13,9 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='alereyes',
-    maintainer_email='alerey.lira@gmail.com',
-    description='TODO: Package description',
+    maintainer='Jonathan Jason Medina Martinez',
+    maintainer_email='jason240208@gmail.com',
+    description='Driver de ROS 2 Jazzy para el LiDAR MS200/Oradar desarrollado desde cero.',
     license='MIT',
     extras_require={
         'test': [
@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'ms200_node = ms200_driver.ms200_node:main'
         ],
     },
 )
