@@ -3,6 +3,7 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
 import serial
+from serial.tools import list_ports
 import struct
 import math
 import time
@@ -18,7 +19,8 @@ class MS200Node(Node):
         super().__init__('ms200_node')
         
         # Parámetros configurables
-        self.declare_parameter('port', '/dev/ttyUSB0')
+        #self.declare_parameter('port', '/dev/ttyUSB1')
+        self.declare_parameter('port', self.find_lidar_port())
         self.declare_parameter('baudrate', 230400)
         self.declare_parameter('frame_id', 'laser_frame')
         
@@ -43,6 +45,23 @@ class MS200Node(Node):
         
         # Timer para leer el puerto constantemente
         self.create_timer(0.001, self.read_serial_data)
+
+
+    def find_lidar_port(self):
+        """Detecta automáticamente el puerto del LIDAR"""
+        LIDAR_VID = "1a86"      
+        LIDAR_PID = "7523"      
+        
+        ports = serial.tools.list_ports.comports()
+        
+        for port in ports:
+            if port.vid and port.pid:
+                if f"{port.vid:04x}" == LIDAR_VID and f"{port.pid:04x}" == LIDAR_PID:
+                    self.get_logger().info(f"LIDAR detectado en: {port.device}")
+                    return port.device
+        
+        self.get_logger().warn("LIDAR no detectado, usando /dev/ttyUSB0 por defecto")
+        return '/dev/ttyUSB0'   
 
     def read_serial_data(self):
         if not self.ser.is_open:

@@ -15,7 +15,7 @@ setup(
     zip_safe=True,
     maintainer='alereyes',
     maintainer_email='alerey.lira@gmail.com',
-    description='TODO: Package description',
+    description='Nodo de conduccion. Suscripcion a ascamera.',
     license='MIT',
     extras_require={
         'test': [
@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'detect_stop = driving.proc_senial:main',
         ],
     },
 )
