@@ -1,0 +1,242 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-b69727f989ff99bc14dc.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18
+					]
+				},
+				{
+					"build" : "motor_msgs__py",
+					"jsonFile" : "directory-motor_msgs__py-0539c4d522246efd5888.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs/motor_msgs__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "motor_msgs",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_motor_msgs_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_motor_msgs_egg-57ca18a40142e5a3964b.json",
+					"name" : "ament_cmake_python_build_motor_msgs_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_motor_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_motor_msgs-c1df7855cf4d645f3315.json",
+					"name" : "ament_cmake_python_copy_motor_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs-5693cdf09a3f1be343bd.json",
+					"name" : "motor_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs__cpp-23674d671890402de729.json",
+					"name" : "motor_msgs__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "motor_msgs__py::@9610c964b4ba5cd3c9fe",
+					"jsonFile" : "target-motor_msgs__py-29fed4e43258edc22027.json",
+					"name" : "motor_msgs__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs__rosidl_generator_c-cf271c1379b42f141e38.json",
+					"name" : "motor_msgs__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs__rosidl_generator_py-c929df7bd7dbc35b5ff9.json",
+					"name" : "motor_msgs__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs__rosidl_generator_type_description::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs__rosidl_generator_type_description-c49e364e9c5d8f501cad.json",
+					"name" : "motor_msgs__rosidl_generator_type_description",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs__rosidl_typesupport_c-337c379ff73b952b0e60.json",
+					"name" : "motor_msgs__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs__rosidl_typesupport_cpp-6c5179815146b5e8e918.json",
+					"name" : "motor_msgs__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs__rosidl_typesupport_fastrtps_c-1d3e196139a0f9890b4f.json",
+					"name" : "motor_msgs__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs__rosidl_typesupport_fastrtps_cpp-4ef574b10f1ed80549f3.json",
+					"name" : "motor_msgs__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs__rosidl_typesupport_introspection_c-38a7e76d7afb22809e6b.json",
+					"name" : "motor_msgs__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs__rosidl_typesupport_introspection_cpp-722d58a2c6c6a4ef530e.json",
+					"name" : "motor_msgs__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs_s__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs_s__rosidl_typesupport_c-bab8bef97e39e4fd36f5.json",
+					"name" : "motor_msgs_s__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs_s__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs_s__rosidl_typesupport_fastrtps_c-5b70715c3e6b95c234ce.json",
+					"name" : "motor_msgs_s__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs_s__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs_s__rosidl_typesupport_introspection_c-b145bfc80c76e480283b.json",
+					"name" : "motor_msgs_s__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "motor_msgs_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-motor_msgs_uninstall-a8f59341664d9589213a.json",
+					"name" : "motor_msgs_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-a6ea1086146d30880f86.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs",
+		"source" : "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/motor_msg"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

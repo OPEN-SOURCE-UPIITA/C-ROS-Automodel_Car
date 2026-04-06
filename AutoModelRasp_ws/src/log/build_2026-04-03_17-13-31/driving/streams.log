@@ -1,0 +1,20 @@
+[15.834s] Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/driving': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/driving build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/install.log --single-version-externally-managed install_data
+[16.258s] running egg_info
+[16.279s] writing ../build/driving/driving.egg-info/PKG-INFO
+[16.348s] writing dependency_links to ../build/driving/driving.egg-info/dependency_links.txt
+[16.349s] writing requirements to ../build/driving/driving.egg-info/requires.txt
+[16.349s] writing top-level names to ../build/driving/driving.egg-info/top_level.txt
+[16.421s] reading manifest file '../build/driving/driving.egg-info/SOURCES.txt'
+[16.422s] adding license file 'LICENSE'
+[16.423s] writing manifest file '../build/driving/driving.egg-info/SOURCES.txt'
+[16.423s] running build
+[16.423s] running build_py
+[16.424s] running install
+[16.437s] running install_lib
+[16.488s] running install_data
+[16.488s] running install_egg_info
+[16.523s] removing '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages/driving-0.0.0-py3.12.egg-info' (and everything under it)
+[16.523s] Copying ../build/driving/driving.egg-info to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages/driving-0.0.0-py3.12.egg-info
+[16.524s] running install_scripts
+[16.682s] writing list of installed files to '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/install.log'
+[16.721s] Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/driving' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/driving build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/install.log --single-version-externally-managed install_data

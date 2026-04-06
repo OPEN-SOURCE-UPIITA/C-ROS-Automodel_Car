@@ -1,0 +1,2 @@
+[console_scripts]
+ms200_node = ms200_driver.ms200_node:main

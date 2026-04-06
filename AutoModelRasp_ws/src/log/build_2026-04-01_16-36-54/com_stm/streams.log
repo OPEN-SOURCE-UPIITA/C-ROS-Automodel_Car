@@ -1,0 +1,38 @@
+[0.936s] Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/com_stm': AMENT_PREFIX_PATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs:${CMAKE_PREFIX_PATH} DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/com_stm build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/install.log --single-version-externally-managed install_data
+[1.090s] running egg_info
+[1.090s] creating ../build/com_stm/com_stm.egg-info
+[1.102s] writing ../build/com_stm/com_stm.egg-info/PKG-INFO
+[1.102s] writing dependency_links to ../build/com_stm/com_stm.egg-info/dependency_links.txt
+[1.103s] writing entry points to ../build/com_stm/com_stm.egg-info/entry_points.txt
+[1.103s] writing requirements to ../build/com_stm/com_stm.egg-info/requires.txt
+[1.103s] writing top-level names to ../build/com_stm/com_stm.egg-info/top_level.txt
+[1.103s] writing manifest file '../build/com_stm/com_stm.egg-info/SOURCES.txt'
+[1.128s] reading manifest file '../build/com_stm/com_stm.egg-info/SOURCES.txt'
+[1.128s] adding license file 'LICENSE'
+[1.128s] writing manifest file '../build/com_stm/com_stm.egg-info/SOURCES.txt'
+[1.148s] running build
+[1.148s] running build_py
+[1.148s] creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build
+[1.148s] creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build/lib
+[1.148s] creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build/lib/com_stm
+[1.148s] copying com_stm/com_stm.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build/lib/com_stm
+[1.149s] copying com_stm/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build/lib/com_stm
+[1.149s] running install
+[1.153s] running install_lib
+[1.166s] creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm
+[1.166s] copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build/lib/com_stm/com_stm.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm
+[1.166s] copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build/lib/com_stm/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm
+[1.166s] byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm/com_stm.py to com_stm.cpython-312.pyc
+[1.167s] byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm/__init__.py to __init__.cpython-312.pyc
+[1.168s] running install_data
+[1.168s] creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/ament_index
+[1.168s] creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/ament_index/resource_index
+[1.168s] creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/ament_index/resource_index/packages
+[1.168s] copying resource/com_stm -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/ament_index/resource_index/packages
+[1.168s] copying package.xml -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm
+[1.168s] running install_egg_info
+[1.181s] Copying ../build/com_stm/com_stm.egg-info to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm-0.0.0-py3.12.egg-info
+[1.182s] running install_scripts
+[1.268s] Installing com_stm script to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/com_stm
+[1.268s] writing list of installed files to '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/install.log'
+[1.298s] Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/com_stm' returned '0': AMENT_PREFIX_PATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs:${CMAKE_PREFIX_PATH} DEBUGINFOD_URLS=https://debuginfod.ubuntu.com LD_LIBRARY_PATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/com_stm build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/install.log --single-version-externally-managed install_data

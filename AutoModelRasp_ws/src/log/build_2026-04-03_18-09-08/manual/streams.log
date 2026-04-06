@@ -1,0 +1,24 @@
+[0.774s] Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/manual': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/manual build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/install.log --single-version-externally-managed install_data
+[0.968s] running egg_info
+[0.982s] writing ../build/manual/manual.egg-info/PKG-INFO
+[0.982s] writing dependency_links to ../build/manual/manual.egg-info/dependency_links.txt
+[0.982s] writing entry points to ../build/manual/manual.egg-info/entry_points.txt
+[0.982s] writing requirements to ../build/manual/manual.egg-info/requires.txt
+[0.982s] writing top-level names to ../build/manual/manual.egg-info/top_level.txt
+[1.009s] reading manifest file '../build/manual/manual.egg-info/SOURCES.txt'
+[1.009s] adding license file 'LICENSE'
+[1.010s] writing manifest file '../build/manual/manual.egg-info/SOURCES.txt'
+[1.010s] running build
+[1.010s] running build_py
+[1.010s] running install
+[1.014s] running install_lib
+[1.028s] running install_data
+[1.028s] running install_egg_info
+[1.042s] removing '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages/manual-0.0.0-py3.12.egg-info' (and everything under it)
+[1.042s] Copying ../build/manual/manual.egg-info to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages/manual-0.0.0-py3.12.egg-info
+[1.043s] running install_scripts
+[1.132s] Installing full_test script to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/manual
+[1.132s] Installing joy_control script to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/manual
+[1.132s] Installing key_control script to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/manual
+[1.132s] writing list of installed files to '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/install.log'
+[1.154s] Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/manual' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/manual build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/install.log --single-version-externally-managed install_data

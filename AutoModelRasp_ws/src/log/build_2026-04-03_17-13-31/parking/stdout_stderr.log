@@ -1,0 +1,18 @@
+running egg_info
+writing ../build/parking/parking.egg-info/PKG-INFO
+writing dependency_links to ../build/parking/parking.egg-info/dependency_links.txt
+writing requirements to ../build/parking/parking.egg-info/requires.txt
+writing top-level names to ../build/parking/parking.egg-info/top_level.txt
+reading manifest file '../build/parking/parking.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../build/parking/parking.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages/parking-0.0.0-py3.12.egg-info' (and everything under it)
+Copying ../build/parking/parking.egg-info to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages/parking-0.0.0-py3.12.egg-info
+running install_scripts
+writing list of installed files to '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/install.log'

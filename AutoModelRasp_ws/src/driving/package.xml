@@ -3,9 +3,15 @@
 <package format="3">
   <name>driving</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Paquete de conduccion autonoma: Deteccion de carriles, senales y control PID</description>
   <maintainer email="alerey.lira@gmail.com">alereyes</maintainer>
   <license>MIT</license>
+
+  <depend>rclpy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>motor_msgs</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

@@ -1,0 +1,20 @@
+running egg_info
+writing ../build/com_stm/com_stm.egg-info/PKG-INFO
+writing dependency_links to ../build/com_stm/com_stm.egg-info/dependency_links.txt
+writing entry points to ../build/com_stm/com_stm.egg-info/entry_points.txt
+writing requirements to ../build/com_stm/com_stm.egg-info/requires.txt
+writing top-level names to ../build/com_stm/com_stm.egg-info/top_level.txt
+reading manifest file '../build/com_stm/com_stm.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../build/com_stm/com_stm.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+running install_egg_info
+removing '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm-0.0.0-py3.12.egg-info' (and everything under it)
+Copying ../build/com_stm/com_stm.egg-info to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm-0.0.0-py3.12.egg-info
+running install_scripts
+Installing com_stm script to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/com_stm
+writing list of installed files to '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/install.log'
