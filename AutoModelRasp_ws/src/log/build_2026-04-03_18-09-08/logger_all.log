@@ -1,0 +1,457 @@
+[0.072s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.072s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=12, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7f4b7a076ab0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f4b7a076930>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f4b7a076930>>, mixin_verb=('build',))
+[0.098s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.098s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.098s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.098s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.098s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.098s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.098s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src'
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(ascamera) by extensions ['ignore', 'ignore_ament_install']
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(ascamera) by extension 'ignore'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(ascamera) by extension 'ignore_ament_install'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(ascamera) by extensions ['colcon_pkg']
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(ascamera) by extension 'colcon_pkg'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(ascamera) by extensions ['colcon_meta']
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(ascamera) by extension 'colcon_meta'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(ascamera) by extensions ['ros']
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(ascamera) by extension 'ros'
+[0.119s] DEBUG:colcon.colcon_core.package_identification:Package 'ascamera' with type 'ros.ament_cmake' and name 'ascamera'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(com_stm) by extensions ['ignore', 'ignore_ament_install']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(com_stm) by extension 'ignore'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(com_stm) by extension 'ignore_ament_install'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(com_stm) by extensions ['colcon_pkg']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(com_stm) by extension 'colcon_pkg'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(com_stm) by extensions ['colcon_meta']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(com_stm) by extension 'colcon_meta'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(com_stm) by extensions ['ros']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(com_stm) by extension 'ros'
+[0.120s] DEBUG:colcon.colcon_core.package_identification:Package 'com_stm' with type 'ros.ament_python' and name 'com_stm'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(driving) by extensions ['ignore', 'ignore_ament_install']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(driving) by extension 'ignore'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(driving) by extension 'ignore_ament_install'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(driving) by extensions ['colcon_pkg']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(driving) by extension 'colcon_pkg'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(driving) by extensions ['colcon_meta']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(driving) by extension 'colcon_meta'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(driving) by extensions ['ros']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(driving) by extension 'ros'
+[0.121s] DEBUG:colcon.colcon_core.package_identification:Package 'driving' with type 'ros.ament_python' and name 'driving'
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(lidar) by extensions ['ignore', 'ignore_ament_install']
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(lidar) by extension 'ignore'
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(lidar) by extension 'ignore_ament_install'
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(lidar) by extensions ['colcon_pkg']
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(lidar) by extension 'colcon_pkg'
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(lidar) by extensions ['colcon_meta']
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(lidar) by extension 'colcon_meta'
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(lidar) by extensions ['ros']
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(lidar) by extension 'ros'
+[0.121s] DEBUG:colcon.colcon_core.package_identification:Package 'lidar' with type 'ros.ament_python' and name 'ms200_driver'
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(manual) by extensions ['ignore', 'ignore_ament_install']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(manual) by extension 'ignore'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(manual) by extension 'ignore_ament_install'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(manual) by extensions ['colcon_pkg']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(manual) by extension 'colcon_pkg'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(manual) by extensions ['colcon_meta']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(manual) by extension 'colcon_meta'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(manual) by extensions ['ros']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(manual) by extension 'ros'
+[0.122s] DEBUG:colcon.colcon_core.package_identification:Package 'manual' with type 'ros.ament_python' and name 'manual'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(motor_msg) by extensions ['ignore', 'ignore_ament_install']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(motor_msg) by extension 'ignore'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(motor_msg) by extension 'ignore_ament_install'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(motor_msg) by extensions ['colcon_pkg']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(motor_msg) by extension 'colcon_pkg'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(motor_msg) by extensions ['colcon_meta']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(motor_msg) by extension 'colcon_meta'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(motor_msg) by extensions ['ros']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(motor_msg) by extension 'ros'
+[0.123s] DEBUG:colcon.colcon_core.package_identification:Package 'motor_msg' with type 'ros.ament_cmake' and name 'motor_msgs'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(parking) by extensions ['ignore', 'ignore_ament_install']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(parking) by extension 'ignore'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(parking) by extension 'ignore_ament_install'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(parking) by extensions ['colcon_pkg']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(parking) by extension 'colcon_pkg'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(parking) by extensions ['colcon_meta']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(parking) by extension 'colcon_meta'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(parking) by extensions ['ros']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(parking) by extension 'ros'
+[0.123s] DEBUG:colcon.colcon_core.package_identification:Package 'parking' with type 'ros.ament_python' and name 'parking'
+[0.123s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.123s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.123s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.123s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.123s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.136s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.136s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.138s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 7 installed packages in /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install
+[0.139s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 387 installed packages in /opt/ros/jazzy
+[0.140s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'ascamera' build argument 'cmake_args' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'ascamera' build argument 'cmake_target' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ascamera' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ascamera' build argument 'cmake_clean_cache' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ascamera' build argument 'cmake_clean_first' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ascamera' build argument 'cmake_force_configure' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ascamera' build argument 'ament_cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ascamera' build argument 'catkin_cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ascamera' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.172s] DEBUG:colcon.colcon_core.verb:Building package 'ascamera' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera', 'merge_install': False, 'path': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera', 'symlink_install': False, 'test_result_base': None}
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'driving' build argument 'cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'driving' build argument 'cmake_target' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'driving' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'driving' build argument 'cmake_clean_cache' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'driving' build argument 'cmake_clean_first' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'driving' build argument 'cmake_force_configure' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'driving' build argument 'ament_cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'driving' build argument 'catkin_cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'driving' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.172s] DEBUG:colcon.colcon_core.verb:Building package 'driving' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving', 'merge_install': False, 'path': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/driving', 'symlink_install': False, 'test_result_base': None}
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'motor_msgs' build argument 'cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'motor_msgs' build argument 'cmake_target' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'motor_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'motor_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'motor_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'motor_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'motor_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'motor_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'motor_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.172s] DEBUG:colcon.colcon_core.verb:Building package 'motor_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs', 'merge_install': False, 'path': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/motor_msg', 'symlink_install': False, 'test_result_base': None}
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ms200_driver' build argument 'cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ms200_driver' build argument 'cmake_target' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ms200_driver' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ms200_driver' build argument 'cmake_clean_cache' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ms200_driver' build argument 'cmake_clean_first' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ms200_driver' build argument 'cmake_force_configure' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ms200_driver' build argument 'ament_cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ms200_driver' build argument 'catkin_cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'ms200_driver' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.172s] DEBUG:colcon.colcon_core.verb:Building package 'ms200_driver' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver', 'merge_install': False, 'path': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/lidar', 'symlink_install': False, 'test_result_base': None}
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'parking' build argument 'cmake_args' from command line to 'None'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'parking' build argument 'cmake_target' from command line to 'None'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'parking' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'parking' build argument 'cmake_clean_cache' from command line to 'False'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'parking' build argument 'cmake_clean_first' from command line to 'False'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'parking' build argument 'cmake_force_configure' from command line to 'False'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'parking' build argument 'ament_cmake_args' from command line to 'None'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'parking' build argument 'catkin_cmake_args' from command line to 'None'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'parking' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.173s] DEBUG:colcon.colcon_core.verb:Building package 'parking' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking', 'merge_install': False, 'path': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/parking', 'symlink_install': False, 'test_result_base': None}
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'com_stm' build argument 'cmake_args' from command line to 'None'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'com_stm' build argument 'cmake_target' from command line to 'None'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'com_stm' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'com_stm' build argument 'cmake_clean_cache' from command line to 'False'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'com_stm' build argument 'cmake_clean_first' from command line to 'False'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'com_stm' build argument 'cmake_force_configure' from command line to 'False'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'com_stm' build argument 'ament_cmake_args' from command line to 'None'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'com_stm' build argument 'catkin_cmake_args' from command line to 'None'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'com_stm' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.173s] DEBUG:colcon.colcon_core.verb:Building package 'com_stm' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm', 'merge_install': False, 'path': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/com_stm', 'symlink_install': False, 'test_result_base': None}
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'manual' build argument 'cmake_args' from command line to 'None'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'manual' build argument 'cmake_target' from command line to 'None'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'manual' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'manual' build argument 'cmake_clean_cache' from command line to 'False'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'manual' build argument 'cmake_clean_first' from command line to 'False'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'manual' build argument 'cmake_force_configure' from command line to 'False'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'manual' build argument 'ament_cmake_args' from command line to 'None'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'manual' build argument 'catkin_cmake_args' from command line to 'None'
+[0.173s] Level 5:colcon.colcon_core.verb:set package 'manual' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.173s] DEBUG:colcon.colcon_core.verb:Building package 'manual' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual', 'merge_install': False, 'path': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/manual', 'symlink_install': False, 'test_result_base': None}
+[0.173s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.174s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.174s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/motor_msg' with build type 'ament_cmake'
+[0.174s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/motor_msg'
+[0.176s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.176s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.176s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.179s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera' with build type 'ament_cmake'
+[0.179s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera'
+[0.179s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.179s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.181s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/driving' with build type 'ament_python'
+[0.182s] Level 1:colcon.colcon_core.shell:create_environment_hook('driving', 'ament_prefix_path')
+[0.182s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/driving/hook/ament_prefix_path.ps1'
+[0.182s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/driving/hook/ament_prefix_path.dsv'
+[0.182s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/driving/hook/ament_prefix_path.sh'
+[0.183s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.183s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.185s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/lidar' with build type 'ament_python'
+[0.185s] Level 1:colcon.colcon_core.shell:create_environment_hook('ms200_driver', 'ament_prefix_path')
+[0.185s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ms200_driver/hook/ament_prefix_path.ps1'
+[0.186s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ms200_driver/hook/ament_prefix_path.dsv'
+[0.186s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ms200_driver/hook/ament_prefix_path.sh'
+[0.186s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.186s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.188s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/parking' with build type 'ament_python'
+[0.188s] Level 1:colcon.colcon_core.shell:create_environment_hook('parking', 'ament_prefix_path')
+[0.188s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/parking/hook/ament_prefix_path.ps1'
+[0.189s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/parking/hook/ament_prefix_path.dsv'
+[0.189s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/parking/hook/ament_prefix_path.sh'
+[0.189s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.189s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.195s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs -- -j12 -l12
+[0.197s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera -- -j12 -l12
+[0.362s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/driving'
+[0.362s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.362s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.515s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/lidar'
+[0.515s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.515s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.521s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs -- -j12 -l12
+[0.528s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs
+[0.529s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera -- -j12 -l12
+[0.530s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera
+[0.681s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/parking'
+[0.682s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.682s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.695s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ascamera)
+[0.695s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera
+[0.697s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera' for CMake module files
+[0.697s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera' for CMake config files
+[0.697s] Level 1:colcon.colcon_core.shell:create_environment_hook('ascamera', 'cmake_prefix_path')
+[0.697s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/hook/cmake_prefix_path.ps1'
+[0.698s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/hook/cmake_prefix_path.dsv'
+[0.698s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/hook/cmake_prefix_path.sh'
+[0.698s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/lib'
+[0.698s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/bin'
+[0.698s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/lib/pkgconfig/ascamera.pc'
+[0.699s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/lib/python3.12/site-packages'
+[0.699s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/bin'
+[0.699s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.ps1'
+[0.699s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.dsv'
+[0.700s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.sh'
+[0.700s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.bash'
+[0.700s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.zsh'
+[0.701s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/colcon-core/packages/ascamera)
+[0.701s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ascamera)
+[0.701s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera' for CMake module files
+[0.702s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera' for CMake config files
+[0.702s] Level 1:colcon.colcon_core.shell:create_environment_hook('ascamera', 'cmake_prefix_path')
+[0.702s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/hook/cmake_prefix_path.ps1'
+[0.702s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/hook/cmake_prefix_path.dsv'
+[0.702s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/hook/cmake_prefix_path.sh'
+[0.703s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/lib'
+[0.703s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/bin'
+[0.703s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/lib/pkgconfig/ascamera.pc'
+[0.703s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/lib/python3.12/site-packages'
+[0.703s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/bin'
+[0.703s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.ps1'
+[0.703s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.dsv'
+[0.704s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.sh'
+[0.704s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.bash'
+[0.704s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.zsh'
+[0.705s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/colcon-core/packages/ascamera)
+[0.706s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(motor_msgs)
+[0.707s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs' for CMake module files
+[0.707s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs
+[0.708s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs' for CMake config files
+[0.708s] Level 1:colcon.colcon_core.shell:create_environment_hook('motor_msgs', 'cmake_prefix_path')
+[0.708s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/cmake_prefix_path.ps1'
+[0.709s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/cmake_prefix_path.dsv'
+[0.709s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/cmake_prefix_path.sh'
+[0.709s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib'
+[0.710s] Level 1:colcon.colcon_core.shell:create_environment_hook('motor_msgs', 'ld_library_path_lib')
+[0.710s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/ld_library_path_lib.ps1'
+[0.710s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/ld_library_path_lib.dsv'
+[0.711s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/ld_library_path_lib.sh'
+[0.711s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/bin'
+[0.711s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/pkgconfig/motor_msgs.pc'
+[0.712s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages'
+[0.712s] Level 1:colcon.colcon_core.shell:create_environment_hook('motor_msgs', 'pythonpath')
+[0.712s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/pythonpath.ps1'
+[0.712s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/pythonpath.dsv'
+[0.713s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/pythonpath.sh'
+[0.713s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/bin'
+[0.713s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/package.ps1'
+[0.714s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/package.dsv'
+[0.714s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/package.sh'
+[0.714s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/package.bash'
+[0.714s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/package.zsh'
+[0.715s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/colcon-core/packages/motor_msgs)
+[0.715s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(motor_msgs)
+[0.715s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs' for CMake module files
+[0.716s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs' for CMake config files
+[0.716s] Level 1:colcon.colcon_core.shell:create_environment_hook('motor_msgs', 'cmake_prefix_path')
+[0.716s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/cmake_prefix_path.ps1'
+[0.716s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/cmake_prefix_path.dsv'
+[0.716s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/cmake_prefix_path.sh'
+[0.717s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib'
+[0.717s] Level 1:colcon.colcon_core.shell:create_environment_hook('motor_msgs', 'ld_library_path_lib')
+[0.717s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/ld_library_path_lib.ps1'
+[0.717s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/ld_library_path_lib.dsv'
+[0.717s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/ld_library_path_lib.sh'
+[0.718s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/bin'
+[0.718s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/pkgconfig/motor_msgs.pc'
+[0.718s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages'
+[0.718s] Level 1:colcon.colcon_core.shell:create_environment_hook('motor_msgs', 'pythonpath')
+[0.718s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/pythonpath.ps1'
+[0.718s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/pythonpath.dsv'
+[0.718s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/hook/pythonpath.sh'
+[0.719s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/bin'
+[0.719s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/package.ps1'
+[0.719s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/package.dsv'
+[0.720s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/package.sh'
+[0.720s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/package.bash'
+[0.720s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/package.zsh'
+[0.720s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/colcon-core/packages/motor_msgs)
+[0.721s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/com_stm' with build type 'ament_python'
+[0.721s] Level 1:colcon.colcon_core.shell:create_environment_hook('com_stm', 'ament_prefix_path')
+[0.721s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm/hook/ament_prefix_path.ps1'
+[0.721s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm/hook/ament_prefix_path.dsv'
+[0.722s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm/hook/ament_prefix_path.sh'
+[0.722s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.722s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.725s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/manual' with build type 'ament_python'
+[0.725s] Level 1:colcon.colcon_core.shell:create_environment_hook('manual', 'ament_prefix_path')
+[0.725s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/manual/hook/ament_prefix_path.ps1'
+[0.725s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/manual/hook/ament_prefix_path.dsv'
+[0.726s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/manual/hook/ament_prefix_path.sh'
+[0.726s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.726s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.880s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/com_stm'
+[0.881s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.881s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.059s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/manual'
+[1.059s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.059s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.118s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/driving': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/driving build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/install.log --single-version-externally-managed install_data
+[1.140s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/parking': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/parking build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/install.log --single-version-externally-managed install_data
+[1.181s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/lidar': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/ms200_driver build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/install.log --single-version-externally-managed install_data
+[1.478s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/com_stm': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/com_stm build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/install.log --single-version-externally-managed install_data
+[1.499s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/manual': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/manual build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/install.log --single-version-externally-managed install_data
+[1.503s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving' for CMake module files
+[1.503s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/driving' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/driving build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/install.log --single-version-externally-managed install_data
+[1.503s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving' for CMake config files
+[1.504s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib'
+[1.504s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/bin'
+[1.504s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/pkgconfig/driving.pc'
+[1.504s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages'
+[1.504s] Level 1:colcon.colcon_core.shell:create_environment_hook('driving', 'pythonpath')
+[1.504s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/driving/hook/pythonpath.ps1'
+[1.505s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/driving/hook/pythonpath.dsv'
+[1.505s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/driving/hook/pythonpath.sh'
+[1.506s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/bin'
+[1.506s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(driving)
+[1.506s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/driving/package.ps1'
+[1.506s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/driving/package.dsv'
+[1.507s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/driving/package.sh'
+[1.507s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/driving/package.bash'
+[1.507s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/driving/package.zsh'
+[1.507s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/colcon-core/packages/driving)
+[1.527s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking' for CMake module files
+[1.527s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/parking' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/parking build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/install.log --single-version-externally-managed install_data
+[1.528s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking' for CMake config files
+[1.528s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib'
+[1.528s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/bin'
+[1.528s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/pkgconfig/parking.pc'
+[1.528s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages'
+[1.529s] Level 1:colcon.colcon_core.shell:create_environment_hook('parking', 'pythonpath')
+[1.529s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/parking/hook/pythonpath.ps1'
+[1.529s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/parking/hook/pythonpath.dsv'
+[1.530s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/parking/hook/pythonpath.sh'
+[1.530s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/bin'
+[1.530s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(parking)
+[1.531s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/parking/package.ps1'
+[1.531s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/parking/package.dsv'
+[1.531s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/parking/package.sh'
+[1.532s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/parking/package.bash'
+[1.532s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/parking/package.zsh'
+[1.532s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/colcon-core/packages/parking)
+[1.704s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver' for CMake module files
+[1.704s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/lidar' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/ms200_driver build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/install.log --single-version-externally-managed install_data
+[1.704s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver' for CMake config files
+[1.705s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib'
+[1.705s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/bin'
+[1.705s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/pkgconfig/ms200_driver.pc'
+[1.705s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages'
+[1.705s] Level 1:colcon.colcon_core.shell:create_environment_hook('ms200_driver', 'pythonpath')
+[1.705s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ms200_driver/hook/pythonpath.ps1'
+[1.705s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ms200_driver/hook/pythonpath.dsv'
+[1.706s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ms200_driver/hook/pythonpath.sh'
+[1.706s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/bin'
+[1.706s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ms200_driver)
+[1.706s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ms200_driver/package.ps1'
+[1.707s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ms200_driver/package.dsv'
+[1.707s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ms200_driver/package.sh'
+[1.708s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ms200_driver/package.bash'
+[1.708s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ms200_driver/package.zsh'
+[1.708s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/colcon-core/packages/ms200_driver)
+[1.856s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm' for CMake module files
+[1.856s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/com_stm' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/com_stm build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/install.log --single-version-externally-managed install_data
+[1.857s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm' for CMake config files
+[1.858s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib'
+[1.858s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/bin'
+[1.858s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/pkgconfig/com_stm.pc'
+[1.858s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages'
+[1.858s] Level 1:colcon.colcon_core.shell:create_environment_hook('com_stm', 'pythonpath')
+[1.858s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm/hook/pythonpath.ps1'
+[1.858s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm/hook/pythonpath.dsv'
+[1.859s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm/hook/pythonpath.sh'
+[1.859s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/bin'
+[1.859s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(com_stm)
+[1.859s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm/package.ps1'
+[1.860s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm/package.dsv'
+[1.860s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm/package.sh'
+[1.860s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm/package.bash'
+[1.860s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm/package.zsh'
+[1.860s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/colcon-core/packages/com_stm)
+[1.878s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual' for CMake module files
+[1.879s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual' for CMake config files
+[1.879s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/manual' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/manual build --build-base /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build install --record /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/install.log --single-version-externally-managed install_data
+[1.879s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib'
+[1.879s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/bin'
+[1.879s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/pkgconfig/manual.pc'
+[1.879s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages'
+[1.879s] Level 1:colcon.colcon_core.shell:create_environment_hook('manual', 'pythonpath')
+[1.879s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/manual/hook/pythonpath.ps1'
+[1.880s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/manual/hook/pythonpath.dsv'
+[1.880s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/manual/hook/pythonpath.sh'
+[1.880s] Level 1:colcon.colcon_core.environment:checking '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/bin'
+[1.880s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(manual)
+[1.881s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/manual/package.ps1'
+[1.881s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/manual/package.dsv'
+[1.881s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/manual/package.sh'
+[1.881s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/manual/package.bash'
+[1.882s] INFO:colcon.colcon_core.shell:Creating package script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/manual/package.zsh'
+[1.882s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/colcon-core/packages/manual)
+[1.882s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.882s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.882s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.882s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.897s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.897s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.897s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.925s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.926s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/local_setup.ps1'
+[1.926s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/_local_setup_util_ps1.py'
+[1.927s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/setup.ps1'
+[1.928s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/local_setup.sh'
+[1.928s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/_local_setup_util_sh.py'
+[1.928s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/setup.sh'
+[1.929s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/local_setup.bash'
+[1.929s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/setup.bash'
+[1.930s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/local_setup.zsh'
+[1.930s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/setup.zsh'

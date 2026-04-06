@@ -15,7 +15,7 @@ setup(
     zip_safe=True,
     maintainer='alereyes',
     maintainer_email='alerey.lira@gmail.com',
-    description='TODO: Package description',
+    description='Paquete de conduccion autonoma: Deteccion de carriles, senales y control PID',
     license='MIT',
     extras_require={
         'test': [
@@ -24,6 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'detector_senales = driving.detector_senales:main',
+            'detector_carril = driving.detector_carril:main',
         ],
     },
 )

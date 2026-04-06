@@ -1,0 +1,179 @@
+[0.090s] Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera -DCMAKE_INSTALL_PREFIX=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera
+[2.797s] -- The C compiler identification is GNU 13.3.0
+[5.569s] -- The CXX compiler identification is GNU 13.3.0
+[6.476s] -- Detecting C compiler ABI info
+[6.950s] -- Detecting C compiler ABI info - done
+[6.957s] -- Check for working C compiler: /usr/bin/cc - skipped
+[6.984s] -- Detecting C compile features
+[7.046s] -- Detecting C compile features - done
+[7.171s] -- Detecting CXX compiler ABI info
+[7.318s] -- Detecting CXX compiler ABI info - done
+[7.324s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[7.324s] -- Detecting CXX compile features
+[7.325s] -- Detecting CXX compile features - done
+[7.328s] [0mdefault compiler:x86_64-linux-gnu-g++[0m
+[8.082s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[8.569s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[10.357s] -- Found rclcpp: 28.1.13 (/opt/ros/jazzy/share/rclcpp/cmake)
+[11.824s] -- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[12.126s] -- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[12.432s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[12.675s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[13.807s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[13.833s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[15.123s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[15.235s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[15.273s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[15.742s] -- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)
+[15.826s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[16.001s] -- Found pcl_conversions: 2.6.2 (/opt/ros/jazzy/share/pcl_conversions/cmake)
+[16.541s] [33mCMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+[16.542s]   Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+[16.542s]   variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+[16.542s]   cmake_policy command to set the policy and suppress this warning.
+[16.542s] 
+[16.542s]   CMake variable FLANN_ROOT is set to:
+[16.542s] 
+[16.542s]     /usr
+[16.542s] 
+[16.542s]   For compatibility, find_package is ignoring the variable, but code in a
+[16.542s]   .cmake module might still use it.
+[16.542s] Call Stack (most recent call first):
+[16.543s]   /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+[16.543s]   /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+[16.543s]   /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+[16.543s]   /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+[16.543s]   /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)
+[16.543s]   CMakeLists.txt:39 (find_package)
+[16.543s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[16.543s] [0m
+[16.573s] -- Found flann version 1.9.2
+[17.321s] -- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+[17.322s] -- Found OpenMP: TRUE (found version "4.5") found components: CXX 
+[23.594s] -- Checking for module 'libusb-1.0'
+[23.625s] --   Found libusb-1.0, version 1.0.27
+[23.662s] -- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  
+[23.684s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[23.892s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[23.926s] -- Could NOT find Pcap (missing: PCAP_LIBRARIES PCAP_INCLUDE_DIRS) 
+[23.942s] -- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.3")  
+[23.958s] -- Found PNG: /usr/lib/x86_64-linux-gnu/libpng.so (found version "1.6.43") 
+[24.306s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[24.311s] -- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+[24.815s] -- Found Qhull version 8.0.2
+[25.207s] -- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[25.542s] -- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  
+[25.543s] -- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  
+[25.544s] -- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  
+[25.545s] -- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  
+[25.546s] -- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  
+[25.547s] -- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  
+[25.547s] -- Found PCL_2D: /usr/include/pcl-1.14  
+[25.547s] -- Found PCL_GEOMETRY: /usr/include/pcl-1.14  
+[25.548s] -- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  
+[25.549s] -- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  
+[25.550s] -- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  
+[25.551s] -- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  
+[25.552s] -- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  
+[25.553s] -- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  
+[25.553s] -- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  
+[25.554s] -- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  
+[25.555s] -- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  
+[25.556s] -- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  
+[25.557s] -- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  
+[25.558s] -- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  
+[25.559s] -- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.14  
+[25.559s] -- Found PCL_MODELER: /usr/include/pcl-1.14  
+[25.559s] -- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.14  
+[25.560s] -- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  
+[25.561s] -- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  
+[25.563s] [33mCMake Warning (dev) at CMakeLists.txt:40 (find_package):
+[25.563s]   Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.
+[25.563s]   Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy
+[25.563s]   command to set the policy and suppress this warning.
+[25.563s] 
+[25.563s]   CMake variable PCL_ROOT is set to:
+[25.563s] 
+[25.563s]     /usr
+[25.563s] 
+[25.563s]   For compatibility, CMake is ignoring the variable.
+[25.563s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[25.563s] [0m
+[25.705s] -- Found tf2: 0.36.16 (/opt/ros/jazzy/share/tf2/cmake)
+[25.731s] -- Found tf2_ros: 0.36.16 (/opt/ros/jazzy/share/tf2_ros/cmake)
+[27.655s] -- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[27.816s] -- Added test 'copyright' to check source files copyright and LICENSE
+[27.818s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[27.818s] -- Configured cppcheck include dirs: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/include;/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/libs/include;$<BUILD_INTERFACE:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/include>
+[27.818s] -- Configured cppcheck exclude dirs and/or files: 
+[27.820s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[27.820s] -- Configured cpplint exclude dirs and/or files: 
+[27.821s] -- Added test 'flake8' to check Python code syntax and style conventions
+[27.821s] -- Configured 'flake8' exclude dirs and/or files: 
+[27.822s] -- Added test 'lint_cmake' to check CMake code style
+[27.822s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[27.824s] -- Added test 'uncrustify' to check C / C++ code style
+[27.824s] -- Configured uncrustify additional arguments: 
+[27.825s] -- Added test 'xmllint' to check XML markup files
+[27.826s] -- Configuring done (27.3s)
+[28.784s] -- Generating done (0.9s)
+[28.792s] -- Build files have been written to: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera
+[28.808s] Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera -DCMAKE_INSTALL_PREFIX=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera
+[28.809s] Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera -- -j12 -l12
+[28.854s] [ 50%] [32mBuilding CXX object CMakeFiles/ascamera_node.dir/src/CameraSrv.cpp.o[0m
+[28.854s] [ 50%] [32mBuilding CXX object CMakeFiles/ascamera_node.dir/src/TfTreeFrameIdInfo.cpp.o[0m
+[28.854s] [ 50%] [32mBuilding CXX object CMakeFiles/ascamera_node.dir/src/Camera.cpp.o[0m
+[28.856s] [ 66%] [32mBuilding CXX object CMakeFiles/ascamera_node.dir/src/CameraPublisher.cpp.o[0m
+[28.856s] [ 83%] [32mBuilding CXX object CMakeFiles/ascamera_node.dir/src/ascamera_node.cpp.o[0m
+[40.814s] [01m[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraSrv.cpp:[m[K In member function ‘[01m[Kint CameraSrv::[01;32m[KgetConfigFile[m[K(AS_CAM_PTR, std::string&, AS_SDK_CAM_MODEL_E)[m[K’:
+[40.814s] [01m[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraSrv.cpp:296:41:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KpCamera[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[40.814s]   296 | int CameraSrv::getConfigFile([01;35m[KAS_CAM_PTR pCamera[m[K, std::string &configfile, AS_SDK_CAM_MODEL_E cam_type)
+[40.814s]       |                              [01;35m[K~~~~~~~~~~~^~~~~~~[m[K
+[40.851s] [01m[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:[m[K In member function ‘[01m[Kvoid CameraPublisher::[01;32m[KirInfoPublisher[m[K(AS_CAM_PTR, const AS_SDK_Data_s*, AS_CAM_Parameter_s&, builtin_interfaces::msg::Time)[m[K’:
+[40.852s] [01m[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:1000:102:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[40.852s]  1000 |                                       AS_CAM_Parameter_s &stParameter, [01;35m[Kbuiltin_interfaces::msg::Time time[m[K)
+[40.852s]       |                                                                        [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[40.853s] [01m[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:[m[K In member function ‘[01m[Kvoid CameraPublisher::[01;32m[KpeakInfoPublisher[m[K(AS_CAM_PTR, const AS_SDK_Data_s*, AS_CAM_Parameter_s&, builtin_interfaces::msg::Time)[m[K’:
+[40.853s] [01m[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:1033:104:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ktime[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[40.853s]  1033 |                                         AS_CAM_Parameter_s &stParameter, [01;35m[Kbuiltin_interfaces::msg::Time time[m[K)
+[40.853s]       |                                                                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[40.854s] [01m[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:[m[K In member function ‘[01m[Kvoid CameraPublisher::[01;32m[KdepthMergeInfoPublisher[m[K(AS_CAM_PTR, const AS_SDK_MERGE_s*, AS_CAM_Parameter_s&, builtin_interfaces::msg::Time)[m[K’:
+[40.854s] [01m[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:1081:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KstParameter[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[40.854s]  1081 |         [01;35m[KAS_CAM_Parameter_s &stParameter[m[K, builtin_interfaces::msg::Time time)
+[40.854s]       |         [01;35m[K~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~[m[K
+[40.855s] [01m[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:[m[K In member function ‘[01m[Kvoid CameraPublisher::[01;32m[KpointcloudMergePublisher[m[K(AS_CAM_PTR, const AS_SDK_MERGE_s*, AS_CAM_Parameter_s&)[m[K’:
+[40.855s] [01m[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:1119:29:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[KstParameter[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[40.855s]  1119 |         [01;35m[KAS_CAM_Parameter_s &stParameter[m[K)
+[40.855s]       |         [01;35m[K~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~[m[K
+[49.872s] [100%] [32m[1mLinking CXX executable ascamera_node[0m
+[52.777s] [100%] Built target ascamera_node
+[52.790s] Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera -- -j12 -l12
+[52.792s] Invoking command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera
+[52.802s] -- Install configuration: ""
+[52.802s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/lib/ascamera/ascamera_node
+[52.804s] -- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/lib/ascamera/ascamera_node" to ""
+[52.804s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch
+[52.804s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/hp60c.launch.py
+[52.804s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/kondyor.launch.py
+[52.804s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/kunlun_c.launch.py
+[52.804s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/hp60cn.launch.py
+[52.804s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/changA.launch.py
+[52.804s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/nuwa.launch.py
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/kunlun_a.launch.py
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/ascamera.launch.py
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ament_index/resource_index/package_run_dependencies/ascamera
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ament_index/resource_index/parent_prefix_path/ascamera
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/environment/ament_prefix_path.sh
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/environment/ament_prefix_path.dsv
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/environment/path.sh
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/environment/path.dsv
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/local_setup.bash
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/local_setup.sh
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/local_setup.zsh
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/local_setup.dsv
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.dsv
+[52.805s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ament_index/resource_index/packages/ascamera
+[52.806s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/cmake/ascameraConfig.cmake
+[52.806s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/cmake/ascameraConfig-version.cmake
+[52.806s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.xml
+[52.807s] Invoked command in '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera

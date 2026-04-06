@@ -1,0 +1,1192 @@
+[0.000000] (-) TimerEvent: {}
+[0.000153] (ascamera) JobQueued: {'identifier': 'ascamera', 'dependencies': OrderedDict()}
+[0.000200] (driving) JobQueued: {'identifier': 'driving', 'dependencies': OrderedDict()}
+[0.000286] (motor_msgs) JobQueued: {'identifier': 'motor_msgs', 'dependencies': OrderedDict()}
+[0.000305] (ms200_driver) JobQueued: {'identifier': 'ms200_driver', 'dependencies': OrderedDict()}
+[0.000322] (parking) JobQueued: {'identifier': 'parking', 'dependencies': OrderedDict()}
+[0.000474] (com_stm) JobQueued: {'identifier': 'com_stm', 'dependencies': OrderedDict({'motor_msgs': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs'})}
+[0.000496] (manual) JobQueued: {'identifier': 'manual', 'dependencies': OrderedDict({'motor_msgs': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs'})}
+[0.000506] (motor_msgs) JobStarted: {'identifier': 'motor_msgs'}
+[0.088601] (ascamera) JobStarted: {'identifier': 'ascamera'}
+[0.094066] (driving) JobStarted: {'identifier': 'driving'}
+[0.099490] (-) TimerEvent: {}
+[0.117487] (ms200_driver) JobStarted: {'identifier': 'ms200_driver'}
+[0.122592] (parking) JobStarted: {'identifier': 'parking'}
+[0.126820] (motor_msgs) JobProgress: {'identifier': 'motor_msgs', 'progress': 'cmake'}
+[0.127037] (motor_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/motor_msg', '-DCMAKE_INSTALL_PREFIX=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes/C-ROS-Automodel_Car', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3438', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3271,unix/alereyes-Linux:/tmp/.ICE-unix/3271', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c5ebf309_0cc4_4d21_8040_86c534fde12c', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.174530] (ascamera) JobProgress: {'identifier': 'ascamera', 'progress': 'cmake'}
+[0.176128] (ascamera) Command: {'cmd': ['/usr/bin/cmake', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera', '-DCMAKE_INSTALL_PREFIX=/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes/C-ROS-Automodel_Car', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3438', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3271,unix/alereyes-Linux:/tmp/.ICE-unix/3271', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c5ebf309_0cc4_4d21_8040_86c534fde12c', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.199644] (-) TimerEvent: {}
+[0.299915] (-) TimerEvent: {}
+[0.400512] (-) TimerEvent: {}
+[0.500953] (-) TimerEvent: {}
+[0.601179] (-) TimerEvent: {}
+[0.701467] (-) TimerEvent: {}
+[0.801879] (-) TimerEvent: {}
+[0.902166] (-) TimerEvent: {}
+[1.002549] (-) TimerEvent: {}
+[1.103186] (-) TimerEvent: {}
+[1.204162] (-) TimerEvent: {}
+[1.304924] (-) TimerEvent: {}
+[1.405622] (-) TimerEvent: {}
+[1.506372] (-) TimerEvent: {}
+[1.607189] (-) TimerEvent: {}
+[1.707980] (-) TimerEvent: {}
+[1.809000] (-) TimerEvent: {}
+[1.909800] (-) TimerEvent: {}
+[2.010440] (-) TimerEvent: {}
+[2.111339] (-) TimerEvent: {}
+[2.211988] (-) TimerEvent: {}
+[2.312574] (-) TimerEvent: {}
+[2.413233] (-) TimerEvent: {}
+[2.513911] (-) TimerEvent: {}
+[2.614667] (-) TimerEvent: {}
+[2.715379] (-) TimerEvent: {}
+[2.815962] (-) TimerEvent: {}
+[2.885115] (ascamera) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[2.886590] (motor_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[2.916117] (-) TimerEvent: {}
+[3.017094] (-) TimerEvent: {}
+[3.117854] (-) TimerEvent: {}
+[3.218545] (-) TimerEvent: {}
+[3.319179] (-) TimerEvent: {}
+[3.419826] (-) TimerEvent: {}
+[3.520650] (-) TimerEvent: {}
+[3.621445] (-) TimerEvent: {}
+[3.722154] (-) TimerEvent: {}
+[3.822987] (-) TimerEvent: {}
+[3.923724] (-) TimerEvent: {}
+[4.024432] (-) TimerEvent: {}
+[4.125153] (-) TimerEvent: {}
+[4.225877] (-) TimerEvent: {}
+[4.326597] (-) TimerEvent: {}
+[4.427573] (-) TimerEvent: {}
+[4.528322] (-) TimerEvent: {}
+[4.629010] (-) TimerEvent: {}
+[4.729751] (-) TimerEvent: {}
+[4.830462] (-) TimerEvent: {}
+[4.931166] (-) TimerEvent: {}
+[5.031920] (-) TimerEvent: {}
+[5.139173] (-) TimerEvent: {}
+[5.239948] (-) TimerEvent: {}
+[5.340963] (-) TimerEvent: {}
+[5.442011] (-) TimerEvent: {}
+[5.542736] (-) TimerEvent: {}
+[5.643388] (-) TimerEvent: {}
+[5.657461] (ascamera) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[5.657733] (motor_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[5.743704] (-) TimerEvent: {}
+[5.844385] (-) TimerEvent: {}
+[5.945166] (-) TimerEvent: {}
+[6.046183] (-) TimerEvent: {}
+[6.146831] (-) TimerEvent: {}
+[6.302910] (-) TimerEvent: {}
+[6.403659] (-) TimerEvent: {}
+[6.504640] (-) TimerEvent: {}
+[6.564306] (motor_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[6.564915] (ascamera) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[6.604920] (-) TimerEvent: {}
+[6.705750] (-) TimerEvent: {}
+[6.806627] (-) TimerEvent: {}
+[6.907393] (-) TimerEvent: {}
+[7.007911] (-) TimerEvent: {}
+[7.039064] (ascamera) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[7.039287] (motor_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[7.045516] (motor_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[7.045703] (ascamera) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[7.071945] (motor_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[7.072545] (ascamera) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[7.108319] (-) TimerEvent: {}
+[7.133514] (motor_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[7.134250] (ascamera) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[7.208492] (-) TimerEvent: {}
+[7.258973] (motor_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[7.259640] (ascamera) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[7.308611] (-) TimerEvent: {}
+[7.406428] (ascamera) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[7.408727] (-) TimerEvent: {}
+[7.410466] (motor_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[7.413121] (ascamera) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[7.413223] (ascamera) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[7.413615] (ascamera) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[7.417068] (motor_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[7.417234] (ascamera) StderrLine: {'line': b'\x1b[0mdefault compiler:x86_64-linux-gnu-g++\x1b[0m\n'}
+[7.417307] (motor_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[7.417608] (motor_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[7.508980] (-) TimerEvent: {}
+[7.609700] (-) TimerEvent: {}
+[7.710401] (-) TimerEvent: {}
+[7.811091] (-) TimerEvent: {}
+[7.912152] (-) TimerEvent: {}
+[8.012771] (-) TimerEvent: {}
+[8.113456] (-) TimerEvent: {}
+[8.169698] (motor_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[8.170622] (ascamera) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[8.213778] (-) TimerEvent: {}
+[8.314690] (-) TimerEvent: {}
+[8.415496] (-) TimerEvent: {}
+[8.516418] (-) TimerEvent: {}
+[8.616993] (-) TimerEvent: {}
+[8.658049] (motor_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[8.658270] (ascamera) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[8.717302] (-) TimerEvent: {}
+[8.818414] (-) TimerEvent: {}
+[8.919073] (-) TimerEvent: {}
+[9.019688] (-) TimerEvent: {}
+[9.120347] (-) TimerEvent: {}
+[9.220912] (-) TimerEvent: {}
+[9.321494] (-) TimerEvent: {}
+[9.422073] (-) TimerEvent: {}
+[9.522627] (-) TimerEvent: {}
+[9.623336] (-) TimerEvent: {}
+[9.723944] (-) TimerEvent: {}
+[9.824519] (-) TimerEvent: {}
+[9.925055] (-) TimerEvent: {}
+[10.026007] (-) TimerEvent: {}
+[10.127049] (-) TimerEvent: {}
+[10.227842] (-) TimerEvent: {}
+[10.328592] (-) TimerEvent: {}
+[10.399780] (motor_msgs) StdoutLine: {'line': b'-- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)\n'}
+[10.428855] (-) TimerEvent: {}
+[10.444591] (ascamera) StdoutLine: {'line': b'-- Found rclcpp: 28.1.13 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[10.529337] (-) TimerEvent: {}
+[10.630200] (-) TimerEvent: {}
+[10.731143] (-) TimerEvent: {}
+[10.831764] (-) TimerEvent: {}
+[10.932448] (-) TimerEvent: {}
+[11.033146] (-) TimerEvent: {}
+[11.133871] (-) TimerEvent: {}
+[11.234491] (-) TimerEvent: {}
+[11.335049] (-) TimerEvent: {}
+[11.435576] (-) TimerEvent: {}
+[11.535975] (-) TimerEvent: {}
+[11.636678] (-) TimerEvent: {}
+[11.737334] (-) TimerEvent: {}
+[11.837945] (-) TimerEvent: {}
+[11.911356] (motor_msgs) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[11.912545] (ascamera) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[11.938094] (-) TimerEvent: {}
+[12.038705] (-) TimerEvent: {}
+[12.139331] (-) TimerEvent: {}
+[12.213672] (motor_msgs) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[12.214537] (ascamera) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[12.239451] (-) TimerEvent: {}
+[12.339866] (-) TimerEvent: {}
+[12.440298] (-) TimerEvent: {}
+[12.519423] (motor_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[12.520171] (ascamera) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[12.540386] (-) TimerEvent: {}
+[12.640809] (-) TimerEvent: {}
+[12.741432] (-) TimerEvent: {}
+[12.762787] (motor_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[12.763489] (ascamera) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[12.841596] (-) TimerEvent: {}
+[12.942362] (-) TimerEvent: {}
+[13.043337] (-) TimerEvent: {}
+[13.144046] (-) TimerEvent: {}
+[13.244628] (-) TimerEvent: {}
+[13.342334] (motor_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)\n'}
+[13.344707] (-) TimerEvent: {}
+[13.444974] (-) TimerEvent: {}
+[13.545670] (-) TimerEvent: {}
+[13.646373] (-) TimerEvent: {}
+[13.687549] (motor_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 4.6.6 (/opt/ros/jazzy/share/rosidl_adapter/cmake)\n'}
+[13.746536] (-) TimerEvent: {}
+[13.846820] (-) TimerEvent: {}
+[13.859666] (parking) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/parking', 'build', '--build-base', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/build', 'install', '--record', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/parking', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes/C-ROS-Automodel_Car', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3438', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3271,unix/alereyes-Linux:/tmp/.ICE-unix/3271', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c5ebf309_0cc4_4d21_8040_86c534fde12c', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[13.860769] (driving) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/driving', 'build', '--build-base', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/build', 'install', '--record', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/driving', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes/C-ROS-Automodel_Car', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3438', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3271,unix/alereyes-Linux:/tmp/.ICE-unix/3271', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c5ebf309_0cc4_4d21_8040_86c534fde12c', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[13.861742] (ms200_driver) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/ms200_driver', 'build', '--build-base', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build', 'install', '--record', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/lidar', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes/C-ROS-Automodel_Car', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3438', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3271,unix/alereyes-Linux:/tmp/.ICE-unix/3271', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c5ebf309_0cc4_4d21_8040_86c534fde12c', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[13.895590] (ascamera) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[13.922086] (ascamera) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[13.946947] (-) TimerEvent: {}
+[14.041124] (ms200_driver) StdoutLine: {'line': b'running egg_info\n'}
+[14.041471] (driving) StdoutLine: {'line': b'running egg_info\n'}
+[14.041625] (ms200_driver) StdoutLine: {'line': b'creating ../build/ms200_driver/ms200_driver.egg-info\n'}
+[14.041718] (driving) StdoutLine: {'line': b'creating ../build/driving/driving.egg-info\n'}
+[14.044089] (parking) StdoutLine: {'line': b'running egg_info\n'}
+[14.044385] (parking) StdoutLine: {'line': b'creating ../build/parking/parking.egg-info\n'}
+[14.047130] (-) TimerEvent: {}
+[14.053824] (ms200_driver) StdoutLine: {'line': b'writing ../build/ms200_driver/ms200_driver.egg-info/PKG-INFO\n'}
+[14.054158] (ms200_driver) StdoutLine: {'line': b'writing dependency_links to ../build/ms200_driver/ms200_driver.egg-info/dependency_links.txt\n'}
+[14.054263] (ms200_driver) StdoutLine: {'line': b'writing entry points to ../build/ms200_driver/ms200_driver.egg-info/entry_points.txt\n'}
+[14.054347] (ms200_driver) StdoutLine: {'line': b'writing requirements to ../build/ms200_driver/ms200_driver.egg-info/requires.txt\n'}
+[14.054425] (ms200_driver) StdoutLine: {'line': b'writing top-level names to ../build/ms200_driver/ms200_driver.egg-info/top_level.txt\n'}
+[14.054501] (driving) StdoutLine: {'line': b'writing ../build/driving/driving.egg-info/PKG-INFO\n'}
+[14.054591] (driving) StdoutLine: {'line': b'writing dependency_links to ../build/driving/driving.egg-info/dependency_links.txt\n'}
+[14.054668] (driving) StdoutLine: {'line': b'writing requirements to ../build/driving/driving.egg-info/requires.txt\n'}
+[14.054745] (driving) StdoutLine: {'line': b'writing top-level names to ../build/driving/driving.egg-info/top_level.txt\n'}
+[14.054832] (driving) StdoutLine: {'line': b"writing manifest file '../build/driving/driving.egg-info/SOURCES.txt'\n"}
+[14.054910] (ms200_driver) StdoutLine: {'line': b"writing manifest file '../build/ms200_driver/ms200_driver.egg-info/SOURCES.txt'\n"}
+[14.056681] (parking) StdoutLine: {'line': b'writing ../build/parking/parking.egg-info/PKG-INFO\n'}
+[14.078981] (driving) StdoutLine: {'line': b"reading manifest file '../build/driving/driving.egg-info/SOURCES.txt'\n"}
+[14.082700] (ms200_driver) StdoutLine: {'line': b"reading manifest file '../build/ms200_driver/ms200_driver.egg-info/SOURCES.txt'\n"}
+[14.083068] (ms200_driver) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[14.083205] (driving) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[14.083316] (parking) StdoutLine: {'line': b'writing dependency_links to ../build/parking/parking.egg-info/dependency_links.txt\n'}
+[14.083600] (driving) StdoutLine: {'line': b"writing manifest file '../build/driving/driving.egg-info/SOURCES.txt'\n"}
+[14.083687] (driving) StdoutLine: {'line': b'running build\n'}
+[14.083733] (driving) StdoutLine: {'line': b'running build_py\n'}
+[14.083777] (driving) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/build\n'}
+[14.083881] (parking) StdoutLine: {'line': b'writing requirements to ../build/parking/parking.egg-info/requires.txt\n'}
+[14.083927] (parking) StdoutLine: {'line': b'writing top-level names to ../build/parking/parking.egg-info/top_level.txt\n'}
+[14.083966] (driving) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/build/lib\n'}
+[14.084006] (driving) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/build/lib/driving\n'}
+[14.084045] (driving) StdoutLine: {'line': b'copying driving/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/build/lib/driving\n'}
+[14.084084] (driving) StdoutLine: {'line': b'running install\n'}
+[14.084176] (parking) StdoutLine: {'line': b"writing manifest file '../build/parking/parking.egg-info/SOURCES.txt'\n"}
+[14.084226] (ms200_driver) StdoutLine: {'line': b"writing manifest file '../build/ms200_driver/ms200_driver.egg-info/SOURCES.txt'\n"}
+[14.084270] (ms200_driver) StdoutLine: {'line': b'running build\n'}
+[14.084308] (ms200_driver) StdoutLine: {'line': b'running build_py\n'}
+[14.084345] (ms200_driver) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build\n'}
+[14.084387] (ms200_driver) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build/lib\n'}
+[14.084426] (ms200_driver) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build/lib/ms200_driver\n'}
+[14.084466] (ms200_driver) StdoutLine: {'line': b'copying ms200_driver/ms200_node.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build/lib/ms200_driver\n'}
+[14.084505] (ms200_driver) StdoutLine: {'line': b'copying ms200_driver/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build/lib/ms200_driver\n'}
+[14.084569] (ms200_driver) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build/lib/lidar\n'}
+[14.084607] (ms200_driver) StdoutLine: {'line': b'copying lidar/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build/lib/lidar\n'}
+[14.084713] (ms200_driver) StdoutLine: {'line': b'running install\n'}
+[14.088437] (driving) StdoutLine: {'line': b'running install_lib\n'}
+[14.089426] (ms200_driver) StdoutLine: {'line': b'running install_lib\n'}
+[14.101194] (driving) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages/driving\n'}
+[14.101374] (driving) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/build/lib/driving/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages/driving\n'}
+[14.101551] (driving) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages/driving/__init__.py to __init__.cpython-312.pyc\n'}
+[14.101751] (driving) StdoutLine: {'line': b'running install_data\n'}
+[14.101975] (driving) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/ament_index\n'}
+[14.102067] (driving) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/ament_index/resource_index\n'}
+[14.102181] (driving) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/ament_index/resource_index/packages\n'}
+[14.102300] (driving) StdoutLine: {'line': b'copying resource/driving -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/ament_index/resource_index/packages\n'}
+[14.102396] (driving) StdoutLine: {'line': b'copying package.xml -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/share/driving\n'}
+[14.102472] (driving) StdoutLine: {'line': b'running install_egg_info\n'}
+[14.102546] (ms200_driver) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages/ms200_driver\n'}
+[14.102628] (ms200_driver) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build/lib/ms200_driver/ms200_node.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages/ms200_driver\n'}
+[14.102709] (ms200_driver) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build/lib/ms200_driver/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages/ms200_driver\n'}
+[14.102789] (ms200_driver) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages/lidar\n'}
+[14.102867] (ms200_driver) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/build/lib/lidar/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages/lidar\n'}
+[14.102964] (ms200_driver) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages/ms200_driver/ms200_node.py to ms200_node.cpython-312.pyc\n'}
+[14.103746] (ms200_driver) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages/ms200_driver/__init__.py to __init__.cpython-312.pyc\n'}
+[14.103848] (ms200_driver) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages/lidar/__init__.py to __init__.cpython-312.pyc\n'}
+[14.103954] (ms200_driver) StdoutLine: {'line': b'running install_data\n'}
+[14.104066] (ms200_driver) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ament_index\n'}
+[14.104158] (ms200_driver) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ament_index/resource_index\n'}
+[14.104259] (ms200_driver) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ament_index/resource_index/packages\n'}
+[14.104349] (ms200_driver) StdoutLine: {'line': b'copying resource/ms200_driver -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ament_index/resource_index/packages\n'}
+[14.104430] (ms200_driver) StdoutLine: {'line': b'copying package.xml -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/share/ms200_driver\n'}
+[14.104505] (ms200_driver) StdoutLine: {'line': b'running install_egg_info\n'}
+[14.109099] (parking) StdoutLine: {'line': b"reading manifest file '../build/parking/parking.egg-info/SOURCES.txt'\n"}
+[14.109285] (parking) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[14.109584] (parking) StdoutLine: {'line': b"writing manifest file '../build/parking/parking.egg-info/SOURCES.txt'\n"}
+[14.109742] (parking) StdoutLine: {'line': b'running build\n'}
+[14.109835] (parking) StdoutLine: {'line': b'running build_py\n'}
+[14.109958] (parking) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/build\n'}
+[14.110056] (parking) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/build/lib\n'}
+[14.110136] (parking) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/build/lib/parking\n'}
+[14.110223] (parking) StdoutLine: {'line': b'copying parking/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/build/lib/parking\n'}
+[14.110302] (parking) StdoutLine: {'line': b'running install\n'}
+[14.114469] (parking) StdoutLine: {'line': b'running install_lib\n'}
+[14.115574] (driving) StdoutLine: {'line': b'Copying ../build/driving/driving.egg-info to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/driving/lib/python3.12/site-packages/driving-0.0.0-py3.12.egg-info\n'}
+[14.115960] (driving) StdoutLine: {'line': b'running install_scripts\n'}
+[14.117993] (ms200_driver) StdoutLine: {'line': b'Copying ../build/ms200_driver/ms200_driver.egg-info to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/python3.12/site-packages/ms200_driver-0.0.0-py3.12.egg-info\n'}
+[14.118409] (ms200_driver) StdoutLine: {'line': b'running install_scripts\n'}
+[14.127446] (parking) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages/parking\n'}
+[14.127615] (parking) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/build/lib/parking/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages/parking\n'}
+[14.127750] (parking) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages/parking/__init__.py to __init__.cpython-312.pyc\n'}
+[14.127900] (parking) StdoutLine: {'line': b'running install_data\n'}
+[14.128027] (parking) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/ament_index\n'}
+[14.128141] (parking) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/ament_index/resource_index\n'}
+[14.128229] (parking) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/ament_index/resource_index/packages\n'}
+[14.128307] (parking) StdoutLine: {'line': b'copying resource/parking -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/ament_index/resource_index/packages\n'}
+[14.128383] (parking) StdoutLine: {'line': b'copying package.xml -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/share/parking\n'}
+[14.128458] (parking) StdoutLine: {'line': b'running install_egg_info\n'}
+[14.142451] (parking) StdoutLine: {'line': b'Copying ../build/parking/parking.egg-info to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/parking/lib/python3.12/site-packages/parking-0.0.0-py3.12.egg-info\n'}
+[14.142743] (parking) StdoutLine: {'line': b'running install_scripts\n'}
+[14.147258] (-) TimerEvent: {}
+[14.202696] (driving) StdoutLine: {'line': b"writing list of installed files to '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/driving/install.log'\n"}
+[14.204530] (ms200_driver) StdoutLine: {'line': b'Installing ms200_node script to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ms200_driver/lib/ms200_driver\n'}
+[14.204813] (ms200_driver) StdoutLine: {'line': b"writing list of installed files to '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ms200_driver/install.log'\n"}
+[14.229882] (driving) CommandEnded: {'returncode': 0}
+[14.231788] (parking) StdoutLine: {'line': b"writing list of installed files to '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/parking/install.log'\n"}
+[14.247396] (-) TimerEvent: {}
+[14.347878] (-) TimerEvent: {}
+[14.448778] (-) TimerEvent: {}
+[14.544625] (driving) JobEnded: {'identifier': 'driving', 'rc': 0}
+[14.547448] (ms200_driver) CommandEnded: {'returncode': 0}
+[14.548995] (-) TimerEvent: {}
+[14.551385] (ms200_driver) JobEnded: {'identifier': 'ms200_driver', 'rc': 0}
+[14.552236] (parking) CommandEnded: {'returncode': 0}
+[14.555466] (parking) JobEnded: {'identifier': 'parking', 'rc': 0}
+[14.649558] (-) TimerEvent: {}
+[14.732664] (motor_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)\n'}
+[14.749913] (-) TimerEvent: {}
+[14.850761] (-) TimerEvent: {}
+[14.951650] (-) TimerEvent: {}
+[15.052158] (-) TimerEvent: {}
+[15.152478] (-) TimerEvent: {}
+[15.211517] (ascamera) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[15.252660] (-) TimerEvent: {}
+[15.323248] (ascamera) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[15.352796] (-) TimerEvent: {}
+[15.362049] (ascamera) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[15.452903] (-) TimerEvent: {}
+[15.553203] (-) TimerEvent: {}
+[15.653573] (-) TimerEvent: {}
+[15.753948] (-) TimerEvent: {}
+[15.830514] (ascamera) StdoutLine: {'line': b'-- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)\n'}
+[15.854175] (-) TimerEvent: {}
+[15.914266] (ascamera) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[15.954404] (-) TimerEvent: {}
+[16.054726] (-) TimerEvent: {}
+[16.062840] (motor_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[16.089869] (ascamera) StdoutLine: {'line': b'-- Found pcl_conversions: 2.6.2 (/opt/ros/jazzy/share/pcl_conversions/cmake)\n'}
+[16.154907] (-) TimerEvent: {}
+[16.255444] (-) TimerEvent: {}
+[16.355851] (-) TimerEvent: {}
+[16.441660] (motor_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[16.456035] (-) TimerEvent: {}
+[16.551259] (motor_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)\n'}
+[16.556227] (-) TimerEvent: {}
+[16.630158] (ascamera) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):\n'}
+[16.630374] (ascamera) StderrLine: {'line': b'  Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT\n'}
+[16.630471] (ascamera) StderrLine: {'line': b'  variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the\n'}
+[16.630561] (ascamera) StderrLine: {'line': b'  cmake_policy command to set the policy and suppress this warning.\n'}
+[16.630647] (ascamera) StderrLine: {'line': b'\n'}
+[16.630733] (ascamera) StderrLine: {'line': b'  CMake variable FLANN_ROOT is set to:\n'}
+[16.630817] (ascamera) StderrLine: {'line': b'\n'}
+[16.630901] (ascamera) StderrLine: {'line': b'    /usr\n'}
+[16.630984] (ascamera) StderrLine: {'line': b'\n'}
+[16.631067] (ascamera) StderrLine: {'line': b'  For compatibility, find_package is ignoring the variable, but code in a\n'}
+[16.631148] (ascamera) StderrLine: {'line': b'  .cmake module might still use it.\n'}
+[16.631246] (ascamera) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[16.631332] (ascamera) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)\n'}
+[16.631415] (ascamera) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)\n'}
+[16.631494] (ascamera) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)\n'}
+[16.631572] (ascamera) StderrLine: {'line': b'  /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[16.631650] (ascamera) StderrLine: {'line': b'  /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)\n'}
+[16.631728] (ascamera) StderrLine: {'line': b'  CMakeLists.txt:39 (find_package)\n'}
+[16.631805] (ascamera) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[16.631883] (ascamera) StderrLine: {'line': b'\x1b[0m\n'}
+[16.656319] (-) TimerEvent: {}
+[16.661899] (ascamera) StdoutLine: {'line': b'-- Found flann version 1.9.2\n'}
+[16.676801] (motor_msgs) StdoutLine: {'line': b'-- Found PythonExtra: /usr/bin/python3  \n'}
+[16.756423] (-) TimerEvent: {}
+[16.856731] (-) TimerEvent: {}
+[16.957102] (-) TimerEvent: {}
+[17.057367] (-) TimerEvent: {}
+[17.139628] (motor_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed \n'}
+[17.157555] (-) TimerEvent: {}
+[17.258000] (-) TimerEvent: {}
+[17.328867] (motor_msgs) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[17.358247] (-) TimerEvent: {}
+[17.410217] (ascamera) StdoutLine: {'line': b'-- Found OpenMP_CXX: -fopenmp (found version "4.5") \n'}
+[17.410492] (ascamera) StdoutLine: {'line': b'-- Found OpenMP: TRUE (found version "4.5") found components: CXX \n'}
+[17.458499] (-) TimerEvent: {}
+[17.559252] (-) TimerEvent: {}
+[17.660364] (-) TimerEvent: {}
+[17.760748] (-) TimerEvent: {}
+[17.861168] (-) TimerEvent: {}
+[17.961934] (-) TimerEvent: {}
+[18.062657] (-) TimerEvent: {}
+[18.163323] (-) TimerEvent: {}
+[18.178772] (motor_msgs) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[18.263607] (-) TimerEvent: {}
+[18.267530] (motor_msgs) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[18.363942] (-) TimerEvent: {}
+[18.403574] (motor_msgs) StdoutLine: {'line': b'-- Configuring done (17.8s)\n'}
+[18.463601] (motor_msgs) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[18.463978] (-) TimerEvent: {}
+[18.471230] (motor_msgs) StdoutLine: {'line': b'-- Build files have been written to: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs\n'}
+[18.513913] (motor_msgs) CommandEnded: {'returncode': 0}
+[18.515244] (motor_msgs) JobProgress: {'identifier': 'motor_msgs', 'progress': 'build'}
+[18.516843] (motor_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs', '--', '-j12', '-l12'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes/C-ROS-Automodel_Car', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3438', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3271,unix/alereyes-Linux:/tmp/.ICE-unix/3271', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c5ebf309_0cc4_4d21_8040_86c534fde12c', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[18.564125] (-) TimerEvent: {}
+[18.574139] (motor_msgs) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating type hashes for ROS interfaces\x1b[0m\n'}
+[18.583864] (motor_msgs) StdoutLine: {'line': b'[  2%] Built target ament_cmake_python_copy_motor_msgs\n'}
+[18.664228] (-) TimerEvent: {}
+[18.735516] (motor_msgs) StdoutLine: {'line': b'running egg_info\n'}
+[18.736060] (motor_msgs) StdoutLine: {'line': b'creating motor_msgs.egg-info\n'}
+[18.748368] (motor_msgs) StdoutLine: {'line': b'writing motor_msgs.egg-info/PKG-INFO\n'}
+[18.748575] (motor_msgs) StdoutLine: {'line': b'writing dependency_links to motor_msgs.egg-info/dependency_links.txt\n'}
+[18.748731] (motor_msgs) StdoutLine: {'line': b'writing top-level names to motor_msgs.egg-info/top_level.txt\n'}
+[18.748840] (motor_msgs) StdoutLine: {'line': b"writing manifest file 'motor_msgs.egg-info/SOURCES.txt'\n"}
+[18.764292] (-) TimerEvent: {}
+[18.786141] (motor_msgs) StdoutLine: {'line': b"reading manifest file 'motor_msgs.egg-info/SOURCES.txt'\n"}
+[18.786499] (motor_msgs) StdoutLine: {'line': b"writing manifest file 'motor_msgs.egg-info/SOURCES.txt'\n"}
+[18.801646] (motor_msgs) StdoutLine: {'line': b'[  2%] Built target motor_msgs__rosidl_generator_type_description\n'}
+[18.809127] (motor_msgs) StdoutLine: {'line': b'[  4%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[18.810409] (motor_msgs) StdoutLine: {'line': b'[  4%] Built target ament_cmake_python_build_motor_msgs_egg\n'}
+[18.822298] (motor_msgs) StdoutLine: {'line': b'[  6%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[18.864427] (-) TimerEvent: {}
+[18.964962] (-) TimerEvent: {}
+[19.065490] (-) TimerEvent: {}
+[19.183142] (-) TimerEvent: {}
+[19.283794] (-) TimerEvent: {}
+[19.323039] (motor_msgs) StdoutLine: {'line': b'[  6%] Built target motor_msgs__cpp\n'}
+[19.383914] (-) TimerEvent: {}
+[19.395905] (motor_msgs) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/encoder_data__functions.c.o\x1b[0m\n'}
+[19.396381] (motor_msgs) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/motor_command__type_support.c.o\x1b[0m\n'}
+[19.396602] (motor_msgs) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/encoder_data__description.c.o\x1b[0m\n'}
+[19.396684] (motor_msgs) StdoutLine: {'line': b'[ 15%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/encoder_data__type_support.c.o\x1b[0m\n'}
+[19.399223] (motor_msgs) StdoutLine: {'line': b'[ 18%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/motor_command__description.c.o\x1b[0m\n'}
+[19.401147] (motor_msgs) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/motor_command__functions.c.o\x1b[0m\n'}
+[19.484089] (-) TimerEvent: {}
+[19.584750] (-) TimerEvent: {}
+[19.685736] (-) TimerEvent: {}
+[19.786388] (-) TimerEvent: {}
+[19.887038] (-) TimerEvent: {}
+[19.987608] (-) TimerEvent: {}
+[20.088272] (-) TimerEvent: {}
+[20.188884] (-) TimerEvent: {}
+[20.289440] (-) TimerEvent: {}
+[20.333804] (motor_msgs) StdoutLine: {'line': b'[ 22%] \x1b[32m\x1b[1mLinking C shared library libmotor_msgs__rosidl_generator_c.so\x1b[0m\n'}
+[20.389622] (-) TimerEvent: {}
+[20.406521] (motor_msgs) StdoutLine: {'line': b'[ 22%] Built target motor_msgs__rosidl_generator_c\n'}
+[20.413971] (motor_msgs) StdoutLine: {'line': b'[ 29%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[20.414244] (motor_msgs) StdoutLine: {'line': b'[ 29%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[20.414361] (motor_msgs) StdoutLine: {'line': b'[ 29%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[20.415388] (motor_msgs) StdoutLine: {'line': b'[ 31%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[20.416582] (motor_msgs) StdoutLine: {'line': b'[ 34%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[20.417800] (motor_msgs) StdoutLine: {'line': b'[ 36%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[20.489756] (-) TimerEvent: {}
+[20.590133] (-) TimerEvent: {}
+[20.690510] (-) TimerEvent: {}
+[20.790788] (-) TimerEvent: {}
+[20.797962] (motor_msgs) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/motor_msgs/msg/encoder_data__type_support.cpp.o\x1b[0m\n'}
+[20.798958] (motor_msgs) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/motor_msgs/msg/motor_command__type_support.cpp.o\x1b[0m\n'}
+[20.825501] (motor_msgs) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/motor_msgs/msg/detail/dds_fastrtps/motor_command__type_support.cpp.o\x1b[0m\n'}
+[20.826138] (motor_msgs) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/motor_msgs/msg/detail/dds_fastrtps/encoder_data__type_support.cpp.o\x1b[0m\n'}
+[20.877936] (motor_msgs) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/motor_msgs/msg/detail/motor_command__type_support.cpp.o\x1b[0m\n'}
+[20.878156] (motor_msgs) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/motor_msgs/msg/detail/encoder_data__type_support.cpp.o\x1b[0m\n'}
+[20.890907] (-) TimerEvent: {}
+[20.932161] (motor_msgs) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/motor_msgs/msg/encoder_data__type_support.cpp.o\x1b[0m\n'}
+[20.932378] (motor_msgs) StdoutLine: {'line': b'[ 54%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/motor_msgs/msg/motor_command__type_support.cpp.o\x1b[0m\n'}
+[20.957065] (motor_msgs) StdoutLine: {'line': b'[ 56%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/motor_msgs/msg/detail/encoder_data__type_support_c.cpp.o\x1b[0m\n'}
+[20.958702] (motor_msgs) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/motor_msgs/msg/detail/motor_command__type_support_c.cpp.o\x1b[0m\n'}
+[20.991044] (-) TimerEvent: {}
+[21.000303] (motor_msgs) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/motor_msgs/msg/detail/encoder_data__type_support.c.o\x1b[0m\n'}
+[21.000508] (motor_msgs) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/motor_msgs/msg/detail/motor_command__type_support.c.o\x1b[0m\n'}
+[21.091262] (-) TimerEvent: {}
+[21.191616] (-) TimerEvent: {}
+[21.291985] (-) TimerEvent: {}
+[21.376060] (motor_msgs) StdoutLine: {'line': b'[ 65%] \x1b[32m\x1b[1mLinking C shared library libmotor_msgs__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[21.392148] (-) TimerEvent: {}
+[21.492489] (-) TimerEvent: {}
+[21.586633] (motor_msgs) StdoutLine: {'line': b'[ 65%] Built target motor_msgs__rosidl_typesupport_introspection_c\n'}
+[21.592615] (-) TimerEvent: {}
+[21.602597] (motor_msgs) StdoutLine: {'line': b'[ 68%] \x1b[32m\x1b[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_c.so\x1b[0m\n'}
+[21.692703] (-) TimerEvent: {}
+[21.701592] (motor_msgs) StdoutLine: {'line': b'[ 68%] Built target motor_msgs__rosidl_typesupport_c\n'}
+[21.792854] (-) TimerEvent: {}
+[21.893160] (-) TimerEvent: {}
+[21.993540] (-) TimerEvent: {}
+[22.094030] (-) TimerEvent: {}
+[22.194606] (-) TimerEvent: {}
+[22.295098] (-) TimerEvent: {}
+[22.395770] (-) TimerEvent: {}
+[22.496407] (-) TimerEvent: {}
+[22.596810] (-) TimerEvent: {}
+[22.697403] (-) TimerEvent: {}
+[22.798054] (-) TimerEvent: {}
+[22.898558] (-) TimerEvent: {}
+[22.998972] (-) TimerEvent: {}
+[23.099677] (-) TimerEvent: {}
+[23.200232] (-) TimerEvent: {}
+[23.300473] (-) TimerEvent: {}
+[23.354003] (motor_msgs) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[23.395151] (motor_msgs) StdoutLine: {'line': b'[ 70%] Built target motor_msgs__rosidl_typesupport_introspection_cpp\n'}
+[23.400565] (-) TimerEvent: {}
+[23.407520] (motor_msgs) StdoutLine: {'line': b'[ 72%] \x1b[32m\x1b[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[23.472057] (motor_msgs) StdoutLine: {'line': b'[ 72%] Built target motor_msgs__rosidl_typesupport_cpp\n'}
+[23.500698] (-) TimerEvent: {}
+[23.601146] (-) TimerEvent: {}
+[23.683169] (ascamera) StdoutLine: {'line': b"-- Checking for module 'libusb-1.0'\n"}
+[23.701258] (-) TimerEvent: {}
+[23.713443] (ascamera) StdoutLine: {'line': b'--   Found libusb-1.0, version 1.0.27\n'}
+[23.750424] (ascamera) StdoutLine: {'line': b'-- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  \n'}
+[23.772971] (ascamera) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[23.801361] (-) TimerEvent: {}
+[23.901655] (-) TimerEvent: {}
+[23.958385] (motor_msgs) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[23.960921] (motor_msgs) StdoutLine: {'line': b'[ 77%] \x1b[32m\x1b[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[23.980239] (ascamera) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[24.001795] (-) TimerEvent: {}
+[24.005353] (motor_msgs) StdoutLine: {'line': b'[ 77%] Built target motor_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[24.014750] (ascamera) StdoutLine: {'line': b'-- Could NOT find Pcap (missing: PCAP_LIBRARIES PCAP_INCLUDE_DIRS) \n'}
+[24.031221] (ascamera) StdoutLine: {'line': b'-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.3")  \n'}
+[24.042638] (motor_msgs) StdoutLine: {'line': b'[ 77%] Built target motor_msgs__rosidl_typesupport_fastrtps_c\n'}
+[24.046816] (ascamera) StdoutLine: {'line': b'-- Found PNG: /usr/lib/x86_64-linux-gnu/libpng.so (found version "1.6.43") \n'}
+[24.058549] (motor_msgs) StdoutLine: {'line': b'[ 77%] Built target motor_msgs\n'}
+[24.075344] (motor_msgs) StdoutLine: {'line': b'[ 79%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[24.101929] (-) TimerEvent: {}
+[24.202251] (-) TimerEvent: {}
+[24.302481] (-) TimerEvent: {}
+[24.385989] (motor_msgs) StdoutLine: {'line': b'[ 79%] Built target motor_msgs__py\n'}
+[24.394833] (ascamera) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[24.399712] (ascamera) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[24.401487] (motor_msgs) StdoutLine: {'line': b'[ 84%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_py.dir/rosidl_generator_py/motor_msgs/msg/_motor_command_s.c.o\x1b[0m\n'}
+[24.401598] (motor_msgs) StdoutLine: {'line': b'[ 84%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_py.dir/rosidl_generator_py/motor_msgs/msg/_encoder_data_s.c.o\x1b[0m\n'}
+[24.402564] (-) TimerEvent: {}
+[24.502803] (-) TimerEvent: {}
+[24.603081] (-) TimerEvent: {}
+[24.703388] (-) TimerEvent: {}
+[24.803816] (-) TimerEvent: {}
+[24.903712] (ascamera) StdoutLine: {'line': b'-- Found Qhull version 8.0.2\n'}
+[24.904151] (-) TimerEvent: {}
+[25.004503] (-) TimerEvent: {}
+[25.104742] (-) TimerEvent: {}
+[25.204987] (-) TimerEvent: {}
+[25.295291] (ascamera) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[25.305081] (-) TimerEvent: {}
+[25.405297] (-) TimerEvent: {}
+[25.467362] (motor_msgs) StdoutLine: {'line': b'[ 86%] \x1b[32m\x1b[1mLinking C shared library libmotor_msgs__rosidl_generator_py.so\x1b[0m\n'}
+[25.505373] (-) TimerEvent: {}
+[25.521547] (motor_msgs) StdoutLine: {'line': b'[ 86%] Built target motor_msgs__rosidl_generator_py\n'}
+[25.537898] (motor_msgs) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding C object CMakeFiles/motor_msgs_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[25.539082] (motor_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/motor_msgs_s__rosidl_typesupport_c.dir/rosidl_generator_py/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[25.540437] (motor_msgs) StdoutLine: {'line': b'[ 93%] \x1b[32mBuilding C object CMakeFiles/motor_msgs_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[25.605472] (-) TimerEvent: {}
+[25.606997] (motor_msgs) StdoutLine: {'line': b'[ 95%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/motor_msgs/motor_msgs_s__rosidl_typesupport_c.so\x1b[0m\n'}
+[25.607431] (motor_msgs) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/motor_msgs/motor_msgs_s__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[25.611943] (motor_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/motor_msgs/motor_msgs_s__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[25.628512] (motor_msgs) StdoutLine: {'line': b'[100%] Built target motor_msgs_s__rosidl_typesupport_introspection_c\n'}
+[25.631139] (ascamera) StdoutLine: {'line': b'-- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  \n'}
+[25.631368] (motor_msgs) StdoutLine: {'line': b'[100%] Built target motor_msgs_s__rosidl_typesupport_c\n'}
+[25.631957] (ascamera) StdoutLine: {'line': b'-- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  \n'}
+[25.632948] (ascamera) StdoutLine: {'line': b'-- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  \n'}
+[25.633660] (ascamera) StdoutLine: {'line': b'-- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  \n'}
+[25.634582] (ascamera) StdoutLine: {'line': b'-- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  \n'}
+[25.635370] (ascamera) StdoutLine: {'line': b'-- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  \n'}
+[25.635699] (ascamera) StdoutLine: {'line': b'-- Found PCL_2D: /usr/include/pcl-1.14  \n'}
+[25.635983] (ascamera) StdoutLine: {'line': b'-- Found PCL_GEOMETRY: /usr/include/pcl-1.14  \n'}
+[25.636856] (ascamera) StdoutLine: {'line': b'-- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  \n'}
+[25.637791] (ascamera) StdoutLine: {'line': b'-- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  \n'}
+[25.638623] (ascamera) StdoutLine: {'line': b'-- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  \n'}
+[25.638954] (motor_msgs) StdoutLine: {'line': b'[100%] Built target motor_msgs_s__rosidl_typesupport_fastrtps_c\n'}
+[25.639502] (ascamera) StdoutLine: {'line': b'-- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  \n'}
+[25.640480] (ascamera) StdoutLine: {'line': b'-- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  \n'}
+[25.641384] (ascamera) StdoutLine: {'line': b'-- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  \n'}
+[25.642237] (ascamera) StdoutLine: {'line': b'-- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  \n'}
+[25.643141] (ascamera) StdoutLine: {'line': b'-- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  \n'}
+[25.644107] (ascamera) StdoutLine: {'line': b'-- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  \n'}
+[25.644996] (ascamera) StdoutLine: {'line': b'-- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  \n'}
+[25.646005] (ascamera) StdoutLine: {'line': b'-- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  \n'}
+[25.646856] (ascamera) StdoutLine: {'line': b'-- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  \n'}
+[25.647507] (ascamera) StdoutLine: {'line': b'-- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.14  \n'}
+[25.647887] (motor_msgs) CommandEnded: {'returncode': 0}
+[25.648236] (ascamera) StdoutLine: {'line': b'-- Found PCL_MODELER: /usr/include/pcl-1.14  \n'}
+[25.648325] (ascamera) StdoutLine: {'line': b'-- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.14  \n'}
+[25.648553] (motor_msgs) JobProgress: {'identifier': 'motor_msgs', 'progress': 'install'}
+[25.648970] (ascamera) StdoutLine: {'line': b'-- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  \n'}
+[25.649916] (ascamera) StdoutLine: {'line': b'-- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  \n'}
+[25.651692] (ascamera) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at CMakeLists.txt:40 (find_package):\n'}
+[25.651753] (ascamera) StderrLine: {'line': b'  Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.\n'}
+[25.651792] (ascamera) StderrLine: {'line': b'  Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy\n'}
+[25.651831] (ascamera) StderrLine: {'line': b'  command to set the policy and suppress this warning.\n'}
+[25.651871] (ascamera) StderrLine: {'line': b'\n'}
+[25.651909] (ascamera) StderrLine: {'line': b'  CMake variable PCL_ROOT is set to:\n'}
+[25.651946] (ascamera) StderrLine: {'line': b'\n'}
+[25.651987] (ascamera) StderrLine: {'line': b'    /usr\n'}
+[25.652027] (ascamera) StderrLine: {'line': b'\n'}
+[25.652067] (ascamera) StderrLine: {'line': b'  For compatibility, CMake is ignoring the variable.\n'}
+[25.652105] (ascamera) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[25.652149] (ascamera) StderrLine: {'line': b'\x1b[0m\n'}
+[25.656534] (motor_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes/C-ROS-Automodel_Car', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3438', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3271,unix/alereyes-Linux:/tmp/.ICE-unix/3271', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c5ebf309_0cc4_4d21_8040_86c534fde12c', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/motor_msgs', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[25.663977] (motor_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[25.664107] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/ament_index/resource_index/rosidl_interfaces/motor_msgs\n'}
+[25.664177] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/msg/MotorCommand.json\n'}
+[25.664227] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/msg/EncoderData.json\n'}
+[25.664276] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs\n'}
+[25.664339] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg\n'}
+[25.664389] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail\n'}
+[25.664431] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.h\n'}
+[25.664488] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__description.c\n'}
+[25.664530] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__functions.h\n'}
+[25.664572] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__functions.h\n'}
+[25.664631] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__struct.h\n'}
+[25.664672] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.h\n'}
+[25.664713] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.c\n'}
+[25.664752] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__struct.h\n'}
+[25.664804] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__functions.c\n'}
+[25.664866] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__description.c\n'}
+[25.664907] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__functions.c\n'}
+[25.664946] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.c\n'}
+[25.664984] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/encoder_data.h\n'}
+[25.665023] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[25.665078] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/motor_command.h\n'}
+[25.665117] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/environment/library_path.sh\n'}
+[25.665165] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/environment/library_path.dsv\n'}
+[25.665202] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_generator_c.so\n'}
+[25.665295] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_generator_c.so" to ""\n'}
+[25.665353] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs\n'}
+[25.665396] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg\n'}
+[25.665452] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[25.665494] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail\n'}
+[25.665544] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__rosidl_typesupport_fastrtps_c.h\n'}
+[25.665583] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__rosidl_typesupport_fastrtps_c.h\n'}
+[25.665620] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[25.665683] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[25.665741] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs\n'}
+[25.665780] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg\n'}
+[25.665819] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/motor_command.hpp\n'}
+[25.665875] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[25.665917] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail\n'}
+[25.665957] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__builder.hpp\n'}
+[25.666015] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.hpp\n'}
+[25.666055] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__builder.hpp\n'}
+[25.666094] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__traits.hpp\n'}
+[25.666133] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__traits.hpp\n'}
+[25.666188] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__struct.hpp\n'}
+[25.666229] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.hpp\n'}
+[25.666267] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__struct.hpp\n'}
+[25.666317] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/encoder_data.hpp\n'}
+[25.666353] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs\n'}
+[25.666390] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg\n'}
+[25.666440] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail\n'}
+[25.666476] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[25.666513] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[25.666552] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/dds_fastrtps\n'}
+[25.666588] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[25.666636] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[25.666673] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[25.666722] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs\n'}
+[25.666783] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg\n'}
+[25.666823] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[25.666862] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail\n'}
+[25.666899] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.c\n'}
+[25.666939] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__rosidl_typesupport_introspection_c.h\n'}
+[25.666993] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__rosidl_typesupport_introspection_c.h\n'}
+[25.667032] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.c\n'}
+[25.667068] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_introspection_c.so\n'}
+[25.667113] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_introspection_c.so" to ""\n'}
+[25.667161] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_c.so\n'}
+[25.667278] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_c.so" to ""\n'}
+[25.667454] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs\n'}
+[25.667564] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg\n'}
+[25.667650] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail\n'}
+[25.667753] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[25.667834] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.cpp\n'}
+[25.667943] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.cpp\n'}
+[25.668043] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__rosidl_typesupport_introspection_cpp.hpp\n'}
+[25.668155] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[25.668255] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[25.668356] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_cpp.so\n'}
+[25.668481] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_cpp.so" to ""\n'}
+[25.668613] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/environment/pythonpath.sh\n'}
+[25.668722] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/environment/pythonpath.dsv\n'}
+[25.668826] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info\n'}
+[25.668909] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info/SOURCES.txt\n'}
+[25.668984] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info/dependency_links.txt\n'}
+[25.669059] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info/PKG-INFO\n'}
+[25.669140] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info/top_level.txt\n'}
+[25.669227] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs\n'}
+[25.669305] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_c.c\n'}
+[25.669383] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[25.669459] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_introspection_c.so\n'}
+[25.669539] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[25.669618] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg\n'}
+[25.669694] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_encoder_data.py\n'}
+[25.669767] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_motor_command_s.c\n'}
+[25.669842] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_motor_command.py\n'}
+[25.669917] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_encoder_data_s.c\n'}
+[25.669994] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/__init__.py\n'}
+[25.670070] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_c.so\n'}
+[25.670146] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_fastrtps_c.so\n'}
+[25.670237] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/__init__.py\n'}
+[25.705649] (-) TimerEvent: {}
+[25.789567] (motor_msgs) StdoutLine: {'line': b"Listing '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs'...\n"}
+[25.789780] (motor_msgs) StdoutLine: {'line': b"Compiling '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/__init__.py'...\n"}
+[25.789876] (motor_msgs) StdoutLine: {'line': b"Listing '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg'...\n"}
+[25.789963] (motor_msgs) StdoutLine: {'line': b"Compiling '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/__init__.py'...\n"}
+[25.790053] (motor_msgs) StdoutLine: {'line': b"Compiling '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_encoder_data.py'...\n"}
+[25.790142] (motor_msgs) StdoutLine: {'line': b"Compiling '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_motor_command.py'...\n"}
+[25.793334] (ascamera) StdoutLine: {'line': b'-- Found tf2: 0.36.16 (/opt/ros/jazzy/share/tf2/cmake)\n'}
+[25.793694] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_fastrtps_c.so\n'}
+[25.793954] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[25.794052] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_introspection_c.so\n'}
+[25.794202] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_introspection_c.so" to ""\n'}
+[25.794352] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_c.so\n'}
+[25.794467] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_c.so" to ""\n'}
+[25.794537] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_generator_py.so\n'}
+[25.794580] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/libmotor_msgs__rosidl_generator_py.so" to ""\n'}
+[25.794785] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/msg/MotorCommand.idl\n'}
+[25.794858] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/msg/EncoderData.idl\n'}
+[25.794910] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/msg/MotorCommand.msg\n'}
+[25.794950] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/msg/EncoderData.msg\n'}
+[25.794989] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/ament_index/resource_index/package_run_dependencies/motor_msgs\n'}
+[25.795029] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/ament_index/resource_index/parent_prefix_path/motor_msgs\n'}
+[25.795096] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/environment/ament_prefix_path.sh\n'}
+[25.795156] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/environment/ament_prefix_path.dsv\n'}
+[25.795198] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/environment/path.sh\n'}
+[25.795242] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/environment/path.dsv\n'}
+[25.795296] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/local_setup.bash\n'}
+[25.795336] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/local_setup.sh\n'}
+[25.795375] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/local_setup.zsh\n'}
+[25.795414] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/local_setup.dsv\n'}
+[25.795563] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/package.dsv\n'}
+[25.795660] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/ament_index/resource_index/packages/motor_msgs\n'}
+[25.795708] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_cExport.cmake\n'}
+[25.795750] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[25.795791] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[25.795855] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[25.795908] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_cppExport.cmake\n'}
+[25.795948] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[25.795987] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[25.796025] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[25.796079] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[25.796121] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_cExport.cmake\n'}
+[25.796160] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[25.796218] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[25.796258] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[25.796298] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[25.796351] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[25.796390] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_pyExport.cmake\n'}
+[25.796441] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_pyExport-noconfig.cmake\n'}
+[25.796480] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[25.796528] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[25.796584] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[25.796624] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[25.796671] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[25.796720] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[25.796765] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[25.796813] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/motor_msgsConfig.cmake\n'}
+[25.796863] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/cmake/motor_msgsConfig-version.cmake\n'}
+[25.796914] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/share/motor_msgs/package.xml\n'}
+[25.798352] (motor_msgs) CommandEnded: {'returncode': 0}
+[25.805838] (-) TimerEvent: {}
+[25.809916] (motor_msgs) JobEnded: {'identifier': 'motor_msgs', 'rc': 0}
+[25.810459] (com_stm) JobStarted: {'identifier': 'com_stm'}
+[25.813316] (manual) JobStarted: {'identifier': 'manual'}
+[25.819456] (ascamera) StdoutLine: {'line': b'-- Found tf2_ros: 0.36.16 (/opt/ros/jazzy/share/tf2_ros/cmake)\n'}
+[25.906042] (-) TimerEvent: {}
+[26.006402] (-) TimerEvent: {}
+[26.107307] (-) TimerEvent: {}
+[26.207800] (-) TimerEvent: {}
+[26.308465] (-) TimerEvent: {}
+[26.409044] (-) TimerEvent: {}
+[26.509402] (-) TimerEvent: {}
+[26.609765] (-) TimerEvent: {}
+[26.710141] (-) TimerEvent: {}
+[26.721763] (manual) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/manual', 'build', '--build-base', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build', 'install', '--record', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/manual', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes/C-ROS-Automodel_Car', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3438', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3271,unix/alereyes-Linux:/tmp/.ICE-unix/3271', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c5ebf309_0cc4_4d21_8040_86c534fde12c', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[26.745878] (com_stm) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/com_stm', 'build', '--build-base', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build', 'install', '--record', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/com_stm', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes/C-ROS-Automodel_Car', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3438', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3271,unix/alereyes-Linux:/tmp/.ICE-unix/3271', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c5ebf309_0cc4_4d21_8040_86c534fde12c', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/motor_msgs:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[26.810345] (-) TimerEvent: {}
+[26.898329] (manual) StdoutLine: {'line': b'running egg_info\n'}
+[26.898796] (manual) StdoutLine: {'line': b'creating ../build/manual/manual.egg-info\n'}
+[26.900256] (com_stm) StdoutLine: {'line': b'running egg_info\n'}
+[26.900463] (com_stm) StdoutLine: {'line': b'creating ../build/com_stm/com_stm.egg-info\n'}
+[26.910570] (manual) StdoutLine: {'line': b'writing ../build/manual/manual.egg-info/PKG-INFO\n'}
+[26.910882] (-) TimerEvent: {}
+[26.910990] (manual) StdoutLine: {'line': b'writing dependency_links to ../build/manual/manual.egg-info/dependency_links.txt\n'}
+[26.911091] (manual) StdoutLine: {'line': b'writing entry points to ../build/manual/manual.egg-info/entry_points.txt\n'}
+[26.911174] (manual) StdoutLine: {'line': b'writing requirements to ../build/manual/manual.egg-info/requires.txt\n'}
+[26.911262] (manual) StdoutLine: {'line': b'writing top-level names to ../build/manual/manual.egg-info/top_level.txt\n'}
+[26.911349] (manual) StdoutLine: {'line': b"writing manifest file '../build/manual/manual.egg-info/SOURCES.txt'\n"}
+[26.912481] (com_stm) StdoutLine: {'line': b'writing ../build/com_stm/com_stm.egg-info/PKG-INFO\n'}
+[26.912762] (com_stm) StdoutLine: {'line': b'writing dependency_links to ../build/com_stm/com_stm.egg-info/dependency_links.txt\n'}
+[26.912994] (com_stm) StdoutLine: {'line': b'writing entry points to ../build/com_stm/com_stm.egg-info/entry_points.txt\n'}
+[26.913076] (com_stm) StdoutLine: {'line': b'writing requirements to ../build/com_stm/com_stm.egg-info/requires.txt\n'}
+[26.913118] (com_stm) StdoutLine: {'line': b'writing top-level names to ../build/com_stm/com_stm.egg-info/top_level.txt\n'}
+[26.913157] (com_stm) StdoutLine: {'line': b"writing manifest file '../build/com_stm/com_stm.egg-info/SOURCES.txt'\n"}
+[26.936025] (manual) StdoutLine: {'line': b"reading manifest file '../build/manual/manual.egg-info/SOURCES.txt'\n"}
+[26.936132] (manual) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[26.936453] (manual) StdoutLine: {'line': b"writing manifest file '../build/manual/manual.egg-info/SOURCES.txt'\n"}
+[26.938049] (com_stm) StdoutLine: {'line': b"reading manifest file '../build/com_stm/com_stm.egg-info/SOURCES.txt'\n"}
+[26.938136] (com_stm) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[26.938526] (com_stm) StdoutLine: {'line': b"writing manifest file '../build/com_stm/com_stm.egg-info/SOURCES.txt'\n"}
+[26.957382] (manual) StdoutLine: {'line': b'running build\n'}
+[26.957866] (manual) StdoutLine: {'line': b'running build_py\n'}
+[26.958185] (manual) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build\n'}
+[26.958262] (com_stm) StdoutLine: {'line': b'running build\n'}
+[26.958320] (com_stm) StdoutLine: {'line': b'running build_py\n'}
+[26.958375] (com_stm) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build\n'}
+[26.958427] (com_stm) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build/lib\n'}
+[26.958477] (com_stm) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build/lib/com_stm\n'}
+[26.958526] (com_stm) StdoutLine: {'line': b'copying com_stm/com_stm.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build/lib/com_stm\n'}
+[26.958573] (manual) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build/lib\n'}
+[26.958658] (manual) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build/lib/manual\n'}
+[26.958712] (manual) StdoutLine: {'line': b'copying manual/key_control.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build/lib/manual\n'}
+[26.958756] (manual) StdoutLine: {'line': b'copying manual/full_test.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build/lib/manual\n'}
+[26.958801] (manual) StdoutLine: {'line': b'copying manual/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build/lib/manual\n'}
+[26.958847] (manual) StdoutLine: {'line': b'copying manual/joystick_control.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build/lib/manual\n'}
+[26.958890] (manual) StdoutLine: {'line': b'running install\n'}
+[26.958958] (com_stm) StdoutLine: {'line': b'copying com_stm/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build/lib/com_stm\n'}
+[26.959023] (com_stm) StdoutLine: {'line': b'running install\n'}
+[26.963073] (manual) StdoutLine: {'line': b'running install_lib\n'}
+[26.963493] (com_stm) StdoutLine: {'line': b'running install_lib\n'}
+[26.975669] (manual) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages/manual\n'}
+[26.975775] (manual) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build/lib/manual/key_control.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages/manual\n'}
+[26.975832] (manual) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build/lib/manual/full_test.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages/manual\n'}
+[26.975871] (manual) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build/lib/manual/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages/manual\n'}
+[26.975909] (manual) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/build/lib/manual/joystick_control.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages/manual\n'}
+[26.976089] (com_stm) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm\n'}
+[26.976143] (com_stm) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build/lib/com_stm/com_stm.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm\n'}
+[26.976185] (manual) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages/manual/key_control.py to key_control.cpython-312.pyc\n'}
+[26.976351] (com_stm) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/build/lib/com_stm/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm\n'}
+[26.976515] (com_stm) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm/com_stm.py to com_stm.cpython-312.pyc\n'}
+[26.977226] (manual) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages/manual/full_test.py to full_test.cpython-312.pyc\n'}
+[26.977761] (manual) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages/manual/__init__.py to __init__.cpython-312.pyc\n'}
+[26.977841] (com_stm) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm/__init__.py to __init__.cpython-312.pyc\n'}
+[26.977887] (manual) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages/manual/joystick_control.py to joystick_control.cpython-312.pyc\n'}
+[26.977951] (com_stm) StdoutLine: {'line': b'running install_data\n'}
+[26.977996] (com_stm) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/ament_index\n'}
+[26.978069] (com_stm) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/ament_index/resource_index\n'}
+[26.978109] (com_stm) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/ament_index/resource_index/packages\n'}
+[26.978144] (com_stm) StdoutLine: {'line': b'copying resource/com_stm -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/ament_index/resource_index/packages\n'}
+[26.978190] (com_stm) StdoutLine: {'line': b'copying package.xml -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/share/com_stm\n'}
+[26.978242] (com_stm) StdoutLine: {'line': b'running install_egg_info\n'}
+[26.978303] (manual) StdoutLine: {'line': b'running install_data\n'}
+[26.978377] (manual) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/ament_index\n'}
+[26.978425] (manual) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/ament_index/resource_index\n'}
+[26.978473] (manual) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/ament_index/resource_index/packages\n'}
+[26.978518] (manual) StdoutLine: {'line': b'copying resource/manual -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/ament_index/resource_index/packages\n'}
+[26.978588] (manual) StdoutLine: {'line': b'copying package.xml -> /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/share/manual\n'}
+[26.978627] (manual) StdoutLine: {'line': b'running install_egg_info\n'}
+[26.991790] (com_stm) StdoutLine: {'line': b'Copying ../build/com_stm/com_stm.egg-info to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/python3.12/site-packages/com_stm-0.0.0-py3.12.egg-info\n'}
+[26.991931] (manual) StdoutLine: {'line': b'Copying ../build/manual/manual.egg-info to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/python3.12/site-packages/manual-0.0.0-py3.12.egg-info\n'}
+[26.992042] (com_stm) StdoutLine: {'line': b'running install_scripts\n'}
+[26.992216] (manual) StdoutLine: {'line': b'running install_scripts\n'}
+[27.011003] (-) TimerEvent: {}
+[27.078112] (manual) StdoutLine: {'line': b'Installing full_test script to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/manual\n'}
+[27.078262] (manual) StdoutLine: {'line': b'Installing joy_control script to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/manual\n'}
+[27.078379] (manual) StdoutLine: {'line': b'Installing key_control script to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/manual/lib/manual\n'}
+[27.078424] (com_stm) StdoutLine: {'line': b'Installing com_stm script to /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/com_stm/lib/com_stm\n'}
+[27.078597] (manual) StdoutLine: {'line': b"writing list of installed files to '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/manual/install.log'\n"}
+[27.078652] (com_stm) StdoutLine: {'line': b"writing list of installed files to '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/com_stm/install.log'\n"}
+[27.103876] (manual) CommandEnded: {'returncode': 0}
+[27.107713] (manual) JobEnded: {'identifier': 'manual', 'rc': 0}
+[27.108133] (com_stm) CommandEnded: {'returncode': 0}
+[27.111092] (-) TimerEvent: {}
+[27.111363] (com_stm) JobEnded: {'identifier': 'com_stm', 'rc': 0}
+[27.211371] (-) TimerEvent: {}
+[27.312198] (-) TimerEvent: {}
+[27.412834] (-) TimerEvent: {}
+[27.513350] (-) TimerEvent: {}
+[27.613957] (-) TimerEvent: {}
+[27.714342] (-) TimerEvent: {}
+[27.744266] (ascamera) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[27.814510] (-) TimerEvent: {}
+[27.904725] (ascamera) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[27.906788] (ascamera) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[27.907012] (ascamera) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/include;/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/libs/include;$<BUILD_INTERFACE:/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/include>\n'}
+[27.907106] (ascamera) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[27.909186] (ascamera) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[27.909298] (ascamera) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[27.909878] (ascamera) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[27.909967] (ascamera) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[27.910705] (ascamera) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[27.911171] (ascamera) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[27.913078] (ascamera) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[27.913165] (ascamera) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[27.913668] (ascamera) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[27.914568] (-) TimerEvent: {}
+[27.914776] (ascamera) StdoutLine: {'line': b'-- Configuring done (27.3s)\n'}
+[28.014890] (-) TimerEvent: {}
+[28.115446] (-) TimerEvent: {}
+[28.216248] (-) TimerEvent: {}
+[28.317185] (-) TimerEvent: {}
+[28.418158] (-) TimerEvent: {}
+[28.518887] (-) TimerEvent: {}
+[28.619884] (-) TimerEvent: {}
+[28.720623] (-) TimerEvent: {}
+[28.821158] (-) TimerEvent: {}
+[28.872521] (ascamera) StdoutLine: {'line': b'-- Generating done (0.9s)\n'}
+[28.880789] (ascamera) StdoutLine: {'line': b'-- Build files have been written to: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera\n'}
+[28.896526] (ascamera) CommandEnded: {'returncode': 0}
+[28.897451] (ascamera) JobProgress: {'identifier': 'ascamera', 'progress': 'build'}
+[28.897466] (ascamera) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera', '--', '-j12', '-l12'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes/C-ROS-Automodel_Car', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3438', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3271,unix/alereyes-Linux:/tmp/.ICE-unix/3271', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c5ebf309_0cc4_4d21_8040_86c534fde12c', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[28.921311] (-) TimerEvent: {}
+[28.942856] (ascamera) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/ascamera_node.dir/src/CameraSrv.cpp.o\x1b[0m\n'}
+[28.943067] (ascamera) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/ascamera_node.dir/src/TfTreeFrameIdInfo.cpp.o\x1b[0m\n'}
+[28.943162] (ascamera) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/ascamera_node.dir/src/Camera.cpp.o\x1b[0m\n'}
+[28.944181] (ascamera) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/ascamera_node.dir/src/CameraPublisher.cpp.o\x1b[0m\n'}
+[28.944609] (ascamera) StdoutLine: {'line': b'[ 83%] \x1b[32mBuilding CXX object CMakeFiles/ascamera_node.dir/src/ascamera_node.cpp.o\x1b[0m\n'}
+[29.021571] (-) TimerEvent: {}
+[29.122197] (-) TimerEvent: {}
+[29.222569] (-) TimerEvent: {}
+[29.322875] (-) TimerEvent: {}
+[29.423544] (-) TimerEvent: {}
+[29.523994] (-) TimerEvent: {}
+[29.624711] (-) TimerEvent: {}
+[29.725242] (-) TimerEvent: {}
+[29.825948] (-) TimerEvent: {}
+[29.926575] (-) TimerEvent: {}
+[30.027141] (-) TimerEvent: {}
+[30.127706] (-) TimerEvent: {}
+[30.228292] (-) TimerEvent: {}
+[30.329098] (-) TimerEvent: {}
+[30.429906] (-) TimerEvent: {}
+[30.530865] (-) TimerEvent: {}
+[30.631480] (-) TimerEvent: {}
+[30.732120] (-) TimerEvent: {}
+[30.832695] (-) TimerEvent: {}
+[30.933130] (-) TimerEvent: {}
+[31.033554] (-) TimerEvent: {}
+[31.134263] (-) TimerEvent: {}
+[31.234780] (-) TimerEvent: {}
+[31.335272] (-) TimerEvent: {}
+[31.436000] (-) TimerEvent: {}
+[31.536979] (-) TimerEvent: {}
+[31.637646] (-) TimerEvent: {}
+[31.738125] (-) TimerEvent: {}
+[31.838569] (-) TimerEvent: {}
+[31.939023] (-) TimerEvent: {}
+[32.039611] (-) TimerEvent: {}
+[32.140543] (-) TimerEvent: {}
+[32.241065] (-) TimerEvent: {}
+[32.341745] (-) TimerEvent: {}
+[32.442359] (-) TimerEvent: {}
+[32.542880] (-) TimerEvent: {}
+[32.643437] (-) TimerEvent: {}
+[32.743969] (-) TimerEvent: {}
+[32.844470] (-) TimerEvent: {}
+[32.944886] (-) TimerEvent: {}
+[33.045441] (-) TimerEvent: {}
+[33.145932] (-) TimerEvent: {}
+[33.246458] (-) TimerEvent: {}
+[33.346982] (-) TimerEvent: {}
+[33.447571] (-) TimerEvent: {}
+[33.547866] (-) TimerEvent: {}
+[33.648165] (-) TimerEvent: {}
+[33.748390] (-) TimerEvent: {}
+[33.848690] (-) TimerEvent: {}
+[33.948978] (-) TimerEvent: {}
+[34.049278] (-) TimerEvent: {}
+[34.149496] (-) TimerEvent: {}
+[34.249766] (-) TimerEvent: {}
+[34.350132] (-) TimerEvent: {}
+[34.450412] (-) TimerEvent: {}
+[34.550664] (-) TimerEvent: {}
+[34.650913] (-) TimerEvent: {}
+[34.751144] (-) TimerEvent: {}
+[34.851398] (-) TimerEvent: {}
+[34.951702] (-) TimerEvent: {}
+[35.051980] (-) TimerEvent: {}
+[35.152356] (-) TimerEvent: {}
+[35.252919] (-) TimerEvent: {}
+[35.353247] (-) TimerEvent: {}
+[35.453554] (-) TimerEvent: {}
+[35.553856] (-) TimerEvent: {}
+[35.654109] (-) TimerEvent: {}
+[35.754343] (-) TimerEvent: {}
+[35.854609] (-) TimerEvent: {}
+[35.954810] (-) TimerEvent: {}
+[36.055017] (-) TimerEvent: {}
+[36.155228] (-) TimerEvent: {}
+[36.255446] (-) TimerEvent: {}
+[36.355653] (-) TimerEvent: {}
+[36.456005] (-) TimerEvent: {}
+[36.556345] (-) TimerEvent: {}
+[36.657271] (-) TimerEvent: {}
+[36.757714] (-) TimerEvent: {}
+[36.858037] (-) TimerEvent: {}
+[36.958541] (-) TimerEvent: {}
+[37.059052] (-) TimerEvent: {}
+[37.159570] (-) TimerEvent: {}
+[37.260154] (-) TimerEvent: {}
+[37.360634] (-) TimerEvent: {}
+[37.461176] (-) TimerEvent: {}
+[37.561735] (-) TimerEvent: {}
+[37.662272] (-) TimerEvent: {}
+[37.762512] (-) TimerEvent: {}
+[37.862839] (-) TimerEvent: {}
+[37.963155] (-) TimerEvent: {}
+[38.063483] (-) TimerEvent: {}
+[38.163916] (-) TimerEvent: {}
+[38.264583] (-) TimerEvent: {}
+[38.365172] (-) TimerEvent: {}
+[38.465637] (-) TimerEvent: {}
+[38.566297] (-) TimerEvent: {}
+[38.666817] (-) TimerEvent: {}
+[38.767118] (-) TimerEvent: {}
+[38.867437] (-) TimerEvent: {}
+[38.967759] (-) TimerEvent: {}
+[39.068080] (-) TimerEvent: {}
+[39.168390] (-) TimerEvent: {}
+[39.268710] (-) TimerEvent: {}
+[39.368961] (-) TimerEvent: {}
+[39.469301] (-) TimerEvent: {}
+[39.569613] (-) TimerEvent: {}
+[39.669925] (-) TimerEvent: {}
+[39.770259] (-) TimerEvent: {}
+[39.870572] (-) TimerEvent: {}
+[39.970882] (-) TimerEvent: {}
+[40.071194] (-) TimerEvent: {}
+[40.171502] (-) TimerEvent: {}
+[40.271808] (-) TimerEvent: {}
+[40.372117] (-) TimerEvent: {}
+[40.472425] (-) TimerEvent: {}
+[40.572757] (-) TimerEvent: {}
+[40.673132] (-) TimerEvent: {}
+[40.773455] (-) TimerEvent: {}
+[40.873849] (-) TimerEvent: {}
+[40.902546] (ascamera) StderrLine: {'line': b'\x1b[01m\x1b[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraSrv.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kint CameraSrv::\x1b[01;32m\x1b[KgetConfigFile\x1b[m\x1b[K(AS_CAM_PTR, std::string&, AS_SDK_CAM_MODEL_E)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[40.902780] (ascamera) StderrLine: {'line': b'\x1b[01m\x1b[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraSrv.cpp:296:41:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KpCamera\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[40.902904] (ascamera) StderrLine: {'line': b'  296 | int CameraSrv::getConfigFile(\x1b[01;35m\x1b[KAS_CAM_PTR pCamera\x1b[m\x1b[K, std::string &configfile, AS_SDK_CAM_MODEL_E cam_type)\n'}
+[40.902998] (ascamera) StderrLine: {'line': b'      |                              \x1b[01;35m\x1b[K~~~~~~~~~~~^~~~~~~\x1b[m\x1b[K\n'}
+[40.940165] (ascamera) StderrLine: {'line': b'\x1b[01m\x1b[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CameraPublisher::\x1b[01;32m\x1b[KirInfoPublisher\x1b[m\x1b[K(AS_CAM_PTR, const AS_SDK_Data_s*, AS_CAM_Parameter_s&, builtin_interfaces::msg::Time)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[40.940417] (ascamera) StderrLine: {'line': b'\x1b[01m\x1b[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:1000:102:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ktime\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[40.940529] (ascamera) StderrLine: {'line': b' 1000 |                                       AS_CAM_Parameter_s &stParameter, \x1b[01;35m\x1b[Kbuiltin_interfaces::msg::Time time\x1b[m\x1b[K)\n'}
+[40.940628] (ascamera) StderrLine: {'line': b'      |                                                                        \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[40.941586] (ascamera) StderrLine: {'line': b'\x1b[01m\x1b[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CameraPublisher::\x1b[01;32m\x1b[KpeakInfoPublisher\x1b[m\x1b[K(AS_CAM_PTR, const AS_SDK_Data_s*, AS_CAM_Parameter_s&, builtin_interfaces::msg::Time)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[40.941802] (ascamera) StderrLine: {'line': b'\x1b[01m\x1b[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:1033:104:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ktime\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[40.941917] (ascamera) StderrLine: {'line': b' 1033 |                                         AS_CAM_Parameter_s &stParameter, \x1b[01;35m\x1b[Kbuiltin_interfaces::msg::Time time\x1b[m\x1b[K)\n'}
+[40.942009] (ascamera) StderrLine: {'line': b'      |                                                                          \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[40.942547] (ascamera) StderrLine: {'line': b'\x1b[01m\x1b[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CameraPublisher::\x1b[01;32m\x1b[KdepthMergeInfoPublisher\x1b[m\x1b[K(AS_CAM_PTR, const AS_SDK_MERGE_s*, AS_CAM_Parameter_s&, builtin_interfaces::msg::Time)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[40.942778] (ascamera) StderrLine: {'line': b'\x1b[01m\x1b[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:1081:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KstParameter\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[40.942878] (ascamera) StderrLine: {'line': b' 1081 |         \x1b[01;35m\x1b[KAS_CAM_Parameter_s &stParameter\x1b[m\x1b[K, builtin_interfaces::msg::Time time)\n'}
+[40.942968] (ascamera) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[40.943594] (ascamera) StderrLine: {'line': b'\x1b[01m\x1b[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid CameraPublisher::\x1b[01;32m\x1b[KpointcloudMergePublisher\x1b[m\x1b[K(AS_CAM_PTR, const AS_SDK_MERGE_s*, AS_CAM_Parameter_s&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[40.943800] (ascamera) StderrLine: {'line': b'\x1b[01m\x1b[K/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/ascamera/src/CameraPublisher.cpp:1119:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[KstParameter\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[40.943896] (ascamera) StderrLine: {'line': b' 1119 |         \x1b[01;35m\x1b[KAS_CAM_Parameter_s &stParameter\x1b[m\x1b[K)\n'}
+[40.943982] (ascamera) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[40.974052] (-) TimerEvent: {}
+[41.074453] (-) TimerEvent: {}
+[41.174837] (-) TimerEvent: {}
+[41.275243] (-) TimerEvent: {}
+[41.375633] (-) TimerEvent: {}
+[41.476031] (-) TimerEvent: {}
+[41.576411] (-) TimerEvent: {}
+[41.676795] (-) TimerEvent: {}
+[41.777178] (-) TimerEvent: {}
+[41.877552] (-) TimerEvent: {}
+[41.977928] (-) TimerEvent: {}
+[42.078277] (-) TimerEvent: {}
+[42.178645] (-) TimerEvent: {}
+[42.279028] (-) TimerEvent: {}
+[42.379423] (-) TimerEvent: {}
+[42.479802] (-) TimerEvent: {}
+[42.580187] (-) TimerEvent: {}
+[42.680574] (-) TimerEvent: {}
+[42.780971] (-) TimerEvent: {}
+[42.881350] (-) TimerEvent: {}
+[42.981724] (-) TimerEvent: {}
+[43.082109] (-) TimerEvent: {}
+[43.182494] (-) TimerEvent: {}
+[43.282894] (-) TimerEvent: {}
+[43.383287] (-) TimerEvent: {}
+[43.483701] (-) TimerEvent: {}
+[43.584089] (-) TimerEvent: {}
+[43.684424] (-) TimerEvent: {}
+[43.784792] (-) TimerEvent: {}
+[43.885172] (-) TimerEvent: {}
+[43.985633] (-) TimerEvent: {}
+[44.085936] (-) TimerEvent: {}
+[44.186266] (-) TimerEvent: {}
+[44.286492] (-) TimerEvent: {}
+[44.386809] (-) TimerEvent: {}
+[44.487112] (-) TimerEvent: {}
+[44.587417] (-) TimerEvent: {}
+[44.687705] (-) TimerEvent: {}
+[44.787998] (-) TimerEvent: {}
+[44.888311] (-) TimerEvent: {}
+[44.988651] (-) TimerEvent: {}
+[45.088944] (-) TimerEvent: {}
+[45.189238] (-) TimerEvent: {}
+[45.289445] (-) TimerEvent: {}
+[45.389753] (-) TimerEvent: {}
+[45.490074] (-) TimerEvent: {}
+[45.590360] (-) TimerEvent: {}
+[45.690654] (-) TimerEvent: {}
+[45.790968] (-) TimerEvent: {}
+[45.891299] (-) TimerEvent: {}
+[45.991603] (-) TimerEvent: {}
+[46.091930] (-) TimerEvent: {}
+[46.192232] (-) TimerEvent: {}
+[46.292523] (-) TimerEvent: {}
+[46.392810] (-) TimerEvent: {}
+[46.493105] (-) TimerEvent: {}
+[46.593422] (-) TimerEvent: {}
+[46.693718] (-) TimerEvent: {}
+[46.794026] (-) TimerEvent: {}
+[46.894327] (-) TimerEvent: {}
+[46.994632] (-) TimerEvent: {}
+[47.094918] (-) TimerEvent: {}
+[47.195220] (-) TimerEvent: {}
+[47.295515] (-) TimerEvent: {}
+[47.395811] (-) TimerEvent: {}
+[47.496098] (-) TimerEvent: {}
+[47.596420] (-) TimerEvent: {}
+[47.696752] (-) TimerEvent: {}
+[47.797068] (-) TimerEvent: {}
+[47.897368] (-) TimerEvent: {}
+[47.997661] (-) TimerEvent: {}
+[48.097952] (-) TimerEvent: {}
+[48.198258] (-) TimerEvent: {}
+[48.298555] (-) TimerEvent: {}
+[48.398845] (-) TimerEvent: {}
+[48.499139] (-) TimerEvent: {}
+[48.599465] (-) TimerEvent: {}
+[48.699800] (-) TimerEvent: {}
+[48.800093] (-) TimerEvent: {}
+[48.900347] (-) TimerEvent: {}
+[49.000641] (-) TimerEvent: {}
+[49.100935] (-) TimerEvent: {}
+[49.201237] (-) TimerEvent: {}
+[49.301526] (-) TimerEvent: {}
+[49.401809] (-) TimerEvent: {}
+[49.502097] (-) TimerEvent: {}
+[49.602337] (-) TimerEvent: {}
+[49.702635] (-) TimerEvent: {}
+[49.802939] (-) TimerEvent: {}
+[49.903255] (-) TimerEvent: {}
+[49.960533] (ascamera) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable ascamera_node\x1b[0m\n'}
+[50.003505] (-) TimerEvent: {}
+[50.104095] (-) TimerEvent: {}
+[50.204897] (-) TimerEvent: {}
+[50.305417] (-) TimerEvent: {}
+[50.405862] (-) TimerEvent: {}
+[50.506382] (-) TimerEvent: {}
+[50.606999] (-) TimerEvent: {}
+[50.707410] (-) TimerEvent: {}
+[50.807915] (-) TimerEvent: {}
+[50.908546] (-) TimerEvent: {}
+[51.009193] (-) TimerEvent: {}
+[51.110162] (-) TimerEvent: {}
+[51.210820] (-) TimerEvent: {}
+[51.311345] (-) TimerEvent: {}
+[51.411816] (-) TimerEvent: {}
+[51.512323] (-) TimerEvent: {}
+[51.612843] (-) TimerEvent: {}
+[51.713369] (-) TimerEvent: {}
+[51.814014] (-) TimerEvent: {}
+[51.914580] (-) TimerEvent: {}
+[52.015188] (-) TimerEvent: {}
+[52.115754] (-) TimerEvent: {}
+[52.216401] (-) TimerEvent: {}
+[52.317157] (-) TimerEvent: {}
+[52.418113] (-) TimerEvent: {}
+[52.519146] (-) TimerEvent: {}
+[52.619835] (-) TimerEvent: {}
+[52.720467] (-) TimerEvent: {}
+[52.820939] (-) TimerEvent: {}
+[52.865504] (ascamera) StdoutLine: {'line': b'[100%] Built target ascamera_node\n'}
+[52.878937] (ascamera) CommandEnded: {'returncode': 0}
+[52.879721] (ascamera) JobProgress: {'identifier': 'ascamera', 'progress': 'install'}
+[52.880504] (ascamera) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes/C-ROS-Automodel_Car', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3438', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3271,unix/alereyes-Linux:/tmp/.ICE-unix/3271', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c5ebf309_0cc4_4d21_8040_86c534fde12c', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/build/ascamera', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[52.890854] (ascamera) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[52.891291] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/lib/ascamera/ascamera_node\n'}
+[52.892421] (ascamera) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/lib/ascamera/ascamera_node" to ""\n'}
+[52.892608] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch\n'}
+[52.892814] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/hp60c.launch.py\n'}
+[52.892941] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/kondyor.launch.py\n'}
+[52.893014] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/kunlun_c.launch.py\n'}
+[52.893085] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/hp60cn.launch.py\n'}
+[52.893163] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/changA.launch.py\n'}
+[52.893247] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/nuwa.launch.py\n'}
+[52.893321] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/kunlun_a.launch.py\n'}
+[52.893416] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/launch/ascamera.launch.py\n'}
+[52.893498] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ament_index/resource_index/package_run_dependencies/ascamera\n'}
+[52.893573] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ament_index/resource_index/parent_prefix_path/ascamera\n'}
+[52.893647] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/environment/ament_prefix_path.sh\n'}
+[52.893741] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/environment/ament_prefix_path.dsv\n'}
+[52.893806] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/environment/path.sh\n'}
+[52.893873] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/environment/path.dsv\n'}
+[52.893955] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/local_setup.bash\n'}
+[52.894017] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/local_setup.sh\n'}
+[52.894081] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/local_setup.zsh\n'}
+[52.894170] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/local_setup.dsv\n'}
+[52.894247] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.dsv\n'}
+[52.894308] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ament_index/resource_index/packages/ascamera\n'}
+[52.894400] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/cmake/ascameraConfig.cmake\n'}
+[52.894463] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/cmake/ascameraConfig-version.cmake\n'}
+[52.894522] (ascamera) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/install/ascamera/share/ascamera/package.xml\n'}
+[52.895834] (ascamera) CommandEnded: {'returncode': 0}
+[52.908648] (ascamera) JobEnded: {'identifier': 'ascamera', 'rc': 0}
+[52.909766] (-) EventReactorShutdown: {}

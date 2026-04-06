@@ -1,0 +1,2 @@
+[console_scripts]
+com_stm = com_stm.com_stm:main

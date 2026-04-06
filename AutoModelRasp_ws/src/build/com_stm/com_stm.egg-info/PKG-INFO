@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: com-stm
+Version: 0.0.0
+Summary: Nodo puente para comunicación serial bidireccional con STM32
+Maintainer: alereyes
+Maintainer-email: alerey.lira@gmail.com
+License: MIT
+Provides-Extra: test
+License-File: LICENSE
