@@ -26,6 +26,7 @@ setup(
         'console_scripts': [
             'detector_senales = driving.detector_senales:main',
             'detector_carril = driving.detector_carril:main',
+            'drive_carril = driving.drive_carril:main',
         ],
     },
 )
