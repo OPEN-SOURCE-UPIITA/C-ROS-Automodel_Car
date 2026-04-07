@@ -1,7 +1,0 @@
-{
-  "package_name": "motor_msgs",
-  "non_idl_tuples": [
-    "/home/jason/C-ROS-Automodel_Car/simulacion_ws/src/motor_msgs:msg/MotorCommand.msg",
-    "/home/jason/C-ROS-Automodel_Car/simulacion_ws/src/motor_msgs:msg/EncoderData.msg"
-  ]
-}
