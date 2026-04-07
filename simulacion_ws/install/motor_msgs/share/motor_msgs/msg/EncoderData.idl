@@ -1,0 +1,22 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from motor_msgs/msg/EncoderData.msg
+// generated code does not contain a copyright notice
+
+
+module motor_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "Datos de Odometría de los Encoders" "\n"
+      "vel: Velocidad en \"ticks por ciclo\" (Valor absoluto)" "\n"
+      "dir: 0=Stop, 1=Adelante, 2=Atrás (Misma convención que los motores DC)")
+    struct EncoderData {
+      int32 vel_m1;
+
+      int8 dir_m1;
+
+      int32 vel_m2;
+
+      int8 dir_m2;
+    };
+  };
+};
