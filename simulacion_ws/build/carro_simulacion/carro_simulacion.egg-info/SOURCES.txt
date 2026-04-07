@@ -1,0 +1,23 @@
+LICENSE
+package.xml
+setup.cfg
+setup.py
+../../build/carro_simulacion/carro_simulacion.egg-info/PKG-INFO
+../../build/carro_simulacion/carro_simulacion.egg-info/SOURCES.txt
+../../build/carro_simulacion/carro_simulacion.egg-info/dependency_links.txt
+../../build/carro_simulacion/carro_simulacion.egg-info/entry_points.txt
+../../build/carro_simulacion/carro_simulacion.egg-info/requires.txt
+../../build/carro_simulacion/carro_simulacion.egg-info/top_level.txt
+../../build/carro_simulacion/carro_simulacion.egg-info/zip-safe
+carro_simulacion/__init__.py
+carro_simulacion/sim_adapter.py
+launch/car_sim.launch.py
+materials/textures/Diseño sin título.png:Zone.Identifier
+materials/textures/pista.png
+meshes/chasis-Assembly2.stl
+resource/carro_simulacion
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py
+urdf/carro.urdf
+worlds/pista.world
