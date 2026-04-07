@@ -1,9 +1,0 @@
-Metadata-Version: 2.1
-Name: ms200-driver
-Version: 0.0.0
-Summary: Driver de ROS 2 Jazzy para el LiDAR MS200/Oradar desarrollado desde cero.
-Maintainer: Jonathan Jason Medina Martinez
-Maintainer-email: jason240208@gmail.com
-License: MIT
-Provides-Extra: test
-License-File: LICENSE
