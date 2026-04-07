@@ -1,5 +1,6 @@
 /detector_carril:
   ros__parameters:
+<<<<<<< HEAD
     ancho_bot: 600
     ancho_carril_px: 350
     ancho_top: 120
@@ -7,10 +8,23 @@
     h_max: 179
     h_min: 0
     s_max: 60
+=======
+    ancho_bot: 700
+    ancho_carril_px: 350
+    ancho_top: 200
+    corte_y_pct: 70
+    h_max: 179
+    h_min: 0
+    s_max: 50
+>>>>>>> 0e52491 (Se quita build log y install por error de ejecutar colcon build dentro de /src)
     s_min: 0
     start_type_description_service: true
     suavizado_pct: 20
     use_sim_time: false
     v_max: 255
+<<<<<<< HEAD
     v_min: 150
+=======
+    v_min: 100
+>>>>>>> 0e52491 (Se quita build log y install por error de ejecutar colcon build dentro de /src)
 

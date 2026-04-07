@@ -1,7 +1,0 @@
-{
-  "package_name": "motor_msgs",
-  "non_idl_tuples": [
-    "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/motor_msg:msg/MotorCommand.msg",
-    "/home/alereyes/C-ROS-Automodel_Car/AutoModelRasp_ws/src/motor_msg:msg/EncoderData.msg"
-  ]
-}

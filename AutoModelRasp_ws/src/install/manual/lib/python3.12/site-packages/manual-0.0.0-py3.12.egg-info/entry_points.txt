@@ -1,4 +1,0 @@
-[console_scripts]
-full_test = manual.full_test:main
-joy_control = manual.joystick_control:main
-key_control = manual.key_control:main
