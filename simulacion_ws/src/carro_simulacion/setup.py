@@ -11,17 +11,18 @@ setup(
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        # Rutas de ROS 2 y Gazebo
         (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
         (os.path.join('share', package_name, 'urdf'), glob('urdf/*.urdf')),
         (os.path.join('share', package_name, 'meshes'), glob('meshes/*.stl')),
-	(os.path.join('share', package_name, 'worlds'), glob('worlds/*.world')),
-	(os.path.join('share', package_name, 'materials/textures'), glob('materials/textures/*.*')),
+        (os.path.join('share', package_name, 'worlds'), glob('worlds/*.world')),
+        (os.path.join('share', package_name, 'materials/textures'), glob('materials/textures/*.*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='Jonathan Jason Medina Martinez',
     maintainer_email='jason240208@gmail.com',
-    description='TODO: Package description',
+    description='Paquete de simulación del carro en Gazebo',
     license='MIT',
     extras_require={
         'test': [
