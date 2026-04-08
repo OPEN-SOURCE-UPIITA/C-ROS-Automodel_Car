@@ -14,12 +14,9 @@ class DetectorCarrilNode(Node):
         self.get_logger().info("Iniciando Detector de Carril (Comprimido + Parametros RQT)")
 
         # --- PARAMETROS DINAMICOS ---
-        self.declare_parameter('h_min', 0)
-        self.declare_parameter('h_max', 179)
-        self.declare_parameter('s_min', 0)
-        self.declare_parameter('s_max', 60)
-        self.declare_parameter('v_min', 150)
-        self.declare_parameter('v_max', 255)
+        # Adios a todos los min/max de HSV. Hola a la simplicidad.
+        self.declare_parameter('umbral_blanco', 180) # De 0 a 255
+        # ... (los demas parametros de trapecio se quedan igual)
         self.declare_parameter('corte_y_pct', 55)
         self.declare_parameter('ancho_top', 120)
         self.declare_parameter('ancho_bot', 600)
@@ -76,12 +73,8 @@ class DetectorCarrilNode(Node):
         debug = frame.copy() 
 
         # 1. LEER PARAMETROS
-        h_min = self.get_parameter('h_min').value
-        h_max = self.get_parameter('h_max').value
-        s_min = self.get_parameter('s_min').value
-        s_max = self.get_parameter('s_max').value
-        v_min = self.get_parameter('v_min').value
-        v_max = self.get_parameter('v_max').value
+        umbral_blanco = self.get_parameter('umbral_blanco').value
+
         corte_pct = self.get_parameter('corte_y_pct').value
         w_top = self.get_parameter('ancho_top').value
         w_bot = self.get_parameter('ancho_bot').value
@@ -96,10 +89,19 @@ class DetectorCarrilNode(Node):
         cv2.fillPoly(mask_roi, polygon, 255)
         cv2.polylines(debug, polygon, True, (255, 0, 0), 2)
 
-        # 3. COLOR (HSV)
-        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-        mask_color = cv2.inRange(hsv, np.array([h_min, s_min, v_min]), np.array([h_max, s_max, v_max]))
-        mask = cv2.bitwise_and(mask_color, mask_roi)
+        # 3. FILTRO DE BLANCOS (ESCALA DE GRISES + UMBRAL)
+        # Leemos el unico slider que necesitamos
+        umbral = self.get_parameter('umbral_blanco').value
+        
+        # Convertimos a grises
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        
+        # Aplicamos el umbral: todo lo que sea mas brillante que 'umbral' se vuelve blanco (255)
+        # Lo que sea mas oscuro se vuelve negro (0)
+        _, mask_blancos = cv2.threshold(gray, umbral, 255, cv2.THRESH_BINARY)
+        
+        # Juntamos los blancos detectados con tu ROI (el trapecio)
+        mask = cv2.bitwise_and(mask_blancos, mask_roi)
 
         # 4. EXTRACCION Y LOGICA (Se mantiene igual hasta la publicación)
         ys, xs = np.where(mask > 0)
