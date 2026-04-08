@@ -1,4 +1,4 @@
-# Datos de Odometría de los Encoders
+# Datos para el control de los Encoders
 # vel: Velocidad en "ticks por ciclo" (Valor absoluto)
 # dir: 0=Stop, 1=Adelante, 2=Atrás (Misma convención que los motores DC)
 
