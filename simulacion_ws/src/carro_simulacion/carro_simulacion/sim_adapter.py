@@ -25,7 +25,7 @@ class SimAdapter(Node):
         if 1480 <= msg.dir_servo <= 1520:
             t.angular.z = 0.0
         else:
-            t.angular.z = (1500 - msg.dir_servo) * 0.0025
+            t.angular.z = (msg.dir_servo - 1500) * 0.0025
 
         self.pub.publish(t)
 
