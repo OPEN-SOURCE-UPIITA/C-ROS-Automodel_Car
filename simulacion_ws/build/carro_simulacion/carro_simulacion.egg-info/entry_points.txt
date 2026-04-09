@@ -1,0 +1,2 @@
+[console_scripts]
+sim_adapter = carro_simulacion.sim_adapter:main
