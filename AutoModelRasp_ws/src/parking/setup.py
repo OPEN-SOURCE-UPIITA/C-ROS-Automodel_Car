@@ -13,8 +13,8 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='alereyes',
-    maintainer_email='alerey.lira@gmail.com',
+    maintainer='Jonathan Jason Medina Martinez',
+    maintainer_email='jason240208@gmail.com',
     description='TODO: Package description',
     license='MIT',
     extras_require={
@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'smart_parking = parking.smart_parking:main',
         ],
     },
 )
