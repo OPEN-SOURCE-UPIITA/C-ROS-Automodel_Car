@@ -54,7 +54,7 @@ ros2 topic pub /motor_command motor_msgs/msg/MotorCommand "{dir_dc: 1, speed_dc:
 * `speed_dc`: Velocidad lineal en porcentaje (0 a 100)
 * `dir_servo`: Dirección del servo en PWM (Centro = 1500, Rango = 1110 a 1740)
 
-## 📁 Estructura del Paquete
+## Estructura del Paquete
 
 * `launch/`: Archivos de lanzamiento que orquestan Gazebo y los nodos de ROS 2.
 * `urdf/`: El modelo 3D del carro (`carro.urdf`).
