@@ -896,7 +896,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 
                     // --- LÓGICA DE PARO DE EMERGENCIA ---
                     if (e_stop_active == 1) {
-                        __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 1500);
+                        __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 1435);
                         HAL_GPIO_WritePin(GPIOD, GPIO_PIN_9, GPIO_PIN_RESET);
                         HAL_GPIO_WritePin(GPIOD, GPIO_PIN_10, GPIO_PIN_RESET);
                         __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 1000);
@@ -908,14 +908,14 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
                         // --- SEGURIDAD DEL SERVO ---
                         if (servo_pwm > 1740) servo_pwm = 1740;
                         if (servo_pwm < 1110) servo_pwm = 1110;
-                        if (servo_pwm == 0)   servo_pwm = 1500;
+                        if (servo_pwm == 0)   servo_pwm = 1435;
 
                         __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, servo_pwm);
 
                         // --- CONTROL MOTORES DC ---
                         uint32_t pwm_val = speed_dc * 10;
 
-                        if (dir_dc == 1) { // ADELANTE
+                        if (dir_dc == 2) { // ADELANTE
                             HAL_GPIO_WritePin(GPIOD, GPIO_PIN_9, GPIO_PIN_SET);
                             HAL_GPIO_WritePin(GPIOD, GPIO_PIN_10, GPIO_PIN_RESET);
                             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, 0);
@@ -923,7 +923,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
                             __HAL_TIM_SET_COMPARE(&htim9, TIM_CHANNEL_1, 0);
                             __HAL_TIM_SET_COMPARE(&htim9, TIM_CHANNEL_2, pwm_val);
                         }
-                        else if (dir_dc == 2) { // REVERSA
+                        else if (dir_dc == 1) { // REVERSA
                             HAL_GPIO_WritePin(GPIOD, GPIO_PIN_9, GPIO_PIN_RESET);
                             HAL_GPIO_WritePin(GPIOD, GPIO_PIN_10, GPIO_PIN_SET);
                             __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, pwm_val);
@@ -979,3 +979,4 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+
