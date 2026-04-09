@@ -1,0 +1,47 @@
+running egg_info
+creating ../../build/carro_simulacion/carro_simulacion.egg-info
+writing ../../build/carro_simulacion/carro_simulacion.egg-info/PKG-INFO
+writing dependency_links to ../../build/carro_simulacion/carro_simulacion.egg-info/dependency_links.txt
+writing entry points to ../../build/carro_simulacion/carro_simulacion.egg-info/entry_points.txt
+writing requirements to ../../build/carro_simulacion/carro_simulacion.egg-info/requires.txt
+writing top-level names to ../../build/carro_simulacion/carro_simulacion.egg-info/top_level.txt
+writing manifest file '../../build/carro_simulacion/carro_simulacion.egg-info/SOURCES.txt'
+reading manifest file '../../build/carro_simulacion/carro_simulacion.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../../build/carro_simulacion/carro_simulacion.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion
+copying carro_simulacion/__init__.py -> /home/jason/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion
+copying carro_simulacion/sim_adapter.py -> /home/jason/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion
+running install
+running install_lib
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion
+copying /home/jason/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion/__init__.py -> /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion
+copying /home/jason/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion/sim_adapter.py -> /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion
+byte-compiling /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion/sim_adapter.py to sim_adapter.cpython-312.pyc
+running install_data
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/ament_index
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/ament_index/resource_index
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/ament_index/resource_index/packages
+copying resource/carro_simulacion -> /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/ament_index/resource_index/packages
+copying package.xml -> /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/launch
+copying launch/car_sim.launch.py -> /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/launch
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/urdf
+copying urdf/carro.urdf -> /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/urdf
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/meshes
+copying meshes/chasis-Assembly2.stl -> /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/meshes
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/worlds
+copying worlds/pista.world -> /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/worlds
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/materials
+creating /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/materials/textures
+copying materials/textures/pista.png -> /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/materials/textures
+running install_egg_info
+Copying ../../build/carro_simulacion/carro_simulacion.egg-info to /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion-0.0.0-py3.12.egg-info
+running install_scripts
+Installing sim_adapter script to /home/jason/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/carro_simulacion
+writing list of installed files to '/home/jason/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/install.log'
