@@ -1,0 +1,473 @@
+[0.000000] (-) TimerEvent: {}
+[0.000170] (carro_simulacion) JobQueued: {'identifier': 'carro_simulacion', 'dependencies': OrderedDict()}
+[0.000196] (motor_msgs) JobQueued: {'identifier': 'motor_msgs', 'dependencies': OrderedDict()}
+[0.000636] (carro_simulacion) JobStarted: {'identifier': 'carro_simulacion'}
+[0.005068] (motor_msgs) JobStarted: {'identifier': 'motor_msgs'}
+[0.099982] (-) TimerEvent: {}
+[0.200244] (-) TimerEvent: {}
+[0.252576] (motor_msgs) JobProgress: {'identifier': 'motor_msgs', 'progress': 'cmake'}
+[0.252701] (motor_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/src/motor_msg', '-DCMAKE_INSTALL_PREFIX=/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3334', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3119,unix/alereyes-Linux:/tmp/.ICE-unix/3119', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/2dd921d8_294d_4547_9542_c0cfaf3a5211', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.103', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.300325] (-) TimerEvent: {}
+[0.400546] (-) TimerEvent: {}
+[0.500762] (-) TimerEvent: {}
+[0.601001] (-) TimerEvent: {}
+[0.633534] (carro_simulacion) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/carro_simulacion', 'build', '--build-base', '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build', 'install', '--record', '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/src/carro_simulacion', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3334', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3119,unix/alereyes-Linux:/tmp/.ICE-unix/3119', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/2dd921d8_294d_4547_9542_c0cfaf3a5211', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.103', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[0.701084] (-) TimerEvent: {}
+[0.801313] (-) TimerEvent: {}
+[0.814612] (carro_simulacion) StdoutLine: {'line': b'running egg_info\n'}
+[0.814905] (carro_simulacion) StdoutLine: {'line': b'creating ../../build/carro_simulacion/carro_simulacion.egg-info\n'}
+[0.827008] (carro_simulacion) StdoutLine: {'line': b'writing ../../build/carro_simulacion/carro_simulacion.egg-info/PKG-INFO\n'}
+[0.827217] (carro_simulacion) StdoutLine: {'line': b'writing dependency_links to ../../build/carro_simulacion/carro_simulacion.egg-info/dependency_links.txt\n'}
+[0.827299] (carro_simulacion) StdoutLine: {'line': b'writing entry points to ../../build/carro_simulacion/carro_simulacion.egg-info/entry_points.txt\n'}
+[0.827368] (carro_simulacion) StdoutLine: {'line': b'writing requirements to ../../build/carro_simulacion/carro_simulacion.egg-info/requires.txt\n'}
+[0.827405] (carro_simulacion) StdoutLine: {'line': b'writing top-level names to ../../build/carro_simulacion/carro_simulacion.egg-info/top_level.txt\n'}
+[0.827446] (carro_simulacion) StdoutLine: {'line': b"writing manifest file '../../build/carro_simulacion/carro_simulacion.egg-info/SOURCES.txt'\n"}
+[0.852252] (carro_simulacion) StdoutLine: {'line': b"reading manifest file '../../build/carro_simulacion/carro_simulacion.egg-info/SOURCES.txt'\n"}
+[0.852360] (carro_simulacion) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[0.852732] (carro_simulacion) StdoutLine: {'line': b"writing manifest file '../../build/carro_simulacion/carro_simulacion.egg-info/SOURCES.txt'\n"}
+[0.852820] (carro_simulacion) StdoutLine: {'line': b'running build\n'}
+[0.852872] (carro_simulacion) StdoutLine: {'line': b'running build_py\n'}
+[0.853009] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build\n'}
+[0.853091] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib\n'}
+[0.853132] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion\n'}
+[0.853171] (carro_simulacion) StdoutLine: {'line': b'copying carro_simulacion/camera_filter.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion\n'}
+[0.884956] (carro_simulacion) StdoutLine: {'line': b'copying carro_simulacion/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion\n'}
+[0.885278] (carro_simulacion) StdoutLine: {'line': b'copying carro_simulacion/sim_adapter.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion\n'}
+[0.901624] (-) TimerEvent: {}
+[0.904167] (carro_simulacion) StdoutLine: {'line': b'running install\n'}
+[0.915947] (carro_simulacion) StdoutLine: {'line': b'running install_lib\n'}
+[0.930199] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion\n'}
+[0.930307] (carro_simulacion) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion/camera_filter.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion\n'}
+[0.930352] (carro_simulacion) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion\n'}
+[0.930509] (carro_simulacion) StdoutLine: {'line': b'copying /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion/sim_adapter.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion\n'}
+[0.930693] (carro_simulacion) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion/camera_filter.py to camera_filter.cpython-312.pyc\n'}
+[0.931012] (carro_simulacion) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion/__init__.py to __init__.cpython-312.pyc\n'}
+[0.931113] (carro_simulacion) StdoutLine: {'line': b'byte-compiling /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion/sim_adapter.py to sim_adapter.cpython-312.pyc\n'}
+[0.931539] (carro_simulacion) StdoutLine: {'line': b'running install_data\n'}
+[0.931626] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/ament_index\n'}
+[0.931671] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/ament_index/resource_index\n'}
+[0.931728] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/ament_index/resource_index/packages\n'}
+[0.931766] (carro_simulacion) StdoutLine: {'line': b'copying resource/carro_simulacion -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/ament_index/resource_index/packages\n'}
+[0.931805] (carro_simulacion) StdoutLine: {'line': b'copying package.xml -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion\n'}
+[0.931942] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/launch\n'}
+[0.932023] (carro_simulacion) StdoutLine: {'line': b'copying launch/car_sim.launch.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/launch\n'}
+[0.937266] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/urdf\n'}
+[0.937351] (carro_simulacion) StdoutLine: {'line': b'copying urdf/carro.urdf -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/urdf\n'}
+[0.954935] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/meshes\n'}
+[0.955425] (carro_simulacion) StdoutLine: {'line': b'copying meshes/chasis-Assembly2.stl -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/meshes\n'}
+[1.001851] (-) TimerEvent: {}
+[1.102550] (-) TimerEvent: {}
+[1.187448] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/worlds\n'}
+[1.188152] (carro_simulacion) StdoutLine: {'line': b'copying worlds/pista.world -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/worlds\n'}
+[1.202619] (-) TimerEvent: {}
+[1.217652] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/materials\n'}
+[1.218217] (carro_simulacion) StdoutLine: {'line': b'creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/materials/textures\n'}
+[1.218416] (carro_simulacion) StdoutLine: {'line': b'copying materials/textures/pista.png -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/materials/textures\n'}
+[1.288404] (carro_simulacion) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.302716] (-) TimerEvent: {}
+[1.312156] (carro_simulacion) StdoutLine: {'line': b'Copying ../../build/carro_simulacion/carro_simulacion.egg-info to /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion-0.0.0-py3.12.egg-info\n'}
+[1.312554] (carro_simulacion) StdoutLine: {'line': b'running install_scripts\n'}
+[1.397619] (carro_simulacion) StdoutLine: {'line': b'Installing camera_filter script to /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/carro_simulacion\n'}
+[1.397743] (carro_simulacion) StdoutLine: {'line': b'Installing sim_adapter script to /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/carro_simulacion\n'}
+[1.397806] (carro_simulacion) StdoutLine: {'line': b"writing list of installed files to '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/install.log'\n"}
+[1.402890] (-) TimerEvent: {}
+[1.418027] (carro_simulacion) CommandEnded: {'returncode': 0}
+[1.424026] (carro_simulacion) JobEnded: {'identifier': 'carro_simulacion', 'rc': 0}
+[1.503069] (-) TimerEvent: {}
+[1.603651] (-) TimerEvent: {}
+[1.704271] (-) TimerEvent: {}
+[1.804775] (-) TimerEvent: {}
+[1.882680] (motor_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[1.904929] (-) TimerEvent: {}
+[2.005429] (-) TimerEvent: {}
+[2.105983] (-) TimerEvent: {}
+[2.206442] (-) TimerEvent: {}
+[2.307331] (-) TimerEvent: {}
+[2.407873] (-) TimerEvent: {}
+[2.508415] (-) TimerEvent: {}
+[2.609034] (-) TimerEvent: {}
+[2.709582] (-) TimerEvent: {}
+[2.797338] (motor_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[2.809708] (-) TimerEvent: {}
+[2.910048] (-) TimerEvent: {}
+[2.963531] (motor_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[3.010229] (-) TimerEvent: {}
+[3.110725] (-) TimerEvent: {}
+[3.167808] (motor_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[3.174547] (motor_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[3.188977] (motor_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[3.189769] (motor_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[3.210140] (motor_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[3.210821] (-) TimerEvent: {}
+[3.311057] (-) TimerEvent: {}
+[3.329911] (motor_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[3.338546] (motor_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[3.338751] (motor_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[3.339060] (motor_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[3.411249] (-) TimerEvent: {}
+[3.511769] (-) TimerEvent: {}
+[3.565508] (motor_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[3.612170] (-) TimerEvent: {}
+[3.712716] (-) TimerEvent: {}
+[3.779725] (motor_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[3.812957] (-) TimerEvent: {}
+[3.913390] (-) TimerEvent: {}
+[4.014059] (-) TimerEvent: {}
+[4.114849] (-) TimerEvent: {}
+[4.118261] (motor_msgs) StdoutLine: {'line': b'-- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)\n'}
+[4.215054] (-) TimerEvent: {}
+[4.315429] (-) TimerEvent: {}
+[4.353158] (motor_msgs) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[4.415645] (-) TimerEvent: {}
+[4.443323] (motor_msgs) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[4.515804] (-) TimerEvent: {}
+[4.560649] (motor_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[4.616090] (motor_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.616225] (-) TimerEvent: {}
+[4.716516] (-) TimerEvent: {}
+[4.816858] (-) TimerEvent: {}
+[4.817253] (motor_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)\n'}
+[4.903314] (motor_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 4.6.6 (/opt/ros/jazzy/share/rosidl_adapter/cmake)\n'}
+[4.917039] (-) TimerEvent: {}
+[5.017473] (-) TimerEvent: {}
+[5.117822] (-) TimerEvent: {}
+[5.218197] (-) TimerEvent: {}
+[5.318413] (-) TimerEvent: {}
+[5.418685] (-) TimerEvent: {}
+[5.518887] (-) TimerEvent: {}
+[5.619153] (-) TimerEvent: {}
+[5.719987] (-) TimerEvent: {}
+[5.727078] (motor_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)\n'}
+[5.820275] (-) TimerEvent: {}
+[5.920742] (-) TimerEvent: {}
+[6.021015] (-) TimerEvent: {}
+[6.121500] (-) TimerEvent: {}
+[6.221744] (-) TimerEvent: {}
+[6.322081] (-) TimerEvent: {}
+[6.422351] (-) TimerEvent: {}
+[6.522674] (-) TimerEvent: {}
+[6.622993] (-) TimerEvent: {}
+[6.723244] (-) TimerEvent: {}
+[6.782914] (motor_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[6.823349] (-) TimerEvent: {}
+[6.923617] (-) TimerEvent: {}
+[7.023871] (-) TimerEvent: {}
+[7.074003] (motor_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[7.118421] (motor_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)\n'}
+[7.124051] (-) TimerEvent: {}
+[7.224303] (-) TimerEvent: {}
+[7.247081] (motor_msgs) StdoutLine: {'line': b'-- Found PythonExtra: /usr/bin/python3  \n'}
+[7.324477] (-) TimerEvent: {}
+[7.424702] (-) TimerEvent: {}
+[7.525094] (-) TimerEvent: {}
+[7.625623] (-) TimerEvent: {}
+[7.725831] (-) TimerEvent: {}
+[7.826076] (-) TimerEvent: {}
+[7.843174] (motor_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed \n'}
+[7.926260] (-) TimerEvent: {}
+[7.948091] (motor_msgs) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[8.026566] (-) TimerEvent: {}
+[8.127079] (-) TimerEvent: {}
+[8.227614] (-) TimerEvent: {}
+[8.328290] (-) TimerEvent: {}
+[8.358963] (motor_msgs) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[8.387022] (motor_msgs) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[8.420670] (motor_msgs) StdoutLine: {'line': b'-- Configuring done (8.2s)\n'}
+[8.428461] (-) TimerEvent: {}
+[8.470089] (motor_msgs) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[8.477472] (motor_msgs) StdoutLine: {'line': b'-- Build files have been written to: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs\n'}
+[8.484995] (motor_msgs) CommandEnded: {'returncode': 0}
+[8.485924] (motor_msgs) JobProgress: {'identifier': 'motor_msgs', 'progress': 'build'}
+[8.485973] (motor_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs', '--', '-j12', '-l12'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3334', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3119,unix/alereyes-Linux:/tmp/.ICE-unix/3119', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/2dd921d8_294d_4547_9542_c0cfaf3a5211', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.103', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[8.528603] (-) TimerEvent: {}
+[8.538631] (motor_msgs) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating type hashes for ROS interfaces\x1b[0m\n'}
+[8.548059] (motor_msgs) StdoutLine: {'line': b'[  2%] Built target ament_cmake_python_copy_motor_msgs\n'}
+[8.628790] (-) TimerEvent: {}
+[8.699741] (motor_msgs) StdoutLine: {'line': b'running egg_info\n'}
+[8.700422] (motor_msgs) StdoutLine: {'line': b'creating motor_msgs.egg-info\n'}
+[8.712708] (motor_msgs) StdoutLine: {'line': b'writing motor_msgs.egg-info/PKG-INFO\n'}
+[8.712899] (motor_msgs) StdoutLine: {'line': b'writing dependency_links to motor_msgs.egg-info/dependency_links.txt\n'}
+[8.712985] (motor_msgs) StdoutLine: {'line': b'writing top-level names to motor_msgs.egg-info/top_level.txt\n'}
+[8.713064] (motor_msgs) StdoutLine: {'line': b"writing manifest file 'motor_msgs.egg-info/SOURCES.txt'\n"}
+[8.728929] (-) TimerEvent: {}
+[8.742373] (motor_msgs) StdoutLine: {'line': b'[  2%] Built target motor_msgs__rosidl_generator_type_description\n'}
+[8.751673] (motor_msgs) StdoutLine: {'line': b"reading manifest file 'motor_msgs.egg-info/SOURCES.txt'\n"}
+[8.751909] (motor_msgs) StdoutLine: {'line': b'[  4%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[8.752013] (motor_msgs) StdoutLine: {'line': b"writing manifest file 'motor_msgs.egg-info/SOURCES.txt'\n"}
+[8.762520] (motor_msgs) StdoutLine: {'line': b'[  6%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[8.775298] (motor_msgs) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_build_motor_msgs_egg\n'}
+[8.829087] (-) TimerEvent: {}
+[8.929419] (-) TimerEvent: {}
+[9.007377] (motor_msgs) StdoutLine: {'line': b'[  6%] Built target motor_msgs__cpp\n'}
+[9.026521] (motor_msgs) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/motor_command__functions.c.o\x1b[0m\n'}
+[9.026701] (motor_msgs) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/encoder_data__functions.c.o\x1b[0m\n'}
+[9.026775] (motor_msgs) StdoutLine: {'line': b'[ 13%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/encoder_data__type_support.c.o\x1b[0m\n'}
+[9.028789] (motor_msgs) StdoutLine: {'line': b'[ 15%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/encoder_data__description.c.o\x1b[0m\n'}
+[9.028967] (motor_msgs) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/motor_command__type_support.c.o\x1b[0m\n'}
+[9.029018] (motor_msgs) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/motor_command__description.c.o\x1b[0m\n'}
+[9.029514] (-) TimerEvent: {}
+[9.129756] (-) TimerEvent: {}
+[9.230318] (-) TimerEvent: {}
+[9.331088] (-) TimerEvent: {}
+[9.431874] (-) TimerEvent: {}
+[9.532905] (-) TimerEvent: {}
+[9.558190] (motor_msgs) StdoutLine: {'line': b'[ 22%] \x1b[32m\x1b[1mLinking C shared library libmotor_msgs__rosidl_generator_c.so\x1b[0m\n'}
+[9.633070] (-) TimerEvent: {}
+[9.660360] (motor_msgs) StdoutLine: {'line': b'[ 22%] Built target motor_msgs__rosidl_generator_c\n'}
+[9.672217] (motor_msgs) StdoutLine: {'line': b'[ 31%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[9.672446] (motor_msgs) StdoutLine: {'line': b'[ 31%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[9.672537] (motor_msgs) StdoutLine: {'line': b'[ 31%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[9.672744] (motor_msgs) StdoutLine: {'line': b'[ 31%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[9.673893] (motor_msgs) StdoutLine: {'line': b'[ 34%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[9.674116] (motor_msgs) StdoutLine: {'line': b'[ 36%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[9.733317] (-) TimerEvent: {}
+[9.833867] (-) TimerEvent: {}
+[9.934124] (-) TimerEvent: {}
+[9.989093] (motor_msgs) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/motor_msgs/msg/encoder_data__type_support.cpp.o\x1b[0m\n'}
+[9.989302] (motor_msgs) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/motor_msgs/msg/motor_command__type_support.cpp.o\x1b[0m\n'}
+[10.034227] (-) TimerEvent: {}
+[10.038679] (motor_msgs) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/motor_msgs/msg/motor_command__type_support.cpp.o\x1b[0m\n'}
+[10.039572] (motor_msgs) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/motor_msgs/msg/encoder_data__type_support.cpp.o\x1b[0m\n'}
+[10.040997] (motor_msgs) StdoutLine: {'line': b'[ 47%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/motor_msgs/msg/detail/encoder_data__type_support.cpp.o\x1b[0m\n'}
+[10.042356] (motor_msgs) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/motor_msgs/msg/detail/motor_command__type_support.cpp.o\x1b[0m\n'}
+[10.077107] (motor_msgs) StdoutLine: {'line': b'[ 52%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/motor_msgs/msg/detail/dds_fastrtps/motor_command__type_support.cpp.o\x1b[0m\n'}
+[10.077326] (motor_msgs) StdoutLine: {'line': b'[ 54%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/motor_msgs/msg/detail/dds_fastrtps/encoder_data__type_support.cpp.o\x1b[0m\n'}
+[10.134414] (-) TimerEvent: {}
+[10.193616] (motor_msgs) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/motor_msgs/msg/detail/encoder_data__type_support_c.cpp.o\x1b[0m\n'}
+[10.193852] (motor_msgs) StdoutLine: {'line': b'[ 59%] \x1b[32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/motor_msgs/msg/detail/motor_command__type_support_c.cpp.o\x1b[0m\n'}
+[10.234592] (-) TimerEvent: {}
+[10.335296] (-) TimerEvent: {}
+[10.435985] (-) TimerEvent: {}
+[10.463375] (motor_msgs) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/motor_msgs/msg/detail/motor_command__type_support.c.o\x1b[0m\n'}
+[10.466205] (motor_msgs) StdoutLine: {'line': b'[ 63%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/motor_msgs/msg/detail/encoder_data__type_support.c.o\x1b[0m\n'}
+[10.475658] (motor_msgs) StdoutLine: {'line': b'[ 65%] \x1b[32m\x1b[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_c.so\x1b[0m\n'}
+[10.536273] (-) TimerEvent: {}
+[10.624302] (motor_msgs) StdoutLine: {'line': b'[ 65%] Built target motor_msgs__rosidl_typesupport_c\n'}
+[10.636429] (-) TimerEvent: {}
+[10.676122] (motor_msgs) StdoutLine: {'line': b'[ 68%] \x1b[32m\x1b[1mLinking C shared library libmotor_msgs__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[10.736879] (-) TimerEvent: {}
+[10.837956] (-) TimerEvent: {}
+[10.971540] (motor_msgs) StdoutLine: {'line': b'[ 68%] Built target motor_msgs__rosidl_typesupport_introspection_c\n'}
+[10.971809] (-) TimerEvent: {}
+[11.072124] (-) TimerEvent: {}
+[11.172910] (-) TimerEvent: {}
+[11.273402] (-) TimerEvent: {}
+[11.374031] (-) TimerEvent: {}
+[11.474531] (-) TimerEvent: {}
+[11.574977] (-) TimerEvent: {}
+[11.675591] (-) TimerEvent: {}
+[11.776153] (-) TimerEvent: {}
+[11.876774] (-) TimerEvent: {}
+[11.977411] (-) TimerEvent: {}
+[12.077931] (-) TimerEvent: {}
+[12.178503] (-) TimerEvent: {}
+[12.279035] (-) TimerEvent: {}
+[12.379499] (-) TimerEvent: {}
+[12.460457] (motor_msgs) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[12.479608] (-) TimerEvent: {}
+[12.514160] (motor_msgs) StdoutLine: {'line': b'[ 72%] \x1b[32m\x1b[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[12.546699] (motor_msgs) StdoutLine: {'line': b'[ 72%] Built target motor_msgs__rosidl_typesupport_cpp\n'}
+[12.579718] (-) TimerEvent: {}
+[12.592750] (motor_msgs) StdoutLine: {'line': b'[ 72%] Built target motor_msgs__rosidl_typesupport_introspection_cpp\n'}
+[12.679867] (-) TimerEvent: {}
+[12.779180] (motor_msgs) StdoutLine: {'line': b'[ 77%] \x1b[32m\x1b[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[12.779396] (motor_msgs) StdoutLine: {'line': b'[ 77%] \x1b[32m\x1b[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[12.779959] (-) TimerEvent: {}
+[12.866201] (motor_msgs) StdoutLine: {'line': b'[ 77%] Built target motor_msgs__rosidl_typesupport_fastrtps_c\n'}
+[12.876330] (motor_msgs) StdoutLine: {'line': b'[ 77%] Built target motor_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[12.880034] (-) TimerEvent: {}
+[12.900824] (motor_msgs) StdoutLine: {'line': b'[ 77%] Built target motor_msgs\n'}
+[12.923425] (motor_msgs) StdoutLine: {'line': b'[ 79%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[12.980214] (-) TimerEvent: {}
+[13.080635] (-) TimerEvent: {}
+[13.180981] (-) TimerEvent: {}
+[13.216860] (motor_msgs) StdoutLine: {'line': b'[ 79%] Built target motor_msgs__py\n'}
+[13.234274] (motor_msgs) StdoutLine: {'line': b'[ 81%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_py.dir/rosidl_generator_py/motor_msgs/msg/_encoder_data_s.c.o\x1b[0m\n'}
+[13.234502] (motor_msgs) StdoutLine: {'line': b'[ 84%] \x1b[32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_py.dir/rosidl_generator_py/motor_msgs/msg/_motor_command_s.c.o\x1b[0m\n'}
+[13.281293] (-) TimerEvent: {}
+[13.382152] (-) TimerEvent: {}
+[13.482686] (-) TimerEvent: {}
+[13.583259] (-) TimerEvent: {}
+[13.683808] (-) TimerEvent: {}
+[13.784325] (-) TimerEvent: {}
+[13.884778] (-) TimerEvent: {}
+[13.985169] (-) TimerEvent: {}
+[14.085510] (-) TimerEvent: {}
+[14.170139] (motor_msgs) StdoutLine: {'line': b'[ 86%] \x1b[32m\x1b[1mLinking C shared library libmotor_msgs__rosidl_generator_py.so\x1b[0m\n'}
+[14.185620] (-) TimerEvent: {}
+[14.239844] (motor_msgs) StdoutLine: {'line': b'[ 86%] Built target motor_msgs__rosidl_generator_py\n'}
+[14.257742] (motor_msgs) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding C object CMakeFiles/motor_msgs_s__rosidl_typesupport_c.dir/rosidl_generator_py/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[14.258073] (motor_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/motor_msgs_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[14.259928] (motor_msgs) StdoutLine: {'line': b'[ 93%] \x1b[32mBuilding C object CMakeFiles/motor_msgs_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[14.285744] (-) TimerEvent: {}
+[14.325865] (motor_msgs) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/motor_msgs/motor_msgs_s__rosidl_typesupport_c.so\x1b[0m\n'}
+[14.326008] (motor_msgs) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/motor_msgs/motor_msgs_s__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[14.331083] (motor_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared module rosidl_generator_py/motor_msgs/motor_msgs_s__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[14.347017] (motor_msgs) StdoutLine: {'line': b'[100%] Built target motor_msgs_s__rosidl_typesupport_c\n'}
+[14.350398] (motor_msgs) StdoutLine: {'line': b'[100%] Built target motor_msgs_s__rosidl_typesupport_introspection_c\n'}
+[14.355061] (motor_msgs) StdoutLine: {'line': b'[100%] Built target motor_msgs_s__rosidl_typesupport_fastrtps_c\n'}
+[14.363230] (motor_msgs) CommandEnded: {'returncode': 0}
+[14.363672] (motor_msgs) JobProgress: {'identifier': 'motor_msgs', 'progress': 'install'}
+[14.370587] (motor_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs'], 'cwd': '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'LANGUAGE': 'es:en', 'USER': 'alereyes', 'LC_TIME': 'en_US.UTF-8', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/alereyes', 'OLDPWD': '/home/alereyes', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'SYSTEMD_EXEC_PID': '3334', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'QSYS_ROOTDIR': '/home/alereyes/intelFPGA_lite/24.1std/quartus/sopc_builder/bin', 'GNOME_KEYRING_CONTROL': '/run/user/1000/keyring', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'alereyes', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.SettingsDaemon.MediaKeys.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'alereyes', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/home/alereyes/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/alereyes-Linux:@/tmp/.ICE-unix/3119,unix/alereyes-Linux:/tmp/.ICE-unix/3119', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/2dd921d8_294d_4547_9542_c0cfaf3a5211', 'LM_LICENSE_FILE': '/home/alereyes/intelFPGA_lite/24.1std/licenses/LR-256770_License.dat', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.103', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/home/alereyes/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[14.380942] (motor_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[14.381084] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/ament_index/resource_index/rosidl_interfaces/motor_msgs\n'}
+[14.381157] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/msg/MotorCommand.json\n'}
+[14.381224] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/msg/EncoderData.json\n'}
+[14.381295] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs\n'}
+[14.381364] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg\n'}
+[14.381430] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail\n'}
+[14.381498] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.h\n'}
+[14.381574] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__description.c\n'}
+[14.381624] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__functions.h\n'}
+[14.381695] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__functions.h\n'}
+[14.381747] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__struct.h\n'}
+[14.381814] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.h\n'}
+[14.381866] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.c\n'}
+[14.381943] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__struct.h\n'}
+[14.381993] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__functions.c\n'}
+[14.382041] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__description.c\n'}
+[14.382108] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__functions.c\n'}
+[14.382160] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.c\n'}
+[14.382211] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/encoder_data.h\n'}
+[14.382278] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[14.382328] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/motor_command.h\n'}
+[14.382387] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/library_path.sh\n'}
+[14.382449] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/library_path.dsv\n'}
+[14.382513] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_generator_c.so\n'}
+[14.382672] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_generator_c.so" to ""\n'}
+[14.382735] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs\n'}
+[14.382803] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg\n'}
+[14.382853] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[14.382907] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail\n'}
+[14.382972] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__rosidl_typesupport_fastrtps_c.h\n'}
+[14.383017] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__rosidl_typesupport_fastrtps_c.h\n'}
+[14.383059] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[14.383120] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[14.383189] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs\n'}
+[14.383237] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg\n'}
+[14.383287] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/motor_command.hpp\n'}
+[14.383354] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[14.383403] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail\n'}
+[14.383451] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__builder.hpp\n'}
+[14.383498] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.hpp\n'}
+[14.383568] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__builder.hpp\n'}
+[14.383616] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__traits.hpp\n'}
+[14.383674] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__traits.hpp\n'}
+[14.383720] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__struct.hpp\n'}
+[14.383766] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.hpp\n'}
+[14.383814] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__struct.hpp\n'}
+[14.383873] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/encoder_data.hpp\n'}
+[14.383951] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs\n'}
+[14.384001] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg\n'}
+[14.384049] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail\n'}
+[14.384095] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.384142] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[14.384211] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/dds_fastrtps\n'}
+[14.384258] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[14.384305] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[14.384352] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[14.384400] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs\n'}
+[14.384444] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg\n'}
+[14.384503] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[14.384547] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail\n'}
+[14.384586] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.c\n'}
+[14.384633] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__rosidl_typesupport_introspection_c.h\n'}
+[14.384678] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__rosidl_typesupport_introspection_c.h\n'}
+[14.384729] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.c\n'}
+[14.384768] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_introspection_c.so\n'}
+[14.384813] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_introspection_c.so" to ""\n'}
+[14.384856] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_c.so\n'}
+[14.384917] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_c.so" to ""\n'}
+[14.384986] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs\n'}
+[14.385033] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg\n'}
+[14.385079] (motor_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail\n'}
+[14.385125] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.385168] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.cpp\n'}
+[14.385213] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.cpp\n'}
+[14.385274] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__rosidl_typesupport_introspection_cpp.hpp\n'}
+[14.385320] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[14.385364] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[14.385411] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_cpp.so\n'}
+[14.385470] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_cpp.so" to ""\n'}
+[14.385526] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/pythonpath.sh\n'}
+[14.385577] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/pythonpath.dsv\n'}
+[14.385623] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info\n'}
+[14.385669] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info/SOURCES.txt\n'}
+[14.385726] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info/dependency_links.txt\n'}
+[14.385771] (-) TimerEvent: {}
+[14.385848] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info/PKG-INFO\n'}
+[14.385910] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info/top_level.txt\n'}
+[14.385957] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs\n'}
+[14.386004] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_c.c\n'}
+[14.386050] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[14.386118] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_introspection_c.so\n'}
+[14.386166] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[14.386212] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg\n'}
+[14.386259] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_encoder_data.py\n'}
+[14.386304] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_motor_command_s.c\n'}
+[14.386348] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_motor_command.py\n'}
+[14.386392] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_encoder_data_s.c\n'}
+[14.386452] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/__init__.py\n'}
+[14.386493] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_c.so\n'}
+[14.386534] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_fastrtps_c.so\n'}
+[14.386578] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/__init__.py\n'}
+[14.415330] (motor_msgs) StdoutLine: {'line': b"Listing '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs'...\n"}
+[14.415446] (motor_msgs) StdoutLine: {'line': b"Compiling '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/__init__.py'...\n"}
+[14.415489] (motor_msgs) StdoutLine: {'line': b"Listing '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg'...\n"}
+[14.415532] (motor_msgs) StdoutLine: {'line': b"Compiling '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/__init__.py'...\n"}
+[14.415567] (motor_msgs) StdoutLine: {'line': b"Compiling '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_encoder_data.py'...\n"}
+[14.415602] (motor_msgs) StdoutLine: {'line': b"Compiling '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_motor_command.py'...\n"}
+[14.419707] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_fastrtps_c.so\n'}
+[14.419930] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[14.420455] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_introspection_c.so\n'}
+[14.420556] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_introspection_c.so" to ""\n'}
+[14.420619] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_c.so\n'}
+[14.420771] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_c.so" to ""\n'}
+[14.420859] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_generator_py.so\n'}
+[14.420941] (motor_msgs) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_generator_py.so" to ""\n'}
+[14.420985] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/msg/MotorCommand.idl\n'}
+[14.421067] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/msg/EncoderData.idl\n'}
+[14.421112] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/msg/MotorCommand.msg\n'}
+[14.421156] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/msg/EncoderData.msg\n'}
+[14.421215] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/ament_index/resource_index/package_run_dependencies/motor_msgs\n'}
+[14.421275] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/ament_index/resource_index/parent_prefix_path/motor_msgs\n'}
+[14.421334] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/ament_prefix_path.sh\n'}
+[14.421399] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/ament_prefix_path.dsv\n'}
+[14.421444] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/path.sh\n'}
+[14.421501] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/path.dsv\n'}
+[14.421554] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/local_setup.bash\n'}
+[14.421611] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/local_setup.sh\n'}
+[14.421670] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/local_setup.zsh\n'}
+[14.421729] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/local_setup.dsv\n'}
+[14.421787] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/package.dsv\n'}
+[14.421847] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/ament_index/resource_index/packages/motor_msgs\n'}
+[14.421912] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_cExport.cmake\n'}
+[14.421972] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[14.422029] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[14.422089] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[14.422147] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_cppExport.cmake\n'}
+[14.422211] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[14.422250] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[14.422307] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[14.422366] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[14.422424] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_cExport.cmake\n'}
+[14.422485] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[14.422543] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[14.422589] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[14.422637] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[14.422692] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[14.422754] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_pyExport.cmake\n'}
+[14.422803] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_pyExport-noconfig.cmake\n'}
+[14.422853] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[14.422913] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[14.422964] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[14.423021] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[14.423075] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[14.423131] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[14.423183] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[14.423239] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgsConfig.cmake\n'}
+[14.423295] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgsConfig-version.cmake\n'}
+[14.423350] (motor_msgs) StdoutLine: {'line': b'-- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/package.xml\n'}
+[14.424731] (motor_msgs) CommandEnded: {'returncode': 0}
+[14.435151] (motor_msgs) JobEnded: {'identifier': 'motor_msgs', 'rc': 0}
+[14.435610] (-) EventReactorShutdown: {}

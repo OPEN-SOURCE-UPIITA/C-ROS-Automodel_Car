@@ -1,0 +1,53 @@
+[0.633s] Invoking command in '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/src/carro_simulacion': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/carro_simulacion build --build-base /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build install --record /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/install.log --single-version-externally-managed install_data
+[0.814s] running egg_info
+[0.814s] creating ../../build/carro_simulacion/carro_simulacion.egg-info
+[0.826s] writing ../../build/carro_simulacion/carro_simulacion.egg-info/PKG-INFO
+[0.827s] writing dependency_links to ../../build/carro_simulacion/carro_simulacion.egg-info/dependency_links.txt
+[0.827s] writing entry points to ../../build/carro_simulacion/carro_simulacion.egg-info/entry_points.txt
+[0.827s] writing requirements to ../../build/carro_simulacion/carro_simulacion.egg-info/requires.txt
+[0.827s] writing top-level names to ../../build/carro_simulacion/carro_simulacion.egg-info/top_level.txt
+[0.827s] writing manifest file '../../build/carro_simulacion/carro_simulacion.egg-info/SOURCES.txt'
+[0.852s] reading manifest file '../../build/carro_simulacion/carro_simulacion.egg-info/SOURCES.txt'
+[0.852s] adding license file 'LICENSE'
+[0.852s] writing manifest file '../../build/carro_simulacion/carro_simulacion.egg-info/SOURCES.txt'
+[0.852s] running build
+[0.852s] running build_py
+[0.852s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build
+[0.852s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib
+[0.853s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion
+[0.853s] copying carro_simulacion/camera_filter.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion
+[0.885s] copying carro_simulacion/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion
+[0.885s] copying carro_simulacion/sim_adapter.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion
+[0.904s] running install
+[0.915s] running install_lib
+[0.930s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion
+[0.930s] copying /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion/camera_filter.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion
+[0.930s] copying /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion/__init__.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion
+[0.930s] copying /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build/lib/carro_simulacion/sim_adapter.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion
+[0.930s] byte-compiling /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion/camera_filter.py to camera_filter.cpython-312.pyc
+[0.930s] byte-compiling /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion/__init__.py to __init__.cpython-312.pyc
+[0.931s] byte-compiling /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion/sim_adapter.py to sim_adapter.cpython-312.pyc
+[0.931s] running install_data
+[0.931s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/ament_index
+[0.931s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/ament_index/resource_index
+[0.931s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/ament_index/resource_index/packages
+[0.931s] copying resource/carro_simulacion -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/ament_index/resource_index/packages
+[0.931s] copying package.xml -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion
+[0.931s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/launch
+[0.931s] copying launch/car_sim.launch.py -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/launch
+[0.937s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/urdf
+[0.937s] copying urdf/carro.urdf -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/urdf
+[0.955s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/meshes
+[0.955s] copying meshes/chasis-Assembly2.stl -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/meshes
+[1.187s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/worlds
+[1.188s] copying worlds/pista.world -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/worlds
+[1.217s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/materials
+[1.218s] creating /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/materials/textures
+[1.218s] copying materials/textures/pista.png -> /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/share/carro_simulacion/materials/textures
+[1.288s] running install_egg_info
+[1.312s] Copying ../../build/carro_simulacion/carro_simulacion.egg-info to /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages/carro_simulacion-0.0.0-py3.12.egg-info
+[1.312s] running install_scripts
+[1.397s] Installing camera_filter script to /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/carro_simulacion
+[1.397s] Installing sim_adapter script to /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/carro_simulacion
+[1.397s] writing list of installed files to '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/install.log'
+[1.418s] Invoked command in '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/src/carro_simulacion' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/carro_simulacion/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/carro_simulacion build --build-base /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/build install --record /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/carro_simulacion/install.log --single-version-externally-managed install_data

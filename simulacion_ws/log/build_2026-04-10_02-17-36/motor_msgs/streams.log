@@ -1,0 +1,266 @@
+[0.249s] Invoking command in '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/src/motor_msg -DCMAKE_INSTALL_PREFIX=/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs
+[1.878s] -- The C compiler identification is GNU 13.3.0
+[2.792s] -- The CXX compiler identification is GNU 13.3.0
+[2.959s] -- Detecting C compiler ABI info
+[3.163s] -- Detecting C compiler ABI info - done
+[3.170s] -- Check for working C compiler: /usr/bin/cc - skipped
+[3.184s] -- Detecting C compile features
+[3.185s] -- Detecting C compile features - done
+[3.205s] -- Detecting CXX compiler ABI info
+[3.325s] -- Detecting CXX compiler ABI info - done
+[3.334s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[3.334s] -- Detecting CXX compile features
+[3.334s] -- Detecting CXX compile features - done
+[3.561s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[3.775s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[4.113s] -- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)
+[4.348s] -- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[4.439s] -- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[4.556s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.611s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.813s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[4.898s] -- Found rosidl_adapter: 4.6.6 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[5.722s] -- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[6.778s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[7.069s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[7.114s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[7.242s] -- Found PythonExtra: /usr/bin/python3  
+[7.838s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[7.943s] -- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[8.354s] -- Added test 'lint_cmake' to check CMake code style
+[8.382s] -- Added test 'xmllint' to check XML markup files
+[8.416s] -- Configuring done (8.2s)
+[8.465s] -- Generating done (0.0s)
+[8.472s] -- Build files have been written to: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs
+[8.480s] Invoked command in '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/src/motor_msg -DCMAKE_INSTALL_PREFIX=/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs
+[8.481s] Invoking command in '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs -- -j12 -l12
+[8.534s] [  2%] [34m[1mGenerating type hashes for ROS interfaces[0m
+[8.543s] [  2%] Built target ament_cmake_python_copy_motor_msgs
+[8.695s] running egg_info
+[8.695s] creating motor_msgs.egg-info
+[8.708s] writing motor_msgs.egg-info/PKG-INFO
+[8.708s] writing dependency_links to motor_msgs.egg-info/dependency_links.txt
+[8.708s] writing top-level names to motor_msgs.egg-info/top_level.txt
+[8.708s] writing manifest file 'motor_msgs.egg-info/SOURCES.txt'
+[8.737s] [  2%] Built target motor_msgs__rosidl_generator_type_description
+[8.747s] reading manifest file 'motor_msgs.egg-info/SOURCES.txt'
+[8.747s] [  4%] [34m[1mGenerating C code for ROS interfaces[0m
+[8.747s] writing manifest file 'motor_msgs.egg-info/SOURCES.txt'
+[8.758s] [  6%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[8.770s] [  6%] Built target ament_cmake_python_build_motor_msgs_egg
+[9.002s] [  6%] Built target motor_msgs__cpp
+[9.022s] [ 13%] [32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/motor_command__functions.c.o[0m
+[9.022s] [ 13%] [32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/encoder_data__functions.c.o[0m
+[9.022s] [ 13%] [32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/encoder_data__type_support.c.o[0m
+[9.024s] [ 15%] [32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/encoder_data__description.c.o[0m
+[9.024s] [ 20%] [32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/motor_command__type_support.c.o[0m
+[9.024s] [ 20%] [32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_c.dir/rosidl_generator_c/motor_msgs/msg/detail/motor_command__description.c.o[0m
+[9.553s] [ 22%] [32m[1mLinking C shared library libmotor_msgs__rosidl_generator_c.so[0m
+[9.656s] [ 22%] Built target motor_msgs__rosidl_generator_c
+[9.667s] [ 31%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[9.667s] [ 31%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[9.668s] [ 31%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[9.668s] [ 31%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[9.669s] [ 34%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[9.669s] [ 36%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[9.984s] [ 40%] [32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/motor_msgs/msg/encoder_data__type_support.cpp.o[0m
+[9.984s] [ 40%] [32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/motor_msgs/msg/motor_command__type_support.cpp.o[0m
+[10.034s] [ 43%] [32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/motor_msgs/msg/motor_command__type_support.cpp.o[0m
+[10.035s] [ 45%] [32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/motor_msgs/msg/encoder_data__type_support.cpp.o[0m
+[10.036s] [ 47%] [32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/motor_msgs/msg/detail/encoder_data__type_support.cpp.o[0m
+[10.037s] [ 50%] [32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/motor_msgs/msg/detail/motor_command__type_support.cpp.o[0m
+[10.072s] [ 52%] [32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/motor_msgs/msg/detail/dds_fastrtps/motor_command__type_support.cpp.o[0m
+[10.072s] [ 54%] [32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/motor_msgs/msg/detail/dds_fastrtps/encoder_data__type_support.cpp.o[0m
+[10.189s] [ 59%] [32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/motor_msgs/msg/detail/encoder_data__type_support_c.cpp.o[0m
+[10.189s] [ 59%] [32mBuilding CXX object CMakeFiles/motor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/motor_msgs/msg/detail/motor_command__type_support_c.cpp.o[0m
+[10.458s] [ 61%] [32mBuilding C object CMakeFiles/motor_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/motor_msgs/msg/detail/motor_command__type_support.c.o[0m
+[10.461s] [ 63%] [32mBuilding C object CMakeFiles/motor_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/motor_msgs/msg/detail/encoder_data__type_support.c.o[0m
+[10.471s] [ 65%] [32m[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_c.so[0m
+[10.619s] [ 65%] Built target motor_msgs__rosidl_typesupport_c
+[10.671s] [ 68%] [32m[1mLinking C shared library libmotor_msgs__rosidl_typesupport_introspection_c.so[0m
+[10.967s] [ 68%] Built target motor_msgs__rosidl_typesupport_introspection_c
+[12.455s] [ 70%] [32m[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_cpp.so[0m
+[12.509s] [ 72%] [32m[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[12.542s] [ 72%] Built target motor_msgs__rosidl_typesupport_cpp
+[12.588s] [ 72%] Built target motor_msgs__rosidl_typesupport_introspection_cpp
+[12.774s] [ 77%] [32m[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[12.774s] [ 77%] [32m[1mLinking CXX shared library libmotor_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[12.861s] [ 77%] Built target motor_msgs__rosidl_typesupport_fastrtps_c
+[12.871s] [ 77%] Built target motor_msgs__rosidl_typesupport_fastrtps_cpp
+[12.896s] [ 77%] Built target motor_msgs
+[12.918s] [ 79%] [34m[1mGenerating Python code for ROS interfaces[0m
+[13.212s] [ 79%] Built target motor_msgs__py
+[13.229s] [ 81%] [32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_py.dir/rosidl_generator_py/motor_msgs/msg/_encoder_data_s.c.o[0m
+[13.230s] [ 84%] [32mBuilding C object CMakeFiles/motor_msgs__rosidl_generator_py.dir/rosidl_generator_py/motor_msgs/msg/_motor_command_s.c.o[0m
+[14.165s] [ 86%] [32m[1mLinking C shared library libmotor_msgs__rosidl_generator_py.so[0m
+[14.235s] [ 86%] Built target motor_msgs__rosidl_generator_py
+[14.253s] [ 88%] [32mBuilding C object CMakeFiles/motor_msgs_s__rosidl_typesupport_c.dir/rosidl_generator_py/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[14.253s] [ 90%] [32mBuilding C object CMakeFiles/motor_msgs_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[14.255s] [ 93%] [32mBuilding C object CMakeFiles/motor_msgs_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[14.321s] [ 97%] [32m[1mLinking C shared module rosidl_generator_py/motor_msgs/motor_msgs_s__rosidl_typesupport_c.so[0m
+[14.321s] [ 97%] [32m[1mLinking C shared module rosidl_generator_py/motor_msgs/motor_msgs_s__rosidl_typesupport_introspection_c.so[0m
+[14.326s] [100%] [32m[1mLinking C shared module rosidl_generator_py/motor_msgs/motor_msgs_s__rosidl_typesupport_fastrtps_c.so[0m
+[14.342s] [100%] Built target motor_msgs_s__rosidl_typesupport_c
+[14.345s] [100%] Built target motor_msgs_s__rosidl_typesupport_introspection_c
+[14.350s] [100%] Built target motor_msgs_s__rosidl_typesupport_fastrtps_c
+[14.358s] Invoked command in '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs -- -j12 -l12
+[14.366s] Invoking command in '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs
+[14.376s] -- Install configuration: ""
+[14.376s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/ament_index/resource_index/rosidl_interfaces/motor_msgs
+[14.376s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/msg/MotorCommand.json
+[14.376s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/msg/EncoderData.json
+[14.376s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs
+[14.376s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg
+[14.376s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail
+[14.376s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.h
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__description.c
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__functions.h
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__functions.h
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__struct.h
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.h
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.c
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__struct.h
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__functions.c
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__description.c
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__functions.c
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.c
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/encoder_data.h
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_generator_c__visibility_control.h
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/motor_command.h
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/library_path.sh
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/library_path.dsv
+[14.377s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_generator_c.so
+[14.378s] -- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_generator_c.so" to ""
+[14.378s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs
+[14.378s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg
+[14.378s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[14.378s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail
+[14.378s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__rosidl_typesupport_fastrtps_c.h
+[14.378s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__rosidl_typesupport_fastrtps_c.h
+[14.378s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_fastrtps_c.so
+[14.378s] -- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[14.378s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs
+[14.378s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg
+[14.378s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/motor_command.hpp
+[14.378s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+[14.378s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail
+[14.378s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__builder.hpp
+[14.378s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.hpp
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__builder.hpp
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__traits.hpp
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__traits.hpp
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__struct.hpp
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.hpp
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__struct.hpp
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/encoder_data.hpp
+[14.379s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs
+[14.379s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg
+[14.379s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__rosidl_typesupport_fastrtps_cpp.hpp
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__rosidl_typesupport_fastrtps_cpp.hpp
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/dds_fastrtps
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_fastrtps_cpp.so
+[14.379s] -- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[14.379s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs
+[14.379s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg
+[14.379s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[14.380s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.c
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__rosidl_typesupport_introspection_c.h
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__rosidl_typesupport_introspection_c.h
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.c
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_introspection_c.so
+[14.380s] -- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_introspection_c.so" to ""
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_c.so
+[14.380s] -- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_c.so" to ""
+[14.380s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs
+[14.380s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg
+[14.380s] -- Up-to-date: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__rosidl_typesupport_introspection_cpp.hpp
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/encoder_data__type_support.cpp
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__type_support.cpp
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/include/motor_msgs/motor_msgs/msg/detail/motor_command__rosidl_typesupport_introspection_cpp.hpp
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_introspection_cpp.so
+[14.380s] -- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_cpp.so
+[14.380s] -- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_typesupport_cpp.so" to ""
+[14.380s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/pythonpath.sh
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/pythonpath.dsv
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info/SOURCES.txt
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info/dependency_links.txt
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info/PKG-INFO
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs-0.0.0-py3.12.egg-info/top_level.txt
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_c.c
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_introspection_c.so
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/_motor_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_encoder_data.py
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_motor_command_s.c
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_motor_command.py
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_encoder_data_s.c
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/__init__.py
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_c.so
+[14.381s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_fastrtps_c.so
+[14.382s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/__init__.py
+[14.410s] Listing '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs'...
+[14.410s] Compiling '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/__init__.py'...
+[14.410s] Listing '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg'...
+[14.410s] Compiling '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/__init__.py'...
+[14.411s] Compiling '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_encoder_data.py'...
+[14.411s] Compiling '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/msg/_motor_command.py'...
+[14.415s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_fastrtps_c.so
+[14.415s] -- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_fastrtps_c.so" to ""
+[14.415s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_introspection_c.so
+[14.416s] -- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_introspection_c.so" to ""
+[14.416s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_c.so
+[14.416s] -- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/python3.12/site-packages/motor_msgs/motor_msgs_s__rosidl_typesupport_c.so" to ""
+[14.416s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_generator_py.so
+[14.416s] -- Set non-toolchain portion of runtime path of "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/lib/libmotor_msgs__rosidl_generator_py.so" to ""
+[14.416s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/msg/MotorCommand.idl
+[14.416s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/msg/EncoderData.idl
+[14.416s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/msg/MotorCommand.msg
+[14.416s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/msg/EncoderData.msg
+[14.416s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/ament_index/resource_index/package_run_dependencies/motor_msgs
+[14.416s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/ament_index/resource_index/parent_prefix_path/motor_msgs
+[14.416s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/ament_prefix_path.sh
+[14.416s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/ament_prefix_path.dsv
+[14.416s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/path.sh
+[14.416s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/environment/path.dsv
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/local_setup.bash
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/local_setup.sh
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/local_setup.zsh
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/local_setup.dsv
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/package.dsv
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/ament_index/resource_index/packages/motor_msgs
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_cExport.cmake
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_cExport-noconfig.cmake
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_cppExport.cmake
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_introspection_cExport.cmake
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_cExport.cmake
+[14.417s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_cppExport.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_pyExport.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/export_motor_msgs__rosidl_generator_pyExport-noconfig.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/rosidl_cmake-extras.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgsConfig.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/cmake/motor_msgsConfig-version.cmake
+[14.418s] -- Installing: /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/install/motor_msgs/share/motor_msgs/package.xml
+[14.420s] Invoked command in '/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs

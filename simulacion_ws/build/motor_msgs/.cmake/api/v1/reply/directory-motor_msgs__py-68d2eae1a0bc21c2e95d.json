@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "motor_msgs__py",
+		"source" : "/home/alereyes/C-ROS-Automodel_Car/simulacion_ws/build/motor_msgs/motor_msgs__py"
+	}
+}

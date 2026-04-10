@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: carro-simulacion
+Version: 0.0.0
+Summary: Paquete de simulación del carro en Gazebo
+Maintainer: Jonathan Jason Medina Martinez
+Maintainer-email: jason240208@gmail.com
+License: MIT
+Provides-Extra: test
+License-File: LICENSE
