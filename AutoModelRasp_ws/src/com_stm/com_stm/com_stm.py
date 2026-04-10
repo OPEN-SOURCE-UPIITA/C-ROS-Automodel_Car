@@ -57,16 +57,26 @@ class STM32Controller(Node):
         self.last_command_time = time.time()
         self.dir_dc = msg.dir_dc
         self.speed_dc = msg.speed_dc
-        self.dir_servo = msg.dir_servo
         
+        # --- OFFSET ---
+        OFFSET = -65  # (1435 - 1500)
+        
+        # Si el comando pide 0 por seguridad, forzamos el centro real
+        if msg.dir_servo == 0:
+            self.dir_servo = 1435
+        else:
+            # Le sumamos el offset al comando original de ROS
+            self.dir_servo = msg.dir_servo + OFFSET
+            
         # Atrapar las luces
         self.stop_lights = msg.stop_lights
         self.turn_signals = msg.turn_signals
-    
+
     def send_command(self):
+        # Ampliamos los topes de seguridad aquí en el puente para 
+        # acomodar el offset sin cortar la señal
         servo_pwm = int(self.dir_servo)
-        if servo_pwm == 0: servo_pwm = 1500 
-        servo_pwm = max(1110, min(1740, servo_pwm))
+        servo_pwm = max(1000, min(1800, servo_pwm))
 
         high_byte = (servo_pwm >> 8) & 0xFF
         low_byte = servo_pwm & 0xFF
@@ -74,7 +84,7 @@ class STM32Controller(Node):
         safe_dir = int(self.dir_dc) &0xFF
         safe_speed  = int(self.speed_dc) & 0xFF
 
-        ##revisar este cuando probemos
+       
         #packet = bytearray([0xAA, 0x55, 0x01, safe_dir, safe_speed, high_byte, low_byte, 0xFF])
 
         # ======== EMPAQUETADO DEL BYTE DE LUCES ========
