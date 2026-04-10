@@ -13,23 +13,23 @@ class DetectorCarrilNode(Node):
         super().__init__('detector_carril')
 
         # --- 1. PARÁMETROS DINÁMICOS (RQT) ---
-        self.declare_parameter('umbral_blanco', 170)
-        self.declare_parameter('corte_y_sup_pct', 40)
-        self.declare_parameter('corte_y_inf_pct', 10)
-        self.declare_parameter('ancho_top', 120)
-        self.declare_parameter('ancho_bot', 350) 
-        self.declare_parameter('suavizado_pct', 30)
+        self.declare_parameter('umbral_blanco', 110)
+        self.declare_parameter('corte_y_sup_pct', 80)
+        self.declare_parameter('corte_y_inf_pct', 5)
+        self.declare_parameter('ancho_top', 180)
+        self.declare_parameter('ancho_bot', 550) 
+        self.declare_parameter('suavizado_pct', 50)
         self.declare_parameter('min_puntos', 50)
-        self.declare_parameter('min_pendiente', 0.8) 
-        self.declare_parameter('base_offset_l', 175) 
-        self.declare_parameter('base_offset_r', 175)
+        self.declare_parameter('min_pendiente', 0.2) 
+        self.declare_parameter('base_offset_l', 110) 
+        self.declare_parameter('base_offset_r', 140)
         self.declare_parameter('activar_seguimiento', True)
-        self.declare_parameter('confianza_un_carril', 0.6)
+        self.declare_parameter('confianza_un_carril', 0.76)
         self.declare_parameter('usar_anclaje_base', True)
         
         # NUEVO: Límite de curvatura (Evita que el polinomio se retuerza hacia el centro)
         # Valores típicos: 0.0005 a 0.002
-        self.declare_parameter('max_curvatura', 0.0015)
+        self.declare_parameter('max_curvatura', 0.1)
 
         self.add_on_set_parameters_callback(self.parameters_callback)
 

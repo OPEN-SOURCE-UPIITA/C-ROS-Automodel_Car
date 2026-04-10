@@ -10,11 +10,11 @@ class DriveCarrilNode(Node):
         super().__init__('drive_carril')
 
         # -------- PARÁMETROS PARA RQT_RECONFIGURE --------
-        self.declare_parameter('velocidad_dc', 40)           # Velocidad crucero en rectas
-        self.declare_parameter('kp_servo', 250.0)            # Fuerza de giro (Proporcional)
+        self.declare_parameter('velocidad_dc', 0)           # Velocidad crucero en rectas
+        self.declare_parameter('kp_servo', 198.0)            # Fuerza de giro (Proporcional)
         self.declare_parameter('kd_servo', 50.0)             # Amortiguación/Anticipación (Derivativo)
-        self.declare_parameter('max_step_servo', 30)         # Suavizado de movimiento del volante
-        self.declare_parameter('factor_reduccion_vel', 0.8)  # 0.0 = No frena, 1.0 = Frena al máximo
+        self.declare_parameter('max_step_servo', 25)         # Suavizado de movimiento del volante
+        self.declare_parameter('factor_reduccion_vel', 5)  # 0.0 = No frena, 1.0 = Frena al máximo
 
         self.servo_centro = 1500
         self.last_servo_value = self.servo_centro
