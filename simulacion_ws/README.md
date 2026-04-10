@@ -1,8 +1,8 @@
-# 🚗 Simulación de Carro en ROS 2 y Gazebo
+# Simulación de Carro en ROS 2 y Gazebo
 
 Este paquete contiene la simulación de un vehículo diferencial/Ackermann en Gazebo, controlado a través de ROS 2. Incluye un puente de comunicación automático y un adaptador (`sim_adapter`) que traduce los comandos personalizados de hardware a mensajes de velocidad estándar (`Twist`).
 
-## 📋 Requisitos Previos
+## Requisitos Previos
 
 Para ejecutar este proyecto, necesitas tener instalado lo siguiente en tu sistema (probado en ROS 2 Jazzy):
 
@@ -54,7 +54,7 @@ ros2 topic pub /motor_command motor_msgs/msg/MotorCommand "{dir_dc: 1, speed_dc:
 * `speed_dc`: Velocidad lineal en porcentaje (0 a 100)
 * `dir_servo`: Dirección del servo en PWM (Centro = 1500, Rango = 1110 a 1740)
 
-## 📁 Estructura del Paquete
+## Estructura del Paquete
 
 * `launch/`: Archivos de lanzamiento que orquestan Gazebo y los nodos de ROS 2.
 * `urdf/`: El modelo 3D del carro (`carro.urdf`).

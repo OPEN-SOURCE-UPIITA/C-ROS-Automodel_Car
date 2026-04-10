@@ -4,8 +4,12 @@
   <name>parking</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="alerey.lira@gmail.com">alereyes</maintainer>
+  <maintainer email="jason240208@gmail.com">Jonathan Jason Medina Martinez</maintainer>
   <license>MIT</license>
+
+  <depend>rclpy</depend>
+  <depend>motor_msgs</depend>
+  <depend>sensor_msgs</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

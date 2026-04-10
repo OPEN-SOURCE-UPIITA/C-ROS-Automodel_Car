@@ -64,25 +64,39 @@ def generate_launch_description():
         arguments=[
             '-file', urdf_path,
             '-name', 'carro',
-            '-x', '0.0', '-y', '0.0', '-z', '0.5' 
+            '-x', '7.0',   # Posición en el eje X
+            '-y', '6.3',   # Posición en el eje Y
+            '-z', '0.5',  # Altura
+            '-Y', '3.14'   # Rotación en radianes
         ],
         output='screen'
     )
 
-    # 7. EL NUEVO NODO: Sim Adapter
+    # 7. Sim Adapter
     # Ejecuta el script de Python que traduce MotorCommand a Twist
     sim_adapter_node = Node(
-        package='carro_simulacion', # Nombre de tu paquete basado en la captura
+        package='carro_simulacion',
         executable='sim_adapter',
         name='sim_adapter',
         output='screen'
     )
 
+    # 8. Filtro de Camara
+    # Nodo para filtrar la cámara y cambiar el nombre del tópico al real
+    camera_filter_node = Node(
+        package='carro_simulacion',
+        executable='camera_filter',
+        name='camera_filter_node',
+        output='screen'
+    )
+
     return LaunchDescription([
-        gz_resource_path,   # Debe cargar antes que Gazebo
+        gz_resource_path,
         gz_sim,
         main_bridge,
         robot_state_publisher_node,
         spawn_entity_node,
-        sim_adapter_node    # Arranca automáticamente tu adaptador
+        sim_adapter_node,
+        camera_filter_node
+        
     ])
