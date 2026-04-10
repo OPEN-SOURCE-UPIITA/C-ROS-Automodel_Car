@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from sensor_msgs.msg import Image, CompressedImage  # 1. Importación añadida
+from rcl_interfaces.msg import SetParametersResult
+from sensor_msgs.msg import Image, CompressedImage
 from std_msgs.msg import Float32
 from cv_bridge import CvBridge
 import cv2
@@ -11,143 +12,168 @@ class DetectorCarrilNode(Node):
     def __init__(self):
         super().__init__('detector_carril')
 
-        self.get_logger().info("Iniciando Detector de Carril (Comprimido + Parametros RQT)")
-
-        # --- PARAMETROS DINAMICOS ---
-        # Adios a todos los min/max de HSV. Hola a la simplicidad.
-        self.declare_parameter('umbral_blanco', 180) # De 0 a 255
-        # ... (los demas parametros de trapecio se quedan igual)
-        self.declare_parameter('corte_y_pct', 55)
+        # --- 1. DECLARACIÓN DE PARÁMETROS DINÁMICOS (Configurables desde RQT) ---
+        self.declare_parameter('umbral_blanco', 170)
+        self.declare_parameter('corte_y_pct', 40)
         self.declare_parameter('ancho_top', 120)
-        self.declare_parameter('ancho_bot', 600)
-        self.declare_parameter('suavizado_pct', 20)
-        self.declare_parameter('ancho_carril_px', 350)
+        self.declare_parameter('ancho_bot', 350) 
+        self.declare_parameter('suavizado_pct', 30)
+        self.declare_parameter('min_puntos', 50)
+        self.declare_parameter('min_pendiente', 0.8) 
+        self.declare_parameter('activar_seguimiento', True)
+        
+        # NUEVOS: Puntos de anclaje base (distancia desde el centro hacia los lados)
+        self.declare_parameter('base_offset_l', 175) # Posición X inicial del carril izq en la base
+        self.declare_parameter('base_offset_r', 175) # Posición X inicial del carril der en la base
 
-        # --- SUSCRIPCIONES Y PUBLICADORES ---
+        # --- 2. REGISTRO DEL CALLBACK PARA RQT ---
+        self.add_on_set_parameters_callback(self.parameters_callback)
+
+        # --- 3. COMUNICACIONES ROS ---
         self.subscription = self.create_subscription(
-            Image, 
-            '/ascamera_hp60c/camera_publisher/rgb0/image', 
-            self.image_callback, 
+            Image,
+            '/ascamera_hp60c/camera_publisher/rgb0/image',
+            self.image_callback,
             10)
-        
+
         self.publisher_error = self.create_publisher(Float32, '/steering_error', 10)
-        
-        # 2. Publicadores cambiados a CompressedImage
         self.pub_mascara = self.create_publisher(CompressedImage, '/vision/carril_mascara/compressed', 10)
         self.pub_resultado = self.create_publisher(CompressedImage, '/vision/carril_resultado/compressed', 10)
-        
+
         self.bridge = CvBridge()
+        self.last_error = 0.0
+        self.left_fit = None
+        self.right_fit = None
+        self.lane_width_pixels = 350.0 
 
-        # --- VARIABLES DE MEMORIA ---
-        self.last_error = 0.0        
-        self.left_lane = None       
-        self.right_lane = None      
+    def parameters_callback(self, params):
+        """Callback para actualizar parámetros desde RQT en tiempo real."""
+        for param in params:
+            self.get_logger().info(f"RQT Actualizado: {param.name} = {param.value}")
+        return SetParametersResult(successful=True)
 
-    # ... (fit_lane y draw_lane se mantienen iguales) ...
-    def fit_lane(self, points):
-        if len(points) < 50: return None
-        line = cv2.fitLine(points, cv2.DIST_L2, 0, 0.01, 0.01)
-        vx, vy, x0, y0 = line.flatten()
-        if abs(vy) < 0.1: return None 
-        return line.flatten()
+    def fit_lane_anchored(self, points, anchor_x, h):
+        """Ajusta una parábola forzando el paso por un punto de anclaje en la base."""
+        min_pts = self.get_parameter('min_puntos').value
+        min_slope = self.get_parameter('min_pendiente').value
+        
+        if len(points) < min_pts:
+            return None
+        
+        xs = points[:, 0]
+        ys = points[:, 1]
+        
+        # INYECCIÓN DE PUNTOS VIRTUALES (Anclaje)
+        # Añadimos 25 puntos en la base para "pesar" la regresión hacia el ancla
+        num_anchors = 25
+        anchor_ys = np.full(num_anchors, h)
+        anchor_xs = np.full(num_anchors, anchor_x)
+        
+        xs_ext = np.concatenate((xs, anchor_xs))
+        ys_ext = np.concatenate((ys, anchor_ys))
+        
+        try:
+            coeffs = np.polyfit(ys_ext, xs_ext, 2)
+            # Filtro de horizontalidad en la base
+            dx_dy = abs(2 * coeffs[0] * h + coeffs[1])
+            if dx_dy > (1.0 / min_slope): 
+                return None
+            return coeffs
+        except Exception:
+            return None
 
-    def draw_lane(self, img, lane, color):
-        vx, vy, x0, y0 = lane
-        h = img.shape[0]
-        y1 = int(h * 0.4)
-        y2 = h
-        x1 = int(x0 + (y1 - y0) * vx / vy)
-        x2 = int(x0 + (y2 - y0) * vx / vy)
-        cv2.line(img, (x1, y1), (x2, y2), color, 5)
-        return x2
+    def draw_lane_poly(self, img, coeffs, color, y_min, y_max):
+        """Dibuja la parábola y retorna el punto objetivo en el tope."""
+        plot_y = np.linspace(y_min, y_max, 25)
+        plot_x = coeffs[0]*plot_y**2 + coeffs[1]*plot_y + coeffs[2]
+        pts = np.array([np.transpose(np.vstack([plot_x, plot_y]))], np.int32)
+        cv2.polylines(img, pts, False, color, 5)
+        
+        target_x = coeffs[0]*(y_min**2) + coeffs[1]*y_min + coeffs[2]
+        return int(target_x)
 
     def image_callback(self, msg):
         try:
-            orig_frame = self.bridge.imgmsg_to_cv2(msg, "bgr8")
-        except Exception as e:
-            self.get_logger().warn(f"Error convirtiendo imagen: {e}")
-            return
+            frame = self.bridge.imgmsg_to_cv2(msg, "bgr8")
+        except: return
 
-        frame = cv2.resize(orig_frame, (640, 480))
+        frame = cv2.resize(frame, (640, 480))
         h, w, _ = frame.shape
-        debug = frame.copy() 
+        debug = frame.copy()
 
-        # 1. LEER PARAMETROS
-        umbral_blanco = self.get_parameter('umbral_blanco').value
-
-        corte_pct = self.get_parameter('corte_y_pct').value
-        w_top = self.get_parameter('ancho_top').value
-        w_bot = self.get_parameter('ancho_bot').value
+        # --- LEER PARÁMETROS DINÁMICOS ---
+        umbral = self.get_parameter('umbral_blanco').value
+        corte_y_val = self.get_parameter('corte_y_pct').value
+        w_t = self.get_parameter('ancho_top').value
+        w_b = self.get_parameter('ancho_bot').value
         alpha = self.get_parameter('suavizado_pct').value / 100.0
-        lane_width_virtual = self.get_parameter('ancho_carril_px').value
+        
+        # Parámetros de anclaje base
+        offset_l = self.get_parameter('base_offset_l').value
+        offset_r = self.get_parameter('base_offset_r').value
+        
+        corte_y = int(h * (corte_y_val / 100.0))
+        cx = w // 2
 
-        # 2. ROI (TRAPECIO)
-        corte_y = int(h * (corte_pct / 100.0))
-        cx = w // 2 
-        polygon = np.array([[(cx - w_bot // 2, h), (cx + w_bot // 2, h), (cx + w_top, corte_y), (cx - w_top, corte_y)]], np.int32)
+        # Puntos de anclaje base (rosados para depuración)
+        anchor_l_x = cx - offset_l
+        anchor_r_x = cx + offset_r
+        cv2.circle(debug, (anchor_l_x, h-5), 8, (255, 0, 255), -1)
+        cv2.circle(debug, (anchor_r_x, h-5), 8, (255, 0, 255), -1)
+
+        # --- SEGMENTACIÓN ---
+        polygon = np.array([[(cx - w_b//2, h), (cx + w_b//2, h), 
+                             (cx + w_t, corte_y), (cx - w_t, corte_y)]], np.int32)
         mask_roi = np.zeros((h, w), dtype=np.uint8)
         cv2.fillPoly(mask_roi, polygon, 255)
-        cv2.polylines(debug, polygon, True, (255, 0, 0), 2)
 
-        # 3. FILTRO DE BLANCOS (ESCALA DE GRISES + UMBRAL)
-        # Leemos el unico slider que necesitamos
-        umbral = self.get_parameter('umbral_blanco').value
-        
-        # Convertimos a grises
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        
-        # Aplicamos el umbral: todo lo que sea mas brillante que 'umbral' se vuelve blanco (255)
-        # Lo que sea mas oscuro se vuelve negro (0)
         _, mask_blancos = cv2.threshold(gray, umbral, 255, cv2.THRESH_BINARY)
-        
-        # Juntamos los blancos detectados con tu ROI (el trapecio)
         mask = cv2.bitwise_and(mask_blancos, mask_roi)
 
-        # 4. EXTRACCION Y LOGICA (Se mantiene igual hasta la publicación)
+        # --- PROCESAMIENTO ---
         ys, xs = np.where(mask > 0)
-        
+        target_x = cx 
+
         if len(xs) > 0:
             points = np.column_stack((xs, ys))
-            mid = w // 2
-            left_pts = points[points[:, 0] < mid]
-            right_pts = points[points[:, 0] >= mid]
-            new_left = self.fit_lane(left_pts)
-            new_right = self.fit_lane(right_pts)
+            left_pts = points[points[:, 0] < cx]
+            right_pts = points[points[:, 0] >= cx]
 
-            if new_left is not None:
-                self.left_lane = new_left if self.left_lane is None else alpha * new_left + (1 - alpha) * self.left_lane
-            if new_right is not None:
-                self.right_lane = new_right if self.right_lane is None else alpha * new_right + (1 - alpha) * self.right_lane
+            # Ajuste usando las anclas fijas en la base
+            l_fit = self.fit_lane_anchored(left_pts, anchor_l_x, h)
+            r_fit = self.fit_lane_anchored(right_pts, anchor_r_x, h)
 
-            target_x = mid 
-            if self.left_lane is not None and self.right_lane is not None:
-                xl = self.draw_lane(debug, self.left_lane, (0, 255, 0)) 
-                xr = self.draw_lane(debug, self.right_lane, (0, 255, 0)) 
-                target_x = (xl + xr) // 2
-            elif self.left_lane is not None:
-                xl = self.draw_lane(debug, self.left_lane, (0, 0, 255))
-                target_x = xl + (lane_width_virtual // 2)
-            elif self.right_lane is not None:
-                xr = self.draw_lane(debug, self.right_lane, (0, 0, 255)) 
-                target_x = xr - (lane_width_virtual // 2)
+            x_l, x_r = None, None
 
-            error = (target_x - mid) / float(mid)
-            error = np.clip(error, -1.0, 1.0)
-            smooth_error = 0.7 * self.last_error + 0.3 * error
-            self.last_error = smooth_error
-
-            # Visuales
-            vis_target = int(mid + smooth_error * mid)
-            cv2.circle(debug, (vis_target, int(h*0.8)), 15, (255, 255, 0), -1)
-            cv2.line(debug, (mid, int(h*0.5)), (mid, h), (255, 0, 0), 2)
+            if l_fit is not None:
+                self.left_fit = l_fit if self.left_fit is None else alpha * l_fit + (1-alpha) * self.left_fit
+                x_l = self.draw_lane_poly(debug, self.left_fit, (0, 255, 0), corte_y, h)
             
-            # Publicar Error
-            msg_err = Float32()
-            msg_err.data = float(smooth_error)
-            self.publisher_error.publish(msg_err)
+            if r_fit is not None:
+                self.right_fit = r_fit if self.right_fit is None else alpha * r_fit + (1-alpha) * self.right_fit
+                x_r = self.draw_lane_poly(debug, self.right_fit, (0, 255, 0), corte_y, h)
 
-        # 3. PUBLICACIÓN COMPRIMIDA (Fuera del if para que siempre publique flujo)
-        # Nota: cv2_to_compressed_imgmsg detecta automáticamente si es mono o color
+            # Lógica de Target con memoria de ancho
+            if x_l is not None and x_r is not None:
+                target_x = (x_l + x_r) // 2
+                self.lane_width_pixels = 0.95 * self.lane_width_pixels + 0.05 * (x_r - x_l)
+            elif x_l is not None:
+                target_x = x_l + int(self.lane_width_pixels / 2)
+            elif x_r is not None:
+                target_x = x_r - int(self.lane_width_pixels / 2)
+
+            # Publicar Error
+            error = np.clip((target_x - cx) / float(cx), -1.0, 1.0)
+            self.last_error = 0.7 * self.last_error + 0.3 * error
+            
+            if self.get_parameter('activar_seguimiento').value:
+                self.publisher_error.publish(Float32(data=float(self.last_error)))
+
+            # Visualización final
+            cv2.polylines(debug, polygon, True, (255, 0, 0), 2)
+            cv2.circle(debug, (int(target_x), corte_y), 12, (0, 255, 255), -1)
+
         self.pub_mascara.publish(self.bridge.cv2_to_compressed_imgmsg(mask))
         self.pub_resultado.publish(self.bridge.cv2_to_compressed_imgmsg(debug))
 
