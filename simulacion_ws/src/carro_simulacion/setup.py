@@ -32,6 +32,7 @@ setup(
     entry_points={
         'console_scripts': [
             'sim_adapter = carro_simulacion.sim_adapter:main',
+            'camera_filter = carro_simulacion.camera_filter:main',
         ],
     },
 )
