@@ -12,8 +12,7 @@ class CameraFilterNode(Node):
         # Herramienta para traducir imágenes de ROS a OpenCV y viceversa
         self.bridge = CvBridge()
         
-        # 1. Nos suscribimos a la cámara "sucia" que sale de Gazebo
-        # (Asegúrate de que este sea el nombre correcto del tópico en tu launch file o bridge)
+        # 1. Nos suscribimos a la cámara que sale de Gazebo
         self.sub = self.create_subscription(
             Image, 
             '/camera/image', 
@@ -21,7 +20,7 @@ class CameraFilterNode(Node):
             10
         )
         
-        # 2. Publicamos la imagen "limpia" con el nombre EXACTO de tu cámara de hardware
+        # 2. Publicamos la imagen con el nombre EXACTO de tu cámara fisica
         self.pub = self.create_publisher(
             Image, 
             '/ascamera_hp60c/camera_publisher/rgb0/image', 
@@ -38,7 +37,7 @@ class CameraFilterNode(Node):
             # Obtener dimensiones
             height, width = cv_image.shape[:2]
             
-            # Calcular el punto de corte (El 25% inferior, ajústalo si es necesario)
+            # Calcular el punto de corte (El 25% inferior)
             punto_de_corte = int(height * 0.75)
             
             # Aplicar el filtro: Pintar de negro absoluto la parte inferior
