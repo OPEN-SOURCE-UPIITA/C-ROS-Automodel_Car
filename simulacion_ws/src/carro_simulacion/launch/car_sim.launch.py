@@ -91,7 +91,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        gz_resource_path,   # Debe cargar antes que Gazebo
+        gz_resource_path,
         gz_sim,
         main_bridge,
         robot_state_publisher_node,

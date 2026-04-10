@@ -71,12 +71,12 @@ class SmartParking(Node):
             # 1. Avanza y gira a la izquierda para acomodar la cola
             cmd.dir_dc = 1
             cmd.speed_dc = 35
-            cmd.dir_servo = 1110 # <-- GIRO A LA IZQUIERDA
+            cmd.dir_servo = 1740 # <-- GIRO A LA IZQUIERDA
             cmd.turn_signals = 1 
             cmd.stop_lights = 0
             
             # CALIBRACIÓN: Qué tanto avanza hacia el frente/izquierda
-            if time.time() - self.tiempo_inicio_estado > 1.2:
+            if time.time() - self.tiempo_inicio_estado > 3.5:
                 self.estado = 'FRENANDO'
                 self.tiempo_inicio_estado = time.time()
 
@@ -92,6 +92,18 @@ class SmartParking(Node):
                 self.estado = 'REVERSA_CURVA'
                 self.tiempo_inicio_estado = time.time()
                 
+        elif self.estado == 'FRENANDO':
+            # 2. Se detiene por completo antes del cambio de velocidad
+            cmd.dir_dc = 2
+            cmd.speed_dc = 40
+            cmd.dir_servo = 1500 # Endereza momentáneamente
+            cmd.turn_signals = 3 
+            cmd.stop_lights = 1  
+            
+            if time.time() - self.tiempo_inicio_estado > 1.5:
+                self.estado = 'REVERSA_RECTA'
+                self.tiempo_inicio_estado = time.time()
+                
         elif self.estado == 'REVERSA_CURVA':
             # 3. Retrocede metiendo la cola al cajón
             cmd.dir_dc = 2       
@@ -101,7 +113,7 @@ class SmartParking(Node):
             cmd.stop_lights = 0
             
             # CALIBRACIÓN: Cuánto tiempo gira en reversa hasta quedar perpendicular a la calle
-            if time.time() - self.tiempo_inicio_estado > 1.8:
+            if time.time() - self.tiempo_inicio_estado > 4.5:
                 self.estado = 'REVERSA_RECTA'
                 self.tiempo_inicio_estado = time.time()
                 
@@ -114,7 +126,7 @@ class SmartParking(Node):
             cmd.stop_lights = 0
             
             # CALIBRACIÓN: Cuánto tiempo retrocede recto
-            if time.time() - self.tiempo_inicio_estado > 1.0:
+            if time.time() - self.tiempo_inicio_estado > 2.5:
                 self.estado = 'ESTACIONADO'
                 
         elif self.estado == 'ESTACIONADO':
@@ -124,7 +136,7 @@ class SmartParking(Node):
             cmd.dir_servo = 1500 
             cmd.turn_signals = 3 
             cmd.stop_lights = 1  
-            self.get_logger().info("¡Maniobra pro completada con éxito!")
+            self.get_logger().info("¡Maniobra completada con éxito!")
 
         self.pub_cmd.publish(cmd)
 

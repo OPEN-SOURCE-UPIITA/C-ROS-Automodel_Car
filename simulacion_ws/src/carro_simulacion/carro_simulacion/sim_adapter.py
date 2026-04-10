@@ -10,7 +10,7 @@ class SimAdapter(Node):
         # Publicador hacia Gazebo
         self.pub = self.create_publisher(Twist, '/model/carro/cmd_vel', 10)
 
-        # Suscriptor único a tu control
+        # Suscriptor al control
         self.create_subscription(MotorCommand, '/motor_command', self.cmd_cb, 10)
         self.get_logger().info("Adaptador iniciado: Traduciendo /motor_command a Twist")
 
