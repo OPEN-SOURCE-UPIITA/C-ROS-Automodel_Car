@@ -9,57 +9,41 @@ class SmartParking(Node):
     def __init__(self):
         super().__init__('smart_parking')
         
-        # Publicador para mandar los comandos al carro
         self.pub_cmd = self.create_publisher(MotorCommand, '/motor_command', 10)
-        
-        # Suscriptor al LiDAR. 
-        # NOTA: En la simulación usa '/model/carro/scan'. 
-        # Para el carro físico con el MS200, cámbialo a '/scan'
         self.scan_sub = self.create_subscription(LaserScan, '/model/carro/scan', self.scan_cb, 10)
         
-        # Variables de estado
         self.estado = 'BUSCANDO'
         self.distancia_derecha = 0.0
         self.tiempo_inicio_estado = 0.0
+        self.inicio_hueco = 0.0 
         
-        # Bucle de control (se ejecuta 10 veces por segundo)
         self.timer = self.create_timer(0.1, self.control_loop)
-        
-        self.get_logger().info("Piloto Automático Iniciado: Buscando lugar en batería...")
+        self.get_logger().info("Piloto Automático: Buscando lugar con maniobra de apertura...")
 
     def scan_cb(self, msg):
         num_rayos = len(msg.ranges)
         
         if num_rayos > 0:
-            # Buscamos la derecha del robot. En un escaneo de 0 a 360 grados, 
-            # la derecha se encuentra típicamente a los 270 grados (3 * PI / 2).
-            # Si en la vida real atornillas el LiDAR volteado, ajusta este valor.
             angulo_objetivo = 3.0 * math.pi / 2.0
             
-            # Verificamos que el ángulo esté dentro del rango de lectura
             if msg.angle_min <= angulo_objetivo <= msg.angle_max:
                 try:
-                    # Fórmula para saber qué rayo exacto apunta a la derecha
                     indice_central = int((angulo_objetivo - msg.angle_min) / msg.angle_increment)
-                    
-                    # Tomamos un "cono" de 5 rayos antes y 5 después para mayor estabilidad
                     inicio = max(0, indice_central - 5)
                     fin = min(num_rayos, indice_central + 5)
                     
                     rayos_derecha = msg.ranges[inicio:fin]
                     
-                    # Filtramos basura: Distancias menores a 10cm, mayores a 12m (rango MS200), infinitos o NaN
                     distancias_validas = [
                         d for d in rayos_derecha 
                         if 0.1 < d < 12.0 and not math.isinf(d) and not math.isnan(d)
                     ]
                     
                     if distancias_validas:
-                        # Sacamos el promedio de la distancia
                         self.distancia_derecha = sum(distancias_validas) / len(distancias_validas)
                         
                 except ZeroDivisionError:
-                    pass # Evita un crasheo si Gazebo arranca enviando angle_increment = 0
+                    pass
 
     def control_loop(self):
         cmd = MotorCommand()
@@ -68,73 +52,80 @@ class SmartParking(Node):
             cmd.dir_dc = 1       
             cmd.speed_dc = 35    
             cmd.dir_servo = 1500 
-            cmd.turn_signals = 1 # Direccional derecha (avisa que busca lugar)
+            cmd.turn_signals = 1 
             cmd.stop_lights = 0
             
-            # El fondo del cajón permite hasta 60cm. Si lee > 0.45m, sabemos que hay un hueco.
             if self.distancia_derecha > 0.45:
-                self.get_logger().info(f"¡Cajón libre detectado! Profundidad: {self.distancia_derecha:.2f}m. Preparando maniobra...")
-                self.estado = 'ALINEANDO'
-                self.tiempo_inicio_estado = time.time()
+                if self.inicio_hueco == 0.0:
+                    self.inicio_hueco = time.time()
+                    
+                elif time.time() - self.inicio_hueco > 0.8:
+                    self.get_logger().info("¡Cajón detectado! Abriendo trayectoria a la izquierda...")
+                    self.estado = 'ABRIENDO_TRAYECTORIA'
+                    self.tiempo_inicio_estado = time.time()
+            else:
+                if self.inicio_hueco != 0.0:
+                    self.inicio_hueco = 0.0
                 
-        elif self.estado == 'ALINEANDO':
+        elif self.estado == 'ABRIENDO_TRAYECTORIA':
+            # 1. Avanza y gira a la izquierda para acomodar la cola
             cmd.dir_dc = 1
             cmd.speed_dc = 35
-            cmd.dir_servo = 1500
-            cmd.turn_signals = 1 # Mantiene direccional derecha
+            cmd.dir_servo = 1110 # <-- GIRO A LA IZQUIERDA
+            cmd.turn_signals = 1 
             cmd.stop_lights = 0
             
-            # El cajón a escala mide solo 30cm de ancho. Avanzamos muy poco (0.6 seg) 
-            # para que el eje trasero rebase el cajón y quede en posición.
-            if time.time() - self.tiempo_inicio_estado > 0.6:
+            # CALIBRACIÓN: Qué tanto avanza hacia el frente/izquierda
+            if time.time() - self.tiempo_inicio_estado > 1.2:
                 self.estado = 'FRENANDO'
                 self.tiempo_inicio_estado = time.time()
 
         elif self.estado == 'FRENANDO':
+            # 2. Se detiene por completo antes del cambio de velocidad
             cmd.dir_dc = 0
             cmd.speed_dc = 0
-            cmd.dir_servo = 1500
-            cmd.turn_signals = 3 # Enciende Intermitentes de emergencia
-            cmd.stop_lights = 1  # Enciende luces de Stop (freno rojo)
+            cmd.dir_servo = 1500 # Endereza momentáneamente
+            cmd.turn_signals = 3 
+            cmd.stop_lights = 1  
             
-            # Pausa de 1 segundo para asegurar que el coche se detuvo físicamente por inercia
             if time.time() - self.tiempo_inicio_estado > 1.0:
                 self.estado = 'REVERSA_CURVA'
                 self.tiempo_inicio_estado = time.time()
                 
         elif self.estado == 'REVERSA_CURVA':
-            cmd.dir_dc = 2       # Reversa
-            cmd.speed_dc = 40    # Un poco más de fuerza para mover el auto detenido
-            cmd.dir_servo = 1740 # Giro de llantas a la derecha a tope para meter la cola
-            cmd.turn_signals = 3 # Mantiene intermitentes
+            # 3. Retrocede metiendo la cola al cajón
+            cmd.dir_dc = 2       
+            cmd.speed_dc = 40    
+            cmd.dir_servo = 1740 # <-- GIRO A LA DERECHA (hacia el cajón)
+            cmd.turn_signals = 3 
             cmd.stop_lights = 0
             
-            # Retrocede girando hasta quedar perpendicular a la banqueta (Aprox 90 grados)
-            # *Este tiempo es el más importante a calibrar en pruebas*
-            if time.time() - self.tiempo_inicio_estado > 1.5:
+            # CALIBRACIÓN: Cuánto tiempo gira en reversa hasta quedar perpendicular a la calle
+            if time.time() - self.tiempo_inicio_estado > 1.8:
                 self.estado = 'REVERSA_RECTA'
                 self.tiempo_inicio_estado = time.time()
                 
         elif self.estado == 'REVERSA_RECTA':
-            cmd.dir_dc = 2       # Sigue en reversa
+            # 4. Endereza y empuja hasta el fondo
+            cmd.dir_dc = 2       
             cmd.speed_dc = 35
-            cmd.dir_servo = 1500 # Endereza las llantas
-            cmd.turn_signals = 3 # Mantiene intermitentes
+            cmd.dir_servo = 1500 # <-- ENDEREZA LLANTAS
+            cmd.turn_signals = 3 
             cmd.stop_lights = 0
             
-            # Se mete recto hasta el fondo del cajón (Aprovechando la profundidad)
+            # CALIBRACIÓN: Cuánto tiempo retrocede recto
             if time.time() - self.tiempo_inicio_estado > 1.0:
                 self.estado = 'ESTACIONADO'
                 
         elif self.estado == 'ESTACIONADO':
-            cmd.dir_dc = 0       # Stop motores
+            # 5. Maniobra terminada
+            cmd.dir_dc = 0       
             cmd.speed_dc = 0
-            cmd.dir_servo = 1500 # Llantas al centro
-            cmd.turn_signals = 3 # Deja las intermitentes prendidas indicando maniobra terminada
-            cmd.stop_lights = 1  # Freno puesto
-            self.get_logger().info("¡Aston Martin estacionado a escala correctamente!")
+            cmd.dir_servo = 1500 
+            cmd.turn_signals = 3 
+            cmd.stop_lights = 1  
+            self.get_logger().info("¡Maniobra pro completada con éxito!")
 
-        # Enviamos el mensaje publicado al sistema ROS 2
         self.pub_cmd.publish(cmd)
 
 def main():

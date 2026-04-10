@@ -81,11 +81,22 @@ def generate_launch_description():
         output='screen'
     )
 
+    # 8. Filtro de Camara
+    # Nodo para filtrar la cámara y cambiar el nombre del tópico al real
+    camera_filter_node = Node(
+        package='carro_simulacion',
+        executable='camera_filter',
+        name='camera_filter_node',
+        output='screen'
+    )
+
     return LaunchDescription([
         gz_resource_path,   # Debe cargar antes que Gazebo
         gz_sim,
         main_bridge,
         robot_state_publisher_node,
         spawn_entity_node,
-        sim_adapter_node    # Arranca automáticamente tu adaptador
+        sim_adapter_node,
+        camera_filter_node
+        
     ])
