@@ -58,7 +58,7 @@ class STM32Controller(Node):
         self.dir_dc = msg.dir_dc
         self.speed_dc = msg.speed_dc
         
-        # --- EL SECRETO DEL OFFSET ---
+        # --- OFFSET ---
         OFFSET = -65  # (1435 - 1500)
         
         # Si el comando pide 0 por seguridad, forzamos el centro real
@@ -79,13 +79,12 @@ class STM32Controller(Node):
         servo_pwm = max(1000, min(1800, servo_pwm))
 
         high_byte = (servo_pwm >> 8) & 0xFF
-        # ... (el resto de tu función se queda igual)
         low_byte = servo_pwm & 0xFF
 
         safe_dir = int(self.dir_dc) &0xFF
         safe_speed  = int(self.speed_dc) & 0xFF
 
-        ##revisar este cuando probemos
+       
         #packet = bytearray([0xAA, 0x55, 0x01, safe_dir, safe_speed, high_byte, low_byte, 0xFF])
 
         # ======== EMPAQUETADO DEL BYTE DE LUCES ========
