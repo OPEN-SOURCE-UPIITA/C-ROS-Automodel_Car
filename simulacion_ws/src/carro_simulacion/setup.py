@@ -17,6 +17,7 @@ setup(
         (os.path.join('share', package_name, 'meshes'), glob('meshes/*.stl')),
         (os.path.join('share', package_name, 'worlds'), glob('worlds/*.world')),
         (os.path.join('share', package_name, 'materials/textures'), glob('materials/textures/*.*')),
+        (os.path.join('share', package_name, 'materials/scripts'), glob('materials/scripts/*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
