@@ -1,0 +1,15 @@
+material Concurso/Senal
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture senal.png
+        filtering anaisotropic
+        max_anisotropy 16
+      }
+    }
+  }
+}
