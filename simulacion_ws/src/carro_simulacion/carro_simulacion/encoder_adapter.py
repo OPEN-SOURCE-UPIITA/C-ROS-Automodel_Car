@@ -13,15 +13,11 @@ class EncoderAdapter(Node):
         
         self.pub_enc = self.create_publisher(EncoderData, '/encoder_data', 10)
         
-        # --- PARÁMETROS DE CALIBRACIÓN FÍSICA ---
-        # 1. ¿Cuántos ticks da tu encoder real cuando el carro avanza 1 metro?
-        self.ticks_por_metro = 1000.0 
+        self.ticks_por_metro = 2060.0 
         
-        # 2. ¿A qué frecuencia lee? (10Hz = ciclos de 0.1s)
-        self.frecuencia_ciclo = 10.0  
+        self.frecuencia_ciclo = 10.0
         
-        # 3. Distancia entre las llantas traseras en metros
-        self.distancia_eje = 0.15 
+        self.distancia_eje = 0.145
         
         self.get_logger().info("Adaptador Sim-to-Real: Odometría a Encoders Iniciado.")
 
