@@ -1,0 +1,4 @@
+[console_scripts]
+detector_carril = driving.detector_carril:main
+detector_senales = driving.detector_senales:main
+drive_carril = driving.drive_carril:main

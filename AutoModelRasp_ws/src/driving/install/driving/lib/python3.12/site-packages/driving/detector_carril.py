@@ -14,7 +14,6 @@ class DetectorCarrilNode(Node):
 
         # --- 1. PARÁMETROS DINÁMICOS (RQT) ---
         self.declare_parameter('umbral_blanco', 110)
-        self.declare_parameter('segmentacion_auto', True)  # Selector Manual/Auto
         self.declare_parameter('corte_y_sup_pct', 80)
         self.declare_parameter('corte_y_inf_pct', 5)
         self.declare_parameter('ancho_top', 180)
@@ -27,6 +26,9 @@ class DetectorCarrilNode(Node):
         self.declare_parameter('activar_seguimiento', True)
         self.declare_parameter('confianza_un_carril', 0.76)
         self.declare_parameter('usar_anclaje_base', True)
+        
+        # NUEVO: Límite de curvatura (Evita que el polinomio se retuerza hacia el centro)
+        # Valores típicos: 0.0005 a 0.002
         self.declare_parameter('max_curvatura', 0.1)
 
         self.add_on_set_parameters_callback(self.parameters_callback)
@@ -48,30 +50,14 @@ class DetectorCarrilNode(Node):
     def parameters_callback(self, params):
         return SetParametersResult(successful=True)
 
-    # --- NUEVA FUNCIÓN: SEGMENTACIÓN DINÁMICA ---
-    def segmentacion_iluminacion(self, frame, polygon):
+    def segmentacion_color(self, frame, polygon):
         h, w = frame.shape[:2]
         mask_roi = np.zeros((h, w), dtype=np.uint8)
         cv2.fillPoly(mask_roi, polygon, 255)
-
-        # Pre-procesamiento
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        
-        if self.get_parameter('segmentacion_auto').value:
-            # MODO AUTOMÁTICO (Otsu): Calcula el umbral ideal solo en la zona del ROI
-            # Aplicamos un desenfoque para evitar ruido de pixeles aislados
-            blur = cv2.GaussianBlur(gray, (5, 5), 0)
-            roi_gray = cv2.bitwise_and(blur, mask_roi)
-            
-            # Otsu ignora el valor '0' (negro) de la máscara para el cálculo
-            _, mask_binary = cv2.threshold(roi_gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-        else:
-            # MODO MANUAL: Usa el slider de 'umbral_blanco'
-            umbral = self.get_parameter('umbral_blanco').value
-            _, mask_binary = cv2.threshold(gray, umbral, 255, cv2.THRESH_BINARY)
-            mask_binary = cv2.bitwise_and(mask_binary, mask_roi)
-            
-        return mask_binary
+        umbral = self.get_parameter('umbral_blanco').value
+        _, mask_blancos = cv2.threshold(gray, umbral, 255, cv2.THRESH_BINARY)
+        return cv2.bitwise_and(mask_blancos, mask_roi)
 
     def procesar_puntos_carril(self, mask, cx, y_inf, anchors):
         ys, xs = np.where(mask > 0)
@@ -97,8 +83,12 @@ class DetectorCarrilNode(Node):
         
         try:
             coeffs = np.polyfit(ys, xs, 2)
+            
+            # --- MEJORA: FILTRO DE CURVATURA EXTREMA ---
+            # Coeffs[0] es la curvatura (A). Si es muy alta, la parábola se cierra mucho.
             max_curv = self.get_parameter('max_curvatura').value
             if abs(coeffs[0]) > max_curv:
+                # Si la curva es muy loca, forzamos un ajuste lineal (grado 1)
                 coeffs_lin = np.polyfit(ys, xs, 1)
                 coeffs = np.array([0.0, coeffs_lin[0], coeffs_lin[1]])
 
@@ -112,6 +102,7 @@ class DetectorCarrilNode(Node):
         plot_y = np.linspace(y_min, y_max, 25)
         plot_x = coeffs[0]*plot_y**2 + coeffs[1]*plot_y + coeffs[2]
         
+        # Impedir que el dibujo cruce el centro físico
         if side == 'L': plot_x = np.minimum(plot_x, cx_img - 2)
         else: plot_x = np.maximum(plot_x, cx_img + 2)
         
@@ -147,42 +138,47 @@ class DetectorCarrilNode(Node):
         polygon = np.array([[(cx - w_b//2, y_inf), (cx + w_b//2, y_inf), 
                              (cx + w_t, y_sup), (cx - w_t, y_sup)]], np.int32)
 
-        # Segmentación Adaptativa (Dinamismo de Iluminación)
-        mask = self.segmentacion_iluminacion(frame, polygon)
-        
+        mask = self.segmentacion_color(frame, polygon)
         off_l, off_r = self.get_parameter('base_offset_l').value, self.get_parameter('base_offset_r').value
         anchors = (cx - off_l, cx + off_r)
         
         l_fit_raw, r_fit_raw = self.procesar_puntos_carril(mask, cx, y_inf, anchors)
 
-        # Suavizado Inteligente
+        # --- MEJORA: SUAVIZADO INTELIGENTE ---
         alpha = self.get_parameter('suavizado_pct').value / 100.0
+        
+        # Si perdemos el carril o el cambio es muy brusco, reiniciamos el fit para no arrastrar la curva
         if l_fit_raw is not None:
-            if self.left_fit is None: self.left_fit = l_fit_raw
+            if self.left_fit is None:
+                self.left_fit = l_fit_raw
             else:
+                # Si la diferencia entre el nuevo y el viejo es enorme, bajamos el alpha para responder rápido
                 diff = np.abs(l_fit_raw[1] - self.left_fit[1]) 
                 actual_alpha = alpha if diff < 0.5 else 0.8 
                 self.left_fit = actual_alpha * l_fit_raw + (1 - actual_alpha) * self.left_fit
         else: self.left_fit = None
 
         if r_fit_raw is not None:
-            if self.right_fit is None: self.right_fit = r_fit_raw
+            if self.right_fit is None:
+                self.right_fit = r_fit_raw
             else:
                 diff = np.abs(r_fit_raw[1] - self.right_fit[1])
                 actual_alpha = alpha if diff < 0.5 else 0.8
                 self.right_fit = actual_alpha * r_fit_raw + (1 - actual_alpha) * self.right_fit
         else: self.right_fit = None
 
-        # Cálculo de Target Point
+        # --- CÁLCULO DE TARGET ---
         tx_l, tx_r = None, None
         if self.left_fit is not None:
             tx_l = self.left_fit[0]*(y_sup**2) + self.left_fit[1]*y_sup + self.left_fit[2]
-            tx_l = min(tx_l, cx - 10)
+            tx_l = min(tx_l, cx - 10) # Mayor margen de seguridad
         if self.right_fit is not None:
             tx_r = self.right_fit[0]*(y_sup**2) + self.right_fit[1]*y_sup + self.right_fit[2]
             tx_r = max(tx_r, cx + 10)
 
-        target_x, confianza = cx, 1.0
+        target_x = cx
+        confianza = 1.0
+
         if tx_l is not None and tx_r is not None:
             target_x = (tx_l + tx_r) // 2
             self.lane_width_pixels = 0.95 * self.lane_width_pixels + 0.05 * (tx_r - tx_l)
@@ -193,7 +189,6 @@ class DetectorCarrilNode(Node):
             target_x = tx_r - (self.lane_width_pixels / 2)
             confianza = self.get_parameter('confianza_un_carril').value
 
-        # Publicar Error
         error_bruto = (target_x - cx) / float(cx)
         error_final = np.clip(error_bruto * confianza, -1.0, 1.0)
         self.last_error = 0.7 * self.last_error + 0.3 * error_final
@@ -201,13 +196,8 @@ class DetectorCarrilNode(Node):
         if self.get_parameter('activar_seguimiento').value:
             self.publisher_error.publish(Float32(data=float(self.last_error)))
 
-        # Dibujo e Interfaz
         self.dibujo_virtual(debug, polygon, self.left_fit, self.right_fit, target_x, anchors, (y_sup, y_inf))
         
-        # Texto de estado en pantalla
-        txt = "AUTO-LIT" if self.get_parameter('segmentacion_auto').value else "MANUAL-LIT"
-        cv2.putText(debug, txt, (50, 50), 1, 1, (0, 255, 0), 2)
-
         self.pub_mascara.publish(self.bridge.cv2_to_compressed_imgmsg(mask))
         self.pub_resultado.publish(self.bridge.cv2_to_compressed_imgmsg(debug))
 
