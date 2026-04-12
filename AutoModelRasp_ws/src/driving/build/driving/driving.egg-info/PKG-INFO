@@ -1,9 +1,0 @@
-Metadata-Version: 2.1
-Name: driving
-Version: 0.0.0
-Summary: Paquete de conduccion autonoma: Deteccion de carriles, senales y control PID
-Maintainer: alereyes
-Maintainer-email: alerey.lira@gmail.com
-License: MIT
-Provides-Extra: test
-License-File: LICENSE
