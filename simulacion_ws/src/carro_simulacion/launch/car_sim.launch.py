@@ -41,7 +41,11 @@ def generate_launch_description():
             '/model/carro/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
             '/camera/image@sensor_msgs/msg/Image[gz.msgs.Image',
             '/model/carro/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist', # ROS a GZ
-            '/model/carro/odometry@nav_msgs/msg/Odometry@gz.msgs.Odometry'
+            '/model/carro/odometry@nav_msgs/msg/Odometry@gz.msgs.Odometry',
+            '/camera/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked'
+        ],
+        remappings=[
+            ('/camera/points', '/ascamera_hp60c/camera_publisher/depth0/points'),
         ],
         output='screen'
     )
