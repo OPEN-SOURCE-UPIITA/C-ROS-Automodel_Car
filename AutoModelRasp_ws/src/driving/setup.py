@@ -27,6 +27,7 @@ setup(
             'detector_senales = driving.detector_senales:main',
             'detector_carril = driving.detector_carril:main',
             'drive_carril = driving.drive_carril:main',
+            'lane_detection = driving.lane_detection:main',
         ],
     },
 )
