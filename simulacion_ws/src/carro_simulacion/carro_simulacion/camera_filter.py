@@ -38,7 +38,7 @@ class CameraFilterNode(Node):
             height, width = cv_image.shape[:2]
             
             # Calcular el punto de corte (El 25% inferior)
-            punto_de_corte = int(height * 0.75)
+            punto_de_corte = int(height * 1)
             
             # Aplicar el filtro: Pintar de negro absoluto la parte inferior
             cv_image[punto_de_corte:height, 0:width] = [0, 0, 0]

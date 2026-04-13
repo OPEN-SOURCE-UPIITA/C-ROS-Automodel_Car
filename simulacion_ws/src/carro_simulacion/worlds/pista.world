@@ -105,5 +105,80 @@
         </visual>
       </link>
     </model>
+
+    <model name="senal_1">
+      <static>true</static>
+      <pose>6.0 2.0 0 0 0 1.5708</pose> 
+      
+      <link name="poste">
+        <pose>0 0 0.125 0 0 0</pose>
+        <collision name="poste_col">
+          <geometry><cylinder><radius>0.015</radius><length>0.25</length></cylinder></geometry>
+        </collision>
+        <visual name="poste_vis">
+          <geometry><cylinder><radius>0.015</radius><length>0.25</length></cylinder></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="letrero">
+        <pose>0 0.02 0.26 0 0 0</pose>
+        <collision name="letrero_col">
+          <geometry><box><size>0.15 0.01 0.15</size></box></geometry>
+        </collision>
+        <visual name="letrero_vis">
+          <geometry><box><size>0.15 0.01 0.15</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+              <metal>
+                <albedo_map>../materials/textures/senal.png</albedo_map>
+                <emissive_map>../materials/textures/senal.png</emissive_map>
+              </metal>
+            </pbr>
+            <emissive>0.3 0.3 0.3 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="senal_2">
+      <static>true</static>
+      <pose>6.5 6.6.0 0 0 0 -1.5708</pose> 
+      
+      <link name="poste">
+        <pose>0 0 0.125 0 0 0</pose>
+        <collision name="poste_col">
+          <geometry><cylinder><radius>0.015</radius><length>0.25</length></cylinder></geometry>
+        </collision>
+        <visual name="poste_vis">
+          <geometry><cylinder><radius>0.015</radius><length>0.25</length></cylinder></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+
+      <link name="letrero">
+        <pose>0 0.02 0.26 0 0 0</pose>
+        <collision name="letrero_col">
+          <geometry><box><size>0.15 0.01 0.15</size></box></geometry>
+        </collision>
+        <visual name="letrero_vis">
+          <geometry><box><size>0.15 0.01 0.15</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <pbr>
+              <metal>
+                <albedo_map>../materials/textures/senal.png</albedo_map>
+                <emissive_map>../materials/textures/senal.png</emissive_map>
+              </metal>
+            </pbr>
+            <emissive>0.3 0.3 0.3 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
     </world>
 </sdf>
