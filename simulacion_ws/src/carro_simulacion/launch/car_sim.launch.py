@@ -46,6 +46,7 @@ def generate_launch_description():
         ],
         remappings=[
             ('/camera/points', '/ascamera_hp60c/camera_publisher/depth0/points'),
+            ('/model/carro/scan', '/scan'),
         ],
         output='screen'
     )
