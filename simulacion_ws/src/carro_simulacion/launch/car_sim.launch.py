@@ -40,7 +40,13 @@ def generate_launch_description():
             '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
             '/model/carro/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
             '/camera/image@sensor_msgs/msg/Image[gz.msgs.Image',
-            '/model/carro/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist' # ROS a GZ
+            '/model/carro/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist', # ROS a GZ
+            '/model/carro/odometry@nav_msgs/msg/Odometry@gz.msgs.Odometry',
+            '/camera/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked'
+        ],
+        remappings=[
+            ('/camera/points', '/ascamera_hp60c/camera_publisher/depth0/points'),
+            ('/model/carro/scan', '/scan'),
         ],
         output='screen'
     )
@@ -81,6 +87,15 @@ def generate_launch_description():
         output='screen'
     )
 
+    # 8. Encoder Adapter
+    # Ejecuta el script de Python que traduce odometry a encoder_data
+    encoder_adapter_node = Node(
+        package='carro_simulacion',
+        executable='encoder_adapter',
+        name='encoder_adapter_node',
+        output='screen'
+    )
+    
     # 8. Filtro de Camara
     # Nodo para filtrar la cámara y cambiar el nombre del tópico al real
     camera_filter_node = Node(
@@ -97,6 +112,6 @@ def generate_launch_description():
         robot_state_publisher_node,
         spawn_entity_node,
         sim_adapter_node,
-        camera_filter_node
-        
+        encoder_adapter_node,
+        camera_filter_node,
     ])
