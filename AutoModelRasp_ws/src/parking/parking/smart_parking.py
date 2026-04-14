@@ -122,11 +122,11 @@ class SmartParking(Node):
             if dist_hueco >= self.tamano_minimo:
                 self.estado = 'ALTO_TOTAL'
                 self.ciclos_pausa = 0
-                self.get_logger().info(f"Cajón APROBADO ({dist_hueco:.2f}m). FRENANDO...")
+                self.get_logger().info(f"✅ Cajón APROBADO ({dist_hueco:.2f}m). FRENANDO...")
                 
             elif self.dist_der < 1.2: 
                 self.estado = 'BUSCANDO_INICIO_HUECO'
-                self.get_logger().info(f"Hueco RECHAZADO (Muy chico: {dist_hueco:.2f}m).")
+                self.get_logger().info(f"❌ Hueco RECHAZADO (Muy chico: {dist_hueco:.2f}m).")
 
         # 4. FRENAR PARA MATAR INERCIA
         elif self.estado == 'ALTO_TOTAL':
