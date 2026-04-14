@@ -18,13 +18,15 @@ class SmartParking(Node):
         self.ticks_por_metro = 2060.0 
         self.ancho_via = 0.15 
         
-        self.pwm_crucero = 85    # Fuerza aumentada para patrullar sin atascarse
-        self.pwm_minimo = 60.0   # Fuerza exacta para romper la inercia
+        self.pwm_crucero = 85    # Fuerza para patrullar sin atascarse
+        self.pwm_minimo = 60.0   # Fuerza base para romper inercia (Deadband)
         
-        # --- 2. CALIBRACIÓN DE LA BRÚJULA DEL LIDAR ---
-        self.angulo_der_rad = 4.71   # Derecha (270 grados)
-        self.angulo_atras_rad = 3.14 # Atrás (180 grados)
+        # --- 2. BRÚJULA DEL LIDAR (Mapeo Físico de tu Carro) ---
+        # Si descubriste que "Atrás" del Lidar es la "Derecha" del carro:
+        self.angulo_der_rad = 3.14   
+        self.angulo_atras_rad = 1.57 
         
+        # Odometría espacial
         self.pos_x = 0.0; self.pos_y = 0.0; self.yaw_actual = 0.0
         self.dist_der = 12.0; self.dist_atras = 12.0
         
@@ -33,22 +35,22 @@ class SmartParking(Node):
         
         # --- 3. ESCÁNER DE HUECOS ---
         self.p1_x = 0.0; self.p1_y = 0.0  
-        self.tamano_minimo = 0.30  
-        self.dist_alineacion = 0.35 
+        self.tamano_minimo = 0.30   # El hueco debe medir al menos 30cm
+        self.dist_alineacion = 0.35 # Cuánto retrocede recto antes de quebrar
         self.ciclos_pausa = 0
         
         # --- 4. ACTUADORES ---
         self.DERECHA_REVERSA = 1740  
         self.CENTRO = 1500
 
-        # --- 5. CEREBRO FÍSICO (Tus valores perfectos) ---
+        # --- 5. CEREBRO PI (Ganancias del Auto-Tuner) ---
         self.kp_dist = 50.0
         self.ki_dist = 0.0
         self.error_integral_dist = 0.0
         self.dt = 0.1
 
         self.timer = self.create_timer(self.dt, self.control_loop)
-        self.get_logger().info(f"v30.0: Torque de Patrulla 85 | Filtro Trasero Anti-Cables Activo")
+        self.get_logger().info("v31.0 Sinergia: Optimizado para el nuevo Driver MS200 de 360°")
 
     def encoder_cb(self, msg):
         signo = 1 if self.comando_dir == 1 else -1
@@ -66,20 +68,31 @@ class SmartParking(Node):
         num_rayos = len(msg.ranges)
         if num_rayos == 0: return
 
-        def obtener_distancia(angulo_objetivo, dist_minima):
-            diff = math.atan2(math.sin(angulo_objetivo - msg.angle_min), math.cos(angulo_objetivo - msg.angle_min))
-            if diff < 0: diff += 2.0 * math.pi
-            idx = int(diff / msg.angle_increment)
-            if idx >= num_rayos: idx = num_rayos - 1
-            
-            rayos = msg.ranges[max(0, idx-20):min(num_rayos, idx+20)]
-            
-            # Filtro ciego para omitir llantas (0.30m) y cables traseros (0.15m)
-            validos = [d for d in rayos if dist_minima < d < 12.0 and not math.isinf(d) and not math.isnan(d)]
-            return min(validos) if validos else 12.0
+        # Gracias al nuevo driver, sabemos que num_rayos es ~360.
+        # Convertimos radianes directamente a un índice de grado entero.
+        idx_der = int(math.degrees(self.angulo_der_rad)) % num_rayos
+        idx_atras = int(math.degrees(self.angulo_atras_rad)) % num_rayos
 
-        self.dist_der = obtener_distancia(self.angulo_der_rad, 0.30)
-        self.dist_atras = obtener_distancia(self.angulo_atras_rad, 0.15)
+        def obtener_distancia_limpia(idx_central, ignora_chasis=False):
+            rayos = []
+            # Cono de visión de +- 10 grados (recolectamos 21 rayos)
+            for i in range(-10, 11):
+                idx = (idx_central + i) % num_rayos # El % hace que dé la vuelta al círculo si pasa de 360
+                rayos.append(msg.ranges[idx])
+            
+            # Filtro Espacial: Ignora < 0.35m para no ver la propia llanta o chasis
+            min_dist = 0.35 if ignora_chasis else 0.05
+            validos = [d for d in rayos if min_dist < d < 12.0 and not math.isinf(d) and not math.isnan(d)]
+            
+            if not validos: return 12.0
+            
+            # Promediamos los 3 más cercanos para robustez total
+            validos.sort()
+            top_3 = validos[:3]
+            return sum(top_3) / len(top_3)
+
+        self.dist_der = obtener_distancia_limpia(idx_der, ignora_chasis=True)
+        self.dist_atras = obtener_distancia_limpia(idx_atras, ignora_chasis=False)
 
     def control_loop(self):
         cmd = MotorCommand()
@@ -87,18 +100,21 @@ class SmartParking(Node):
 
         self.get_logger().info(f"[{self.estado}] Der: {self.dist_der:.2f}m | Atrás: {self.dist_atras:.2f}m", throttle_duration_sec=0.5)
 
+        # 1. ALINEARSE A LA FILA
         if self.estado == 'BUSCANDO_CARRO':
             cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 1, self.pwm_crucero, self.CENTRO
-            if self.dist_der < 1.5: 
+            if self.dist_der < 1.2: 
                 self.estado = 'BUSCANDO_INICIO_HUECO'
 
+        # 2. ENCONTRAR EL BORDE DEL CARRO
         elif self.estado == 'BUSCANDO_INICIO_HUECO':
             cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 1, self.pwm_crucero, self.CENTRO
-            if self.dist_der > 1.6: 
+            if self.dist_der > 1.4: 
                 self.p1_x, self.p1_y = self.pos_x, self.pos_y
                 self.estado = 'MIDIENDO_HUECO'
                 self.get_logger().info("¡Inicia hueco! Midiendo...")
 
+        # 3. ESCANEAR CAJÓN
         elif self.estado == 'MIDIENDO_HUECO':
             cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 1, self.pwm_crucero, self.CENTRO
             dist_hueco = math.hypot(self.pos_x - self.p1_x, self.pos_y - self.p1_y)
@@ -106,11 +122,13 @@ class SmartParking(Node):
             if dist_hueco >= self.tamano_minimo:
                 self.estado = 'ALTO_TOTAL'
                 self.ciclos_pausa = 0
-                self.get_logger().info(f"✅ Cajón APROBADO ({dist_hueco:.2f}m). FRENANDO para alinear cola...")
+                self.get_logger().info(f"Cajón APROBADO ({dist_hueco:.2f}m). FRENANDO...")
                 
-            elif self.dist_der < 1.4: 
+            elif self.dist_der < 1.2: 
                 self.estado = 'BUSCANDO_INICIO_HUECO'
+                self.get_logger().info(f"Hueco RECHAZADO (Muy chico: {dist_hueco:.2f}m).")
 
+        # 4. FRENAR PARA MATAR INERCIA
         elif self.estado == 'ALTO_TOTAL':
             cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 0, 0, self.CENTRO
             cmd.stop_lights = 1
@@ -119,6 +137,7 @@ class SmartParking(Node):
                 self.estado = 'REVERSA_RECTA'
                 self.x_ref, self.y_ref = self.pos_x, self.pos_y 
 
+        # 5. RETROCEDER PARA ALINEAR LA COLA
         elif self.estado == 'REVERSA_RECTA':
             cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 2, self.pwm_crucero, self.CENTRO
             dist_recta = math.hypot(self.pos_x - self.x_ref, self.pos_y - self.y_ref)
@@ -128,6 +147,7 @@ class SmartParking(Node):
                 self.estado = 'REVERSA_GIRANDO'
                 self.get_logger().info("Cola alineada. Quebrando volante...")
 
+        # 6. ENTRADA AL CAJÓN
         elif self.estado == 'REVERSA_GIRANDO':
             cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 2, self.pwm_crucero, self.DERECHA_REVERSA
             desviacion = abs(math.degrees(diff_ang(self.yaw_actual, self.yaw_calle)))
@@ -137,6 +157,7 @@ class SmartParking(Node):
                 self.x_ref, self.y_ref = self.pos_x, self.pos_y
                 self.error_integral_dist = 0.0
 
+        # 7. ENCLAVADO CON PI Y RAMPA DE ENERGÍA
         elif self.estado == 'CENTRADO_FINAL':
             dist_reversa = math.hypot(self.pos_x - self.x_ref, self.pos_y - self.y_ref)
             error_pos = 0.60 - dist_reversa 
@@ -153,17 +174,15 @@ class SmartParking(Node):
                 pwm_real = self.pwm_minimo + (vel_abs * 1.2) 
                 velocidad_pwm = int(max(0, min(100, pwm_real)))
             
-            # --- DIRECCIÓN DINÁMICA ---
             if vel_control >= 0:
-                cmd.dir_dc = 2 # Falta distancia, sigue en reversa
+                cmd.dir_dc = 2 
             else:
-                cmd.dir_dc = 1 # Se pasó, mete primera hacia adelante
+                cmd.dir_dc = 1 
                 
             cmd.speed_dc = velocidad_pwm
             cmd.dir_servo = self.CENTRO 
             
-            # Freno de emergencia por Lidar
-            if self.dist_atras <= 0.18:
+            if self.dist_atras <= 0.16:
                 self.estado = 'ESTACIONADO'
 
         elif self.estado == 'ESTACIONADO':
