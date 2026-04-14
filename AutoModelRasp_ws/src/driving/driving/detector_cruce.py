@@ -9,131 +9,190 @@ import cv2
 import numpy as np
 
 # ==============================================================================
-# DETECTOR DE CRUCES PEATONALES (Vista de Águila + Histograma Horizontal)
+# DETECTOR DE CRUCES PEATONALES (Filtro HLS + ROI Trapezoidal)
 # ==============================================================================
 
 class DetectorCrucesNode(Node):
     def __init__(self):
         super().__init__('detector_cruces')
-        self.get_logger().info("Detector de Cruces Peatonales Iniciado")
 
-        # --- 1. PARÁMETROS DE PERSPECTIVA (Bird's Eye) ---
-        self.declare_parameter('umbral_blanco', 180)
-        self.declare_parameter('roi_y_top', 260)     
-        self.declare_parameter('roi_w_top', 150)     
-        self.declare_parameter('roi_w_bot', 600)     
-        self.declare_parameter('corte_lados_px', 150) # Ignorar bordes de la pista
-        
-        # --- 2. PARÁMETROS DEL CRUCE ---
-        # ¿Cuántos píxeles blancos en una fila se necesitan para considerarla una "línea de cebra"?
-        self.declare_parameter('ancho_min_linea_cruce', 120) 
-        # ¿Cuántas líneas gruesas juntas confirman que es un paso de cebra?
-        self.declare_parameter('num_lineas_para_cruce', 3)   
-        # Coordenada Y en la vista de águila donde el auto debe detenerse
-        self.declare_parameter('distancia_frenado_y', 350)   
+        # =============================
+        # PARÁMETROS DINÁMICOS (RQT)
+        # =============================
+        self.declare_parameter('resize_w', 320)
+        self.declare_parameter('resize_h', 240)
+
+        self.declare_parameter('roi_y_ratio', 0.5)
+        self.declare_parameter('roi_ancho_sup', 120)
+        self.declare_parameter('roi_ancho_inf', 300)
+
+        # Filtros de Color HLS (Luminosidad y Saturación)
+        self.declare_parameter('l_min', 200)
+        self.declare_parameter('s_max', 60)
+
+        # Lógica de detección del cruce
+        self.declare_parameter('ancho_min_linea', 60)
+        self.declare_parameter('num_lineas_cruce', 3)
+        self.declare_parameter('salto_filas', 2)
 
         self.add_on_set_parameters_callback(self.parameters_callback)
 
-        # --- 3. COMUNICACIONES ---
+        # =============================
+        # COMUNICACIÓN
+        # =============================
         self.subscription = self.create_subscription(
-            Image, '/ascamera_hp60c/camera_publisher/rgb0/image', self.image_callback, 10) 
-        
-        # Publicamos la "distancia". Si es 999.0, la vía está libre.
-        self.pub_distancia_cruce = self.create_publisher(Float32, '/vision/cruce_peatonal/distancia', 10)
-        self.pub_resultado = self.create_publisher(CompressedImage, '/vision/cruce_peatonal/resultado/compressed', 10)
-        
+            Image,
+            '/ascamera_hp60c/camera_publisher/rgb0/image',
+            self.image_callback,
+            10
+        )
+
+        self.pub_distancia = self.create_publisher(
+            Float32,
+            '/vision/cruce_peatonal/distancia',
+            10
+        )
+
+        self.pub_debug = self.create_publisher(
+            CompressedImage,
+            '/vision/cruce_peatonal/debug/compressed',
+            10
+        )
+
+        # NUEVO PUBLICADOR: Máscara HLS para verla en RQT
+        self.pub_mask = self.create_publisher(
+            CompressedImage,
+            '/vision/cruce_peatonal/mask/compressed',
+            10
+        )
+
         self.bridge = CvBridge()
 
     def parameters_callback(self, params):
         return SetParametersResult(successful=True)
 
     def image_callback(self, msg):
-        try: 
+        try:
             frame = self.bridge.imgmsg_to_cv2(msg, "bgr8")
-        except: 
+        except:
             return
 
-        frame = cv2.resize(frame, (640, 480))
+        # =============================
+        # LEER PARAMS
+        # =============================
+        w_r = self.get_parameter('resize_w').value
+        h_r = self.get_parameter('resize_h').value
+        roi_ratio = self.get_parameter('roi_y_ratio').value
+
+        l_min = self.get_parameter('l_min').value
+        s_max = self.get_parameter('s_max').value
+
+        ancho_min = self.get_parameter('ancho_min_linea').value
+        lineas_req = self.get_parameter('num_lineas_cruce').value
+        salto = self.get_parameter('salto_filas').value
+
+        w_top = self.get_parameter('roi_ancho_sup').value
+        w_bot = self.get_parameter('roi_ancho_inf').value
+
+        # =============================
+        # PREPROCESAMIENTO
+        # =============================
+        frame = cv2.resize(frame, (w_r, h_r))
         h, w = frame.shape[:2]
         cx = w // 2
 
-        # LEER PARÁMETROS
-        umbral = self.get_parameter('umbral_blanco').value
-        y_top = self.get_parameter('roi_y_top').value
-        w_top = self.get_parameter('roi_w_top').value
-        w_bot = self.get_parameter('roi_w_bot').value
-        corte_lados = self.get_parameter('corte_lados_px').value
-        umbral_ancho_linea = self.get_parameter('ancho_min_linea_cruce').value
-        lineas_requeridas = self.get_parameter('num_lineas_para_cruce').value
-        linea_freno = self.get_parameter('distancia_frenado_y').value
+        y1 = int(h * roi_ratio)
+        y2 = h
 
-        # --- PASO 1: VISTA DE ÁGUILA (BIRD'S EYE VIEW) ---
-        src_points = np.float32([[cx - w_top//2, y_top], [cx + w_top//2, y_top], 
-                                 [cx + w_bot//2, h - 10], [cx - w_bot//2, h - 10]])
-        offset = 150 
-        dst_points = np.float32([[offset, 0], [w - offset, 0], [w - offset, h], [offset, h]])
+        # ROI trapezoidal
+        polygon = np.array([[
+            (cx - w_bot//2, y2),
+            (cx + w_bot//2, y2),
+            (cx + w_top//2, y1),
+            (cx - w_top//2, y1)
+        ]], np.int32)
 
-        M = cv2.getPerspectiveTransform(src_points, dst_points)
-        warped = cv2.warpPerspective(frame, M, (w, h), flags=cv2.INTER_LINEAR)
+        mask_roi = np.zeros((h, w), dtype=np.uint8)
+        cv2.fillPoly(mask_roi, polygon, 255)
 
-        # --- PASO 2: UMBRALIZACIÓN Y LIMPIEZA ---
-        gray = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
-        _, binary_warped = cv2.threshold(gray, umbral, 255, cv2.THRESH_BINARY)
-        
-        # Ignoramos los lados de la imagen para no confundir las líneas del carril con cruces
-        binary_warped[:, 0:corte_lados] = 0
-        binary_warped[:, w-corte_lados:w] = 0
-        
-        out_img = np.dstack((binary_warped, binary_warped, binary_warped))
+        roi = frame[y1:y2, :]
 
-        # --- PASO 3: HISTOGRAMA HORIZONTAL ---
-        # Sumamos la cantidad de píxeles blancos en cada fila (eje Y)
-        histograma_horizontal = np.sum(binary_warped == 255, axis=1)
+        # =============================
+        # FILTRO HLS (Blanco)
+        # =============================
+        hls = cv2.cvtColor(roi, cv2.COLOR_BGR2HLS)
+        _, L, S = cv2.split(hls)
 
-        # --- PASO 4: DETECCIÓN DEL CRUCE ---
-        distancia_cruce = 999.0
-        lineas_detectadas = 0
-        y_cruce_mas_cercano = 0
+        mask = (L > l_min) & (S < s_max)
+        mask = mask.astype(np.uint8) * 255
+
+        # aplicar ROI
+        mask = cv2.bitwise_and(mask, mask_roi[y1:y2, :])
+
+        # limpieza morfológica
+        kernel = np.ones((3, 3), np.uint8)
+        mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+
+        # =============================
+        # HISTOGRAMA Y DETECCIÓN
+        # =============================
+        hist = np.count_nonzero(mask, axis=1)
+
+        lineas = 0
         en_linea = False
-        
-        # Escaneamos la imagen desde abajo (más cerca del auto) hacia arriba
-        for y in range(h-1, 0, -1):
-            pixeles_blancos = histograma_horizontal[y]
-            
-            # Si hay muchos píxeles blancos en esta fila, es una franja del cruce
-            if pixeles_blancos > umbral_ancho_linea:
+        y_detect = 0
+
+        for y in range(len(hist) - 1, 0, -salto):
+            if hist[y] > ancho_min:
                 if not en_linea:
-                    lineas_detectadas += 1
+                    lineas += 1
                     en_linea = True
-                    # Guardamos la posición Y de la primera raya de cebra que toque el auto
-                    if lineas_detectadas == 1:
-                        y_cruce_mas_cercano = y
+
+                    # Guardamos la posición Y local de la primera línea detectada
+                    if lineas == 1:
+                        y_detect = y
+
+                if lineas >= lineas_req:
+                    break
             else:
-                # Si los píxeles blancos bajan, significa que estamos en el asfalto negro entre las rayas
                 en_linea = False
 
-        # Dibujamos la línea límite donde queremos que el auto se detenga (Naranja)
-        cv2.line(out_img, (0, linea_freno), (w, linea_freno), (0, 165, 255), 2)
+        # =============================
+        # RESULTADO Y PUBLICACIÓN
+        # =============================
+        distancia = 999.0
+        debug = frame.copy()
 
-        # --- PASO 5: EVALUACIÓN ---
-        if lineas_detectadas >= lineas_requeridas:
-            # Enviamos la coordenada Y de la primera raya. (Mayor Y = más cerca del auto)
-            distancia_cruce = float(y_cruce_mas_cercano)
+        # dibujar ROI azul
+        cv2.polylines(debug, polygon, True, (255, 0, 0), 2)
+
+        if lineas >= lineas_req:
+            # Calculamos la coordenada Y global (relativa a toda la imagen, no solo al ROI)
+            y_global = y1 + y_detect
             
-            cv2.putText(out_img, f"¡CRUCE DETECTADO! Lineas: {lineas_detectadas}", 
-                        (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2)
-            cv2.line(out_img, (0, y_cruce_mas_cercano), (w, y_cruce_mas_cercano), (0, 0, 255), 4)
+            # Enviamos el píxel exacto al multiplexor en lugar de un valor normalizado
+            distancia = float(y_global)
 
-        # 6. PUBLICAR
-        self.pub_distancia_cruce.publish(Float32(data=distancia_cruce))
-        self.pub_resultado.publish(self.bridge.cv2_to_compressed_imgmsg(out_img))
+            cv2.putText(debug, f"CRUCE {lineas}",
+                        (10, 30),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        0.7, (0, 0, 255), 2)
+
+            cv2.line(debug, (0, y_global), (w, y_global), (0, 0, 255), 2)
+
+        # Convertir máscara de 1 canal a 3 canales BGR para que RQT no de errores de formato
+        mask_bgr = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
+
+        self.pub_distancia.publish(Float32(data=distancia))
+        self.pub_debug.publish(self.bridge.cv2_to_compressed_imgmsg(debug))
+        self.pub_mask.publish(self.bridge.cv2_to_compressed_imgmsg(mask_bgr))
 
 def main(args=None):
     rclpy.init(args=args)
     node = DetectorCrucesNode()
-    try: 
+    try:
         rclpy.spin(node)
-    except KeyboardInterrupt: 
+    except KeyboardInterrupt:
         pass
     finally:
         node.destroy_node()

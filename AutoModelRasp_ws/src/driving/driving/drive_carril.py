@@ -6,7 +6,7 @@ from motor_msgs.msg import MotorCommand
 import numpy as np
 
 # ==============================================================================
-# MULTIPLEXOR: CONTROL DE CARRIL + FRENADO (STOP & CRUCES) + RQT START/STOP
+# MULTIPLEXOR: CONTROL DE CARRIL + FRENADO + RAMPAS DE ACELERACIÓN + RQT
 # ==============================================================================
 
 class DriveCarrilNode(Node):
@@ -26,6 +26,10 @@ class DriveCarrilNode(Node):
         self.declare_parameter('kd_servo', 200.0)             
         self.declare_parameter('max_step_servo', 25)         
 
+        # --- NUEVOS: PARÁMETROS DE RAMPA (SUAVIZADO DE ACELERACIÓN/FRENADO) ---
+        self.declare_parameter('aceleracion_step', 2.0)      # Cuánto sube el PWM por ciclo (suaviza el arranque)
+        self.declare_parameter('desaceleracion_step', 4.0)   # Cuánto baja el PWM por ciclo (suaviza el frenado)
+
         # 2. Control de Frenado (Tiempos y distancias)
         self.declare_parameter('tiempo_detenido', 5.0)       # Segundos que el auto debe quedarse quieto
         self.declare_parameter('tiempo_ignorar', 4.0)        # Segundos de "cooldown" post-frenado
@@ -40,6 +44,9 @@ class DriveCarrilNode(Node):
         self.last_servo_value = self.servo_centro
         self.error_previo = 0.0
         self.last_time = self.get_clock().now()
+
+        # Memoria para la Rampa de Velocidad
+        self.velocidad_actual_rampa = 0.0
 
         # Memorias de Sensores (Vision)
         self.distancia_senal = 999.0
@@ -63,7 +70,7 @@ class DriveCarrilNode(Node):
         self.pub_motor = self.create_publisher(
             MotorCommand, '/motor_command', 10)
 
-        self.get_logger().info("Nodo Multiplexor (PD + STOP + Cruces Peatonales) Iniciado")
+        self.get_logger().info("Nodo Multiplexor (PD + STOP + Cruces + Rampas de Velocidad) Iniciado")
 
     # --- CALLBACKS DE VISIÓN ---
     def distancia_callback(self, msg):
@@ -92,7 +99,7 @@ class DriveCarrilNode(Node):
                 motivo = "CRUCE PEATONAL" if condicion_cruce else "SEÑAL STOP"
                 self.estado_vehiculo = "DETENIDO"
                 self.tiempo_cambio_estado = ahora
-                self.get_logger().warn(f"¡{motivo} DETECTADO! Activando Freno Electromagnético ({t_paro}s).")
+                self.get_logger().warn(f"¡{motivo} DETECTADO! Activando rampa de frenado ({t_paro}s).")
                 return True
             return False
 
@@ -103,7 +110,7 @@ class DriveCarrilNode(Node):
                 # Limpiamos las memorias de los sensores para no volver a frenar al instante
                 self.distancia_senal = 999.0 
                 self.distancia_cruce = 999.0
-                self.get_logger().info("Tiempo de parada cumplido. Reanudando marcha...")
+                self.get_logger().info("Tiempo de parada cumplido. Iniciando rampa de aceleración...")
                 return False
             return True
 
@@ -122,6 +129,7 @@ class DriveCarrilNode(Node):
         # 0. BOTÓN START/STOP EN RQT
         modo_activo = self.get_parameter('habilitar_conduccion').value
         if not modo_activo:
+            self.velocidad_actual_rampa = 0.0 # Reseteo de rampa si se apaga de emergencia
             cmd_stop = MotorCommand(dir_dc=0, speed_dc=0, dir_servo=int(self.last_servo_value), turn_signals=0)
             self.pub_motor.publish(cmd_stop)
             self.last_time = ahora
@@ -159,22 +167,36 @@ class DriveCarrilNode(Node):
             nuevo_servo = target_servo
         self.last_servo_value = nuevo_servo
 
-        # 4. VELOCIDAD ADAPTATIVA (Anti-Deadband)
+        # 4. VELOCIDAD ADAPTATIVA (Anti-Deadband) - ESTE ES EL OBJETIVO EN RECTAS/CURVAS
         speed_sugerida = vel_base - (abs(error_actual) * f_red)
-        speed_calculada = int(max(vel_min, min(speed_sugerida, vel_base)))
+        speed_objetivo = int(max(vel_min, min(speed_sugerida, vel_base)))
 
-        # 5. MULTIPLEXOR: ¿Frenar o Avanzar?
+        # 5. MULTIPLEXOR: ¿La máquina de estados pide detenerse?
         if self.evaluar_estado_frenado():
-            speed_dc = 0 
-            direccion_dc = 0 # Activa Freno Electromagnético
-        else:
-            speed_dc = speed_calculada
-            direccion_dc = 1 # Marcha adelante
+            speed_objetivo = 0 
+
+        # --- LÓGICA DE RAMPA (ACELERACIÓN / DESACELERACIÓN SUAVE) ---
+        step_accel = self.get_parameter('aceleracion_step').value
+        step_decel = self.get_parameter('desaceleracion_step').value
+
+        if speed_objetivo > self.velocidad_actual_rampa:
+            # Acelerar
+            self.velocidad_actual_rampa += step_accel
+            if self.velocidad_actual_rampa > speed_objetivo:
+                self.velocidad_actual_rampa = float(speed_objetivo)
+        elif speed_objetivo < self.velocidad_actual_rampa:
+            # Frenar
+            self.velocidad_actual_rampa -= step_decel
+            if self.velocidad_actual_rampa < speed_objetivo:
+                self.velocidad_actual_rampa = float(speed_objetivo)
 
         # 6. COMANDO FINAL
         cmd = MotorCommand()
-        cmd.dir_dc = direccion_dc
-        cmd.speed_dc = speed_dc
+        
+        # Mantenemos dir_dc=1 mientras haya inercia/velocidad en la rampa.
+        # Cuando la rampa baja de cierto umbral pequeño (ej. 5), aplicamos Freno Electromagnético (0).
+        cmd.dir_dc = 1 if self.velocidad_actual_rampa > 5 else 0 
+        cmd.speed_dc = int(self.velocidad_actual_rampa)
         cmd.dir_servo = int(nuevo_servo)
         
         # Luces direccionales
