@@ -60,8 +60,7 @@ class DriveCarrilNode(Node):
         self.sub_error = self.create_subscription(
             Float32, '/steering_error', self.error_callback, 10)
 
-        self.sub_distancia = self.create_subscription(
-            Float32, '/vision/senal_stop/distancia_nube', self.distancia_callback, 10)
+        self.sub_distancia = self.create_subscription(Float32, '/vision/distancia_real', self.distancia_callback, 10)
             
         self.sub_cruce = self.create_subscription(
             Float32, '/vision/cruce_peatonal/distancia', self.cruce_callback, 10)

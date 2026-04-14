@@ -7,169 +7,121 @@ import cv2
 import numpy as np
 from std_msgs.msg import Float32
 import struct
+import math
 
-# ==============================================================================
-# DETECTOR DE SEÑALES (Muestreo por Máscara Exacta + Respaldo Matemático)
-# ==============================================================================
 
 class DetectorSenalesNode(Node):
     def __init__(self):
-        super().__init__('detector_senales')
-        self.get_logger().info('Iniciando Detector de Señales (Máscara Exacta + Math Fallback)')
+        super().__init__('detector_senales_geometrico')
         self.bridge = CvBridge()
-        
-        # --- PARÁMETROS DINÁMICOS (RQT) ---
-        # Filtros HSV
-        self.declare_parameter('h_min', 0)
-        self.declare_parameter('h_max', 15)
-        self.declare_parameter('s_min', 100)
-        self.declare_parameter('s_max', 255)
-        self.declare_parameter('v_min', 50)
-        self.declare_parameter('v_max', 255)
-        
-        # Geometría para el Respaldo Matemático
-        self.declare_parameter('focal_length', 320.0) 
-        self.declare_parameter('ancho_real_senal', 0.18) 
 
-        # Memorias de sensores
+        # --- CONFIGURACIÓN FÍSICA DEL VEHÍCULO ---
+        self.declare_parameters(
+            namespace='',
+            parameters=[
+                ('h_camara', 0.30),  # Altura 'h' desde el suelo a la lente (m)
+                ('dist_cam_defensa', 0.15),  # Distancia eje x entre cámara y defensa (m)
+                ('focal_length', 320.0),  # Calibración intrínseca
+                ('ancho_real_senal', 0.18),  # Ancho señal Stop estándar competencia
+                ('area_minima', 400)
+            ]
+        )
+
+        # Rangos HSV para Rojo (OpenCV)
+        self.LOWER_RED1 = np.array([0, 150, 70])
+        self.UPPER_RED1 = np.array([10, 255, 255])
+        self.LOWER_RED2 = np.array([160, 150, 70])
+        self.UPPER_RED2 = np.array([179, 255, 255])
+
         self.latest_point_cloud = None
-        self.distancia_final = 0.0
 
-        # --- SUSCRIPCIONES ---
-        self.sub_rgb = self.create_subscription(
-            Image, '/ascamera_hp60c/camera_publisher/rgb0/image', self.rgb_callback, 1)
-        
-        self.sub_points = self.create_subscription(
-            PointCloud2, '/ascamera_hp60c/camera_publisher/depth0/points', self.points_callback, 1)
-        
-        # --- PUBLICADORES ---
-        self.pub_mascara = self.create_publisher(CompressedImage, '/vision/calibracion_mascara/compressed', 10)
-        self.pub_resultado = self.create_publisher(CompressedImage, '/vision/calibracion_resultado/compressed', 10)
-        self.pub_distancia = self.create_publisher(Float32, '/vision/senal_stop/distancia_nube', 10)
+        # Suscripciones y Publicadores
+        self.sub_rgb = self.create_subscription(Image, '/ascamera_hp60c/camera_publisher/rgb0/image', self.rgb_callback,
+                                                1)
+        self.sub_points = self.create_subscription(PointCloud2, '/ascamera_hp60c/camera_publisher/depth0/points',
+                                                   self.points_callback, 1)
+
+        self.pub_resultado = self.create_publisher(CompressedImage, '/vision/resultado_geometrico/compressed', 10)
+        self.pub_dist_frenado = self.create_publisher(Float32, '/vision/distancia_real', 10)
 
     def points_callback(self, msg):
         self.latest_point_cloud = msg
 
-    def get_distancia_por_mascara(self, contorno):
-        """Extrae Z leyendo exclusivamente los píxeles dentro del contorno rojo."""
-        if self.latest_point_cloud is None: return None
-        msg = self.latest_point_cloud
-        
-        # Creamos una imagen negra y rellenamos el contorno de blanco
-        mascara_exacta = np.zeros((480, 640), dtype=np.uint8)
-        cv2.drawContours(mascara_exacta, [contorno], -1, 255, -1)
-        
-        # Obtenemos las coordenadas de los píxeles blancos
-        ys, xs = np.where(mascara_exacta == 255)
-        if len(xs) == 0: return None
-        
-        # Muestreo: Leemos máximo ~50-60 píxeles para no sobrecargar el CPU
-        step = max(1, len(xs) // 60) 
-        puntos_z = []
+    def calcular_geometria_real(self, d_visual):
+        """Aplica Pitágoras y offsets para saber cuánto le falta a la DEFENSA."""
+        h = self.get_parameter('h_camara').value
+        d_offset = self.get_parameter('dist_cam_defensa').value
 
-        for i in range(0, len(xs), step):
-            # Escalamiento de coordenadas
-            u = int(xs[i] * (msg.width / 640.0))
-            v = int(ys[i] * (msg.height / 480.0))
-            
-            pixel_offset = (v * msg.row_step) + (u * msg.point_step)
-            try:
-                z_bytes = msg.data[pixel_offset + 8 : pixel_offset + 12]
-                z = struct.unpack('f', bytes(z_bytes))[0]
-                
-                # Ignoramos el ruido cercano del chasis (<= 0.15m) y los NaNs
-                if not np.isnan(z) and not np.isinf(z) and z > 0.15:
-                    puntos_z.append(z)
-            except: 
-                continue
-        
-        # Usamos la mediana para obtener una distancia hiper-estable
-        if puntos_z:
-            return float(np.median(puntos_z))
-            
-        return None
+        # Evitar errores matemáticos si la lectura es menor a la altura
+        if d_visual <= h:
+            return 0.0
+
+        # Pitágoras para obtener distancia proyectada al suelo (cateto)
+        d_suelo = math.sqrt(d_visual ** 2 - h ** 2)
+
+        # Restar lo que el carro tiene de "nariz" después de la cámara
+        d_real_frenado = d_suelo - d_offset
+        return max(0.0, d_real_frenado)
 
     def rgb_callback(self, msg):
         try:
             frame = self.bridge.imgmsg_to_cv2(msg, "bgr8")
-        except: return
+            frame = cv2.resize(frame, (640, 480))
+        except:
+            return
 
-        frame = cv2.resize(frame, (640, 480))
-        debug = frame.copy()
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-        
-        # 1. LEER PARÁMETROS RQT
-        lower = np.array([
-            self.get_parameter('h_min').value, 
-            self.get_parameter('s_min').value, 
-            self.get_parameter('v_min').value
-        ])
-        upper = np.array([
-            self.get_parameter('h_max').value, 
-            self.get_parameter('s_max').value, 
-            self.get_parameter('v_max').value
-        ])
-        
-        # 2. MÁSCARA Y DILATACIÓN
-        mask = cv2.inRange(hsv, lower, upper)
-        mask = cv2.dilate(mask, np.ones((3, 3), np.uint8), iterations=2)
+        mask1 = cv2.inRange(hsv, self.LOWER_RED1, self.UPPER_RED1)
+        mask2 = cv2.inRange(hsv, self.LOWER_RED2, self.UPPER_RED2)
+        mask = cv2.bitwise_or(mask1, mask2)
 
-        # 3. CONTORNOS
+        # Limpieza morfológica
+        kernel = np.ones((5, 5), np.uint8)
+        mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+
         contornos, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        
+
         for cnt in contornos:
-            if cv2.contourArea(cnt) > 200:
-                epsilon = 0.02 * cv2.arcLength(cnt, True)
-                approx = cv2.approxPolyDP(cnt, epsilon, True)
-                
-                if 6 <= len(approx) <= 12:
-                    x, y, w, h = cv2.boundingRect(approx)
-                    # Filtro de forma (Casi cuadrado = Señal de frente)
-                    if 0.7 < float(w)/h < 1.3:
-                        
-                        # --- 4. EXTRACCIÓN DE DISTANCIA ---
-                        dist = self.get_distancia_por_mascara(approx)
-                        metodo = "PC"
-                        
-                        # Si PointCloud falla (Gazebo transparente) o marca distancias irreales
-                        if dist is None or dist < 0.15:
-                            f_len = self.get_parameter('focal_length').value
-                            w_real = self.get_parameter('ancho_real_senal').value
-                            
-                            # Modelo Matemático Pinhole
-                            dist = (w_real * f_len) / float(w)
-                            metodo = "Math"
-                        
-                        self.distancia_final = dist
-                        self.pub_distancia.publish(Float32(data=self.distancia_final))
+            if cv2.contourArea(cnt) < self.get_parameter('area_minima').value: continue
 
-                        # --- 5. VISUALIZACIÓN EN CALIBRACION RESULTADO ---
-                        # Contorno Exacto en magenta
-                        cv2.drawContours(debug, [approx], 0, (255, 0, 255), 2)
-                        
-                        # Texto con el método usado (PC o Math), la Distancia y el Ancho en px (w)
-                        dist_txt = f"{metodo}: {self.distancia_final:.2f}m (w:{w}px)"
-                        cv2.putText(debug, dist_txt, (x, y - 10), 
-                                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 2)
-                        
-                        # Alerta visual de frenado
-                        if self.distancia_final <= 0.40:
-                            cv2.putText(debug, "FRENANDO!", (x, y + h + 30), 
-                                        cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
+            x, y, w, h_rect = cv2.boundingRect(cnt)
 
-        # 6. PUBLICAR IMÁGENES
-        self.pub_mascara.publish(self.bridge.cv2_to_compressed_imgmsg(mask))
-        self.pub_resultado.publish(self.bridge.cv2_to_compressed_imgmsg(debug))
+            # --- OBTENER DISTANCIA VISUAL (Hipotenusa) ---
+            d_visual = None
+            if self.latest_point_cloud:
+                # Muestreo central
+                u, v = int((x + w / 2)), int((y + h_rect / 2))
+                offset = (v * self.latest_point_cloud.row_step) + (u * self.latest_point_cloud.point_step)
+                try:
+                    z_bytes = self.latest_point_cloud.data[offset + 8: offset + 12]
+                    d_visual = struct.unpack('f', z_bytes)[0]
+                except:
+                    pass
+
+            # Fallback Pinhole si falla la nube
+            if d_visual is None or np.isnan(d_visual):
+                d_visual = (self.get_parameter('ancho_real_senal').value * self.get_parameter('focal_length').value) / w
+
+            # --- CÁLCULO GEOMÉTRICO FINAL ---
+            dist_frenado = self.calcular_geometria_real(d_visual)
+            self.pub_dist_frenado.publish(Float32(data=dist_frenado))
+
+            # Visualización
+            color = (0, 0, 255) if dist_frenado < 0.3 else (0, 255, 0)
+            cv2.rectangle(frame, (x, y), (x + w, y + h_rect), color, 2)
+            cv2.putText(frame, f"Defensa a: {dist_frenado:.2f}m", (x, y - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+
+        self.pub_resultado.publish(self.bridge.cv2_to_compressed_imgmsg(frame))
+
 
 def main(args=None):
     rclpy.init(args=args)
     node = DetectorSenalesNode()
-    try:
-        rclpy.spin(node)
-    except KeyboardInterrupt: pass
-    finally:
-        node.destroy_node()
-        rclpy.shutdown()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
 
 if __name__ == '__main__':
     main()
