@@ -18,6 +18,8 @@ class DriveCarrilNode(Node):
         self.t_impulso = 1.2        # Tiempo de volantazo inicial
         self.t_reintegracion = 1.0  # Tiempo de contra-volante para enderezar
         self.t_recuperacion = 1.0    # Tiempo de espera para que la visión se estabilice
+        self.distancia_segura_atras = 0.8  # Metros para considerar que ya lo pasamos
+        self.obstaculo_atras = False
 
         self.declare_parameter('velocidad_dc', 80)
         self.declare_parameter('velocidad_minima', 60)
@@ -60,6 +62,38 @@ class DriveCarrilNode(Node):
 
         self.get_logger().info("Nodo Drive Carril v3 (Timed State Machine) listo.")
 
+    def lidar_callback(self, msg):
+        # Si no estamos en medio de un rebase, no nos importa mucho el punto ciego
+        if self.estado_maniobra != "REBASANDO":
+            return
+
+        # Definimos el sector de búsqueda según el carril al que fuimos
+        # Si estamos en el IZQUIERDO, buscamos al auto que dejamos en el DERECHO (atrás-derecha)
+        if self.carril_objetivo == "IZQUIERDO":
+            # Grados 110 a 150 (ajustar según posición física del LiDAR)
+            sector_atras = msg.ranges[110:150]
+        else:
+            # Si estamos en el DERECHO, buscamos atrás-izquierda (210 a 250)
+            sector_atras = msg.ranges[210:250]
+
+        distancia_atras = min(sector_atras)
+
+        # Si la distancia es mayor a nuestra distancia de seguridad, el camino está libre
+        if distancia_atras > self.distancia_segura_atras:
+            self.get_logger().info(f"Punto ciego despejado ({distancia_atras:.2f}m). Regresando al carril...")
+            
+            # Disparamos el regreso al carril original
+            self.carril_objetivo = "DERECHO" if self.carril_objetivo == "IZQUIERDO" else "IZQUIERDO"
+            
+            # Actualizamos RQT
+            p = rclpy.parameter.Parameter('carril_derecho_activo', rclpy.Parameter.Type.BOOL, (self.carril_objetivo == "DERECHO"))
+            self.set_parameters([p])
+            
+            # Reiniciamos la máquina de estados para el giro de vuelta
+            self.estado_maniobra = "IMPULSO"
+            self.inicio_sub_maniobra = self.get_clock().now()
+
+
     def radar_callback(self, msg):
         # Solo reaccionamos si el radar detecta un obstáculo (True)
         # Y si NO estamos ya haciendo una maniobra (para no interrumpir el proceso)
@@ -89,21 +123,21 @@ class DriveCarrilNode(Node):
         self.distancia_senal = msg.data
 
     def gestionar_objetivo_carril(self, error_vision):
-        """Implementa la máquina de estados que ignora la visión durante el rebase."""
+        """Máquina de estados: Salida ciega -> Rebase con visión -> Regreso ciego."""
         ahora = self.get_clock().now()
         
-        # 1. Monitoreo del Checkbox de RQT
+        # 1. Monitoreo del Objetivo (Cambia por RQT, Radar o LiDAR)
         carril_switch = self.get_parameter('carril_derecho_activo').value
         nuevo_objetivo = "DERECHO" if carril_switch else "IZQUIERDO"
 
-        # Si el usuario cambia el switch, disparamos la máquina de estados
+        # Si el carril objetivo cambia (ya sea por el radar o manual), iniciamos la maniobra
         if nuevo_objetivo != self.carril_objetivo:
             self.carril_objetivo = nuevo_objetivo
             self.estado_maniobra = "IMPULSO"
             self.inicio_sub_maniobra = ahora
-            self.get_logger().warn(f"Iniciando Maniobra Ciega hacia: {self.carril_objetivo}")
+            self.get_logger().warn(f"Maniobra Iniciada hacia: {self.carril_objetivo}")
 
-        # 2. Lógica de Tiempos de la Máquina de Estados
+        # 2. Lógica de la Máquina de Estados
         dt = (ahora - self.inicio_sub_maniobra).nanoseconds / 1e9
         fuerza = self.get_parameter('fuerza_rebase_pct').value / 100.0
 
@@ -112,30 +146,33 @@ class DriveCarrilNode(Node):
 
         elif self.estado_maniobra == "IMPULSO":
             if dt < self.t_impulso:
-                # Gira fuerte ignorando la visión
                 return fuerza if self.carril_objetivo == "DERECHO" else -fuerza
             else:
-                self.estado_maniobra = "REINTEGRACION"
-                self.inicio_sub_maniobra = ahora
+                self.estado_maniobra, self.inicio_sub_maniobra = "REINTEGRACION", ahora
                 return 0.0
 
         elif self.estado_maniobra == "REINTEGRACION":
             if dt < self.t_reintegracion:
-                # Contra-giro para enderezar el coche antes de ver líneas
                 return -fuerza if self.carril_objetivo == "DERECHO" else fuerza
             else:
-                self.estado_maniobra = "RECUPERACION"
-                self.inicio_sub_maniobra = ahora
+                # Después de enderezarse, pasamos a RECUPERACION para limpiar la visión
+                self.estado_maniobra, self.inicio_sub_maniobra = "RECUPERACION", ahora
                 return 0.0
 
         elif self.estado_maniobra == "RECUPERACION":
-            # Espera a que la cámara deje de ver basura tras el movimiento brusco
             if dt < self.t_recuperacion:
                 return 0.0
             else:
-                self.get_logger().info("Regresando control a la Visión.")
-                self.estado_maniobra = "SEGUIMIENTO"
+                # Una vez que la visión es estable, nos quedamos en REBASANDO
+                # En este estado seguimos las líneas del NUEVO carril
+                self.get_logger().info(f"Estable en carril {self.carril_objetivo}. Esperando despeje del LiDAR.")
+                self.estado_maniobra = "REBASANDO"
                 return error_vision
+
+        elif self.estado_maniobra == "REBASANDO":
+            # El coche sigue manejando normal. 
+            # Solo saldrá de aquí cuando el lidar_callback cambie el parámetro 'carril_derecho_activo'
+            return error_vision
 
         return error_vision
 
