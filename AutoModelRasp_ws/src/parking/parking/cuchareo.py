@@ -15,15 +15,12 @@ class AutoTunerPI(Node):
         self.distancia_1d = 0.0 
         self.comando_dir = 1 
         
-        # EL SECRETO DEL HARDWARE: ¿Con qué PWM mínimo empieza a moverse físicamente el carro?
-        # Si con 20 zumba pero no avanza, súbelo a 25 o 30.
-        self.pwm_minimo = 25.0 
+        self.pwm_minimo = 60.0 
         
         # --- ESTRATEGIA DE DOS FASES ---
         self.fase_actual = 1
         
         # FASE 1: Exploración amplia. 
-        # En hardware real, a veces necesitamos más Kp por el peso.
         self.lista_pruebas = [(float(kp), float(ki)) for kp in [30, 50, 70, 90, 110] for ki in [0, 5, 10, 15]]
         self.indice_prueba = 0
         self.resultados = [] 
