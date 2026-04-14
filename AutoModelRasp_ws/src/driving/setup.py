@@ -1,4 +1,6 @@
 from setuptools import find_packages, setup
+import os
+from glob import glob
 
 package_name = 'driving'
 
@@ -10,6 +12,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -29,6 +32,7 @@ setup(
             'drive_carril = driving.drive_carril:main',
             #'lane_detection = driving.lane_detection:main',
             'lane_detection = driving.lane_detection_2:main',
+            'car_detection = driving.detector_objeto:main',
         ],
     },
 )

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Float32, String
+from std_msgs.msg import Float32, String, Bool
 from motor_msgs.msg import MotorCommand
 import numpy as np
 
@@ -54,9 +54,33 @@ class DriveCarrilNode(Node):
         self.sub_error = self.create_subscription(Float32, '/steering_error', self.error_callback, 10)
         self.sub_carril = self.create_subscription(String, '/vision/carril_actual', self.carril_callback, 10)
         self.sub_distancia = self.create_subscription(Float32, '/vision/senal_stop/distancia_nube', self.distancia_callback, 10)
+        self.sub_radar = self.create_subscription(
+            Bool, '/radar/alerta_rebase', self.radar_callback, 10)
         self.pub_motor = self.create_publisher(MotorCommand, '/motor_command', 10)
 
         self.get_logger().info("Nodo Drive Carril v3 (Timed State Machine) listo.")
+
+    def radar_callback(self, msg):
+        # Solo reaccionamos si el radar detecta un obstáculo (True)
+        # Y si NO estamos ya haciendo una maniobra (para no interrumpir el proceso)
+        if msg.data and self.estado_maniobra == "SEGUIMIENTO":
+            self.get_logger().error("¡OBSTÁCULO DETECTADO! Iniciando rebase automático...")
+            
+            # Cambiamos el carril objetivo al opuesto
+            self.carril_objetivo = "IZQUIERDO" if self.carril_objetivo == "DERECHO" else "DERECHO"
+            
+            # Actualizamos el parámetro en RQT para que veas visualmente que cambió
+            # Nota: Esto es opcional, pero ayuda mucho a debugear
+            param_carril = rclpy.parameter.Parameter(
+                'carril_derecho_activo', 
+                rclpy.Parameter.Type.BOOL, 
+                (self.carril_objetivo == "DERECHO")
+            )
+            self.set_parameters([param_carril])
+
+            # Disparamos la máquina de estados
+            self.estado_maniobra = "IMPULSO"
+            self.inicio_sub_maniobra = self.get_clock().now()
 
     def carril_callback(self, msg):
         self.carril_detectado = msg.data
