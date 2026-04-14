@@ -43,6 +43,22 @@
                 </visual>
             </link>
             </model>
+
+    <model name="carro_storbo">
+      <static>true</static>
+      <pose>5.663 7.05 0.15 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.5 0.8 0.3</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.4 0.8 0.3</size></box></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
     <model name="carro_estacionado_rojo">
       <static>true</static>
       <pose>6.2 7.05 0.15 0 0 0</pose>
@@ -60,6 +76,7 @@
         </visual>
       </link>
     </model>
+
     <model name="carro_estacionado_gris">
       <static>true</static>
       <pose>5.663 7.05 0.15 0 0 0</pose>
@@ -120,6 +137,27 @@
           <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
         </visual>
       </link>
+
+    <model name="carro_realista">
+      <static>true</static>
+      <pose>5.5 7.0 0.1 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>0.28 0.15 0.20</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>0.28 0.15 0.20</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
 
       <link name="letrero">
         <pose>0 0.02 0.26 0 0 0</pose>
