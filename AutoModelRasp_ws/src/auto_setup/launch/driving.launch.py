@@ -40,4 +40,8 @@ def generate_launch_description():
             cmd=['ros2', 'run', 'driving', 'autonomo'],
             output='screen'
         ),
+        ExecuteProcess(
+            cmd=['ros2', 'run', 'driving', 'param_manager'],
+            output='screen'
+        ),
     ])

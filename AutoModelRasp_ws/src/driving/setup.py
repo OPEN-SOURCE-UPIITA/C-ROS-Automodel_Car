@@ -36,6 +36,7 @@ setup(
             
             # 3. Capa de Cerebro y Control
             'autonomo = driving.autonomo:main',
+
         ],
     },
 )

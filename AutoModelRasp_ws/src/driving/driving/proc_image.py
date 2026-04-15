@@ -20,8 +20,8 @@ class ProcesadorImagenNode(Node):
         self.declare_parameter('carril_umbral_blanco', 110)
         
         # 2. Parámetros para Cruces Peatonales (HLS)
-        self.declare_parameter('cruce_l_min', 180)
-        self.declare_parameter('cruce_s_max', 100)
+        self.declare_parameter('cruce_l_min', 110)
+        self.declare_parameter('cruce_s_max', 255)
 
         # 3. Parámetros para Señales de Stop (HSV - Rojo)
         self.declare_parameter('hsv_h_min1', 0)

@@ -24,16 +24,16 @@ class DetectorCrucesNode(Node):
         self.declare_parameter('resize_h', 240)
 
         # 1. ROI: Banda de detección (Horizontal)
-        self.declare_parameter('roi_y_sup_pct', 60) 
-        self.declare_parameter('roi_y_inf_pct', 10) 
+        self.declare_parameter('roi_y_sup_pct', 70) 
+        self.declare_parameter('roi_y_inf_pct', 5) 
         self.declare_parameter('corte_lados_px', 40) 
 
         # (Se eliminaron l_min y s_max, ya que vienen procesados en proc_image.py)
 
         # 2. Parámetros Matemáticos FFT (Frecuencia de la Cebra)
-        self.declare_parameter('fft_frecuencia_min', 3) 
+        self.declare_parameter('fft_frecuencia_min', 5) 
         self.declare_parameter('fft_frecuencia_max', 10)
-        self.declare_parameter('fft_umbral_magnitud', 500.0) 
+        self.declare_parameter('fft_umbral_magnitud', 650.0) 
 
         # 3. Anti-Parpadeo
         self.declare_parameter('frames_memoria', 10)

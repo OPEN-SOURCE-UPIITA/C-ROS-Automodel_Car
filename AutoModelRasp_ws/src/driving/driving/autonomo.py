@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
+import signal
+import sys
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32, Bool, String, Float32MultiArray
 from rcl_interfaces.msg import SetParametersResult
 from motor_msgs.msg import MotorCommand
 
-# Importamos las librerías matemáticas (asegúrate de poner el nombre de tu paquete)
+# Importamos las librerías matemáticas
 from driving.controlador_pd import ControladorAutomodel
 from driving.logica_maniobras import ManiobrasAutonomo
 
@@ -29,7 +31,7 @@ class AutonomoNode(Node):
         
         self.declare_parameter('tiempo_stop', 3.0)
         self.declare_parameter('tiempo_cruce', 4.0)
-        self.declare_parameter('tiempo_gracia_senales', 3.0) # Segundos sin leer señales tras maniobra
+        self.declare_parameter('tiempo_gracia_senales', 3.0)
 
         # --PARAMETROS DE REBASE--
         self.declare_parameter('rebase.volantazo_intensidad', 600)
@@ -44,10 +46,9 @@ class AutonomoNode(Node):
         self.declare_parameter('rebase.regreso_intensidad', 400)
         self.declare_parameter('rebase.tiempo_regreso', 0.40)
 
-        self.add_on_set_parameters_callback(self.parameters_callback)
 
         # --- ESTADO DEL SISTEMA ---
-        # 0: CARRIL (PD), 1: STOP, 2: CRUCE, 3: REBASE, 4: GRACIA (Ignorar señales temporalmente)
+        # 0: CARRIL (PD), 1: STOP, 2: CRUCE, 3: REBASE, 4: GRACIA
         self.estado_actual = 0 
         self.tiempo_cambio_estado = self.get_clock().now()
 
@@ -73,8 +74,7 @@ class AutonomoNode(Node):
         self.timer = self.create_timer(0.033, self.bucle_principal)
         self.last_time = self.get_clock().now()
 
-    # --- CALLBACKS (Solo guardan datos) ---
-
+    # --- CALLBACKS ---
     def error_cb(self, msg): self.error_carril = msg.data
     def carril_actual_cb(self, msg): self.carril_actual = msg.data
     def stop_cb(self, msg): self.distancia_stop = msg.data
@@ -83,16 +83,13 @@ class AutonomoNode(Node):
     def lidar_distancias_cb(self, msg): self.maniobras.actualizar_distancias_lidar(msg.data)
 
     def parameters_callback(self, params):
-        # Actualizar parámetros del rebase
         rebase_params = {}
         for param in params:
             if param.name.startswith('rebase.'):
                 key = param.name.split('.')[1]
                 rebase_params[key] = param.value
-    
         if rebase_params:
             self.maniobras.actualizar_parametros_rebase(rebase_params)
-    
         return SetParametersResult(successful=True)
 
     # --- CEREBRO ---
@@ -106,14 +103,19 @@ class AutonomoNode(Node):
 
         # 0. BOTÓN DE EMERGENCIA RQT
         if not self.get_parameter('habilitar_conduccion').value:
-            cmd = MotorCommand(dir_dc=0, speed_dc=0, dir_servo=self.pd.last_servo_value, turn_signals=0)
+            cmd = MotorCommand(
+                dir_dc=0, 
+                speed_dc=0, 
+                dir_servo=int(self.pd.last_servo_value),
+                turn_signals=0
+            )
             self.pub_motor.publish(cmd)
-            self.tiempo_cambio_estado = ahora # Mantenemos el timer reiniciado
+            self.tiempo_cambio_estado = ahora
             return
 
         vel_cmd = 0
         servo_cmd = 1500
-        dir_dc = 1 # 1 = Adelante, 0 = Freno
+        dir_dc = 1
 
         # ==========================================
         # MÁQUINA DE ESTADOS
@@ -121,21 +123,19 @@ class AutonomoNode(Node):
 
         # ESTADO 0: CONDUCCIÓN NORMAL
         if self.estado_actual == 0:
-            # 1. Evaluar si cambiamos de estado (Prioridades: Obstáculo > Stop > Cruce)
             if self.obstaculo_rebase:
                 self.estado_actual = 3
                 self.tiempo_cambio_estado = ahora
                 self.get_logger().warn("¡Iniciando REBASE!")
-            elif self.distancia_stop < 0.40: # Umbral de frenado Stop
+            elif self.distancia_stop < 0.40:
                 self.estado_actual = 1
                 self.tiempo_cambio_estado = ahora
                 self.get_logger().warn("¡STOP Detectado! Frenando.")
-            elif self.distancia_cruce < 350.0: # Umbral de frenado Cruce
+            elif self.distancia_cruce < 350.0:
                 self.estado_actual = 2
                 self.tiempo_cambio_estado = ahora
                 self.get_logger().warn("¡CRUCE Detectado! Frenando.")
             else:
-                # 2. Si no hay cambios, ejecutar PD
                 kp = self.get_parameter('kp').value
                 kd = self.get_parameter('kd').value
                 vel_base = self.get_parameter('velocidad_base').value
@@ -146,78 +146,104 @@ class AutonomoNode(Node):
                 servo_cmd = self.pd.calcular_direccion_pd(self.error_carril, dt, kp, kd, max_st)
                 vel_cmd = self.pd.calcular_velocidad_adaptativa(self.error_carril, vel_base, vel_min, f_red)
 
-        # ESTADO 1: LÓGICA DE STOP
+        # ESTADO 1: STOP
         elif self.estado_actual == 1:
             t_stop = self.get_parameter('tiempo_stop').value
             vel_cmd, servo_cmd, terminado = self.maniobras.ejecutar_logica_stop(dt_estado, t_stop)
-            dir_dc = 0 # Freno
-            
-            if terminado:
-                self.estado_actual = 4 # Pasar a periodo de gracia
-                self.tiempo_cambio_estado = ahora
-
-        # ESTADO 2: LÓGICA DE CRUCE
-        elif self.estado_actual == 2:
-            t_cruce = self.get_parameter('tiempo_cruce').value
-            vel_cmd, servo_cmd, terminado = self.maniobras.ejecutar_logica_cruce(dt_estado, t_cruce)
             dir_dc = 0
-            
             if terminado:
                 self.estado_actual = 4
                 self.tiempo_cambio_estado = ahora
 
-        # ESTADO 3: LÓGICA DE REBASE
+        # ESTADO 2: CRUCE
+        elif self.estado_actual == 2:
+            t_cruce = self.get_parameter('tiempo_cruce').value
+            vel_cmd, servo_cmd, terminado = self.maniobras.ejecutar_logica_cruce(dt_estado, t_cruce)
+            dir_dc = 0
+            if terminado:
+                self.estado_actual = 4
+                self.tiempo_cambio_estado = ahora
+
+        # ESTADO 3: REBASE
         elif self.estado_actual == 3:
             vel_cmd, servo_cmd, terminado = self.maniobras.ejecutar_logica_rebase(dt_estado, self.carril_actual, self.error_carril)
             dir_dc = 1
-            
             if terminado:
                 self.estado_actual = 4
                 self.tiempo_cambio_estado = ahora
                 self.get_logger().info("Rebase terminado. Volviendo a carril.")
 
-        # ESTADO 4: PERIODO DE GRACIA (Ignorar señales para no trabarse)
+        # ESTADO 4: GRACIA
         elif self.estado_actual == 4:
             t_gracia = self.get_parameter('tiempo_gracia_senales').value
-            
-            # Conducimos normal con el PD
-            servo_cmd = self.pd.calcular_direccion_pd(self.error_carril, dt, self.get_parameter('kp').value, self.get_parameter('kd').value, self.get_parameter('max_step').value)
-            vel_cmd = self.pd.calcular_velocidad_adaptativa(self.error_carril, self.get_parameter('velocidad_base').value, self.get_parameter('velocidad_minima').value, self.get_parameter('factor_reduccion').value)
-            
+            servo_cmd = self.pd.calcular_direccion_pd(self.error_carril, dt, 
+                self.get_parameter('kp').value, 
+                self.get_parameter('kd').value, 
+                self.get_parameter('max_step').value)
+            vel_cmd = self.pd.calcular_velocidad_adaptativa(self.error_carril, 
+                self.get_parameter('velocidad_base').value, 
+                self.get_parameter('velocidad_minima').value, 
+                self.get_parameter('factor_reduccion').value)
             if dt_estado >= t_gracia:
-                self.estado_actual = 0 # Volver a buscar señales
-                # Limpiar memorias para no frenar instantáneamente
-                self.distancia_stop = 999.0 
+                self.estado_actual = 0
+                self.distancia_stop = 999.0
                 self.distancia_cruce = 999.0
                 self.obstaculo_rebase = False
 
         # ==========================================
-        # PUBLICAR A MOTORES
+        # PUBLICAR A MOTORES (con conversión a int)
         # ==========================================
         cmd = MotorCommand()
-        cmd.dir_dc = dir_dc
-        cmd.speed_dc = vel_cmd
+        cmd.dir_dc = int(dir_dc)
+        cmd.speed_dc = int(vel_cmd)
         cmd.dir_servo = int(servo_cmd)
         
         # Luces dinámicas
-        if self.estado_actual == 3 and servo_cmd < 1400: cmd.turn_signals = 1 # Izquierda
-        elif self.estado_actual == 3 and servo_cmd > 1600: cmd.turn_signals = 2 # Derecha
-        elif self.error_carril > 0.3: cmd.turn_signals = 1 
-        elif self.error_carril < -0.3: cmd.turn_signals = 2 
-        else: cmd.turn_signals = 0
+        turn_sig = 0
+        if self.estado_actual == 3 and servo_cmd < 1400:
+            turn_sig = 1
+        elif self.estado_actual == 3 and servo_cmd > 1600:
+            turn_sig = 2
+        elif self.error_carril > 0.3:
+            turn_sig = 1
+        elif self.error_carril < -0.3:
+            turn_sig = 2
+        cmd.turn_signals = int(turn_sig)
 
         self.pub_motor.publish(cmd)
 
+
+def signal_handler(sig, frame):
+    global node
+    node.get_logger().info("Guardando parámetros antes de salir...")
+    from std_srvs.srv import Trigger
+    client = node.create_client(Trigger, '/param_manager/save')
+    if client.wait_for_service(timeout_sec=2.0):
+        future = client.call_async(Trigger.Request())
+        rclpy.spin_until_future_complete(node, future)
+        if future.result() is not None:
+            node.get_logger().info("Parámetros guardados correctamente")
+    node.destroy_node()
+    rclpy.shutdown()
+    sys.exit(0)
+
+
 def main(args=None):
+    global node
     rclpy.init(args=args)
     node = AutonomoNode()
-    try: rclpy.spin(node)
-    except KeyboardInterrupt: pass
+    signal.signal(signal.SIGINT, signal_handler)
+    
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
     finally:
         stop = MotorCommand(dir_dc=0, speed_dc=0, dir_servo=1500, turn_signals=0)
         node.pub_motor.publish(stop)
         node.destroy_node()
         rclpy.shutdown()
+
 
 if __name__ == '__main__':
     main()
