@@ -1,7 +1,7 @@
 # src/driving/driving/rebase.py
 import numpy as np
 
-class GestorRebase:
+class RebaseManiobra:
     """
     Gestor especializado para la maniobra de rebase.
     Maneja la lógica de cambio de carril, estabilización y retorno.
