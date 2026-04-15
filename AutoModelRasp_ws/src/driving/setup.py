@@ -24,10 +24,18 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'detector_senales = driving.detector_senales:main',
+            # 1. Capa de Preprocesamiento
+            'proc_image = driving.proc_image:main',
+            
+            # 2. Capa de Especialistas de Visión
             'detector_carril = driving.detector_carril:main',
-            'drive_carril = driving.drive_carril:main',
-            'prueba_cruce = driving.prueba_cruce:main',
+            'detector_multi_carril = driving.detector_multi_carril:main',
+            'detector_cruces = driving.detector_cruces:main',
+            'detector_senales = driving.detector_senales:main',
+            'radar_franjas = driving.radar_franjas:main',
+            
+            # 3. Capa de Cerebro y Control
+            'autonomo = driving.autonomo:main',
         ],
     },
 )
