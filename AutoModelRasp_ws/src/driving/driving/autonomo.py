@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Float32, Bool, String
+from std_msgs.msg import Float32, Bool, String, Float32MultiArray
+from rcl_interfaces.msg import SetParametersResult
 from motor_msgs.msg import MotorCommand
 
 # Importamos las librerías matemáticas (asegúrate de poner el nombre de tu paquete)
@@ -15,7 +16,7 @@ class AutonomoNode(Node):
 
         # --- LIBRERÍAS EXTERNAS ---
         self.pd = ControladorAutomodel(servo_centro=1500)
-        self.maniobras = ManiobrasAutonomo()
+        self.maniobras = ManiobrasAutonomo(controlador_pd=self.pd)
 
         # --- PARÁMETROS DINÁMICOS ---
         self.declare_parameter('habilitar_conduccion', False)
@@ -29,6 +30,21 @@ class AutonomoNode(Node):
         self.declare_parameter('tiempo_stop', 3.0)
         self.declare_parameter('tiempo_cruce', 4.0)
         self.declare_parameter('tiempo_gracia_senales', 3.0) # Segundos sin leer señales tras maniobra
+
+        # --PARAMETROS DE REBASE--
+        self.declare_parameter('rebase.volantazo_intensidad', 600)
+        self.declare_parameter('rebase.tiempo_volantazo', 0.35)
+        self.declare_parameter('rebase.contravolantazo_intensidad', 250)
+        self.declare_parameter('rebase.tiempo_contravolantazo', 0.25)
+        self.declare_parameter('rebase.velocidad_rebase', 85)
+        self.declare_parameter('rebase.tiempo_minimo_rebase', 1.5)
+        self.declare_parameter('rebase.tiempo_maximo_rebase', 4.0)
+        self.declare_parameter('rebase.distancia_segura', 0.50)
+        self.declare_parameter('rebase.distancia_peligro', 0.35)
+        self.declare_parameter('rebase.regreso_intensidad', 400)
+        self.declare_parameter('rebase.tiempo_regreso', 0.40)
+
+        self.add_on_set_parameters_callback(self.parameters_callback)
 
         # --- ESTADO DEL SISTEMA ---
         # 0: CARRIL (PD), 1: STOP, 2: CRUCE, 3: REBASE, 4: GRACIA (Ignorar señales temporalmente)
@@ -48,6 +64,7 @@ class AutonomoNode(Node):
         self.create_subscription(Float32, '/vision/distancia_real', self.stop_cb, 10)
         self.create_subscription(Float32, '/vision/cruce_peatonal/distancia', self.cruce_cb, 10)
         self.create_subscription(Bool, '/radar/alerta_rebase', self.rebase_cb, 10)
+        self.create_subscription(Float32MultiArray, '/radar/distancias_franjas', self.lidar_distancias_cb, 10)
 
         # --- PUBLICADOR ---
         self.pub_motor = self.create_publisher(MotorCommand, '/motor_command', 10)
@@ -57,11 +74,26 @@ class AutonomoNode(Node):
         self.last_time = self.get_clock().now()
 
     # --- CALLBACKS (Solo guardan datos) ---
+
     def error_cb(self, msg): self.error_carril = msg.data
     def carril_actual_cb(self, msg): self.carril_actual = msg.data
     def stop_cb(self, msg): self.distancia_stop = msg.data
     def cruce_cb(self, msg): self.distancia_cruce = msg.data
     def rebase_cb(self, msg): self.obstaculo_rebase = msg.data
+    def lidar_distancias_cb(self, msg): self.maniobras.actualizar_distancias_lidar(msg.data)
+
+    def parameters_callback(self, params):
+        # Actualizar parámetros del rebase
+        rebase_params = {}
+        for param in params:
+            if param.name.startswith('rebase.'):
+                key = param.name.split('.')[1]
+                rebase_params[key] = param.value
+    
+        if rebase_params:
+            self.maniobras.actualizar_parametros_rebase(rebase_params)
+    
+        return SetParametersResult(successful=True)
 
     # --- CEREBRO ---
     def bucle_principal(self):

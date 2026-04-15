@@ -4,6 +4,7 @@ from rclpy.node import Node
 from rcl_interfaces.msg import SetParametersResult
 from sensor_msgs.msg import Image, CompressedImage
 from std_msgs.msg import Bool
+from std_msgs.msg import Float32MultiArray
 from cv_bridge import CvBridge
 import cv2
 import numpy as np
@@ -32,6 +33,7 @@ class RadarFranjasNode(Node):
         
         self.pub_alerta = self.create_publisher(Bool, '/radar/alerta_rebase', 10)
         self.pub_visual = self.create_publisher(CompressedImage, '/radar/visual/compressed', 10)
+        self.pub_distancias = self.create_publisher(Float32MultiArray, '/radar/distancias_franjas', 10)
 
         self.estado_alerta_previo = False
 
@@ -81,6 +83,10 @@ class RadarFranjasNode(Node):
                 dist_m = 9.99 # Sin obstáculo
                 
             promedios_m.append(dist_m)
+
+        msg_distancias = Float32MultiArray()
+        msg_distancias.data = promedios_m
+        self.pub_distancias.publish(msg_distancias)
 
         # --- LÓGICA DE DETECCIÓN (Prioridad al centro) ---
         distancia_centro = promedios_m[2]

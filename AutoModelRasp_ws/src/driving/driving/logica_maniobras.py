@@ -1,10 +1,36 @@
 # logica_maniobras.py
 
+# Importar la nueva clase Rebase
+from driving.rebase import RebaseManiobra
+
 class ManiobrasAutonomo:
-    def __init__(self):
+    def __init__(self, controlador_pd=None):
         # Memoria interna para el rebase
         self.fase_rebase = 0
         self.tiempo_fase_rebase = 0.0
+        
+        # Instanciar la nueva lógica de rebase
+        self.rebase = RebaseManiobra(servo_centro=1500, controlador_pd=controlador_pd)
+        
+        # Variables para el LiDAR (recibir desde el nodo)
+        self.distancias_lidar = [9.99, 9.99, 9.99, 9.99, 9.99]  # Valores por defecto (INF)
+        
+        # Bandera para saber si estamos en rebase activo
+        self.en_rebase = False
+
+    def actualizar_distancias_lidar(self, distancias):
+        """
+        Actualiza las distancias de las 5 franjas del LiDAR.
+        distancias: lista de 5 floats con distancias en metros
+        """
+        if distancias and len(distancias) >= 5:
+            self.distancias_lidar = distancias
+
+    def actualizar_parametros_rebase(self, params_dict):
+        """
+        Actualiza los parámetros configurables del rebase desde RQT.
+        """
+        self.rebase.actualizar_parametros(params_dict)
 
     def ejecutar_logica_stop(self, dt_estado, tiempo_detenido):
         """
@@ -16,7 +42,7 @@ class ManiobrasAutonomo:
 
         if dt_estado >= tiempo_detenido:
             terminado = True # Ya pasó el tiempo, terminamos la maniobra
-            
+
         return vel_cmd, servo_cmd, terminado
 
     def ejecutar_logica_cruce(self, dt_estado, tiempo_espera):
@@ -30,7 +56,7 @@ class ManiobrasAutonomo:
 
         if dt_estado >= tiempo_espera:
             terminado = True
-            
+
         return vel_cmd, servo_cmd, terminado
 
     def ejecutar_logica_rebase(self, dt_estado, carril_actual, error_carril):
@@ -39,39 +65,39 @@ class ManiobrasAutonomo:
         Fase 0: Dar volantazo a la izquierda hasta detectar el carril izquierdo.
         Fase 1: Avanzar recto por el carril izquierdo unos segundos.
         Fase 2: Regresar al carril derecho.
+        
+        Versión mejorada con:
+        - Contravolantazo para estabilización
+        - Detección de coche de frente por LiDAR
+        - Regreso suave al carril original
         """
-        vel_cmd = 80 # Velocidad constante de rebase
-        servo_cmd = 1500
-        terminado = False
-
-        # FASE 0: Salir al carril izquierdo
-        if self.fase_rebase == 0:
-            servo_cmd = 1100 # Girar a tope a la izquierda (ajustar según tu servo)
-            # Si el detector multicarril ya nos dice que estamos en el IZQUIERDO
-            # o si ya pasaron más de 2 segundos (por seguridad), pasamos de fase.
-            if carril_actual == "IZQUIERDO" or dt_estado > 2.0:
-                self.fase_rebase = 1
-                self.tiempo_fase_rebase = dt_estado # Guardamos el tiempo en que cambiamos
-
-        # FASE 1: Avanzar por el carril izquierdo
-        elif self.fase_rebase == 1:
-            # Aquí podríamos usar un PD secundario, pero por ahora vamos recto
-            servo_cmd = 1500 
-            dt_fase = dt_estado - self.tiempo_fase_rebase
+        
+        # Si es la primera vez que entramos al rebase, inicializar
+        if not self.en_rebase:
+            self.rebase.iniciar_rebase(carril_actual, dt_estado)
+            self.en_rebase = True
             
-            # Rebasamos durante 3 segundos
-            if dt_fase > 3.0:
-                self.fase_rebase = 2
-                self.tiempo_fase_rebase = dt_estado
-
-        # FASE 2: Regresar al carril derecho
-        elif self.fase_rebase == 2:
-            servo_cmd = 1900 # Girar a la derecha para regresar
-            dt_fase = dt_estado - self.tiempo_fase_rebase
+        # Ejecutar la fase actual del rebase
+        servo_cmd, vel_cmd, terminado, abortar = self.rebase.ejecutar_fase(
+            dt_estado, 
+            carril_actual, 
+            self.distancias_lidar,
+            error_carril
+        )
+        
+        # Si hay aborto por coche de frente, regresamos inmediatamente
+        if abortar:
+            self.en_rebase = False
+            terminado = True
+            # Enviamos comando de regreso de emergencia
+            if carril_actual == "IZQUIERDO":
+                servo_cmd = 1900  # Regresar a derecha rápido
+            else:
+                servo_cmd = 1100  # Regresar a izquierda rápido
+            vel_cmd = 70  # Reducir velocidad por seguridad
             
-            # Si ya detectamos el carril derecho o pasó mucho tiempo, terminamos
-            if carril_actual == "DERECHO" or dt_fase > 2.5:
-                self.fase_rebase = 0 # Reiniciamos para el próximo rebase
-                terminado = True
-
+        # Si la maniobra terminó, reiniciamos la bandera
+        if terminado:
+            self.en_rebase = False
+            
         return vel_cmd, servo_cmd, terminado
