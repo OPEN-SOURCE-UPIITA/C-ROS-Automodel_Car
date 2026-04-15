@@ -29,7 +29,7 @@ setup(
             
             # 2. Capa de Especialistas de Visión
             'detector_carril = driving.detector_carril:main',
-            'detector_multi_carril = driving.detector_multi_carril:main',
+            'detector_carril_multi = driving.detector_carril_multi:main',
             'detector_cruces = driving.detector_cruces:main',
             'detector_senales = driving.detector_senales:main',
             'radar_franjas = driving.radar_franjas:main',

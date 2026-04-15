@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'smart_parking = parking.smart_parking:main',
+            'calibracion = parking.calibracion:main'
         ],
     },
 )
