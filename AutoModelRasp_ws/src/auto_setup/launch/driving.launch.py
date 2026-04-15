@@ -11,9 +11,14 @@ def generate_launch_description():
             output='screen'
         ),
         
-        # 2. Detector de carriles multicarril
+         # 2. Detector de carriles multicarril
         ExecuteProcess(
             cmd=['ros2', 'run', 'driving', 'detector_carril_multi'],
+            output='screen'
+        ),
+        # 2. seguidor de carril.
+        ExecuteProcess(
+            cmd=['ros2', 'run', 'driving', 'detector_carril'],
             output='screen'
         ),
         
@@ -35,13 +40,4 @@ def generate_launch_description():
             output='screen'
         ),
         
-        # 6. Nodo autónomo principal
-        ExecuteProcess(
-            cmd=['ros2', 'run', 'driving', 'autonomo'],
-            output='screen'
-        ),
-        ExecuteProcess(
-            cmd=['ros2', 'run', 'driving', 'param_manager'],
-            output='screen'
-        ),
     ])
