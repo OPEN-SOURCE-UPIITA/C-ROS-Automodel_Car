@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+"""
+Nodo Maestro de Estacionamiento Autónomo ROS 2 (Hardware Real v35.0).
+Incluye rutina de centrado cíclico (n veces) y protección de tipos.
+"""
+
 import rclpy
 from rclpy.node import Node
 from motor_msgs.msg import MotorCommand, EncoderData
@@ -8,195 +14,177 @@ class SmartParking(Node):
     def __init__(self):
         super().__init__('smart_parking')
         
+        # --- 0. PUBLICADORES Y SUSCRIPTORES ---
         self.pub_cmd = self.create_publisher(MotorCommand, '/motor_command', 10)
         self.scan_sub = self.create_subscription(LaserScan, '/scan', self.scan_cb, 10)
         self.enc_sub = self.create_subscription(EncoderData, '/encoder_data', self.encoder_cb, 10)
         
-        self.estado = 'BUSCANDO_FILA' 
+        self.estado = 'BUSCANDO_CARRO' 
         
-        # Constantes mecánicas
+        # --- 1. CONFIGURACIÓN FÍSICA Y MOTORES ---
         self.ticks_por_metro = 2060.0 
-        self.distancia_eje = 0.15 
+        self.ancho_via = 0.15 
         
-        # Odometría
-        self.pos_x = 0.0
-        self.pos_y = 0.0
-        self.yaw_actual = 0.0
+        self.pwm_crucero = 70    # Patrullaje lento
+        self.pwm_minimo = 60   # Deadband para arrancar
+        self.pwm_reacomodo = 62  # Velocidad extra baja para centrar
         
-        # Sensores
-        self.distancia_derecha = 12.0
-        self.distancia_izquierda = 12.0 
-        self.distancia_atras = 12.0
+        # --- 2. BRÚJULA DEL LIDAR ---
+        self.angulo_der_rad = 3.14   
+        self.angulo_atras_rad = 4.71 
         
-        # Referencias
+        self.pos_x = 0.0; self.pos_y = 0.0; self.yaw_actual = 0.0
+        self.dist_der = 12.0; self.dist_atras = 12.0
+        
         self.yaw_calle = 0.0 
-        self.x_ref = None
-        self.y_ref = None 
-        self.comando_dir = 1 
+        self.x_ref = 0.0; self.y_ref = 0.0; self.comando_dir = 1 
         
-        # Mapeo de Servo (Ajustado según tus observaciones)
-        self.IZQUIERDA = 1740
-        self.DERECHA = 1260
+        # --- 3. ESCÁNER DE HUECOS ---
+        self.p1_x = 0.0; self.p1_y = 0.0  
+        self.tamano_minimo = 0.25   
+        self.dist_alineacion = 0.0  
+        self.ciclos_pausa = 0
+        
+        # --- 4. RUTINA DE CENTRADO (N veces) ---
+        self.intentos_actuales = 0
+        self.max_intentos_centrado = 2  # <--- AJUSTA AQUÍ EL NÚMERO DE REPETICIONES
+        self.dist_maniobra_centrado = 0.12 # Cuánto avanza adelante antes de volver atrás
+
+        # --- 5. CALIBRACIÓN DE ACTUADORES ---
+        self.DERECHA_REVERSA = 1260  
         self.CENTRO = 1500
 
-        self.timer = self.create_timer(0.1, self.control_loop)
-        self.get_logger().info("Piloto v10.1: Frenado Seguro y Doble Condición Activados.")
+        # --- 6. CEREBRO PI ---
+        self.kp_dist = 50.0; self.ki_dist = 0.0
+        self.error_integral_dist = 0.0; self.dt = 0.1
+
+        self.timer = self.create_timer(self.dt, self.control_loop)
+        self.get_logger().info("v35.0 - Iniciando con Rutina de Centrado")
 
     def encoder_cb(self, msg):
         signo = 1 if self.comando_dir == 1 else -1
+        ticks_ciclo = (abs(msg.vel_m1) + abs(msg.vel_m2)) / 2.0
+        dist_lineal = (ticks_ciclo / self.ticks_por_metro) * signo
         ds_l = (abs(msg.vel_m1) / self.ticks_por_metro) * signo
         ds_r = (abs(msg.vel_m2) / self.ticks_por_metro) * signo
-        distancia_lineal = (ds_l + ds_r) / 2.0
-        
-        if abs(distancia_lineal) > 0.10: return
-            
-        delta_yaw = (ds_r - ds_l) / self.distancia_eje
-        self.yaw_actual += delta_yaw
-        self.pos_x += distancia_lineal * math.cos(self.yaw_actual)
-        self.pos_y += distancia_lineal * math.sin(self.yaw_actual)
+        self.yaw_actual += (ds_r - ds_l) / self.ancho_via
+        self.pos_x += dist_lineal * math.cos(self.yaw_actual)
+        self.pos_y += dist_lineal * math.sin(self.yaw_actual)
 
     def scan_cb(self, msg):
         num_rayos = len(msg.ranges)
         if num_rayos == 0: return
+        idx_der = int(math.degrees(self.angulo_der_rad)) % num_rayos
+        idx_atras = int(math.degrees(self.angulo_atras_rad)) % num_rayos
 
-        def extraer_distancia(angulo_rad):
-            diferencia = math.atan2(math.sin(angulo_rad - msg.angle_min), math.cos(angulo_rad - msg.angle_min))
-            if diferencia < 0: diferencia += 2.0 * math.pi
-            try:
-                indice = int(diferencia / msg.angle_increment)
-                if indice >= num_rayos: indice = num_rayos - 1
-                rayos = msg.ranges[max(0, indice - 5) : min(num_rayos, indice + 5)]
-                distancias = [d for d in rayos if not (math.isinf(d) or math.isnan(d) or d > 12.0 or d <= 0.20)]
-                if distancias: return sum(distancias) / len(distancias)
-            except ZeroDivisionError: pass
-            return 12.0
+        def obtener_distancia_limpia(idx_central, ignora_chasis=False):
+            rayos = []
+            for i in range(-10, 11):
+                idx = (idx_central + i) % num_rayos 
+                rayos.append(msg.ranges[idx])
+            min_dist = 0.35 if ignora_chasis else 0.05
+            validos = [d for d in rayos if min_dist < d < 12.0 and not math.isinf(d) and not math.isnan(d)]
+            if not validos: return 12.0
+            validos.sort()
+            return sum(validos[:3]) / len(validos[:3])
 
-        self.distancia_derecha = extraer_distancia(3.0 * math.pi / 2.0)  
-        self.distancia_izquierda = extraer_distancia(math.pi / 2.0)      
-        self.distancia_atras = extraer_distancia(math.pi)                
+        self.dist_der = obtener_distancia_limpia(idx_der, ignora_chasis=True)
+        self.dist_atras = obtener_distancia_limpia(idx_atras, ignora_chasis=False)
 
     def control_loop(self):
         cmd = MotorCommand()
-        def diferencia_angular(a, b): return math.atan2(math.sin(a-b), math.cos(a-b))
+        def diff_ang(a, b): return math.atan2(math.sin(a-b), math.cos(a-b))
 
-        # Telemetría
-        self.get_logger().info(f"[{self.estado}] Yaw: {math.degrees(self.yaw_actual):.1f}° | Der: {self.distancia_derecha:.2f}m", throttle_duration_sec=0.5)
+        self.get_logger().info(f"[{self.estado}] Intentos: {self.intentos_actuales} | Atrás: {self.dist_atras:.2f}m", throttle_duration_sec=0.5)
 
-        if self.estado == 'BUSCANDO_FILA':
-            cmd.dir_dc = 1; cmd.speed_dc = 35; cmd.dir_servo = self.CENTRO; cmd.turn_signals = 1
-            if self.distancia_derecha < 0.8:
-                self.estado = 'BUSCANDO_CAJON'
-                
-        elif self.estado == 'BUSCANDO_CAJON':
-            cmd.dir_dc = 1; cmd.speed_dc = 35; cmd.dir_servo = self.CENTRO
-            if self.distancia_derecha > 0.50: 
-                if self.x_ref is None:
-                    self.x_ref = self.pos_x; self.y_ref = self.pos_y
-                distancia = math.hypot(self.pos_x - self.x_ref, self.pos_y - self.y_ref)
-                if distancia > 0.70: 
-                    self.estado = 'FRENADO_DETECCION'
-                    self.x_ref = self.pos_x; self.y_ref = self.pos_y
-            else:
-                self.x_ref = None 
+        # --- ESTADOS DE DETECCIÓN (IGUAL QUE ANTES) ---
+        if self.estado == 'BUSCANDO_CARRO':
+            cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 1, self.pwm_crucero, self.CENTRO
+            if self.dist_der < 1.2: self.estado = 'BUSCANDO_INICIO_HUECO'
 
-        elif self.estado == 'FRENADO_DETECCION':
-            cmd.dir_dc = 0; cmd.speed_dc = 0; cmd.dir_servo = self.CENTRO 
-            self.estado = 'ACOMODO_INICIAL'
-            self.x_ref = self.pos_x; self.y_ref = self.pos_y
-        
-        elif self.estado  == 'ACOMODO_INICIAL':
-            cmd.dir_dc = 2; cmd.speed_dc = 30; cmd.dir_servo = self.CENTRO
-            distancia = math.hypot(self.pos_x - self.x_ref, self.pos_y - self.y_ref)
-            if distancia > 0.90:
-                self.estado = 'FRENADO_INICIAL'
-                self.x_ref = self.pos_x; self.y_ref = self.pos_y
-        
-        elif self.estado == 'FRENADO_INICIAL':
-            cmd.dir_dc = 0; cmd.speed_dc = 0; cmd.dir_servo = self.IZQUIERDA
-            self.yaw_calle = self.yaw_actual
-            self.estado = 'ABRIENDO_SWING'
-        
-        elif self.estado == 'ABRIENDO_SWING':
-            cmd.dir_dc = 1; cmd.speed_dc = 40; cmd.dir_servo = self.IZQUIERDA
-            distancia = math.hypot(self.pos_x - self.x_ref, self.pos_y - self.y_ref)
-            if distancia > 1.95:
-                self.estado = 'FRENADO_PRE_REVERSA'
-                self.x_ref = self.pos_x; self.y_ref = self.pos_y
+        elif self.estado == 'BUSCANDO_INICIO_HUECO':
+            cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 1, self.pwm_crucero, self.CENTRO
+            if self.dist_der > 1.4: 
+                self.p1_x, self.p1_y = self.pos_x, self.pos_y
+                self.estado = 'MIDIENDO_HUECO'
 
-        elif self.estado == 'FRENADO_PRE_REVERSA':
-            cmd.dir_dc = 0; cmd.speed_dc = 0; cmd.dir_servo = self.IZQUIERDA
-            self.yaw_calle = self.yaw_actual
-            self.estado = 'REVERSA_ENTRANDO'
+        elif self.estado == 'MIDIENDO_HUECO':
+            cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 1, self.pwm_crucero, self.CENTRO
+            dist_hueco = math.hypot(self.pos_x - self.p1_x, self.pos_y - self.p1_y)
+            if dist_hueco >= self.tamano_minimo:
+                self.estado = 'ALTO_TOTAL'
+                self.ciclos_pausa = 0
+            elif self.dist_der < 1.2: self.estado = 'BUSCANDO_INICIO_HUECO'
 
-        elif self.estado == 'REVERSA_ENTRANDO':
-            cmd.dir_dc = 2; cmd.speed_dc = 30; cmd.dir_servo = self.IZQUIERDA
-            desviacion = abs(math.degrees(diferencia_angular(self.yaw_actual, self.yaw_calle)))
+        elif self.estado == 'ALTO_TOTAL':
+            cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 0, 0, self.CENTRO
+            self.ciclos_pausa += 1
+            if self.ciclos_pausa > 10: 
+                self.estado = 'REVERSA_RECTA'
+                self.x_ref, self.y_ref = self.pos_x, self.pos_y 
+
+        elif self.estado == 'REVERSA_RECTA':
+            cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 2, self.pwm_crucero, self.CENTRO
+            if math.hypot(self.pos_x - self.x_ref, self.pos_y - self.y_ref) >= self.dist_alineacion:
+                self.yaw_calle = self.yaw_actual
+                self.estado = 'REVERSA_GIRANDO'
+
+        # --- MODIFICACIÓN: MANIOBRA DE ENTRADA Y CENTRADO ---
+        elif self.estado == 'REVERSA_GIRANDO':
+            cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 2, self.pwm_crucero, self.DERECHA_REVERSA
+            desviacion = abs(math.degrees(diff_ang(self.yaw_actual, self.yaw_calle)))
             
-            if desviacion >= 105.0 or self.distancia_atras <= 0.25:
-                self.estado = 'FRENADO_FINAL'
-                # Guardamos la X y Y exactas de cuando empieza a retroceder recto
-                self.x_ref = self.pos_x; self.y_ref = self.pos_y
+            # Si ya giró 85 grados o el Lidar detecta algo muy cerca atrás, pasamos a centrar
+            if desviacion >= 85.0 or self.dist_atras < 0.20:
+                self.get_logger().info("Entrada inicial completa. Iniciando rutina de centrado...")
+                self.estado = 'CENTRAR_ADELANTE'
+                self.x_ref, self.y_ref = self.pos_x, self.pos_y
 
-        elif self.estado == 'FRENADO_FINAL':
-            cmd.dir_dc = 0; cmd.speed_dc = 0; cmd.dir_servo = self.IZQUIERDA
-            self.yaw_calle = self.yaw_actual
-            self.estado = 'REVERSA'
+        elif self.estado == 'CENTRAR_ADELANTE':
+            # Avanzar un poco recto para enderezar el cuerpo del carro
+            cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 1, self.pwm_reacomodo, self.CENTRO
+            dist_avanzada = math.hypot(self.pos_x - self.x_ref, self.pos_y - self.y_ref)
+            
+            if dist_avanzada >= self.dist_maniobra_centrado:
+                self.estado = 'CENTRAR_ATRAS'
+                self.x_ref, self.y_ref = self.pos_x, self.pos_y
 
-        elif self.estado == 'REVERSA':
-            if self.distancia_izquierda < 0.50 and self.distancia_derecha < 0.50:
-                error = self.distancia_izquierda - self.distancia_derecha
-                Kp = 4000.0 
-                correccion = int(Kp * error)
-                correccion = max(-200, min(200, correccion))
-                pwm_inteligente = self.CENTRO + correccion
-            else:
-                pwm_inteligente = self.CENTRO
+        elif self.estado == 'CENTRAR_ATRAS':
+            # Retroceder despacio hasta el límite seguro del Lidar
+            cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 2, self.pwm_reacomodo, self.CENTRO
+            
+            # Freno de seguridad o meta de profundidad
+            if self.dist_atras <= 0.12:
+                self.intentos_actuales += 1
+                if self.intentos_actuales < self.max_intentos_centrado:
+                    self.get_logger().info(f"Reacomodo {self.intentos_actuales} listo. Repitiendo...")
+                    self.estado = 'CENTRAR_ADELANTE'
+                    self.x_ref, self.y_ref = self.pos_x, self.pos_y
+                else:
+                    self.estado = 'ESTACIONADO'
 
-            cmd.dir_dc = 2; cmd.speed_dc = 30; cmd.dir_servo = pwm_inteligente
-            
-            # Calculamos la distancia que ha recorrido en reversa recta
-            dist_reversa = math.hypot(self.pos_x - self.x_ref, self.pos_y - self.y_ref)
-            
-            # --- DOBLE SEGURO DE FRENADO ---
-            # Frena si el láser ve la pared a 25cm O si ya recorrió 65cm hacia adentro del cajón
-            if self.distancia_atras <= 0.25 or dist_reversa >= 0.65:
-                self.estado = 'REACOMODO'
-        
-        elif self.estado == 'REACOMODO':
-            cmd.dir_dc = 1; cmd.speed_dc = 40; cmd.dir_servo = self.IZQUIERDA
-            distancia = math.hypot(self.pos_x - self.x_ref, self.pos_y - self.y_ref)
-            if distancia > 2.5:
-                self.estado = 'REVERSA_FINAL'
-                self.x_ref = self.pos_x; self.y_ref = self.pos_y
-                
-        elif self.estado == 'REVERSA_FINAL':
-            if self.distancia_izquierda < 0.50 and self.distancia_derecha < 0.50:
-                error = self.distancia_izquierda - self.distancia_derecha
-                Kp = 4000.0 
-                correccion = int(Kp * error)
-                correccion = max(-200, min(200, correccion))
-                pwm_inteligente = self.CENTRO + correccion
-            else:
-                pwm_inteligente = self.CENTRO
-
-            cmd.dir_dc = 2; cmd.speed_dc = 30; cmd.dir_servo = pwm_inteligente
-            
-            # Calculamos la distancia que ha recorrido en reversa recta
-            dist_reversa = math.hypot(self.pos_x - self.x_ref, self.pos_y - self.y_ref)
-            
-            # --- DOBLE SEGURO DE FRENADO ---
-            # Frena si el láser ve la pared a 25cm O si ya recorrió 65cm hacia adentro del cajón
-            if self.distancia_atras <= 0.25 or dist_reversa >= 0.65:
-                self.estado = 'ESTACIONADO'
-                
         elif self.estado == 'ESTACIONADO':
-            cmd.dir_dc = 0; cmd.speed_dc = 0; cmd.dir_servo = self.CENTRO; cmd.stop_lights = 1  
+            cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 0, 0, self.CENTRO
+            cmd.stop_lights = 1
 
-        self.comando_dir = cmd.dir_dc
+        # --- PROTECCIÓN FINAL (CASTING A INT) ---
+        self.comando_dir = int(cmd.dir_dc)
+        cmd.dir_dc = int(cmd.dir_dc)
+        cmd.speed_dc = int(cmd.speed_dc)
+        cmd.dir_servo = int(cmd.dir_servo)
+        
         self.pub_cmd.publish(cmd)
 
 def main():
-    rclpy.init(); rclpy.spin(SmartParking()); rclpy.shutdown()
+    rclpy.init()
+    node = SmartParking()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == '__main__':
     main()

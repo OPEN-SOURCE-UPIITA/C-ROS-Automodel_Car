@@ -13,20 +13,24 @@ class DetectorCarrilNode(Node):
         super().__init__('detector_carril')
 
         # --- 1. PARÁMETROS DINÁMICOS (RQT) ---
-        # (Se eliminó umbral_blanco, todo lo demás se mantiene)
         self.declare_parameter('corte_y_sup_pct', 80)
         self.declare_parameter('corte_y_inf_pct', 5)
-        self.declare_parameter('ancho_top', 250)
-        self.declare_parameter('ancho_bot', 640) 
+        self.declare_parameter('ancho_top', 180)
+        self.declare_parameter('ancho_bot', 550) 
+        
+        # --- ZONA MUERTA CENTRAL (AHORA TRAPEZOIDAL) ---
+        self.declare_parameter('bloqueo_w_top', 80)   # Ancho superior del parche negro
+        self.declare_parameter('bloqueo_w_bot', 250)  # Ancho inferior del parche negro
+        
         self.declare_parameter('suavizado_pct', 50)
         self.declare_parameter('min_puntos', 50)
         self.declare_parameter('min_pendiente', 0.2) 
-        self.declare_parameter('base_offset_l', 190) 
-        self.declare_parameter('base_offset_r', 240)
-        self.declare_parameter('activar_seguimiento', False)
+        self.declare_parameter('base_offset_l', 110) 
+        self.declare_parameter('base_offset_r', 140)
+        self.declare_parameter('activar_seguimiento', True)
         self.declare_parameter('confianza_un_carril', 0.76)
-        self.declare_parameter('usar_anclaje_base', False)
-        self.declare_parameter('max_curvatura', 0.7)
+        self.declare_parameter('usar_anclaje_base', True)
+        self.declare_parameter('max_curvatura', 0.1)
         self.declare_parameter('ratio_horizontal', 3) 
 
         self.add_on_set_parameters_callback(self.parameters_callback)
@@ -39,7 +43,6 @@ class DetectorCarrilNode(Node):
         self.lane_width_pixels = 350.0 
 
         # --- 3. COMUNICACIONES ---
-        # AHORA SE SUSCRIBE A LA MÁSCARA YA PROCESADA
         self.subscription = self.create_subscription(
             Image, '/vision/mascaras/carril', self.image_callback, 10)
             
@@ -50,14 +53,17 @@ class DetectorCarrilNode(Node):
     def parameters_callback(self, params):
         return SetParametersResult(successful=True)
 
-    # --- MÓDULO 1: SEGMENTACIÓN (CON FILTRO DE MANCHAS HORIZONTALES) ---
-    def segmentacion_color(self, mask_blancos, polygon):
-        # mask_blancos ya viene segmentada desde proc_image
+    # --- MÓDULO 1: SEGMENTACIÓN (CON ZONA MUERTA TRAPEZOIDAL) ---
+    def segmentacion_color(self, mask_blancos, polygon, polygon_bloqueo):
         h, w = mask_blancos.shape[:2]
+        
         mask_roi = np.zeros((h, w), dtype=np.uint8)
+        # Dibujamos la caja azul como válida (Blanco)
         cv2.fillPoly(mask_roi, polygon, 255)
         
-        # Máscara inicial con el ROI
+        # Recortamos la zona muerta dibujándola de Negro
+        cv2.fillPoly(mask_roi, polygon_bloqueo, 0)
+        
         binary = cv2.bitwise_and(mask_blancos, mask_roi)
 
         # --- FILTRO DE LÍNEAS HORIZONTALES ---
@@ -69,7 +75,6 @@ class DetectorCarrilNode(Node):
             w_obj = stats[i, cv2.CC_STAT_WIDTH]
             h_obj = stats[i, cv2.CC_STAT_HEIGHT]
             
-            # Si el ancho es mucho mayor al alto (línea horizontal), no lo incluimos
             if w_obj < (h_obj * ratio_limite):
                 mask_limpia[labels == i] = 255
         
@@ -101,7 +106,6 @@ class DetectorCarrilNode(Node):
         
         try:
             coeffs = np.polyfit(ys, xs, 2)
-            
             max_curv = self.get_parameter('max_curvatura').value
             if abs(coeffs[0]) > max_curv:
                 coeffs_lin = np.polyfit(ys, xs, 1)
@@ -113,12 +117,16 @@ class DetectorCarrilNode(Node):
         except: return None
 
     # --- MÓDULO 3: DIBUJO VIRTUAL ---
-    def dibujo_virtual(self, img, polygon, l_fit, r_fit, target_x, anchors, y_lims):
+    def dibujo_virtual(self, img, polygon, l_fit, r_fit, target_x, anchors, y_lims, polygon_bloqueo):
         y_sup, y_inf = y_lims
         cx_img = img.shape[1] // 2
         
+        # Dibujar ROI Azul
         cv2.polylines(img, polygon, True, (255, 0, 0), 2)
         cv2.line(img, (cx_img, y_inf), (cx_img, y_sup), (255, 255, 0), 1)
+        
+        # Dibujar Polígono de Bloqueo (Rojo oscuro)
+        cv2.polylines(img, polygon_bloqueo, True, (0, 0, 150), 2)
         
         if self.get_parameter('usar_anclaje_base').value:
             cv2.circle(img, (anchors[0], y_inf), 7, (255, 0, 255), -1)
@@ -143,7 +151,6 @@ class DetectorCarrilNode(Node):
     # --- CALLBACK PRINCIPAL ---
     def image_callback(self, msg):
         try: 
-            # Recibimos una imagen MONO8 (blanco y negro puro)
             mask_blancos = self.bridge.imgmsg_to_cv2(msg, "mono8")
         except: return
 
@@ -151,17 +158,29 @@ class DetectorCarrilNode(Node):
         h, w = mask_blancos.shape[:2]
         cx = w // 2
         
-        # Creamos una imagen BGR basada en la máscara para poder pintar líneas de colores
         debug = cv2.cvtColor(mask_blancos, cv2.COLOR_GRAY2BGR)
 
+        # LÍMITES VERTICALES
         y_sup = int(h * (self.get_parameter('corte_y_sup_pct').value / 100.0))
         y_inf = h - int(h * (self.get_parameter('corte_y_inf_pct').value / 100.0))
-        w_t, w_b = self.get_parameter('ancho_top').value, self.get_parameter('ancho_bot').value
+        
+        # POLÍGONO AZUL (ROI)
+        w_t = self.get_parameter('ancho_top').value
+        w_b = self.get_parameter('ancho_bot').value
         polygon = np.array([[(cx - w_b//2, y_inf), (cx + w_b//2, y_inf), 
-                             (cx + w_t, y_sup), (cx - w_t, y_sup)]], np.int32)
+                             (cx + w_t//2, y_sup), (cx - w_t//2, y_sup)]], np.int32)
 
-        mask = self.segmentacion_color(mask_blancos, polygon)
-        off_l, off_r = self.get_parameter('base_offset_l').value, self.get_parameter('base_offset_r').value
+        # POLÍGONO ROJO (ZONA MUERTA)
+        w_bloq_t = self.get_parameter('bloqueo_w_top').value
+        w_bloq_b = self.get_parameter('bloqueo_w_bot').value
+        polygon_bloqueo = np.array([[(cx - w_bloq_b//2, y_inf), (cx + w_bloq_b//2, y_inf), 
+                                     (cx + w_bloq_t//2, y_sup), (cx - w_bloq_t//2, y_sup)]], np.int32)
+
+        # Mandamos ambos polígonos a segmentar
+        mask = self.segmentacion_color(mask_blancos, polygon, polygon_bloqueo)
+        
+        off_l = self.get_parameter('base_offset_l').value
+        off_r = self.get_parameter('base_offset_r').value
         anchors = (cx - off_l, cx + off_r)
         
         l_fit_raw, r_fit_raw = self.procesar_puntos_carril(mask, cx, y_inf, anchors)
@@ -203,7 +222,7 @@ class DetectorCarrilNode(Node):
         if self.get_parameter('activar_seguimiento').value:
             self.publisher_error.publish(Float32(data=float(self.last_error)))
 
-        self.dibujo_virtual(debug, polygon, self.left_fit, self.right_fit, target_x, anchors, (y_sup, y_inf))
+        self.dibujo_virtual(debug, polygon, self.left_fit, self.right_fit, target_x, anchors, (y_sup, y_inf), polygon_bloqueo)
         
         self.pub_mascara.publish(self.bridge.cv2_to_compressed_imgmsg(mask))
         self.pub_resultado.publish(self.bridge.cv2_to_compressed_imgmsg(debug))
