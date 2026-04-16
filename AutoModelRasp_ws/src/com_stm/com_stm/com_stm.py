@@ -21,6 +21,7 @@ class STM32Controller(Node):
         self.dir_dc = 0
         self.speed_dc = 0
         self.dir_servo = 1500 
+        self.prev_speed_dc = 0  # <--- Memoria para el freno automático
         
         # --- Variables de Luces ---
         self.stop_lights = 0
@@ -58,7 +59,7 @@ class STM32Controller(Node):
         self.dir_dc = msg.dir_dc
         self.speed_dc = msg.speed_dc
         
-        # --- OFFSET ---
+        # --- EL SECRETO DEL OFFSET ---
         OFFSET = -65  # (1435 - 1500)
         
         # Si el comando pide 0 por seguridad, forzamos el centro real
@@ -68,8 +69,20 @@ class STM32Controller(Node):
             # Le sumamos el offset al comando original de ROS
             self.dir_servo = msg.dir_servo + OFFSET
             
-        # Atrapar las luces
-        self.stop_lights = msg.stop_lights
+        # ======================================================
+        # FRENO AUTOMÁTICO (Desaceleración o Inercia)
+        # ======================================================
+        freno_automatico = 0
+        
+        # Si la velocidad recibida es menor a la que teníamos, estamos frenando
+        if msg.speed_dc < self.prev_speed_dc:
+            freno_automatico = 1
+            
+        # Guardamos la velocidad actual en la memoria para la próxima iteración
+        self.prev_speed_dc = msg.speed_dc
+            
+        # Atrapar las luces (Prioridad combinada: Mando o Automático)
+        self.stop_lights = msg.stop_lights | freno_automatico
         self.turn_signals = msg.turn_signals
 
     def send_command(self):
