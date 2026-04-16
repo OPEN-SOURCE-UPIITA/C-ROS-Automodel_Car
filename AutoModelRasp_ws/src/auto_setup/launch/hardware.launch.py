@@ -36,9 +36,5 @@ def generate_launch_description():
             executable='ms200_node',
             name='ms200_driver',
             output='screen',
-            parameters=[{
-                'servo_center': 1500,
-                'max_speed': 100
-            }]
         ),
     ])

@@ -10,6 +10,11 @@ def generate_launch_description():
             cmd=['ros2', 'run', 'driving', 'proc_image'],
             output='screen'
         ),
+
+        ExecuteProcess(
+            cmd=['ros2', 'run', 'driving', 'autonomo'],
+            output='screen'
+        ),
         
          # 2. Detector de carriles multicarril
         ExecuteProcess(
@@ -36,8 +41,7 @@ def generate_launch_description():
         
         # 5. Radar de franjas (LiDAR)
         ExecuteProcess(
-            cmd=['ros2', 'run', 'driving', 'radar_franjas'],
-            output='screen'
+            cmd=['ros2', 'run', 'driving', 'radar_franjas'], output='screen'
         ),
         
     ])
