@@ -78,13 +78,16 @@ class ManiobrasAutonomo:
             self.en_rebase = True
             
         # Ejecutar la fase actual del rebase
-        servo_cmd, vel_cmd, terminado, abortar = self.rebase.ejecutar_fase(
+        servo_cmd, vel_cmd, terminado = self.rebase.actualizar(
+        #servo_cmd, vel_cmd, terminado, abortar = self.rebase.actualizar(
+            dt_estado, 
             dt_estado, 
             carril_actual, 
-            self.distancias_lidar,
+            self.distancias_lidar[2],
             error_carril
         )
         
+        """
         # Si hay aborto por coche de frente, regresamos inmediatamente
         if abortar:
             self.en_rebase = False
@@ -95,6 +98,8 @@ class ManiobrasAutonomo:
             else:
                 servo_cmd = 1100  # Regresar a izquierda rápido
             vel_cmd = 70  # Reducir velocidad por seguridad
+
+        """
             
         # Si la maniobra terminó, reiniciamos la bandera
         if terminado:

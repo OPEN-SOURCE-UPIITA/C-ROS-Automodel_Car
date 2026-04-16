@@ -21,7 +21,7 @@ class RadarFranjasNode(Node):
         self.declare_parameter('roi_h', 100)  
         
         # Umbral de peligro
-        self.declare_parameter('distancia_alerta', 0.30) 
+        self.declare_parameter('distancia_alerta', 0.90) 
         
         self.add_on_set_parameters_callback(self.parameters_callback)
         self.bridge = CvBridge()

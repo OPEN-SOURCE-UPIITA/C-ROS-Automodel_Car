@@ -15,8 +15,8 @@ class DetectorCarrilNode(Node):
         # --- 1. PARÁMETROS DINÁMICOS (RQT) ---
         self.declare_parameter('corte_y_sup_pct', 80)
         self.declare_parameter('corte_y_inf_pct', 5)
-        self.declare_parameter('ancho_top', 180)
-        self.declare_parameter('ancho_bot', 550) 
+        self.declare_parameter('ancho_top', 380)
+        self.declare_parameter('ancho_bot', 600) 
         
         # --- ZONA MUERTA CENTRAL (AHORA TRAPEZOIDAL) ---
         self.declare_parameter('bloqueo_w_top', 80)   # Ancho superior del parche negro
@@ -27,9 +27,9 @@ class DetectorCarrilNode(Node):
         self.declare_parameter('min_pendiente', 0.2) 
         self.declare_parameter('base_offset_l', 110) 
         self.declare_parameter('base_offset_r', 140)
-        self.declare_parameter('activar_seguimiento', True)
+        self.declare_parameter('activar_seguimiento', False)
         self.declare_parameter('confianza_un_carril', 0.76)
-        self.declare_parameter('usar_anclaje_base', True)
+        self.declare_parameter('usar_anclaje_base', False)
         self.declare_parameter('max_curvatura', 0.1)
         self.declare_parameter('ratio_horizontal', 3) 
 
