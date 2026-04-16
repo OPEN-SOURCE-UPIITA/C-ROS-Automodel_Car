@@ -165,9 +165,15 @@ class AutonomoNode(Node):
                 self.tiempo_cambio_estado = ahora
 
         # ESTADO 3: REBASE
+        
         elif self.estado_actual == 3:
             vel_cmd, servo_cmd, terminado = self.maniobras.ejecutar_logica_rebase(dt_estado, self.carril_actual, self.error_carril)
+            
+            if vel_cmd == 0 and not terminado:
+                self.get_logger().error("¡REBASE ABORTADO! Objeto detectado de frente.")
+            
             dir_dc = 1
+            
             if terminado:
                 self.estado_actual = 4
                 self.tiempo_cambio_estado = ahora

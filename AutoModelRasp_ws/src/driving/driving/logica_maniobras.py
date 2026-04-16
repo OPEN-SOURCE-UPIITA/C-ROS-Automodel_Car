@@ -72,37 +72,36 @@ class ManiobrasAutonomo:
         - Regreso suave al carril original
         """
         
-        # Si es la primera vez que entramos al rebase, inicializar
+
+        # 1. Primero obtenemos lo que la lógica de rebase "querría" hacer normalmente
         if not self.en_rebase:
             self.rebase.iniciar_rebase(carril_actual, dt_estado)
             self.en_rebase = True
-            
-        # Ejecutar la fase actual del rebase
+
         servo_cmd, vel_cmd, terminado = self.rebase.actualizar(
-        #servo_cmd, vel_cmd, terminado, abortar = self.rebase.actualizar(
-            dt_estado, 
-            dt_estado, 
-            carril_actual, 
+            dt_estado,
+            dt_estado,
+            carril_actual,
             self.distancias_lidar[2],
             error_carril
         )
-        
-        """
-        # Si hay aborto por coche de frente, regresamos inmediatamente
-        if abortar:
-            self.en_rebase = False
-            terminado = True
-            # Enviamos comando de regreso de emergencia
-            if carril_actual == "IZQUIERDO":
-                servo_cmd = 1900  # Regresar a derecha rápido
-            else:
-                servo_cmd = 1100  # Regresar a izquierda rápido
-            vel_cmd = 70  # Reducir velocidad por seguridad
 
-        """
-            
-        # Si la maniobra terminó, reiniciamos la bandera
+        # 2. ESCUCHA ACTIVA DE SEGURIDAD (Aborto por coche de frente)
+        # Definimos un umbral de peligro (puedes ajustarlo, e.g., 0.80 metros)
+        UMBRAL_PELIGRO_FRONTAL = 0.85 
+        
+        # Revisamos las franjas 1, 2 y 3 (el frente y diagonales)
+        # Si algo entra en este rango mientras estamos rebasando...
+        distancia_minima_frente = min(self.distancias_lidar[1:4]) 
+        
+        if distancia_minima_frente < UMBRAL_PELIGRO_FRONTAL:
+            # ¡PELIGRO! Forzamos frenado total y dirección recta
+            # No cambiamos 'terminado' a True para que el estado se quede "congelado" en 3
+            # pero con velocidad 0 hasta que el obstáculo desaparezca o intervengas.
+            return 0, 1500, False 
+
+        # 3. Si no hay peligro, seguimos con el plan original
         if terminado:
             self.en_rebase = False
-            
+
         return vel_cmd, servo_cmd, terminado
