@@ -63,10 +63,35 @@ class ProcesadorImagenNode(Node):
 
         # ==========================================
         # 1. MÁSCARA PARA CARRILES (Escala de grises)
+        #  Aportaciones De Jon
         # ==========================================
         umbral_carril = self.get_parameter('carril_umbral_blanco').value
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        _, mask_carril = cv2.threshold(gray, umbral_carril, 255, cv2.THRESH_BINARY)
+        #gray = cv2.medianBlur(gray,5)
+        #_, mask_carril = cv2.threshold(gray, umbral_carril, 255, cv2.THRESH_BINARY)
+
+        #kernel_limpieza = np.ones((5, 5), np.uint8)
+        #mask_carril = cv2.morphologyEx(mask_carril, cv2.MORPH_OPEN, kernel_limpieza)
+        mask_carril = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY, 11, umbral_carril) 
+
+    
+        kernel_erosion = np.ones((4, 4), np.uint8)
+        mask_carril = cv2.erode(mask_carril, kernel_erosion, iterations=1)
+
+        kernel_apertura = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
+
+        mask_carril = cv2.morphologyEx(mask_carril, cv2.MORPH_OPEN, kernel_apertura)
+
+        #kernel_dilatacion = np.ones((9, 9), np.uint8)
+        #mask_carril = cv2.dilate(mask_carril, kernel_dilatacion, iterations=1)
+
+        #kernel_cerradura = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (11,11))
+        kernel_cerradura = np.ones((3, 3), np.uint8)
+
+        mask_carril = cv2.morphologyEx(mask_carril, cv2.MORPH_CLOSE, kernel_cerradura)
+
+        ##Ultima transformacion
+        mask_carril = cv2.bitwise_not(mask_carril)
 
         # ==========================================
         # 2. MÁSCARA PARA CRUCE PEATONAL (HLS)
