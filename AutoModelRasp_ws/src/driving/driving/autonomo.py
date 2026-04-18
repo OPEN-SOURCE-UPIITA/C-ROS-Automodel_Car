@@ -34,6 +34,7 @@ class AutonomoNode(Node):
         self.declare_parameter('tiempo_gracia_senales', 3.0)
 
         # --PARAMETROS DE REBASE--
+       """ 
         self.declare_parameter('rebase.volantazo_intensidad', 600)
         self.declare_parameter('rebase.tiempo_volantazo', 0.35)
         self.declare_parameter('rebase.contravolantazo_intensidad', 250)
@@ -47,6 +48,7 @@ class AutonomoNode(Node):
         self.declare_parameter('rebase.tiempo_regreso', 0.40)
 
 
+       """ 
         # --- ESTADO DEL SISTEMA ---
         # 0: CARRIL (PD), 1: STOP, 2: CRUCE, 3: REBASE, 4: GRACIA
         self.estado_actual = 0 

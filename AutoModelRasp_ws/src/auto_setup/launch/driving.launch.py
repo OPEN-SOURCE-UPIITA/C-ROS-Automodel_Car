@@ -15,12 +15,14 @@ def generate_launch_description():
             cmd=['ros2', 'run', 'driving', 'autonomo'],
             output='screen'
         ),
-        
+        """        
          # 2. Detector de carriles multicarril
         ExecuteProcess(
             cmd=['ros2', 'run', 'driving', 'detector_carril_multi'],
             output='screen'
         ),
+
+        """        
         # 2. seguidor de carril.
         ExecuteProcess(
             cmd=['ros2', 'run', 'driving', 'detector_carril'],

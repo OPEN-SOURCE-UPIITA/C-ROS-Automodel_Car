@@ -26,6 +26,8 @@ setup(
         'console_scripts': [
             'smart_parking = parking.smart_parking:main',
             'calibracion = parking.calibracion:main'
+            'cuchareo = parking.cuchareo:main',
+            'dumb_parking = parking.dumb_parking:main',
         ],
     },
 )
