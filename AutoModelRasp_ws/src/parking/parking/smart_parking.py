@@ -161,7 +161,9 @@ class SmartParking(Node):
         self.CENTRO = 1500
 
         # --- VARIABLES DE CONTROL Y ODOMETRÍA ---
+        #self.estado = 'BUSCANDO_CARRO'
         self.estado = 'BUSCANDO_CARRO'
+
         self.pos_x = 0.0; self.pos_y = 0.0; self.yaw_actual = 0.0
         
         self.dist_frente_min = 10.0; self.dist_atras_min = 10.0

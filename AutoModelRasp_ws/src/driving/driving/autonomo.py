@@ -8,6 +8,7 @@ from rcl_interfaces.msg import SetParametersResult
 from motor_msgs.msg import MotorCommand
 
 # Importamos las librerías matemáticas
+from parking.smart_parking.py import SmartParking
 from driving.controlador_pd import ControladorAutomodel
 from driving.logica_maniobras import ManiobrasAutonomo
 
@@ -49,6 +50,9 @@ class AutonomoNode(Node):
 
 
        """ 
+
+       ###Parking###
+        self.parking
         # --- ESTADO DEL SISTEMA ---
         # 0: CARRIL (PD), 1: STOP, 2: CRUCE, 3: REBASE, 4: GRACIA
         self.estado_actual = 0 
@@ -60,6 +64,7 @@ class AutonomoNode(Node):
         self.distancia_stop = 999.0
         self.distancia_cruce = 999.0
         self.obstaculo_rebase = False
+        self.flag_estacionado = False
 
         # --- SUSCRIPCIONES ---
         self.create_subscription(Float32, '/steering_error', self.error_cb, 10)
@@ -67,6 +72,7 @@ class AutonomoNode(Node):
         self.create_subscription(Float32, '/vision/distancia_real', self.stop_cb, 10)
         self.create_subscription(Float32, '/vision/cruce_peatonal/distancia', self.cruce_cb, 10)
         self.create_subscription(Bool, '/radar/alerta_rebase', self.rebase_cb, 10)
+        self.create_subscription(Bool, '/radar/alerta_rebase', self.estacionado_cb, 10)
         self.create_subscription(Float32MultiArray, '/radar/distancias_franjas', self.lidar_distancias_cb, 10)
 
         # --- PUBLICADOR ---
@@ -82,6 +88,7 @@ class AutonomoNode(Node):
     def stop_cb(self, msg): self.distancia_stop = msg.data
     def cruce_cb(self, msg): self.distancia_cruce = msg.data
     def rebase_cb(self, msg): self.obstaculo_rebase = msg.data
+    def estacionado_cb(self, msg): self.flag_estacionado = msg.data
     def lidar_distancias_cb(self, msg): self.maniobras.actualizar_distancias_lidar(msg.data)
 
     def parameters_callback(self, params):
@@ -125,6 +132,7 @@ class AutonomoNode(Node):
 
         # ESTADO 0: CONDUCCIÓN NORMAL
         if self.estado_actual == 0:
+           """ 
             if self.obstaculo_rebase:
                 self.estado_actual = 3
                 self.tiempo_cambio_estado = ahora
@@ -137,6 +145,13 @@ class AutonomoNode(Node):
                 self.estado_actual = 2
                 self.tiempo_cambio_estado = ahora
                 self.get_logger().warn("¡CRUCE Detectado! Frenando.")
+
+           """ 
+           ##aqui me quede
+            if self.flag_estacionado: 
+                
+                pass
+
             else:
                 kp = self.get_parameter('kp').value
                 kd = self.get_parameter('kd').value
@@ -197,6 +212,8 @@ class AutonomoNode(Node):
                 self.distancia_stop = 999.0
                 self.distancia_cruce = 999.0
                 self.obstaculo_rebase = False
+
+        elif 
 
         # ==========================================
         # PUBLICAR A MOTORES (con conversión a int)
