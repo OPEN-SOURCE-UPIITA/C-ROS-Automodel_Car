@@ -1,129 +1,96 @@
 #!/usr/bin/env python3
-"""
-╔══════════════════════════════════════════════════════════════════════════════╗
-║        NODO ROS 2 — ESTACIONAMIENTO EN BATERÍA AUTÓNOMO  v3.0              ║
-╠══════════════════════════════════════════════════════════════════════════════╣
-║  Vehículo  : 44 cm largo × 20 cm ancho                                      ║
-║  LIDAR     : CENTRADO en el carro (22 cm de frente y cola, 10 cm de lados)  ║
-║  Espacio   : 30 cm ancho × 50 cm profundo, entre 2 cajas                    ║
-║  Maniobra  : Batería, entrando de REVERSA                                   ║
-╠══════════════════════════════════════════════════════════════════════════════╣
-║  MEJORAS vs v2.0                                                             ║
-║  ┌─────────────────────────────────────────────────────────────────────┐    ║
-║  │ 1. Filtro de postes del techo: enmascara las 4 columnas del carro   │    ║
-║  │ 2. Búsqueda a velocidad lenta (PWM 45) para lectura estable         │    ║
-║  │ 3. Frenada + confirmación al detectar apertura del hueco            │    ║
-║  │ 4. Medición muy lenta (PWM 35) con odometría precisa                │    ║
-║  │ 5. Frenada + validación al detectar el borde de la 2ª caja          │    ║
-║  │ 6. Geometría recalculada para LIDAR centrado                        │    ║
-║  │ 7. Histéresis en umbrales LIDAR (anti-rebotes)                      │    ║
-║  │ 8. Corrección proporcional de yaw en REVERSA_RECTA                  │    ║
-║  └─────────────────────────────────────────────────────────────────────┘    ║
-╠══════════════════════════════════════════════════════════════════════════════╣
-║  GEOMETRÍA CLAVE (LIDAR centrado)                                            ║
-║                                                                              ║
-║    LIDAR_A_FRENTE = LARGO/2 = 22 cm                                         ║
-║    LIDAR_A_COLA   = LARGO/2 = 22 cm                                         ║
-║                                                                              ║
-║    Postes del techo (esquinas del carro):                                    ║
-║      distancia  = √(22² + 10²) ≈ 24.2 cm                                   ║
-║      ángulos    = ±24.4° (frente) y ±155.6° (trasera)                       ║
-║                                                                              ║
-║    DIST_STOP cuando carro está completamente adentro:                        ║
-║      espacio 50 cm - LIDAR_A_FRENTE 22 cm = 28 cm (ideal)                   ║
-║      con margen 3 cm → DIST_STOP = 25 cm                                    ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-"""
 
 import rclpy
 from rclpy.node import Node
 from motor_msgs.msg import MotorCommand, EncoderData
 from sensor_msgs.msg import LaserScan
 import math
+from collections import deque
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-#  PARÁMETROS FÍSICOS Y DE CONTROL — ajusta aquí sin tocar la lógica
+#  PARÁMETROS
 # ══════════════════════════════════════════════════════════════════════════════
 class P:
-    # ── Vehículo ────────────────────────────────────────────────────────────
-    LARGO           = 0.44    # m
-    ANCHO           = 0.20    # m
-    TRACK           = 0.3210  # m  (separación entre ruedas, para odometría)
-    TICKS_POR_M     = 4757.0  # ticks de encoder por metro
 
-    # LIDAR centrado en el carro
-    LIDAR_A_FRENTE  = LARGO / 2   # 0.22 m
-    LIDAR_A_COLA    = LARGO / 2   # 0.22 m
-    LIDAR_A_LADO    = ANCHO / 2   # 0.10 m
+    # ── Físicos del vehículo ─────────────────────────────────────────────────
+    LARGO        = 0.44     # m
+    ANCHO        = 0.20     # m
+    LIDAR_REAR   = 0.22     # m — LIDAR al bumper trasero (LARGO / 2)
+    LIDAR_FRONT  = 0.22     # m — LIDAR al bumper frontal (LARGO / 2)
+    LIDAR_SIDE   = 0.10     # m — LIDAR al borde derecho  (ANCHO / 2)
+    TRACK        = 0.3210   # m — separación entre ruedas (odometría)
+    TICKS_POR_M  = 4757.0   # ticks de encoder por metro
 
-    # ── Postes del techo (4 esquinas) ───────────────────────────────────────
-    # Con el LIDAR al centro, cada poste está a:
-    #   distancia = √(LIDAR_A_FRENTE² + LIDAR_A_LADO²) = √(0.22²+0.10²) ≈ 0.242 m
-    #   ángulos (convención ROS, 0=frente, CCW+):
-    _d_poste = math.sqrt((LARGO/2)**2 + (ANCHO/2)**2)   # ≈ 0.242 m
-    _a_esquina = math.degrees(math.atan2(ANCHO/2, LARGO/2))  # ≈ 24.4°
+    # ── Espacio de estacionamiento ───────────────────────────────────────────
+    PROF_ESP     = 0.60     # m — profundidad del hueco
+    ANCHO_ESP    = 0.30     # m — ancho del hueco
+    MIN_HUECO    = 0.25     # m — longitud mínima aceptable (odometría)
+    MAX_BUSQUEDA = 3.00     # m — distancia máxima sin encontrar 2ª caja
 
-    # (ángulo_grados, distancia_nominal)
-    POSTES = [
-        ( _a_esquina,       _d_poste),  # frontal izquierdo
-        (-_a_esquina,       _d_poste),  # frontal derecho
-        ( 180 - _a_esquina, _d_poste),  # trasero izquierdo
-        (-180 + _a_esquina, _d_poste),  # trasero derecho
-    ]
-    POSTE_VENTANA_ANG  = 5.0   # grados — zona ciega ± alrededor del poste
-    POSTE_VENTANA_DIST = 0.10  # m     — filtra lecturas en [d-0.10, d+0.10]
+    # ── Distancia de parada ──────────────────────────────────────────────────
+    # Carro completamente adentro, bumper trasero a ~3 cm de la pared:
+    #   LIDAR (centrado, 22 cm de la cola) lee: 50 - 22 - 3 = 25 cm de la pared
+    #   Se detiene en 25 cm (ya incluye margen)
+    DIST_STOP    = 0.25     # m — distancia LIDAR trasero → pared del fondo
 
-    # ── Espacio de estacionamiento ──────────────────────────────────────────
-    PROF_ESP  = 0.50   # m  (profundidad, perpendicular a la vía)
-    ANCHO_ESP = 0.30   # m  (ancho del hueco)
+    # ── Sector lateral del LIDAR ─────────────────────────────────────────────
+    # Convención ROS: 0° = frente, -90° = derecha, +90° = izq, ±180° = atrás.
+    # Si tu LIDAR está rotado, ajusta ANG_DER.
+    ANG_DER      = -90.0    # grados — dirección "derecha" del robot
+    VENT_DER     =  20.0    # grados ± → sector total de 40° para el promedio
+    ANG_TRAS     =  180.0   # grados — dirección "atrás" del robot
+    VENT_TRAS    =   12.0   # grados ± (estrecha, para no leer las ruedas)
 
-    # ── Distancia de parada (lectura trasera cuando carro está adentro) ──────
-    #   ideal = PROF_ESP - LIDAR_A_FRENTE = 0.50 - 0.22 = 0.28 m
-    #   margen seguridad 3 cm → parar en 0.25 m
-    DIST_STOP = 0.25   # m  ← DIST_STOP con LIDAR centrado
+    # ── Detección por DELTA ──────────────────────────────────────────────────
+    # Se mantiene un buffer de los últimos DELTA_N promedios de sector.
+    # El delta se calcula como:
+    #   delta = media_reciente - media_anterior
+    # donde "reciente" y "anterior" son mitades iguales del buffer.
+    #
+    # DELTA_ABRIR: subida de distancia → el hueco se abrió (dist sube)
+    # DELTA_CERRAR: bajada de distancia → apareció un objeto (dist baja)
+    #
+    # ► Calibración en pista:
+    #   Empuja el carro a mano pasando por el hueco y ve el log de `avg_der`.
+    #   La diferencia entre "junto a la caja" y "frente al hueco" es el delta real.
+    #   Pon DELTA_ABRIR = 70% de esa diferencia.
+    #   Pon DELTA_CERRAR = 70% de la caída al llegar a la 2ª caja.
+    DELTA_N      = 10       # número de muestras en el buffer (10 × 50ms = 500ms)
+    DELTA_ABRIR  =  0.30    # m — subida mínima para detectar apertura de hueco
+    DELTA_CERRAR =  0.25    # m — caída mínima para detectar objeto (1ª/2ª caja)
 
-    # ── Sectores angulares del LIDAR ────────────────────────────────────────
-    # Convención ROS estándar: 0°=frente, +90°=izquierda, -90°=derecha, ±180°=atrás
-    ANG_DER       = -90.0   # grados — mirando a la DERECHA (hacia los huecos)
-    ANG_TRAS      =  180.0  # grados — mirando hacia ATRÁS
-    VENT_DER      =   18.0  # grados — ventana ±18° en el sector derecho
-    VENT_TRAS     =   12.0  # grados — ventana ±12° en el sector trasero (estrecha)
+    # ── Filtrado de postes del techo ─────────────────────────────────────────
+    POST_DIST_MAX = 0.30    # m — lectura ≤ esto puede ser un poste
+    POST_N_SCANS  = 40      # scans en quieto para calibrar (~2 s a 20 Hz)
+    POST_FRAC     = 0.70    # fracción de scans cortos para confirmar poste
 
-    # ── Umbrales de detección (con histéresis) ──────────────────────────────
-    UMBRAL_OBJ_ON   = 0.90   # m — dist_der < ON  → hay obstáculo (se activa)
-    UMBRAL_OBJ_OFF  = 1.00   # m — dist_der > OFF → hueco libre   (se desactiva)
-    MIN_HUECO       = 0.28   # m — tamaño mínimo del hueco aceptable
-    MAX_DIST_BUSQ   = 5.0    # m — máx dist_der en búsqueda (descarta ruido lejano)
+    # ── Seguridad durante reversa ────────────────────────────────────────────
+    PELIGRO_TRAS = 0.30     # m — activa rescate si dist_atras < esto
+    PELIGRO_LAT  = 0.14     # m — alerta de colisión lateral
 
-    # ── Velocidades diferenciadas ───────────────────────────────────────────
-    PWM_BUSQUEDA    = 45     # lento al buscar el hueco — mejor resolución LIDAR
-    PWM_MIDIENDO    = 35     # muy lento al medir el hueco
-    PWM_MANIOBRA    = 65     # velocidad de maniobra de estacionamiento
-
-    # ── Ciclos de pausa (a 20 Hz = 50 ms/ciclo) ────────────────────────────
-    CICLOS_CONFIRMA_APERTURA = 12   # 0.6 s parado confirmando apertura del hueco
-    CICLOS_CONFIRMA_CIERRE   = 15   # 0.75 s parado confirmando el borde final
-
-    # ── Avance de posicionamiento ───────────────────────────────────────────
+    # ── Avance de posicionamiento ────────────────────────────────────────────
     # Al detectar la 2ª caja, el LIDAR está al nivel del borde interior.
-    # La COLA está 22 cm MÁS ATRÁS → necesitamos avanzar ≥22 cm para que
-    # la cola cruce el borde. Agregamos 8 cm de margen de maniobra.
-    AVANCE_POS = 0.30   # m = LIDAR_A_COLA (0.22) + margen (0.08)
+    # La cola está LIDAR_REAR (22 cm) más atrás del LIDAR.
+    # AVANCE_POS = LIDAR_REAR + margen de giro = 0.22 + 0.15 = 0.37 m
+    AVANCE_POS   = 0.37     # m
 
-    # ── Seguridad durante maniobra ──────────────────────────────────────────
-    PELIGRO_TRAS  = 0.20   # m — dist trasera < esto → rescate inmediato
-    PELIGRO_LAT   = 0.07   # m — dist lateral  < esto → peligro de choque
+    # ── Corrección de yaw en reversa recta ───────────────────────────────────
+    YAW_OBJ      = 87.0     # grados — "90°" alcanzados
+    KP_YAW       =  1.2     # ganancia proporcional
+    MAX_CORR     = 80       # máxima corrección servo (pwm units)
 
-    # ── Corrección proporcional de yaw (REVERSA_RECTA) ─────────────────────
-    YAW_OBJ     = 87.0   # grados — ángulo que cuenta como "90° alcanzado"
-    KP_YAW      = 1.5    # ganancia proporcional del servo para corrección
-    MAX_CORR    = 100    # máxima corrección del servo en unidades PWM
+    # ── Velocidades (todas ≥ 65) ─────────────────────────────────────────────
+    PWM_NORMAL   = 72       # búsqueda y maniobra de reversa
+    PWM_LENTO    = 67       # acercamiento al hueco (lectura estable)
+    PWM_CREEP    = 65       # medición del hueco (velocidad mínima estable)
 
-    # ── Servo ───────────────────────────────────────────────────────────────
+    # ── Servo ────────────────────────────────────────────────────────────────
     SERVO_CENTRO  = 1500
-    SERVO_DER_MAX = 1260   # máximo giro derecha (reversa)
-    SERVO_IZQ_MAX = 1740   # máximo giro izquierda
+    SERVO_DER_REV = 1260    # máximo giro derecha en reversa
+
+    # ── Pausa de confirmación en los bordes del hueco ────────────────────────
+    PAUSA_SEG    = 0.40     # segundos en quieto al detectar inicio/fin del hueco
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -131,186 +98,236 @@ class P:
 # ══════════════════════════════════════════════════════════════════════════════
 class SmartParking(Node):
 
-    # ──────────────────────────────────────────────────────────────────────────
     def __init__(self):
         super().__init__('smart_parking')
 
-        # ── Comunicación ROS ─────────────────────────────────────────────────
         self.pub = self.create_publisher(MotorCommand, '/motor_command', 10)
         self.create_subscription(LaserScan,   '/scan',         self._scan_cb, 10)
         self.create_subscription(EncoderData, '/encoder_data', self._enc_cb,  10)
 
         # ── Odometría ────────────────────────────────────────────────────────
-        self.x   = 0.0
-        self.y   = 0.0
-        self.yaw = 0.0
-        self.yaw_calle = 0.0   # yaw guardado al momento de confirmar el hueco
-        self._cmd_dir  = 1     # 1=adelante 2=reversa (signo para odometría)
+        self.x         = 0.0
+        self.y         = 0.0
+        self.yaw       = 0.0
+        self.yaw_calle = 0.0
+        self._dir      = 0          # 1=adelante, 2=reversa, 0=parado
 
-        # ── LIDAR ────────────────────────────────────────────────────────────
-        self.dist_der   = 10.0
-        self.dist_atras = 10.0
-        self._scan_ok   = False
-        self._ang_min   = 0.0
-        self._ang_inc   = 0.0
-        self._n_rays    = 0
-        self._hay_obst  = False   # estado de histéresis del obstáculo derecho
+        # ── Distancias actuales ───────────────────────────────────────────────
+        self.avg_der   = 10.0       # PROMEDIO del sector derecho (m)
+        self.dist_atras = 10.0      # mín del sector trasero (m)
 
-        # ── Máquina de estados ───────────────────────────────────────────────
-        self.estado = 'ESPERANDO_LIDAR'
+        # ── LIDAR — metadatos ────────────────────────────────────────────────
+        self._ang_min = 0.0
+        self._ang_inc = 0.0
+        self._n       = 0
+        self._scan_ok = False
+
+        # ── Filtro de postes ─────────────────────────────────────────────────
+        self._post_mask  = None     # bool por rayo: True = poste
+        self._calib_buf  = []
+
+        # ── Buffer de delta ──────────────────────────────────────────────────
+        # Almacena los últimos DELTA_N valores de avg_der.
+        # El delta se calcula como:  ventana_nueva - ventana_vieja
+        self._der_buf    = deque(maxlen=P.DELTA_N)
 
         # ── Referencias odométricas ──────────────────────────────────────────
-        self.ref_x = 0.0;  self.ref_y = 0.0
-        self.p1_x  = 0.0;  self.p1_y  = 0.0   # inicio del hueco detectado
+        self.ref_x       = 0.0
+        self.ref_y       = 0.0
+        self.p1_x        = 0.0     # inicio del hueco
+        self.p1_y        = 0.0
+        self._hueco_long = 0.0
 
-        # ── Contador para estados de pausa ───────────────────────────────────
-        self._pausa_cnt   = 0
-        self._pausa_max   = 0
-        self._pausa_sig   = ''
+        # ── Temporizador de pausa ────────────────────────────────────────────
+        self._t_pausa = None
 
-        # ── Distancia medida del hueco (guardada para el log) ────────────────
-        self._tam_hueco   = 0.0
+        # ── Estados ──────────────────────────────────────────────────────────
+        self.estado = 'ESPERANDO_LIDAR'
 
         self.create_timer(0.05, self._loop)   # 20 Hz
 
         self.get_logger().info(
-            "🚗 SmartParking v3.0\n"
-            f"   Carro  : {P.LARGO*100:.0f} × {P.ANCHO*100:.0f} cm\n"
-            f"   Espacio: {P.ANCHO_ESP*100:.0f} × {P.PROF_ESP*100:.0f} cm\n"
-            f"   LIDAR  : centrado — 4 postes filtrados automáticamente\n"
-            f"   DIST_STOP: {P.DIST_STOP*100:.0f} cm"
+            f"🚗 SmartParking v4.0 | "
+            f"LIDAR centrado (rear={P.LIDAR_REAR*100:.0f} cm) | "
+            f"DELTA_ABRIR={P.DELTA_ABRIR:.2f} m  DELTA_CERRAR={P.DELTA_CERRAR:.2f} m | "
+            f"PWM_CREEP={P.PWM_CREEP}"
         )
 
-    # ══════════════════════════════════════════════════════════════════════════
-    #  CALLBACKS
-    # ══════════════════════════════════════════════════════════════════════════
-
+    # ──────────────────────────────────────────────────────────────────────────
+    #  Odometría diferencial
+    # ──────────────────────────────────────────────────────────────────────────
     def _enc_cb(self, msg):
-        """Odometría diferencial incremental."""
-        signo = 1 if self._cmd_dir == 1 else -1
-        ds_l = signo * abs(msg.vel_m1) / P.TICKS_POR_M
-        ds_r = signo * abs(msg.vel_m2) / P.TICKS_POR_M
-        ds   = (ds_l + ds_r) / 2.0
-        self.yaw += (ds_r - ds_l) / P.TRACK
+        if self._dir == 0:
+            return
+        s  = 1 if self._dir == 1 else -1
+        dl = s * abs(msg.vel_m1) / P.TICKS_POR_M
+        dr = s * abs(msg.vel_m2) / P.TICKS_POR_M
+        ds = (dl + dr) / 2.0
+        self.yaw += (dr - dl) / P.TRACK
         self.x   += ds * math.cos(self.yaw)
         self.y   += ds * math.sin(self.yaw)
 
+    # ──────────────────────────────────────────────────────────────────────────
+    #  Callback del LIDAR
+    # ──────────────────────────────────────────────────────────────────────────
     def _scan_cb(self, msg):
-        """Procesa el LaserScan: filtra postes y calcula distancias."""
         n = len(msg.ranges)
         if n == 0:
             return
 
-        # Inicialización con parámetros reales del sensor
         if not self._scan_ok:
-            self._n_rays  = n
+            self._n       = n
             self._ang_min = msg.angle_min
             self._ang_inc = (msg.angle_max - msg.angle_min) / max(n - 1, 1)
             self._scan_ok = True
+            self.estado   = 'CALIBRANDO'
             self.get_logger().info(
-                f"📡 LIDAR listo: {n} rayos  "
-                f"[{math.degrees(msg.angle_min):.1f}° → "
-                f"{math.degrees(msg.angle_max):.1f}°]  "
-                f"res={math.degrees(self._ang_inc):.2f}°/rayo"
+                f"LIDAR: {n} rayos "
+                f"[{math.degrees(msg.angle_min):.0f}° → "
+                f"{math.degrees(msg.angle_max):.0f}°] "
+                f"inc={math.degrees(self._ang_inc):.2f}°/rayo"
             )
-            self.estado = 'BUSCANDO_CARRO'
 
-        # ── 1. Crear copia mutable y aplicar filtro de postes ────────────────
-        ranges_limpios = list(msg.ranges)
-        self._filtrar_postes(ranges_limpios)
-
-        # ── 2. Calcular distancias de interés ────────────────────────────────
-        self.dist_der   = self._sector_min(ranges_limpios, P.ANG_DER,  P.VENT_DER,  max_d=P.MAX_DIST_BUSQ)
-        self.dist_atras = self._sector_min(ranges_limpios, P.ANG_TRAS, P.VENT_TRAS, max_d=2.0)
-
-        # ── 3. Actualizar histéresis del obstáculo derecho ───────────────────
-        if self._hay_obst:
-            # Se desactiva solo si supera el umbral superior
-            if self.dist_der > P.UMBRAL_OBJ_OFF:
-                self._hay_obst = False
-        else:
-            # Se activa solo si baja del umbral inferior
-            if self.dist_der < P.UMBRAL_OBJ_ON:
-                self._hay_obst = True
-
-    # ══════════════════════════════════════════════════════════════════════════
-    #  LIDAR — utilidades
-    # ══════════════════════════════════════════════════════════════════════════
-
-    def _ang_a_idx(self, ang_deg):
-        """Convierte un ángulo (grados, convención ROS) a índice del array."""
-        ang_rad = math.radians(ang_deg)
-        # Normalizar al rango [angle_min, angle_min + 2π]
-        while ang_rad < self._ang_min:
-            ang_rad += 2 * math.pi
-        while ang_rad > self._ang_min + 2 * math.pi:
-            ang_rad -= 2 * math.pi
-        return int(round((ang_rad - self._ang_min) / self._ang_inc)) % self._n_rays
-
-    def _sector_min(self, ranges, ang_centro_deg, ventana_deg, max_d=5.0):
-        """
-        Distancia mínima válida en un sector angular.
-        Usa angle_min y angle_increment reales (no índices fijos).
-        """
-        idx_c  = self._ang_a_idx(ang_centro_deg)
-        idx_v  = int(round(math.radians(ventana_deg) / self._ang_inc))
-        validos = []
-        for i in range(idx_c - idx_v, idx_c + idx_v + 1):
-            d = ranges[i % self._n_rays]
-            if not (math.isnan(d) or math.isinf(d)) and 0.02 < d < max_d:
-                validos.append(d)
-        return min(validos) if validos else max_d
-
-    def _filtrar_postes(self, ranges):
-        """
-        Enmascara (→ NaN) las lecturas que corresponden a los 4 postes
-        del techo del carro.
-
-        Cada poste produce un eco en un ángulo y distancia conocidos
-        (calculados en la clase P desde las dimensiones del vehículo).
-        Se enmascara una ventana de ±POSTE_VENTANA_ANG grados alrededor
-        del ángulo nominal, SOLO si la distancia leída cae dentro del
-        rango [d_nominal - VENTANA_DIST, d_nominal + VENTANA_DIST].
-        Esto evita borrar lecturas de obstáculos reales que casualmente
-        estén en el mismo ángulo pero a distancia diferente.
-        """
-        if not self._scan_ok:
+        if self.estado == 'CALIBRANDO':
+            self._calib_buf.append(list(msg.ranges))
+            if len(self._calib_buf) >= P.POST_N_SCANS:
+                self._calibrar_postes()
             return
 
-        for ang_deg, d_nom in P.POSTES:
-            idx_c = self._ang_a_idx(ang_deg)
-            vent  = int(round(math.radians(P.POSTE_VENTANA_ANG) / self._ang_inc))
-            d_lo  = d_nom - P.POSTE_VENTANA_DIST
-            d_hi  = d_nom + P.POSTE_VENTANA_DIST
+        # ── Lecturas activas ──────────────────────────────────────────────────
+        nueva_der   = self._sector_avg(msg.ranges, P.ANG_DER,  P.VENT_DER,  10.0)
+        self.dist_atras = self._sector_min(msg.ranges, P.ANG_TRAS, P.VENT_TRAS,  2.0)
 
-            for i in range(idx_c - vent, idx_c + vent + 1):
-                idx = i % self._n_rays
-                d   = ranges[idx]
-                if not (math.isnan(d) or math.isinf(d)) and d_lo < d < d_hi:
-                    ranges[idx] = math.nan   # enmascarar — es un poste
+        self.avg_der = nueva_der
+        self._der_buf.append(nueva_der)
 
-    # ══════════════════════════════════════════════════════════════════════════
-    #  UTILIDADES DE CONTROL
-    # ══════════════════════════════════════════════════════════════════════════
+    # ──────────────────────────────────────────────────────────────────────────
+    #  Calibración de postes del techo
+    # ──────────────────────────────────────────────────────────────────────────
+    def _calibrar_postes(self):
+        n = self._n
+        self._post_mask = [False] * n
 
-    def _dist(self, x0, y0):
+        for i in range(n):
+            vals = [s[i] for s in self._calib_buf
+                    if not math.isnan(s[i]) and not math.isinf(s[i])]
+            if not vals:
+                self._post_mask[i] = True
+                continue
+            frac = sum(1 for d in vals if d < P.POST_DIST_MAX) / len(vals)
+            self._post_mask[i] = (frac >= P.POST_FRAC)
+
+        n_post = sum(self._post_mask)
+        self.get_logger().info(
+            f"Calibración: {n_post}/{n} rayos de postes enmascarados. "
+            f"{n - n_post} rayos activos."
+        )
+        if n_post > n * 0.70:
+            self.get_logger().warn(
+                "+70% rayos enmascarados. Verifica POST_DIST_MAX "
+                "y que el robot estuviera quieto."
+            )
+        self._calib_buf.clear()
+        self.estado = 'BUSCANDO_CARRO'
+
+    # ──────────────────────────────────────────────────────────────────────────
+    #  PROMEDIO de sector angular (ignorando postes)
+    # ──────────────────────────────────────────────────────────────────────────
+    def _sector_avg(self, ranges, ang_deg, vent_deg, max_d=10.0):
+        """
+        Devuelve la MEDIA aritmética de las lecturas válidas en el sector
+        [ang_deg ± vent_deg]. Ignora postes y lecturas fuera de rango.
+        Si no hay lecturas válidas devuelve max_d.
+        """
+        idx_c, idx_v = self._ang_to_idx(ang_deg, vent_deg)
+        vals = []
+        for i in range(idx_c - idx_v, idx_c + idx_v + 1):
+            idx = i % self._n
+            if self._post_mask is not None and self._post_mask[idx]:
+                continue
+            d = ranges[idx]
+            if not (math.isnan(d) or math.isinf(d)) and 0.02 < d < max_d:
+                vals.append(d)
+        return (sum(vals) / len(vals)) if vals else max_d
+
+    # ──────────────────────────────────────────────────────────────────────────
+    #  MÍNIMO de sector angular (ignorando postes) — solo para zona trasera
+    # ──────────────────────────────────────────────────────────────────────────
+    def _sector_min(self, ranges, ang_deg, vent_deg, max_d=2.0):
+        idx_c, idx_v = self._ang_to_idx(ang_deg, vent_deg)
+        vals = []
+        for i in range(idx_c - idx_v, idx_c + idx_v + 1):
+            idx = i % self._n
+            if self._post_mask is not None and self._post_mask[idx]:
+                continue
+            d = ranges[idx]
+            if not (math.isnan(d) or math.isinf(d)) and 0.02 < d < max_d:
+                vals.append(d)
+        return min(vals) if vals else max_d
+
+    # ──────────────────────────────────────────────────────────────────────────
+    #  Conversión ángulo → índices de rayo
+    # ──────────────────────────────────────────────────────────────────────────
+    def _ang_to_idx(self, ang_deg, vent_deg):
+        """
+        Devuelve (idx_centro, idx_ventana) para un sector angular.
+        Usa angle_min y angle_increment reales del LaserScan (no índices fijos).
+        """
+        ang_rad  = math.radians(ang_deg)
+        vent_rad = math.radians(vent_deg)
+
+        # Normalizar al rango del LIDAR
+        ang_norm = ang_rad
+        lim_max  = self._ang_min + 2 * math.pi
+        while ang_norm < self._ang_min: ang_norm += 2 * math.pi
+        while ang_norm > lim_max:       ang_norm -= 2 * math.pi
+
+        idx_c = round((ang_norm  - self._ang_min) / self._ang_inc)
+        idx_v = round(vent_rad   / self._ang_inc)
+        return idx_c, idx_v
+
+    # ──────────────────────────────────────────────────────────────────────────
+    #  Delta de distancia lateral
+    # ──────────────────────────────────────────────────────────────────────────
+    def _delta_der(self):
+        """
+        Calcula el cambio de distancia promedio lateral comparando
+        la mitad más reciente del buffer con la mitad más antigua.
+
+        Retorna: (delta, hay_suficientes_muestras)
+          delta > 0 → la distancia SUBIÓ  (hueco se abrió)
+          delta < 0 → la distancia BAJÓ   (apareció un objeto)
+        """
+        buf = list(self._der_buf)
+        if len(buf) < P.DELTA_N:
+            return 0.0, False
+
+        mitad = P.DELTA_N // 2
+        vieja  = sum(buf[:mitad])  / mitad
+        nueva  = sum(buf[mitad:])  / (len(buf) - mitad)
+        return nueva - vieja, True
+
+    # ──────────────────────────────────────────────────────────────────────────
+    #  Utilidades generales
+    # ──────────────────────────────────────────────────────────────────────────
+    def _dist(self, x0=None, y0=None):
+        if x0 is None:
+            x0, y0 = self.ref_x, self.ref_y
         return math.hypot(self.x - x0, self.y - y0)
 
+    def _set_ref(self):
+        self.ref_x, self.ref_y = self.x, self.y
+
     def _err_yaw_abs(self):
-        """Error angular absoluto (grados) respecto al yaw de la calle."""
         d = math.atan2(math.sin(self.yaw - self.yaw_calle),
                        math.cos(self.yaw - self.yaw_calle))
         return abs(math.degrees(d))
 
     def _err_yaw_signed(self):
-        """Error angular con signo (grados) respecto al yaw de la calle."""
         return math.degrees(
             math.atan2(math.sin(self.yaw - self.yaw_calle),
                        math.cos(self.yaw - self.yaw_calle))
         )
-
-    def _set_ref(self):
-        self.ref_x, self.ref_y = self.x, self.y
 
     def _pub(self, dir_dc, speed, servo, stop=0):
         m             = MotorCommand()
@@ -318,235 +335,233 @@ class SmartParking(Node):
         m.speed_dc    = int(speed)
         m.dir_servo   = int(servo)
         m.stop_lights = int(stop)
-        self._cmd_dir = int(dir_dc)
+        self._dir     = int(dir_dc)
         self.pub.publish(m)
 
-    def _iniciar_pausa(self, ciclos, estado_siguiente):
+    def _pausa_ok(self):
         """
-        Frena el carro y cuenta 'ciclos' antes de pasar al siguiente estado.
-        Se usa para confirmar lecturas LIDAR antes de comprometerse.
+        Gestiona el temporizador de pausa de P.PAUSA_SEG segundos.
+        Retorna True una sola vez cuando ha expirado.
         """
-        self._pausa_cnt = 0
-        self._pausa_max = ciclos
-        self._pausa_sig = estado_siguiente
+        now = self.get_clock().now()
+        if self._t_pausa is None:
+            self._t_pausa = now
+            return False
+        if (now - self._t_pausa).nanoseconds / 1e9 >= P.PAUSA_SEG:
+            self._t_pausa = None
+            return True
+        return False
 
-    # ══════════════════════════════════════════════════════════════════════════
-    #  BUCLE DE CONTROL PRINCIPAL (20 Hz)
-    # ══════════════════════════════════════════════════════════════════════════
+    def _reset_buf(self):
+        """Vacía el buffer de delta para no arrastrar lecturas del estado anterior."""
+        self._der_buf.clear()
 
+    # ──────────────────────────────────────────────────────────────────────────
+    #  Bucle de control (20 Hz)
+    # ──────────────────────────────────────────────────────────────────────────
     def _loop(self):
         if not self._scan_ok:
             return
 
-        ey_abs    = self._err_yaw_abs()
-        ey_signed = self._err_yaw_signed()
+        delta, buf_lleno = self._delta_der()
+        ey = self._err_yaw_abs()
 
         self.get_logger().info(
-            f"[{self.estado:<26}] "
-            f"der={self.dist_der:.2f}m  "
+            f"[{self.estado:28s}] "
+            f"avg_der={self.avg_der:.2f}m  "
+            f"delta={delta:+.3f}m  "
             f"atras={self.dist_atras:.2f}m  "
-            f"err={ey_abs:.1f}°  "
-            f"pos=({self.x:.2f},{self.y:.2f})",
+            f"err={ey:.1f}°  "
+            f"pos=({self.x:.3f},{self.y:.3f})",
             throttle_duration_sec=0.25
         )
 
         # ════════════════════════════════════════════════════════════════════
+        #  ESPERANDO_LIDAR / CALIBRANDO — quieto
+        # ════════════════════════════════════════════════════════════════════
+        if self.estado in ('ESPERANDO_LIDAR', 'CALIBRANDO'):
+            self._pub(0, 0, P.SERVO_CENTRO)
+
+        # ════════════════════════════════════════════════════════════════════
         #  BUSCANDO_CARRO
-        #  Avanza LENTO buscando el primer obstáculo a la derecha.
-        #  Velocidad baja → el LIDAR tiene más tiempo de muestreo por posición.
+        #  Avanza a velocidad normal. Detecta la 1ª caja por CAÍDA de delta:
+        #  la distancia promedio derecha baja abruptamente al aparecer una caja.
         # ════════════════════════════════════════════════════════════════════
-        if self.estado == 'BUSCANDO_CARRO':
-            self._pub(1, P.PWM_BUSQUEDA, P.SERVO_CENTRO)
-            if self._hay_obst:
-                self.estado = 'BORDEANDO_CARRO'
+        elif self.estado == 'BUSCANDO_CARRO':
+            self._pub(1, P.PWM_NORMAL, P.SERVO_CENTRO)
+
+            if buf_lleno and delta < -P.DELTA_CERRAR:
+                self._reset_buf()
+                self.estado = 'SIGUIENDO_CARRO'
                 self.get_logger().info(
-                    f"📦 Obstáculo detectado a {self.dist_der:.2f} m. "
-                    "Siguiendo borde derecho..."
+                    f"1ª caja detectada (delta={delta:+.3f} m). "
+                    "Reduciendo velocidad para buscar apertura del hueco..."
                 )
 
         # ════════════════════════════════════════════════════════════════════
-        #  BORDEANDO_CARRO
-        #  Sigue el borde del primer carro/caja hasta que el espacio se abra.
-        #  Continúa lento para no pasarse del inicio del hueco.
+        #  SIGUIENDO_CARRO
+        #  Avanza lento junto a la 1ª caja. Detecta la apertura del hueco
+        #  por SUBIDA de delta: la distancia sube cuando la caja se acaba.
         # ════════════════════════════════════════════════════════════════════
-        elif self.estado == 'BORDEANDO_CARRO':
-            self._pub(1, P.PWM_BUSQUEDA, P.SERVO_CENTRO)
-            if not self._hay_obst:
-                # ¡Posible apertura! Guardar posición y confirmar
-                self.p1_x, self.p1_y = self.x, self.y
-                self._iniciar_pausa(P.CICLOS_CONFIRMA_APERTURA, 'MIDIENDO_HUECO')
-                self.estado = 'CONFIRMANDO_APERTURA'
+        elif self.estado == 'SIGUIENDO_CARRO':
+            self._pub(1, P.PWM_LENTO, P.SERVO_CENTRO)
+
+            if buf_lleno and delta > P.DELTA_ABRIR:
+                self._reset_buf()
+                self.estado = 'PARADO_INICIO_HUECO'
                 self.get_logger().info(
-                    f"🔔 Apertura detectada en ({self.x:.2f},{self.y:.2f}). "
-                    f"Confirmando {P.CICLOS_CONFIRMA_APERTURA} ciclos..."
+                    f"Apertura detectada (delta={delta:+.3f} m). "
+                    "Frenando para confirmar..."
                 )
 
         # ════════════════════════════════════════════════════════════════════
-        #  CONFIRMANDO_APERTURA
-        #  Carro DETENIDO. Espera N ciclos para asegurarse de que el hueco
-        #  es real y no un rebote de lectura. Si durante la pausa vuelve a
-        #  detectar obstáculo, era falso → volver a bordear.
+        #  PARADO_INICIO_HUECO
+        #  Detención breve para estabilizar el buffer de delta.
+        #  Si tras la pausa el delta sigue siendo positivo (hueco real),
+        #  se marca el inicio del hueco y se comienza a medir.
         # ════════════════════════════════════════════════════════════════════
-        elif self.estado == 'CONFIRMANDO_APERTURA':
-            self._pub(0, 0, P.SERVO_CENTRO)   # quieto
+        elif self.estado == 'PARADO_INICIO_HUECO':
+            self._pub(0, 0, P.SERVO_CENTRO)
 
-            if self._hay_obst:
-                # Era ruido — el hueco se cerró durante la pausa
-                self.estado = 'BORDEANDO_CARRO'
-                self.get_logger().warn("❌ Falsa apertura (ruido). Retomando borde...")
-            else:
-                self._pausa_cnt += 1
-                if self._pausa_cnt >= self._pausa_max:
-                    self.estado = self._pausa_sig
+            if self._pausa_ok():
+                self._reset_buf()
+
+                # Tomar avg_der actual para verificar que el hueco está abierto.
+                # Como el buffer se vació, usamos directamente avg_der.
+                if self.avg_der > (P.DELTA_ABRIR * 0.5 + 0.20):
+                    # Promedio actual alto → hueco real
+                    self.p1_x, self.p1_y = self.x, self.y
+                    self.estado = 'MIDIENDO_HUECO'
                     self.get_logger().info(
-                        f"✅ Apertura real confirmada. "
-                        f"Midiendo hueco despacio (PWM {P.PWM_MIDIENDO})..."
+                        f"Inicio confirmado (avg_der={self.avg_der:.2f} m). "
+                        f"Midiendo a PWM={P.PWM_CREEP}..."
+                    )
+                else:
+                    # Hueco se cerró durante la pausa → falso positivo
+                    self.estado = 'SIGUIENDO_CARRO'
+                    self.get_logger().warn(
+                        f"Falso positivo (avg_der={self.avg_der:.2f} m). "
+                        "Continuando..."
                     )
 
         # ════════════════════════════════════════════════════════════════════
         #  MIDIENDO_HUECO
-        #  Avanza MUY DESPACIO midiendo la longitud del hueco con odometría.
-        #  La referencia p1 ya quedó guardada al inicio del hueco.
-        #  Termina cuando:
-        #   (a) se detecta la 2ª caja → confirmar cierre
-        #   (b) el hueco es demasiado largo (falso positivo / fin de zona)
+        #  Avanza a velocidad creep mientras el hueco está abierto.
+        #  Detecta la 2ª caja por CAÍDA de delta.
         # ════════════════════════════════════════════════════════════════════
         elif self.estado == 'MIDIENDO_HUECO':
-            self._pub(1, P.PWM_MIDIENDO, P.SERVO_CENTRO)
+            self._pub(1, P.PWM_CREEP, P.SERVO_CENTRO)
             avance = self._dist(self.p1_x, self.p1_y)
 
-            if self._hay_obst:
-                # Borde de la 2ª caja detectado
-                self._tam_hueco = avance
-                self._set_ref()   # ref = posición exacta del borde de la 2ª caja
-
-                if avance >= P.MIN_HUECO:
-                    self._iniciar_pausa(P.CICLOS_CONFIRMA_CIERRE, 'POSICION_VALIDADA')
-                    self.estado = 'CONFIRMANDO_CIERRE'
-                    self.get_logger().info(
-                        f"📏 2ª caja detectada. Hueco: {avance*100:.1f} cm. "
-                        f"Confirmando cierre {P.CICLOS_CONFIRMA_CIERRE} ciclos..."
-                    )
-                else:
-                    self.get_logger().warn(
-                        f"❌ Hueco {avance*100:.1f} cm < mínimo "
-                        f"{P.MIN_HUECO*100:.0f} cm. Descartado."
-                    )
-                    self.estado = 'BORDEANDO_CARRO'
-
-            elif avance > 3.0:
-                # Sin 2ª caja en 3 m → zona sin límite, reiniciar
-                self.get_logger().warn(
-                    "⚠️  No se encontró la 2ª caja en 3 m. Reiniciando búsqueda."
+            if buf_lleno and delta < -P.DELTA_CERRAR:
+                # 2ª caja detectada por caída abrupta de distancia
+                self._hueco_long = avance
+                self._reset_buf()
+                self.estado = 'PARADO_FIN_HUECO'
+                self.get_logger().info(
+                    f"2ª caja detectada (delta={delta:+.3f} m). "
+                    f"Longitud medida: {avance*100:.1f} cm. Frenando..."
                 )
+
+            elif avance > P.MAX_BUSQUEDA:
+                self.get_logger().warn(
+                    f"{avance*100:.0f} cm sin 2ª caja. Reiniciando búsqueda."
+                )
+                self._reset_buf()
                 self.estado = 'BUSCANDO_CARRO'
 
         # ════════════════════════════════════════════════════════════════════
-        #  CONFIRMANDO_CIERRE
-        #  Carro DETENIDO en el borde de la 2ª caja.
-        #  Confirma que el hueco es válido antes de iniciar la maniobra.
-        #  Si el obstáculo desaparece (rebote), continúa midiendo.
+        #  PARADO_FIN_HUECO
+        #  Detención breve al borde de la 2ª caja.
+        #  Valida que el hueco tenga longitud suficiente.
         # ════════════════════════════════════════════════════════════════════
-        elif self.estado == 'CONFIRMANDO_CIERRE':
-            self._pub(0, 0, P.SERVO_CENTRO)   # quieto
+        elif self.estado == 'PARADO_FIN_HUECO':
+            self._pub(0, 0, P.SERVO_CENTRO)
 
-            if not self._hay_obst:
-                # La 2ª caja "desapareció" — era ruido, seguir midiendo
-                self.estado = 'MIDIENDO_HUECO'
-                self.get_logger().warn("❌ Falso cierre. Continuando medición...")
-            else:
-                self._pausa_cnt += 1
-                if self._pausa_cnt >= self._pausa_max:
-                    self.estado = self._pausa_sig
-
-        # ════════════════════════════════════════════════════════════════════
-        #  POSICION_VALIDADA
-        #  El hueco tiene tamaño correcto y ambos bordes confirmados.
-        #  Guardar el yaw de la calle para referencia de toda la maniobra.
-        # ════════════════════════════════════════════════════════════════════
-        elif self.estado == 'POSICION_VALIDADA':
-            self.yaw_calle = self.yaw
-            self.estado = 'AVANCE_POSICIONAMIENTO'
-            self.get_logger().info(
-                f"🎯 Hueco {self._tam_hueco*100:.1f} cm VALIDADO. "
-                f"yaw_calle={math.degrees(self.yaw_calle):.1f}°. "
-                f"Avanzando {P.AVANCE_POS*100:.0f} cm para posicionar cola..."
-            )
+            if self._pausa_ok():
+                if self._hueco_long >= P.MIN_HUECO:
+                    self.yaw_calle = self.yaw
+                    self._set_ref()
+                    self.estado = 'AVANCE_POSICIONAMIENTO'
+                    self.get_logger().info(
+                        f"Hueco válido: {self._hueco_long*100:.1f} cm ≥ "
+                        f"{P.MIN_HUECO*100:.0f} cm mínimo. "
+                        f"Avanzando {P.AVANCE_POS*100:.0f} cm..."
+                    )
+                else:
+                    self.get_logger().warn(
+                        f"Hueco corto: {self._hueco_long*100:.1f} cm < "
+                        f"{P.MIN_HUECO*100:.0f} cm. Buscando siguiente..."
+                    )
+                    self._reset_buf()
+                    self.estado = 'SIGUIENDO_CARRO'
 
         # ════════════════════════════════════════════════════════════════════
         #  AVANCE_POSICIONAMIENTO
-        #  Avanza AVANCE_POS metros desde el borde de la 2ª caja, de modo que
-        #  la cola del carro (22 cm atrás del LIDAR) haya rebasado la caja
-        #  y tengamos radio libre para el giro de reversa.
+        #  Avanza hasta que la cola del carro supere el borde de la 2ª caja.
+        #  AVANCE_POS = LIDAR_REAR (22 cm) + margen de giro (15 cm) = 37 cm
         # ════════════════════════════════════════════════════════════════════
         elif self.estado == 'AVANCE_POSICIONAMIENTO':
-            self._pub(1, P.PWM_MANIOBRA, P.SERVO_CENTRO)
-            if self._dist(self.ref_x, self.ref_y) >= P.AVANCE_POS:
+            self._pub(1, P.PWM_NORMAL, P.SERVO_CENTRO)
+            if self._dist() >= P.AVANCE_POS:
                 self._set_ref()
                 self.estado = 'REVERSA_GIRANDO'
                 self.get_logger().info(
-                    f"↩️  Cola posicionada. Iniciando reversa con giro derecho..."
+                    f"{P.AVANCE_POS*100:.0f} cm avanzados. "
+                    "Iniciando reversa con giro a la derecha..."
                 )
 
         # ════════════════════════════════════════════════════════════════════
         #  REVERSA_GIRANDO
-        #  Reversa con máximo giro a la derecha hasta alcanzar ~90°.
-        #  Si hay obstáculo muy cerca de la cola → rescate inmediato.
+        #  Reversa + máximo giro derecha hasta alcanzar ~90° (por odometría).
         # ════════════════════════════════════════════════════════════════════
         elif self.estado == 'REVERSA_GIRANDO':
-            self._pub(2, P.PWM_MANIOBRA, P.SERVO_DER_MAX)
+            self._pub(2, P.PWM_NORMAL, P.SERVO_DER_REV)
 
             if self.dist_atras < P.PELIGRO_TRAS:
                 self._set_ref()
                 self.estado = 'RESCATE_ADELANTE'
                 self.get_logger().warn(
-                    f"⚠️  Cola a {self.dist_atras*100:.0f} cm. Rescate necesario."
+                    f"Obstáculo trasero a {self.dist_atras:.2f} m. Rescatando..."
                 )
-            elif ey_abs >= P.YAW_OBJ:
+            elif ey >= P.YAW_OBJ:
                 self.estado = 'REVERSA_RECTA'
                 self.get_logger().info(
-                    f"📐 {ey_abs:.0f}° alcanzados. Entrando recto al espacio..."
-                )
-
-        # ════════════════════════════════════════════════════════════════════
-        #  REVERSA_RECTA
-        #  Entra recto al hueco (perpendicular).
-        #  Corrección proporcional de yaw para compensar la deriva del giro.
-        #
-        #  El servo se ajusta en función del error angular:
-        #    error_yaw_signed > 0 → carro girado a la izquierda → corregir derecha
-        #    error_yaw_signed < 0 → carro girado a la derecha  → corregir izquierda
-        #
-        #  Para en DIST_STOP = 25 cm de la pared (LIDAR_A_FRENTE = 22 cm + 3 cm de margen)
-        # ════════════════════════════════════════════════════════════════════
-        elif self.estado == 'REVERSA_RECTA':
-            corr  = int(max(-P.MAX_CORR, min(P.MAX_CORR, P.KP_YAW * ey_signed)))
-            servo = max(P.SERVO_DER_MAX, min(P.SERVO_IZQ_MAX, P.SERVO_CENTRO - corr))
-            self._pub(2, P.PWM_MANIOBRA, servo)
-
-            if self.dist_atras < P.DIST_STOP:
-                self.estado = 'ESTACIONADO'
-                dist_cola = self.dist_atras - P.LIDAR_A_COLA
-                self.get_logger().info(
-                    f"🅿️  ¡ESTACIONADO!\n"
-                    f"   LIDAR trasero  : {self.dist_atras*100:.0f} cm de la pared\n"
-                    f"   Cola del carro : {dist_cola*100:.0f} cm de la pared\n"
-                    f"   Hueco ocupado  : {self._tam_hueco*100:.1f} cm\n"
-                    f"   Error angular  : {ey_abs:.1f}°"
+                    f"{ey:.0f}° alcanzados. Entrando recto al hueco..."
                 )
 
         # ════════════════════════════════════════════════════════════════════
         #  RESCATE_ADELANTE
-        #  Avanza exactamente 20 cm (closed-loop por encoder) para ganar
-        #  espacio libre y volver a intentar el giro.
-        #  Solo usa odometría (no LIDAR) para no confundirse con el entorno.
+        #  Avanza exactamente 20 cm (closed-loop, solo condición de distancia)
+        #  para ganar espacio y reintentar el giro.
         # ════════════════════════════════════════════════════════════════════
         elif self.estado == 'RESCATE_ADELANTE':
-            self._pub(1, P.PWM_MANIOBRA, P.SERVO_CENTRO)
-            if self._dist(self.ref_x, self.ref_y) >= 0.20:
+            self._pub(1, P.PWM_LENTO, P.SERVO_CENTRO)
+            if self._dist() >= 0.20:
                 self.estado = 'REVERSA_GIRANDO'
+                self.get_logger().info("Rescate completado. Retomando giro...")
+
+        # ════════════════════════════════════════════════════════════════════
+        #  REVERSA_RECTA
+        #  Entra recto con corrección proporcional de yaw.
+        #  Velocidad lenta para lectura precisa del LIDAR.
+        #
+        #  DIST_STOP = 0.25 m:
+        #    LIDAR centrado (22 cm de la cola) + bumper trasero a 3 cm de pared
+        #    → LIDAR lee: espacio(50) - LIDAR_FRONT(22) - margen(3) = 25 cm
+        # ════════════════════════════════════════════════════════════════════
+        elif self.estado == 'REVERSA_RECTA':
+            eys   = self._err_yaw_signed()
+            corr  = int(max(-P.MAX_CORR, min(P.MAX_CORR, P.KP_YAW * eys)))
+            servo = P.SERVO_CENTRO - corr
+            self._pub(2, P.PWM_LENTO, servo)
+
+            if self.dist_atras < P.DIST_STOP:
+                self.estado = 'ESTACIONADO'
                 self.get_logger().info(
-                    "↩️  Rescate 20 cm completado. Retomando giro..."
+                    f"ESTACIONADO"
+                    f"dist_atras={self.dist_atras*100:.0f} cm"
+                    f"bumper trasero ≈ {(self.dist_atras - P.LIDAR_REAR)*100:.0f} cm de la pared"
                 )
 
         # ════════════════════════════════════════════════════════════════════
@@ -555,18 +570,12 @@ class SmartParking(Node):
         elif self.estado == 'ESTACIONADO':
             self._pub(0, 0, P.SERVO_CENTRO, stop=1)
 
-        # ════════════════════════════════════════════════════════════════════
-        #  ESPERANDO_LIDAR (estado inicial antes del primer mensaje scan)
-        # ════════════════════════════════════════════════════════════════════
-        elif self.estado == 'ESPERANDO_LIDAR':
-            self._pub(0, 0, P.SERVO_CENTRO)
 
-
-# ══════════════════════════════════════════════════════════════════════════════
 def main():
     rclpy.init()
     rclpy.spin(SmartParking())
     rclpy.shutdown()
+
 
 if __name__ == '__main__':
     main()

@@ -48,7 +48,7 @@ def generate_launch_description():
         remappings=[
             ('/camera/points', '/ascamera_hp60c/camera_publisher/depth0/points'),
             ('/model/carro/scan', '/scan'),
-            ('/camera/depth_image', '/ascamera_hp60c/camera_publisher/depth0/image_raw'),
+            #('/camera/depth_image', '/ascamera_hp60c/camera_publisher/depth0/image_raw'),
         ],
         output='screen'
     )
@@ -72,7 +72,7 @@ def generate_launch_description():
         arguments=[
             '-file', urdf_path,
             '-name', 'carro',
-            '-x', '7.0',   # Posición en el eje X
+            '-x', '8.0',   # Posición en el eje X
             '-y', '6.3',   # Posición en el eje Y
             '-z', '0.5',  # Altura
             '-Y', '3.14'   # Rotación en radianes
