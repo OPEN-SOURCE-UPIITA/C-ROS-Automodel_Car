@@ -35,6 +35,7 @@ setup(
             'sim_adapter = carro_simulacion.sim_adapter:main',
             'camera_filter = carro_simulacion.camera_filter:main',
             'encoder_adapter = carro_simulacion.encoder_adapter:main',
+            'local = carro_simulacion.local:main',
         ],
     },
 )

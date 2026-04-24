@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gamepad - Robot Ackermann</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    
+    <item>
+     <widget class="QGroupBox" name="group_conexion">
+      <property name="title"><string>1. Conexión</string></property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item><widget class="QLineEdit" name="ip_input"><property name="text"><string>127.0.0.1</string></property></widget></item>
+       <item><widget class="QLineEdit" name="port_input"><property name="text"><string>65432</string></property><property name="maximumWidth"><number>80</number></property></widget></item>
+       <item><widget class="QPushButton" name="btn_conectar"><property name="text"><string>Conectar</string></property></widget></item>
+       <item><widget class="QLabel" name="lbl_estado"><property name="text"><string>Desconectado</string></property><property name="styleSheet"><string>color: red; font-weight: bold;</string></property></widget></item>
+      </layout>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QGroupBox" name="group_ajustes">
+      <property name="title"><string>2. Ajustes de Velocidad y Luces</string></property>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0"><widget class="QLabel" name="label_speed"><property name="text"><string>Límite de Velocidad:</string></property></widget></item>
+       <item row="0" column="1">
+        <widget class="QSlider" name="slider_speed">
+         <property name="maximum"><number>100</number></property>
+         <property name="value"><number>70</number></property>
+         <property name="orientation"><enum>Qt::Horizontal</enum></property>
+        </widget>
+       </item>
+       <item row="1" column="0"><widget class="QLabel" name="lbl_speed_val"><property name="text"><string>70%</string></property></widget></item>
+       
+       <item row="2" column="0"><widget class="QLabel" name="label_lights"><property name="text"><string>Luces Manuales:</string></property></widget></item>
+       <item row="2" column="1">
+        <layout class="QHBoxLayout" name="lights_layout">
+         <item><widget class="QCheckBox" name="check_stop"><property name="text"><string>Freno (Stop)</string></property></widget></item>
+         <item>
+          <widget class="QComboBox" name="combo_turn">
+           <item><property name="text"><string>Apagado (0)</string></property></item>
+           <item><property name="text"><string>Derecha (1)</string></property></item>
+           <item><property name="text"><string>Izquierda (2)</string></property></item>
+           <item><property name="text"><string>Intermitentes (3)</string></property></item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+    <item>
+     <widget class="QGroupBox" name="group_control">
+      <property name="title"><string>3. Control de Movimiento (Teclado o Clic)</string></property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="1">
+        <widget class="QPushButton" name="btn_w">
+         <property name="text"><string>W
+(Adelante)</string></property>
+         <property name="minimumSize"><size><width>80</width><height>80</height></size></property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="btn_a">
+         <property name="text"><string>A
+(Izquierda)</string></property>
+         <property name="minimumSize"><size><width>80</width><height>80</height></size></property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="btn_s">
+         <property name="text"><string>S
+(Atrás)</string></property>
+         <property name="minimumSize"><size><width>80</width><height>80</height></size></property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="btn_d">
+         <property name="text"><string>D
+(Derecha)</string></property>
+         <property name="minimumSize"><size><width>80</width><height>80</height></size></property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
