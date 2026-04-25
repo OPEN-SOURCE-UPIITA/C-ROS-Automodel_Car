@@ -11,14 +11,21 @@ class SocketToRos2Bridge(Node):
     def __init__(self):
         super().__init__('socket_to_ros2_bridge')
         
-        # CORRECCIÓN: Se agregó el guion bajo para que coincida en todo el código
+        # Publicador
         self.publisher_ = self.create_publisher(MotorCommand, '/motor_command', 10)
 
+        # --- NUEVO: Memoria del último comando recibido ---
+        self.current_cmd = MotorCommand()
+        self.current_cmd.dir_servo = 1500
+
+        # --- NUEVO: Timer que publica a 10 Hz (cada 0.1 segundos) ---
+        self.timer = self.create_timer(0.1, self.publicar_constante)
+
         # Configuración del Socket
-        self.server_ip = '127.0.0.1' # Es más seguro usar 127.0.0.1 que 'localhost' en ROS 2
-        self.server_port = 65432
+        self.server_ip = '16.59.195.73' 
+        self.server_port = 6000
         
-        # Iniciamos el cliente de red en un hilo separado para no bloquear ROS 2
+        # Iniciamos el cliente de red en un hilo separado
         self.red_thread = threading.Thread(target=self.conectar_y_escuchar, daemon=True)
         self.red_thread.start()
 
@@ -29,7 +36,6 @@ class SocketToRos2Bridge(Node):
                 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     s.connect((self.server_ip, self.server_port))
                     
-                    # Nos identificamos ante el servidor
                     s.sendall(b"SOY_EL_ROBOT\n")
                     self.get_logger().info('¡Conectado! Esperando comandos...')
                     
@@ -40,7 +46,6 @@ class SocketToRos2Bridge(Node):
                             self.get_logger().warn('El servidor cerró la conexión.')
                             break
                         
-                        # Decodificamos y separamos por saltos de línea (por si llegan muy rápido)
                         buffer += data.decode('utf-8')
                         while '\n' in buffer:
                             line, buffer = buffer.split('\n', 1)
@@ -55,21 +60,20 @@ class SocketToRos2Bridge(Node):
         try:
             data = json.loads(json_str)
             
-            ros_msg = MotorCommand()
-            ros_msg.dir_dc = data.get('dir_dc', 0)
-            ros_msg.speed_dc = data.get('speed_dc', 0)
-            ros_msg.dir_servo = data.get('dir_servo', 1500)
-            ros_msg.stop_lights = data.get('stop_lights', 0)
-            ros_msg.turn_signals = data.get('turn_signals', 0)
-
-            # Ahora esta línea funcionará perfectamente
-            self.publisher_.publish(ros_msg)
-            
-            # Descomentado para ver en tiempo real lo que recibe el nodo
-            self.get_logger().info(f'Comando aplicado: {data}')
+            # --- MODIFICADO: Solo guardamos los datos en la memoria interna ---
+            self.current_cmd.dir_dc = data.get('dir_dc', 0)
+            self.current_cmd.speed_dc = data.get('speed_dc', 0)
+            self.current_cmd.dir_servo = data.get('dir_servo', 1500)
+            self.current_cmd.stop_lights = data.get('stop_lights', 0)
+            self.current_cmd.turn_signals = data.get('turn_signals', 0)
             
         except json.JSONDecodeError:
             self.get_logger().error('Se recibió un comando con formato dañado.')
+
+    # --- NUEVO: Función que ejecuta el Timer automáticamente ---
+    def publicar_constante(self):
+        # Publica el estado actual continuamente hacia los motores
+        self.publisher_.publish(self.current_cmd)
 
 def main(args=None):
     rclpy.init(args=args)

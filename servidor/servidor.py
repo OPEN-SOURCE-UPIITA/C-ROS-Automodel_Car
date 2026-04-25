@@ -1,11 +1,9 @@
 import socket
 import threading
 
-# Configuración del servidor (Escucha en todas las interfaces)
 HOST = '0.0.0.0'  
-PORT = 65432      
+PORT = 6000      
 
-# Variable para guardar la conexión hacia el robot
 robot_conn = None
 
 def manejar_cliente(conn, addr):
@@ -13,13 +11,11 @@ def manejar_cliente(conn, addr):
     print(f"[NUEVA CONEXIÓN] Dirección {addr} conectada.")
     
     try:
-        # El cliente debe enviar un "saludo" para identificarse
         identidad = conn.recv(1024).decode('utf-8').strip()
         
         if identidad == "SOY_EL_ROBOT":
             robot_conn = conn
             print("[INFO] Robot registrado correctamente.")
-            # Mantiene viva la conexión del robot
             while True:
                 if not conn.recv(1024): 
                     break
@@ -27,12 +23,10 @@ def manejar_cliente(conn, addr):
         elif identidad == "SOY_EL_USUARIO":
             print("[INFO] Usuario conectado. Listo para retransmitir comandos.")
             while True:
-                # Recibe el comando del usuario
                 data = conn.recv(1024)
                 if not data:
                     break
                 
-                # Si el robot está conectado, le reenvía el mensaje crudo
                 if robot_conn:
                     try:
                         robot_conn.sendall(data)
@@ -59,7 +53,6 @@ def iniciar_servidor():
     
     while True:
         conn, addr = servidor.accept()
-        # Crea un hilo nuevo por cada conexión (robot o usuario)
         hilo = threading.Thread(target=manejar_cliente, args=(conn, addr))
         hilo.start()
 
