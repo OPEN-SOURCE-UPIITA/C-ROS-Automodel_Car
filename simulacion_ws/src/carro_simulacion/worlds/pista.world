@@ -106,6 +106,27 @@
       </link>
     </model>
 
+    <model name="pared">
+      <static>true</static>
+      <pose>5 7.6 0.15 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box><size>5.0 0.2 0.3</size></box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box><size>5.0 0.2 0.3</size></box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.2 0.2 1</ambient>
+            <diffuse>0.2 0.2 0.2 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
     <model name="senal_1">
       <static>true</static>
       <pose>6.0 2.0 0 0 0 1.5708</pose> 
