@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>auto_setup</name>
+  <version>0.0.1</version>
+  <description>Paquete de lanzamiento para Automodel Car</description>
+  <maintainer email="tu_email@example.com">tu_nombre</maintainer>
+  <license>Apache License 2.0</license>
+
+  <depend>rclpy</depend>
+  
+  <exec_depend>driving</exec_depend>
+  <exec_depend>ascamera_hp60c</exec_depend>
+  <exec_depend>com_stm</exec_depend>
+  <exec_depend>ms200_driver</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

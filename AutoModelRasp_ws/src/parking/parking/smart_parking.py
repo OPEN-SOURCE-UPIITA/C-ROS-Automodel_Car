@@ -1,16 +1,24 @@
+#!/usr/bin/env python3
+"""
+Nodo Maestro de Estacionamiento Autónomo ROS 2.
+- Versión 100.0: Control de Velocidad en Lazo Cerrado (Encoder-Adaptive).
+"""
+
 import rclpy
 from rclpy.node import Node
 from motor_msgs.msg import MotorCommand, EncoderData
 from sensor_msgs.msg import LaserScan
+from rclpy.qos import qos_profile_sensor_data
 import math
+import time # Necesario para calcular la velocidad real
 
 class SmartParking(Node):
     def __init__(self):
         super().__init__('smart_parking')
         
         self.pub_cmd = self.create_publisher(MotorCommand, '/motor_command', 10)
-        self.scan_sub = self.create_subscription(LaserScan, '/scan', self.scan_cb, 10)
-        self.enc_sub = self.create_subscription(EncoderData, '/encoder_data', self.encoder_cb, 10)
+        self.scan_sub = self.create_subscription(LaserScan, '/scan', self.scan_cb, qos_profile_sensor_data) 
+        self.enc_sub = self.create_subscription(EncoderData, '/encoder_data', self.enc_cb, 10)
         
         self.estado = 'BUSCANDO_CARRO' 
         
@@ -52,7 +60,8 @@ class SmartParking(Node):
         self.timer = self.create_timer(self.dt, self.control_loop)
         self.get_logger().info("v31.0 Sinergia: Optimizado para el nuevo Driver MS200 de 360°")
 
-    def encoder_cb(self, msg):
+    def enc_cb(self, msg):
+        # 1. Calculamos Odometría (Posición)
         signo = 1 if self.comando_dir == 1 else -1
         ticks_ciclo = (abs(msg.vel_m1) + abs(msg.vel_m2)) / 2.0
         dist_lineal = (ticks_ciclo / self.ticks_por_metro) * signo
@@ -189,11 +198,17 @@ class SmartParking(Node):
             cmd.dir_dc, cmd.speed_dc, cmd.dir_servo = 0, 0, self.CENTRO
             cmd.stop_lights = 1
 
-        self.comando_dir = cmd.dir_dc
+        # Preparar y publicar
+        self.comando_dir = int(cmd.dir_dc)
+        cmd.dir_dc = int(cmd.dir_dc); cmd.speed_dc = int(cmd.speed_dc); cmd.dir_servo = int(cmd.dir_servo)
+        cmd.stop_lights = int(cmd.stop_lights); cmd.turn_signals = int(cmd.turn_signals)
         self.pub_cmd.publish(cmd)
 
-def main():
-    rclpy.init(); rclpy.spin(SmartParking()); rclpy.shutdown()
+def main(args=None):
+    rclpy.init(args=args); nodo = SmartParking()
+    try: rclpy.spin(nodo)
+    except KeyboardInterrupt: pass
+    finally: nodo.destroy_node(); rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
