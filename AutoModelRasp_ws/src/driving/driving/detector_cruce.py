@@ -9,13 +9,13 @@ import cv2
 import numpy as np
 
 # ==============================================================================
-# DETECTOR DE CRUCES PEATONALES PRO (Proyección Horizontal + FFT)
+# DETECTOR DE CRUCES PEATONALES PRO (Polígono Trapezoidal + FFT)
 # ==============================================================================
 
 class DetectorCrucesNode(Node):
     def __init__(self):
         super().__init__('detector_cruces')
-        self.get_logger().info("Detector de Cruces Peatonales (FFT) Iniciado")
+        self.get_logger().info("Detector de Cruces Peatonales (Trapecio + FFT) Iniciado")
 
         # =============================
         # PARÁMETROS DINÁMICOS (RQT)
@@ -23,21 +23,19 @@ class DetectorCrucesNode(Node):
         self.declare_parameter('resize_w', 320)
         self.declare_parameter('resize_h', 240)
 
-        # 1. ROI: Banda de detección (Horizontal)
-        self.declare_parameter('roi_y_sup_pct', 60) # Inicio de la banda (ej. 60% de la pantalla)
-        self.declare_parameter('roi_y_inf_pct', 10) # Fin de la banda (ej. 10% desde abajo)
-        self.declare_parameter('corte_lados_px', 40) # Ignorar bordes de la pista
+        # 1. ROI TRAPEZOIDAL (Porcentajes de la pantalla)
+        self.declare_parameter('roi_y_sup_pct', 78)  # Altura superior (ej. 55% desde arriba)
+        self.declare_parameter('roi_y_inf_pct', 95)  # Altura inferior (ej. 95% desde arriba)
+        self.declare_parameter('roi_w_sup_pct', 50)  # Ancho de la línea superior (ej. 40% del ancho total)
+        self.declare_parameter('roi_w_inf_pct', 100) # Ancho de la línea inferior (ej. 100% del ancho total)
 
         # 2. Filtros de Color HLS
-        self.declare_parameter('l_min', 180)
+        self.declare_parameter('l_min', 110)
         self.declare_parameter('s_max', 100)
 
         # 3. Parámetros Matemáticos FFT (Frecuencia de la Cebra)
-        # ¿Cuántas rayas blancas (ciclos) esperamos ver en la cámara? Normalmente entre 3 y 8
-        self.declare_parameter('fft_frecuencia_min', 3) 
+        self.declare_parameter('fft_frecuencia_min', 4) 
         self.declare_parameter('fft_frecuencia_max', 10)
-        
-        # Este es el umbral clave. Si el pico de la FFT supera esto, frena.
         self.declare_parameter('fft_umbral_magnitud', 500.0) 
 
         # 4. Anti-Parpadeo
@@ -67,9 +65,10 @@ class DetectorCrucesNode(Node):
         w_r = self.get_parameter('resize_w').value
         h_r = self.get_parameter('resize_h').value
         
-        pct_sup = self.get_parameter('roi_y_sup_pct').value
-        pct_inf = self.get_parameter('roi_y_inf_pct').value
-        corte_lados = self.get_parameter('corte_lados_px').value
+        y_sup_pct = self.get_parameter('roi_y_sup_pct').value / 100.0
+        y_inf_pct = self.get_parameter('roi_y_inf_pct').value / 100.0
+        w_sup_pct = self.get_parameter('roi_w_sup_pct').value / 100.0
+        w_inf_pct = self.get_parameter('roi_w_inf_pct').value / 100.0
 
         l_min = self.get_parameter('l_min').value
         s_max = self.get_parameter('s_max').value
@@ -77,53 +76,68 @@ class DetectorCrucesNode(Node):
         f_min = self.get_parameter('fft_frecuencia_min').value
         f_max = self.get_parameter('fft_frecuencia_max').value
         umbral_fft = self.get_parameter('fft_umbral_magnitud').value
-        
         frames_memoria = self.get_parameter('frames_memoria').value
 
         # =============================
-        # 2. PREPROCESAMIENTO Y ROI
+        # 2. PREPROCESAMIENTO Y GEOMETRÍA DEL TRAPECIO
         # =============================
         frame = cv2.resize(frame, (w_r, h_r))
         h, w = frame.shape[:2]
 
-        y_sup = int(h * (pct_sup / 100.0))
-        y_inf = h - int(h * (pct_inf / 100.0))
+        y_sup = int(h * y_sup_pct)
+        y_inf = int(h * y_inf_pct)
         
-        # Extraemos la banda de interés
-        roi = frame[y_sup:y_inf, corte_lados:w-corte_lados]
+        # Calcular los vértices del trapecio (Centrados en la pantalla)
+        x_center = w // 2
+        w_sup_half = int((w * w_sup_pct) / 2)
+        w_inf_half = int((w * w_inf_pct) / 2)
+
+        pt1 = [x_center - w_sup_half, y_sup] # Arriba Izquierda
+        pt2 = [x_center + w_sup_half, y_sup] # Arriba Derecha
+        pt3 = [x_center + w_inf_half, y_inf] # Abajo Derecha
+        pt4 = [x_center - w_inf_half, y_inf] # Abajo Izquierda
+        
+        pts_globales = np.array([[pt1, pt2, pt3, pt4]], dtype=np.int32)
+
+        # Cortamos la imagen en "Y" para procesar menos píxeles (Optimización)
+        roi = frame[y_sup:y_inf, :]
         if roi.size == 0: return
 
         # =============================
-        # 3. FILTRO HLS Y MÁSCARA BINARIA
+        # 3. MÁSCARA DEL POLÍGONO Y FILTRO HLS
         # =============================
+        # Crear máscara negra del tamaño del ROI
+        poly_mask = np.zeros(roi.shape[:2], dtype=np.uint8)
+        
+        # Ajustar los puntos al sistema de coordenadas del ROI cortado
+        pts_roi = np.array([[[pt1[0], 0], [pt2[0], 0], [pt3[0], y_inf - y_sup], [pt4[0], y_inf - y_sup]]], dtype=np.int32)
+        cv2.fillPoly(poly_mask, pts_roi, 255) # Pintamos el trapecio de blanco
+
+        # Aplicar el filtro de color
         hls = cv2.cvtColor(roi, cv2.COLOR_BGR2HLS)
         _, L, S = cv2.split(hls)
+        color_mask = (L > l_min) & (S < s_max)
+        color_mask = color_mask.astype(np.uint8) * 255
+
+        # Fusionar la forma del trapecio con el filtro de color (Operación AND)
+        mask = cv2.bitwise_and(color_mask, poly_mask)
         
-        mask = (L > l_min) & (S < s_max)
-        mask = mask.astype(np.uint8) * 255
-        
-        # Limpieza básica
+        # Limpieza de ruido
         kernel = np.ones((3, 3), np.uint8)
         mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
 
         # =========================================================
         # 4. EL NÚCLEO MATEMÁTICO: PROYECCIÓN (PH) Y FFT
         # =========================================================
-        # Paso A: Proyección Horizontal (Sumar píxeles por columnas)
-        ph = np.sum(mask, axis=0) / 255.0 # Normalizamos de 0 a Altura del ROI
-        
-        # Paso B: Centrar la señal (Quitar la media para eliminar la frecuencia 0)
+        ph = np.sum(mask, axis=0) / 255.0 
         ph_centered = ph - np.mean(ph)
         
-        # Paso C: Transformada Rápida de Fourier (FFT)
         fft_vals = np.fft.fft(ph_centered)
         fft_mag = np.abs(fft_vals)
         
-        # Solo necesitamos la primera mitad del espectro (Límite de Nyquist)
         half_N = len(fft_mag) // 2
         fft_mag = fft_mag[:half_N]
 
-        # Paso D: Analizar las frecuencias válidas de la cebra
         f_max = min(f_max, half_N - 1)
         valid_mags = fft_mag[f_min:f_max]
         
@@ -136,17 +150,15 @@ class DetectorCrucesNode(Node):
         distancia = 999.0
         debug = frame.copy()
         
-        # Dibujar la caja del ROI
-        cv2.rectangle(debug, (corte_lados, y_sup), (w-corte_lados, y_inf), (255, 0, 0), 2)
+        # 🔥 DIBUJAR EL TRAPECIO EN LA PANTALLA DEBUG
+        cv2.polylines(debug, pts_globales, isClosed=True, color=(255, 0, 0), thickness=2)
 
         if cruce_detectado_matematicamente:
             self.contador_persistencia = frames_memoria
             
-            # Buscar exactamente en qué píxel Y empieza el cruce dentro del ROI
-            # (Escaneamos de abajo hacia arriba en la máscara para hallar el borde)
             y_borde_local = mask.shape[0] - 1
             for y_scan in range(mask.shape[0]-1, 0, -2):
-                if np.sum(mask[y_scan, :]) > 255 * 10: # Si hay algo de blanco
+                if np.sum(mask[y_scan, :]) > 255 * 10: 
                     y_borde_local = y_scan
                     break
             self.ultima_y_global = float(y_sup + y_borde_local)
@@ -161,23 +173,22 @@ class DetectorCrucesNode(Node):
             cv2.line(debug, (0, int(self.ultima_y_global)), (w, int(self.ultima_y_global)), color, 3)
 
         # =============================
-        # 6. GRAFICADOR VISUAL DE LA FFT (Para RQT)
+        # 6. GRAFICADOR VISUAL DE LA FFT
         # =============================
-        # Dibujamos una mini gráfica en la esquina superior derecha del debug
         graf_w, graf_h = 100, 50
         cv2.rectangle(debug, (w - graf_w - 10, 10), (w - 10, 10 + graf_h), (0, 0, 0), -1)
         if len(fft_mag) > 0:
-            max_visual = max(umbral_fft * 1.5, np.max(fft_mag)) # Escala automática
-            for i, mag in enumerate(fft_mag[:20]): # Mostrar las primeras 20 frecuencias
+            max_visual = max(umbral_fft * 1.5, np.max(fft_mag)) 
+            for i, mag in enumerate(fft_mag[:20]): 
                 x = w - graf_w - 10 + int((i / 20) * graf_w)
                 h_bar = int((mag / max_visual) * graf_h)
                 color_bar = (0, 255, 0) if f_min <= i <= f_max else (100, 100, 100)
-                if i >= f_min and i <= f_max and mag > umbral_fft: color_bar = (0, 0, 255) # Pico rojo!
+                if i >= f_min and i <= f_max and mag > umbral_fft: color_bar = (0, 0, 255) 
                 cv2.line(debug, (x, 10 + graf_h), (x, 10 + graf_h - h_bar), color_bar, 2)
 
         # Reconstruir máscara para publicarla
         full_mask = np.zeros((h, w), dtype=np.uint8)
-        full_mask[y_sup:y_inf, corte_lados:w-corte_lados] = mask
+        full_mask[y_sup:y_inf, :] = mask
         mask_bgr = cv2.cvtColor(full_mask, cv2.COLOR_GRAY2BGR)
 
         self.pub_distancia.publish(Float32(data=distancia))

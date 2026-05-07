@@ -19,11 +19,11 @@ class DriveCarrilNode(Node):
         self.declare_parameter('habilitar_conduccion', False)
 
         # 1. Control de Velocidad y Dirección (PD)
-        self.declare_parameter('velocidad_dc', 80)           
-        self.declare_parameter('velocidad_minima', 60)       
-        self.declare_parameter('factor_reduccion_vel', 20)   
-        self.declare_parameter('kp_servo', 1500.0)            
-        self.declare_parameter('kd_servo', 200.0)             
+        self.declare_parameter('velocidad_dc', 40)           
+        self.declare_parameter('velocidad_minima', 0)       
+        self.declare_parameter('factor_reduccion_vel', 25)   
+        self.declare_parameter('kp_servo', 198.0)            
+        self.declare_parameter('kd_servo', 70.0)             
         self.declare_parameter('max_step_servo', 25)         
 
         # --- NUEVOS: PARÁMETROS DE RAMPA (SUAVIZADO DE ACELERACIÓN/FRENADO) ---
@@ -37,7 +37,7 @@ class DriveCarrilNode(Node):
         # 3. Umbrales de los Sensores
         self.declare_parameter('distancia_paro_min', 0.15)   # Señal STOP: Distancia mínima
         self.declare_parameter('distancia_paro_max', 0.40)   # Señal STOP: Distancia máxima
-        self.declare_parameter('linea_freno_cruce', 350.0)   # CRUCE: Coordenada Y (px) para frenar
+        self.declare_parameter('linea_freno_cruce', 100.0)   # CRUCE: Coordenada Y (px) para frenar
 
         # Memorias para PD y Servo
         self.servo_centro = 1500
