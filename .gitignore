@@ -10,3 +10,20 @@ simulacion_ws/log/
 #Archivos de compilación del stm32
 Debug/
 Release/
+
+#Caches y archivos generados por Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.coverage
+.venv/
+venv/
+
+#Archivos temporales del sistema operativo
+.DS_Store
+Thumbs.db
+
+.vscode/
