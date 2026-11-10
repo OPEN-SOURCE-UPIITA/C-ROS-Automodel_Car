@@ -10,6 +10,7 @@ simulacion_ws/log/
 #Archivos de compilación del stm32
 Debug/
 Release/
+<<<<<<< HEAD
 
 #Caches y archivos generados por Python
 __pycache__/
@@ -27,3 +28,5 @@ venv/
 Thumbs.db
 
 .vscode/
+=======
+>>>>>>> 9fca11edfc69633e2028ce221d909435d94dde42
